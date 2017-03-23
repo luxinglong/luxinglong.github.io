@@ -94,7 +94,7 @@
 <meta property="og:site_name" content="LB's Home">
 <meta property="og:description" content="0 背景知识在机器学习中，当测试样本的维数很高时，会出现数据样本稀疏，距离计算困难等问题，这被称为“维数灾难”(curse of dimensionality). 为了解决维数灾难带来的影响，提出了降维(dimension reduction)操作。降维主要分为线性降维和非线性降维。线性降维包括多维缩放MDS和主成分分析PCA。非线性降维有核主成分分析KPCA和流形学习等方法。本文主要介绍PCA.">
 <meta property="og:image" content="http://on99gq8w5.bkt.clouddn.com/%E9%99%8D%E7%BB%B4.jpg?imageMogr2/thumbnail/300x300">
-<meta property="og:updated_time" content="2017-03-23T07:47:56.000Z">
+<meta property="og:updated_time" content="2017-03-23T08:12:11.000Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="【机器学习】主成分分析PCA">
 <meta name="twitter:description" content="0 背景知识在机器学习中，当测试样本的维数很高时，会出现数据样本稀疏，距离计算困难等问题，这被称为“维数灾难”(curse of dimensionality). 为了解决维数灾难带来的影响，提出了降维(dimension reduction)操作。降维主要分为线性降维和非线性降维。线性降维包括多维缩放MDS和主成分分析PCA。非线性降维有核主成分分析KPCA和流形学习等方法。本文主要介绍PCA.">
@@ -346,7 +346,7 @@
              <i class="fa fa-calendar-o"></i>
            </span>
            <span class="post-meta-item-text">字数统计:</span>
-           <span class="post-count">388(字)</span> 
+           <span class="post-count">425(字)</span> 
          </span>
          
          <span id="busuanzi_container_page_pv">
@@ -386,7 +386,7 @@
 </blockquote>
 <img src="http://on99gq8w5.bkt.clouddn.com/%E9%99%8D%E7%BB%B4.jpg?imageMogr2/thumbnail/300x300" class="[降维]" title="降维示意图">
 <p>问题描述：</p>
-<p>假设有m个样本，每个样本还有d个属性，</p>
+<p>假设有m个样本$\{x^{(1)},\cdots,x^{(m)}\}$，每个样本还有n个属性，即$x^{(i)} \in R^n$.现在如果有一个矩阵D,使得$c^{(i)} = D \ast x^{(i)},c^{(i)} \in R^l$,且$l &lt; n$.</p>
 <p>$$<br>\begin{eqnarray}<br>\nabla\cdot\vec{E} &amp;=&amp; \frac{\rho}{\epsilon_0} \\<br>\nabla\cdot\vec{B} &amp;=&amp; 0 \\<br>\nabla\times\vec{E} &amp;=&amp; -\frac{\partial B}{\partial t} \\<br>\nabla\times\vec{B} &amp;=&amp; \mu_0\left(\vec{J}+\epsilon_0\frac{\partial E}{\partial t} \right)<br>\end{eqnarray}<br>$$</p>
 <h2 id="1-1-推导方式一"><a href="#1-1-推导方式一" class="headerlink" title="1.1 推导方式一"></a>1.1 推导方式一</h2><h2 id="1-2-推导方式二"><a href="#1-2-推导方式二" class="headerlink" title="1.2 推导方式二"></a>1.2 推导方式二</h2><h2 id="1-3-推导方式三"><a href="#1-3-推导方式三" class="headerlink" title="1.3 推导方式三"></a>1.3 推导方式三</h2><h1 id="2-算法实现"><a href="#2-算法实现" class="headerlink" title="2 算法实现"></a>2 算法实现</h1><h2 id="2-1-伪码"><a href="#2-1-伪码" class="headerlink" title="2.1 伪码"></a>2.1 伪码</h2><h2 id="2-2-C"><a href="#2-2-C" class="headerlink" title="2.2 C++"></a>2.2 C++</h2><figure class="highlight plain"><figcaption><span>hello.cpp</span></figcaption><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div></pre></td><td class="code"><pre><div class="line">#include &lt;iostream&gt;</div><div class="line">using namespace std;</div><div class="line">int main(void)</div><div class="line">&#123;</div><div class="line">    cout &lt;&lt; &quot;hello hexo&quot; &lt;&lt; endl;</div><div class="line">    return 0;</div><div class="line">&#125;</div></pre></td></tr></table></figure>
 <h1 id="3-结论"><a href="#3-结论" class="headerlink" title="3 结论"></a>3 结论</h1><h1 id="参考文献"><a href="#参考文献" class="headerlink" title="参考文献"></a>参考文献</h1><p>[1] 周志华. 机器学习. 清华大学出版社. (2016)<br>[2] </p>
