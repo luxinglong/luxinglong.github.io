@@ -46,6 +46,14 @@ highlight:
 # Category & Tag
 default_category: uncategorized
 category_map:
+          【机器学习】: 【机器学习】
+          【深度学习】: 【深度学习】
+#          【图像处理】
+#          【滤波算法】
+#          【数据结构】
+#          【算法分析】
+#          【编程语言】
+#          【工程项目】
 tag_map:
 
 # Date / Time format
