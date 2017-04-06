@@ -104,7 +104,7 @@
 
 1 原理角点检测是很多视觉任务的第一步，比如说视觉SLAM，需要实时提取图像的特征点，并进行匹配。大牛们已经设计出很多角点检测算法，比如说SIFT(DOG),Harris和SUSAN等，这些角点检测算法可以提取出质量很高的角点，但是它们计算非常耗时，无法在SLAM这样对实时性要">
 <meta property="og:image" content="http://on99gq8w5.bkt.clouddn.com/%E9%99%8D%E7%BB%B4.jpg?imageMogr2/thumbnail/300x300">
-<meta property="og:updated_time" content="2017-04-06T14:39:30.000Z">
+<meta property="og:updated_time" content="2017-04-06T14:43:19.000Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="【图像处理】FAST角点检测">
 <meta name="twitter:description" content="0 学习目标
@@ -361,7 +361,7 @@
              <i class="fa fa-calendar-o"></i>
            </span>
            <span class="post-meta-item-text">字数统计:</span>
-           <span class="post-count">635(字)</span> 
+           <span class="post-count">640(字)</span> 
          </span>
          
          <span id="busuanzi_container_page_pv">
@@ -427,7 +427,7 @@
 <ol>
 <li>选择一个图像集合进行角点学习(最好采用目标应用域中的图像集)</li>
 <li>对图像上的每个像素点进行FAST角点检测,并用$x\in\{1\cdots16\}$来表示候选点周围的16个像素点；</li>
-<li>每个x相对于p来说有下面三种状态：<br>[S_{p\tox}=\left\{\begin{array}{ll}<br>d,&amp; I_{p\tox}\le I_p-t (darker)\\<br>d,&amp; I_p-t \le I_{p\tox} \le I_p+t (similar)\\<br>b,&amp; I_p+t \le I_{p\tox} (brighter)<br>\end{array}\right.]<br>阶段二：</li>
+<li>每个x相对于p来说有下面三种状态：<br>$$<br>\begin{eqnarray}<br>S_{p\to x}=<br>\begin{cases}<br>d,&amp; I_{p\to x}\le I_p-t (darker)\\<br>d,&amp; I_p-t \le I_{p\to x} \le I_p+t (similar)\\<br>b,&amp; I_p+t \le I_{p\to x} (brighter)<br>\end{cases}<br>\end{eqnarray}<br>$$<br>阶段二：</li>
 </ol>
 <h1 id="2-源码解读"><a href="#2-源码解读" class="headerlink" title="2 源码解读"></a>2 源码解读</h1><h1 id="3-OpenCV实现FAST角点检测"><a href="#3-OpenCV实现FAST角点检测" class="headerlink" title="3 OpenCV实现FAST角点检测"></a>3 OpenCV实现FAST角点检测</h1><h1 id="4-参考文献"><a href="#4-参考文献" class="headerlink" title="4 参考文献"></a>4 参考文献</h1>
       
