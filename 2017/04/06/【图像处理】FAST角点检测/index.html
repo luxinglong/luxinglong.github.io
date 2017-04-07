@@ -104,7 +104,7 @@
 
 1 原理角点检测是很多视觉任务的第一步，比如说视觉SLAM，需要实时提取图像的特征点，并进行匹配。大牛们已经设计出很多角点检测算法，比如说SIFT(DOG),Harris和SUSAN等，这些角点检测算法可以提取出质量很高的角点，但是它们计算非常耗时，无法在SLAM这样对实时性要">
 <meta property="og:image" content="http://on99gq8w5.bkt.clouddn.com/Snip20170407_1.png?imageMogr2/thumbnail/500x500">
-<meta property="og:updated_time" content="2017-04-07T12:17:56.000Z">
+<meta property="og:updated_time" content="2017-04-07T12:50:52.000Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="【图像处理】FAST角点检测">
 <meta name="twitter:description" content="0 学习目标
@@ -361,7 +361,7 @@
              <i class="fa fa-calendar-o"></i>
            </span>
            <span class="post-meta-item-text">字数统计:</span>
-           <span class="post-count">988(字)</span> 
+           <span class="post-count">1,331(字)</span> 
          </span>
          
          <span id="busuanzi_container_page_pv">
@@ -414,13 +414,7 @@
 <li>否则,p不是角点.<br>接着，用1-4中的方法对剩下的候选点进行角点检测.</li>
 </ul>
 </li>
-<li>这种方法具有很好的性能，但是有下面四个问题：<ul>
-<li>当n&lt;12时,这种方法的扩展性不好；</li>
-<li></li>
-<li></li>
-<li>相邻的多个特征点会被检测到</li>
-</ul>
-</li>
+<li>这种方法具有很好的性能，但是有下面四个问题：<br>问题一：当n&lt;12时,这种方法的扩展性不好；<br>问题二：快速检测算法对周边像素点的选择和排列隐含了角点外形的分布;<br>问题三：对1，5，9，13四个像素点的测试得到的信息，在后面的角点检测中没有用到;<br>问题四：相邻的多个角点会被检测到.</li>
 </ol>
 <hr>
 <p><strong>Machine Learning a Corner Detector</strong></p>
@@ -432,14 +426,22 @@
 <li>将图像集中的所有像素点记为P，选择一个特征x，计算P中所有点的特征值，根据这个特征可以将P划分为三个子集，$P_d,P_s,P_b$.</li>
 <li>定义一个布尔型变量$K_p$,如果p为角点，那么$K_p=1$,如果p不为角点，那么$K_p=0$.<br>阶段二：</li>
 <li>对候选点集P和特征向量集合，利用ID3算法根据最大信息增益生成决策树。</li>
-<li>候选点集合P的经验熵定义为：<br>$$<br>H(P)=(c+\bar{c})log_2(c+\bar{c})-clog_2c-\bar{c}log_2\bar{c}<br>$$<br>其中，$c=|{p|K_p=1}|$表示角点的数量，$\bar{c}=|{p|K_p=0}|$表示非角点的数量.</li>
+<li>候选点集合P的经验熵定义为：<br>$$<br>H(P)=(c+\bar{c})log_2(c+\bar{c})-clog_2c-\bar{c}log_2\bar{c}<br>$$<br>其中，$c=|\{p|K_p=1\}|$表示角点的数量，$\bar{c}=|\{p|K_p=0\}|$表示非角点的数量.</li>
 <li>特征x的信息增益定义为：<br>$$<br>H(P)-H(P_d)-H(P_s)-H(P_b)<br>$$</li>
 <li>根据最大信息增益原则选择出最能区分出角点和非角点的特征，将候选点集合分割成三个子集，在每个子集上依次进行上述的过程，直至子集的熵为0.</li>
 <li>生成的决策树可以作为一个角点检测器，来检测新的角点。</li>
 </ol>
 <hr>
-<p><strong>Non-maximal Suppression</strong></p>
-<h1 id="2-源码解读"><a href="#2-源码解读" class="headerlink" title="2 源码解读"></a>2 源码解读</h1><h1 id="3-OpenCV实现FAST角点检测"><a href="#3-OpenCV实现FAST角点检测" class="headerlink" title="3 OpenCV实现FAST角点检测"></a>3 OpenCV实现FAST角点检测</h1><h1 id="4-参考文献"><a href="#4-参考文献" class="headerlink" title="4 参考文献"></a>4 参考文献</h1><p>[1] Rosten E, Drummond T. Machine learning for high-speed corner detection[J]. Computer vision–ECCV 2006, 2006: 430-443.<br>[2]</p>
+<p><strong>Non-maximal Suppression</strong><br>为了解决问题四，需要进行非最大抑制操作，但是因为FAST角点检测算法没有设计角点响应函数。因此首先定义角点响应函数，直观上看，有三种定义方式：</p>
+<ol>
+<li>保持p为角点的最大n;</li>
+<li>保持p为角点的最大阈值t;</li>
+<li>连续弧线上像素与中心像素进行像素值相减，取绝对值，并累加。</li>
+</ol>
+<p>定义1、2的区分能力不够，为了加速定义3中角点响应函数的计算，需要进行修改。修改后的角点响应函数如下：<br>$$<br>V=max(\sum_{x\in S_bright}|I_{p\to x}-I_p|-t,\sum_{x\in S_dark}|I_p-I_{p\to x}|-t)<br>$$<br>其中，$S_bright=\{x|I_{p\to x}\ge I_p+t\}$<br>     $S_dark=\{x|I_{p\to x}\le I_p-t\}</p>
+<p>有了角点响应函数，计算每个角点的响应函数值，应用非最大抑制，如果一个角点有一个响应函数值更高的相邻的角点，那么这个角点要去掉。</p>
+<h1 id="2-源码解读"><a href="#2-源码解读" class="headerlink" title="2 源码解读"></a>2 源码解读</h1><figure class="highlight plain"><figcaption><span>hello.cpp</span></figcaption><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div></pre></td><td class="code"><pre><div class="line">#include &lt;iostream&gt;</div><div class="line">using namespace std;</div><div class="line">int main(void)</div><div class="line">&#123;</div><div class="line">    cout &lt;&lt; &quot;hello hexo&quot; &lt;&lt; endl;</div><div class="line">    return 0;</div><div class="line">&#125;</div></pre></td></tr></table></figure>
+<h1 id="3-OpenCV实现FAST角点检测"><a href="#3-OpenCV实现FAST角点检测" class="headerlink" title="3 OpenCV实现FAST角点检测"></a>3 OpenCV实现FAST角点检测</h1><h1 id="4-参考文献"><a href="#4-参考文献" class="headerlink" title="4 参考文献"></a>4 参考文献</h1><p>[1] Rosten E, Drummond T. Machine learning for high-speed corner detection[J]. Computer vision–ECCV 2006, 2006: 430-443.<br>[2]</p>
 
       
     </div>
