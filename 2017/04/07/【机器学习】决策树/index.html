@@ -103,7 +103,7 @@ CART算法的学习与应用
 
 1 决策树模型结构：决策树由节点(node)和有向边(directed edge)组成.节点有两种类型，内部节点(internal node)：表示一个特征或者属性；叶子节点(leaf node)：表示一个类.
 用决策树分类，从根节点开始，对实例的某一特征进行判断，根据判读结果">
-<meta property="og:updated_time" content="2017-04-07T07:58:22.000Z">
+<meta property="og:updated_time" content="2017-04-07T08:47:42.000Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="【机器学习】决策树">
 <meta name="twitter:description" content="0 学习目标
@@ -359,7 +359,7 @@ CART算法的学习与应用
              <i class="fa fa-calendar-o"></i>
            </span>
            <span class="post-meta-item-text">字数统计:</span>
-           <span class="post-count">374(字)</span> 
+           <span class="post-count">878(字)</span> 
          </span>
          
          <span id="busuanzi_container_page_pv">
@@ -395,8 +395,12 @@ CART算法的学习与应用
 </ul>
 <h1 id="1-决策树模型"><a href="#1-决策树模型" class="headerlink" title="1 决策树模型"></a>1 决策树模型</h1><p><strong>结构：</strong>决策树由节点(node)和有向边(directed edge)组成.节点有两种类型，内部节点(internal node)：表示一个特征或者属性；叶子节点(leaf node)：表示一个类.</p>
 <p>用决策树分类，从根节点开始，对实例的某一特征进行判断，根据判读结果，将实例划分到其子节点；因为每个内部节点对应实例的一个特征的取值。此时，再根据子节点的特征进行判断，如此递归地对实例根据特征进行判断和划分，直至达到叶子节点。最后将实例划分到叶子节点的类中。</p>
-<p>如此可见，决策树也可以看成是一个if-then规则的集合。还可以表示成给定特征条件下类的条件概率分布。</p>
-<h1 id="2-决策树学习"><a href="#2-决策树学习" class="headerlink" title="2 决策树学习"></a>2 决策树学习</h1><p>假设给定训练数据集：<br>$$<br>D=\{(x_1,y_1),\cdots(x_N,y_N)\}<br>$$<br>其中，$x_i=(x_i^{(1)},\cdots,x_i^{(n)})^T$为输入实例（特征向量），n为特征个数，$y_i \in \{1,2,\cdots\,K\}$为类标记，$i=1,2,\cdots,N$，N为样本容量。<br>特征学习的目标是根据给定的训练数据集构建一个决策树模型，使之能够对实例进行正确的分类。</p>
+<p>如此可见，决策树也可以看成是一个if-then规则的集合。还可以表示成给定特征条件下类的条件概率分布。<br><a id="more"></a></p>
+<h1 id="2-决策树学习"><a href="#2-决策树学习" class="headerlink" title="2 决策树学习"></a>2 决策树学习</h1><p>假设给定训练数据集：<br>$$<br>D=\{(x_1,y_1),\cdots(x_N,y_N)\}<br>$$<br>其中，$x_i=(x_i^{(1)},\cdots,x_i^{(n)})^T$为输入实例（特征向量），$n$为特征个数，$y_i \in \{1,2,\cdots\,K\}$为类标记，$i=1,2,\cdots,N$，$N$为样本容量。<br>特征学习的目标是根据给定的训练数据集构建一个决策树模型，使之能够对实例进行正确的分类。</p>
+<p>能够对训练数据集进行正确分类的决策树可能有不止一个，但是选择哪个呢？选择的标准是什么呢？我们需要的是一个与训练数据矛盾较小的决策树，并且具有很好的泛化能力。<br><strong>学习策略：</strong>决策树学习的损失函数通常是正则化的极大似然函数。决策树学习的策略是以损失函数为目标函数的最小化。</p>
+<p><strong>决策树的构建：</strong> 开始，构建根节点，将所有训练数据都放在根节点，选择一个<strong>最优特征</strong>，按照这一特征将训练数据集分割成子集，使得各个子集有一个在当前条件下最好的分类，如果这些子集已经能够被基本正确分类，那么构建叶子节点，并将这些子集分到所对应的叶子节点中去；如果还有自己不能被基本正确分类，那么就对这些子集选择新的最优特征，继续对其进行分割，构建相应的节点，如此递归地进行下去，直至所有训练数据子集被基本正确分类，或者没有合适的特征为止。最后每个子集都被分到叶子节点上，即都有了明确的类。这就生成了一课决策树。</p>
+<h2 id="特征选择"><a href="#特征选择" class="headerlink" title="特征选择"></a>特征选择</h2><p>特征选择的目的是选出对分类有重大影响的特征，舍弃对分类结果影响很小的特征。特征选择的准则通常是<strong>信息增益</strong>或<strong>信息增益比</strong>。<br>为了更好的理解信息增益，先给出熵(entropy)和条件熵的定义：<br><strong>熵</strong>：表示随机变量不确定性的度量。<br>$H(X)=-\begin{displaymath}\sum_{i=1}^n p_ilogp_i\end{displaymath}$</p>
+<h2 id="决策树的生成"><a href="#决策树的生成" class="headerlink" title="决策树的生成"></a>决策树的生成</h2><h2 id="决策树的剪枝"><a href="#决策树的剪枝" class="headerlink" title="决策树的剪枝"></a>决策树的剪枝</h2><h1 id="3-CART算法"><a href="#3-CART算法" class="headerlink" title="3 CART算法"></a>3 CART算法</h1><h1 id="4-决策树应用"><a href="#4-决策树应用" class="headerlink" title="4 决策树应用"></a>4 决策树应用</h1><h1 id="4-参考文献"><a href="#4-参考文献" class="headerlink" title="4 参考文献"></a>4 参考文献</h1><p>[1] 李航,《统计学习方法》,清华大学出版社,2012</p>
 
       
     </div>
@@ -610,7 +614,7 @@ CART算法的学习与应用
             
 
             
-              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-1"><a class="nav-link" href="#0-学习目标"><span class="nav-number">1.</span> <span class="nav-text">0 学习目标</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#1-决策树模型"><span class="nav-number">2.</span> <span class="nav-text">1 决策树模型</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#2-决策树学习"><span class="nav-number">3.</span> <span class="nav-text">2 决策树学习</span></a></li></ol></div>
+              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-1"><a class="nav-link" href="#0-学习目标"><span class="nav-number">1.</span> <span class="nav-text">0 学习目标</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#1-决策树模型"><span class="nav-number">2.</span> <span class="nav-text">1 决策树模型</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#2-决策树学习"><span class="nav-number">3.</span> <span class="nav-text">2 决策树学习</span></a><ol class="nav-child"><li class="nav-item nav-level-2"><a class="nav-link" href="#特征选择"><span class="nav-number">3.1.</span> <span class="nav-text">特征选择</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#决策树的生成"><span class="nav-number">3.2.</span> <span class="nav-text">决策树的生成</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#决策树的剪枝"><span class="nav-number">3.3.</span> <span class="nav-text">决策树的剪枝</span></a></li></ol></li><li class="nav-item nav-level-1"><a class="nav-link" href="#3-CART算法"><span class="nav-number">4.</span> <span class="nav-text">3 CART算法</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#4-决策树应用"><span class="nav-number">5.</span> <span class="nav-text">4 决策树应用</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#4-参考文献"><span class="nav-number">6.</span> <span class="nav-text">4 参考文献</span></a></li></ol></div>
             
 
           </div>
