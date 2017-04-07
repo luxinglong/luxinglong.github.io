@@ -29,6 +29,8 @@ I would continue adding papers to this roadmap.
 
 ---------------------------------------
 
+<!--more-->
+
 # 1 Deep Learning History and Basics
 
 ## 1.0 Book
