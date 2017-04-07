@@ -103,7 +103,7 @@ CART算法的学习与应用
 
 1 决策树模型结构：决策树由节点(node)和有向边(directed edge)组成.节点有两种类型，内部节点(internal node)：表示一个特征或者属性；叶子节点(leaf node)：表示一个类.
 用决策树分类，从根节点开始，对实例的某一特征进行判断，根据判读结果">
-<meta property="og:updated_time" content="2017-04-07T07:55:20.000Z">
+<meta property="og:updated_time" content="2017-04-07T07:58:22.000Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="【机器学习】决策树">
 <meta name="twitter:description" content="0 学习目标
@@ -359,7 +359,7 @@ CART算法的学习与应用
              <i class="fa fa-calendar-o"></i>
            </span>
            <span class="post-meta-item-text">字数统计:</span>
-           <span class="post-count">376(字)</span> 
+           <span class="post-count">374(字)</span> 
          </span>
          
          <span id="busuanzi_container_page_pv">
@@ -396,7 +396,7 @@ CART算法的学习与应用
 <h1 id="1-决策树模型"><a href="#1-决策树模型" class="headerlink" title="1 决策树模型"></a>1 决策树模型</h1><p><strong>结构：</strong>决策树由节点(node)和有向边(directed edge)组成.节点有两种类型，内部节点(internal node)：表示一个特征或者属性；叶子节点(leaf node)：表示一个类.</p>
 <p>用决策树分类，从根节点开始，对实例的某一特征进行判断，根据判读结果，将实例划分到其子节点；因为每个内部节点对应实例的一个特征的取值。此时，再根据子节点的特征进行判断，如此递归地对实例根据特征进行判断和划分，直至达到叶子节点。最后将实例划分到叶子节点的类中。</p>
 <p>如此可见，决策树也可以看成是一个if-then规则的集合。还可以表示成给定特征条件下类的条件概率分布。</p>
-<h1 id="2-决策树学习"><a href="#2-决策树学习" class="headerlink" title="2 决策树学习"></a>2 决策树学习</h1><p>假设给定训练数据集：<br>$$<br>D=\{(x_1,y_1),\cdots(x_N,y_N)\}<br>$$<br>其中，$x_i=(x{_i}{^(1)},\cdots,x{_i}{^(n))^T$为输入实例（特征向量），n为特征个数，$y_i \in \{1,2,\cdots\,K\}$为类标记，$i=1,2,\cdots,N$，N为样本容量。<br>特征学习的目标是根据给定的训练数据集构建一个决策树模型，使之能够对实例进行正确的分类。</p>
+<h1 id="2-决策树学习"><a href="#2-决策树学习" class="headerlink" title="2 决策树学习"></a>2 决策树学习</h1><p>假设给定训练数据集：<br>$$<br>D=\{(x_1,y_1),\cdots(x_N,y_N)\}<br>$$<br>其中，$x_i=(x_i^{(1)},\cdots,x_i^{(n)})^T$为输入实例（特征向量），n为特征个数，$y_i \in \{1,2,\cdots\,K\}$为类标记，$i=1,2,\cdots,N$，N为样本容量。<br>特征学习的目标是根据给定的训练数据集构建一个决策树模型，使之能够对实例进行正确的分类。</p>
 
       
     </div>
