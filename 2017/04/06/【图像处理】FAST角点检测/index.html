@@ -106,7 +106,7 @@
 <meta property="og:image" content="http://on99gq8w5.bkt.clouddn.com/Snip20170407_1.png?imageMogr2/thumbnail/500x500">
 <meta property="og:image" content="http://on99gq8w5.bkt.clouddn.com/fast_api.png">
 <meta property="og:image" content="http://on99gq8w5.bkt.clouddn.com/fast.jpg?imageMogr2/thumbnail/500x500">
-<meta property="og:updated_time" content="2017-04-17T12:28:02.000Z">
+<meta property="og:updated_time" content="2017-04-17T15:07:55.000Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="【图像处理】FAST角点检测">
 <meta name="twitter:description" content="0 学习目标
@@ -405,20 +405,21 @@
 <ol>
 <li>对图像中的每一个候选点p,判断其是否为角点.首先，将它的像素值设为$I_p$.</li>
 <li>给定个阈值t.</li>
-<li><p>考虑候选点p周围圆形排列的16个像素点,如下图所示。</p>
-<img src="http://on99gq8w5.bkt.clouddn.com/Snip20170407_1.png?imageMogr2/thumbnail/500x500" class="[Snip20170407_1]">
-</li>
-<li><p>判断候选点是否为角点的标准如下：</p>
+<li>考虑候选点p周围圆形排列的16个像素点,如下图所示。<img src="http://on99gq8w5.bkt.clouddn.com/Snip20170407_1.png?imageMogr2/thumbnail/500x500" class="[Snip20170407_1]"></li>
+<li>判断候选点是否为角点的标准如下：</li>
+</ol>
 <ul>
 <li>如果16个像素点中有n个像素值大于$I_p+t$,或者小于$I_p-t$,那么p为角点；</li>
 <li>否则,p不是角点.</li>
 </ul>
-</li>
-<li>为了快速排除大部分非角点，用上述的算法对其余的候选点进行检测。可以只考虑1,5,9,13个像素点：<ul>
+<ol>
+<li>为了快速排除大部分非角点，用上述的算法对其余的候选点进行检测。可以只考虑1,5,9,13个像素点：</li>
+</ol>
+<ul>
 <li>如果p为角点，上述四个点中至少有三个点的像素值大于$I_p+t$,或者小于$I_p-t$;</li>
 <li>否则,p不是角点.<br>接着，用1-4中的方法对剩下的候选点进行角点检测.</li>
 </ul>
-</li>
+<ol>
 <li>这种方法具有很好的性能，但是有下面四个问题：<br>问题一：当n&lt;12时,这种方法的扩展性不好；<br>问题二：快速检测算法对周边像素点的选择和排列隐含了角点外形的分布;<br>问题三：对1，5，9，13四个像素点的测试得到的信息，在后面的角点检测中没有用到;<br>问题四：相邻的多个角点会被检测到.</li>
 </ol>
 <hr>
