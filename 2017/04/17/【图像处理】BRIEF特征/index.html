@@ -102,7 +102,7 @@
 
 1 原理特征点的descriptor是很多视觉任务的重点，例如在物体检测，三维重建，SLAM中，都会用到特征检测和匹配。在视觉SLAM这种对实时性要求很高的领域，descriptor的快速计算显得尤为关键。BRIEF(Binary Robust Independent Elementary Features)是一种很方便计算，而">
 <meta property="og:image" content="http://on99gq8w5.bkt.clouddn.com/BRIEF_match.jpg">
-<meta property="og:updated_time" content="2017-04-17T12:32:30.000Z">
+<meta property="og:updated_time" content="2017-04-17T13:07:48.000Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="【图像处理】BRIEF特征">
 <meta name="twitter:description" content="0 学习目标
@@ -358,7 +358,7 @@
              <i class="fa fa-calendar-o"></i>
            </span>
            <span class="post-meta-item-text">字数统计:</span>
-           <span class="post-count">2,125(字)</span> 
+           <span class="post-count">2,145(字)</span> 
          </span>
          
          <span id="busuanzi_container_page_pv">
@@ -419,8 +419,9 @@
 <p>通过实验对比可知，前4种方法要好于第5种方法，而在前4种方法中，第2种方法会表现出少许的优势。</p>
 <p>在实际应用中，虽然点对都是按一定规则随机选择的，但在确定了补丁区域大小S的情况下，点对的坐标位置一旦随机选定，就不再更改，自始自终都用这些确定下来的点对坐标位置。也就是说这些点对的坐标位置其实是已知的，在编写程序的时候，这些坐标事先存储在系统中，在创建描述符时，只要调用这些坐标即可。另外，不但点对的坐标位置是确定好的，点对的两个像素之间的顺序和点对的顺序也必须是事先确定好的，这样才能保证描述符的一致性。点对的两个像素之间的顺序指的是在公式1中，两个像素哪个是$x_i$，哪个是$y_i$，因为在比较时是$x_i$的灰度值小于$y_i$的灰度值时，$\tau$才等于1。点对的顺序指的是$n_d$个点对之间要排序，这样二值位字符串中的各个位（公式2）就以该顺序排列。</p>
 <p>最后需要强调的是，BRIEF仅仅是一种特征点的描述符方法，它不提供特征点的检测方法。Calonder推荐使用CenSurE方法进行特征点的检测，该方法与BRIEF配合使用，效果会略好一些。在Opencv2.4.9中也提供了CenSurE方法，但是使用Star这个别名。</p>
-<h2 id="优点"><a href="#优点" class="headerlink" title="优点"></a>优点</h2><p>直接提取二进制串，计算快，占用内存小。</p>
-<h2 id="缺点"><a href="#缺点" class="headerlink" title="缺点"></a>缺点</h2><ol>
+<h2 id="优点"><a href="#优点" class="headerlink" title="优点"></a>优点</h2><ol>
+<li>直接提取二进制串，计算快，占用内存小</li>
+<li>对于光照变化，模糊和透视变换具有鲁棒性<h2 id="缺点"><a href="#缺点" class="headerlink" title="缺点"></a>缺点</h2></li>
 <li>不具有旋转不变性</li>
 <li>对噪声敏感，需要选取合适的Gaussian Kernel进行平滑处理</li>
 <li>不具有尺度不变性</li>
@@ -485,6 +486,10 @@
           <span class="post-nav-divider"></span>
 
           <div class="post-nav-prev post-nav-item">
+            
+              <a href="/2017/04/17/【图像处理】ORB特征/" rel="prev" title="【图像处理】ORB特征">
+                【图像处理】ORB特征 <i class="fa fa-chevron-right"></i>
+              </a>
             
           </div>
         </div>
@@ -556,7 +561,7 @@
           
             <div class="site-state-item site-state-posts">
               <a href="/">
-                <span class="site-state-item-count">8</span>
+                <span class="site-state-item-count">9</span>
                 <span class="site-state-item-name">日志</span>
               </a>
             </div>
