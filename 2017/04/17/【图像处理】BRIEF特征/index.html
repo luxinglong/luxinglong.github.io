@@ -101,7 +101,7 @@
 利用BRIEF特征，实现特征匹配
 
 1 原理特征点的descriptor是很多视觉任务的重点，例如在物体检测，三维重建，SLAM中，都会用到特征检测和匹配。在视觉SLAM这种对实时性要求很高的领域，descriptor的快速计算显得尤为关键。BRIEF(Binary Robust Independent Elementary Features)是一种很方便计算，而">
-<meta property="og:updated_time" content="2017-04-17T08:18:17.000Z">
+<meta property="og:updated_time" content="2017-04-17T08:19:20.000Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="【图像处理】BRIEF特征">
 <meta name="twitter:description" content="0 学习目标
@@ -398,7 +398,7 @@
 <li>将浮点数向量转化成二值串，并使用Hamming距离来计算特征之间的相似度。</li>
 </ol>
 <p>上述的三种方法，虽然可以得到一个简化板的特征向量，方便计算和存储。问题是这三种方法都需要预先提取一个长特征向量，然后再进行简化。而文献[1]直接提取简化的特征。<br><a id="more"></a></p>
-<h1 id="Hamming-distance"><a href="#Hamming-distance" class="headerlink" title="Hamming distance"></a>Hamming distance</h1><h2 id="具体方法"><a href="#具体方法" class="headerlink" title="具体方法"></a>具体方法</h2><p>在$S\times S$的patch上，定义函数$\tau$<br>$$<br>\begin{eqnarray}<br>\tau (p;x,y)=<br>\begin{cases}<br>1,&amp; if p(x) &lt; p(y)\\<br>0,&amp; otherwise\\<br>\end{cases}<br>\end{eqnarray}<br>$$<br>其中，$p(x)$表示像素点$x=(u,v)^T$的像素值。<br>BRIEF特征可以定义为一个$n_d$维的二进制串：<br>$$<br>\begin{eqnarray}<br>f_{n_d}(p):=sum_{1\le i \le n_d} 2^{i-1}\tau (p;x_i,y_i)<br>\end{eqnarray}<br>$$<br>其中，$n_d$可以取128，256，512，相应的特征表示为BRIEF-16，BRIEF-32和BRIEF-64.</p>
+<h1 id="Hamming-distance"><a href="#Hamming-distance" class="headerlink" title="Hamming distance"></a>Hamming distance</h1><h2 id="具体方法"><a href="#具体方法" class="headerlink" title="具体方法"></a>具体方法</h2><p>在$S\times S$的patch上，定义函数$\tau$<br>$$<br>\begin{eqnarray}<br>\tau (p;x,y)=<br>\begin{cases}<br>1,&amp; if p(x) &lt; p(y)\\<br>0,&amp; otherwise\\<br>\end{cases}<br>\end{eqnarray}<br>$$<br>其中，$p(x)$表示像素点$x=(u,v)^T$的像素值。<br>BRIEF特征可以定义为一个$n_d$维的二进制串：<br>$$<br>\begin{eqnarray}<br>f_{n_d}(p):=\sum_{1\le i \le n_d} 2^{i-1}\tau (p;x_i,y_i)<br>\end{eqnarray}<br>$$<br>其中，$n_d$可以取128，256，512，相应的特征表示为BRIEF-16，BRIEF-32和BRIEF-64.</p>
 <ol>
 <li>选择合适的aussian Kernel进行平滑处理；</li>
 <li>在$S\times S$的patch中，选择$n_d$个测试点对$(x_i,y_i)$；</li>
