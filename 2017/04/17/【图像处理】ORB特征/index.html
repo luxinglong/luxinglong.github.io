@@ -113,7 +113,8 @@ oFAST:FAST Keyoint Orientati">
 
 
 oFAST:FAST Keyoint Orientati">
-<meta property="og:updated_time" content="2017-04-17T14:15:01.000Z">
+<meta property="og:image" content="luxinglong.github.io/[123]http:/images2015.cnblogs.com/blog/966989/201606/966989-20160625174925360-930766650.png">
+<meta property="og:updated_time" content="2017-04-17T14:57:57.000Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="【图像处理】ORB特征">
 <meta name="twitter:description" content="0 学习目标
@@ -127,6 +128,7 @@ oFAST:FAST Keyoint Orientati">
 
 
 oFAST:FAST Keyoint Orientati">
+<meta name="twitter:image" content="luxinglong.github.io/[123]http:/images2015.cnblogs.com/blog/966989/201606/966989-20160625174925360-930766650.png">
 
 
 
@@ -374,7 +376,7 @@ oFAST:FAST Keyoint Orientati">
              <i class="fa fa-calendar-o"></i>
            </span>
            <span class="post-meta-item-text">字数统计:</span>
-           <span class="post-count">244(字)</span> 
+           <span class="post-count">818(字)</span> 
          </span>
          
          <span id="busuanzi_container_page_pv">
@@ -415,7 +417,9 @@ oFAST:FAST Keyoint Orientati">
 <li></li>
 </ul>
 <h2 id="oFAST-FAST-Keyoint-Orientation"><a href="#oFAST-FAST-Keyoint-Orientation" class="headerlink" title="oFAST:FAST Keyoint Orientation"></a>oFAST:FAST Keyoint Orientation</h2><p>ORB特征点的提取是在FAST的基础上改进的，称为oFAST，也就是为每个FAST特征点增加一个方向信息，以此来使其具有旋转不变性。</p>
-<p>步骤一：</p>
+<p>回顾一下BRIEF描述子的计算过程：<br>在当前关键点P周围以一定模式选取N个点对，组合这N个点对的T操作的结果就为最终的描述子。当我们选取点对的时候，是以当前关键点为原点，以水平方向为X轴，以垂直方向为Y轴建立坐标系。当图片发生旋转时，坐标系不变，同样的取点模式取出来的点却不一样，计算得到的描述子也不一样，这是不符合我们要求的。因此我们需要重新建立坐标系，使新的坐标系可以跟随图片的旋转而旋转。这样我们以相同的取点模式取出来的点将具有一致性。打个比方，我有一个印章，上面刻着一些直线。用这个印章在一张图片上盖一个章子，图片上分处直线2头的点将被取出来。印章不变动的情况下，转动下图片，再盖一个章子，但这次取出来的点对就和之前的不一样。为了使2次取出来的点一样，我需要将章子也旋转同一个角度再盖章。（取点模式可以认为是章子上直线的分布情况）ORB在计算BRIEF描述子时建立的坐标系是以关键点为圆心，以关键点和取点区域的形心的连线为X轴建立2维坐标系。</p>
+<img src="/[123]http:/images2015.cnblogs.com/blog/966989/201606/966989-20160625174925360-930766650.png">
+<p>P为关键点。圆内为取点区域，每个小格子代表一个像素。现在我们把这块圆心区域看做一块木板，木板上每个点的质量等于其对应的像素值。根据积分学的知识我们可以求出这个密度不均匀木板的质心Q。计算公式如下。其中R为圆的半径。<br>$$<br>m_{pq}=\sum_{x,y}x^py^qI(x,y)<br>$$<br>$$<br>C=(m_{10}/m_{00},m_{01}/m_{00})<br>$$<br>$$<br>\theta=atan2(m_{01},m_{10});<br>$$<br>我们知道圆心是固定的而且随着物体的旋转而旋转。当我们以PQ作为坐标轴时，在不同的旋转角度下，我们以同一取点模式取出来的点是一致的。这就解决了旋转一致性的问题。</p>
 <h2 id="rBRIEF-Rotation-Aware-BRIEF"><a href="#rBRIEF-Rotation-Aware-BRIEF" class="headerlink" title="rBRIEF:Rotation-Aware BRIEF"></a>rBRIEF:Rotation-Aware BRIEF</h2><h2 id="优点"><a href="#优点" class="headerlink" title="优点"></a>优点</h2><ol>
 <li>具有旋转不变性</li>
 <li>性能与SIFT接近，但是计算比SIFT快2的阶数次方</li>
