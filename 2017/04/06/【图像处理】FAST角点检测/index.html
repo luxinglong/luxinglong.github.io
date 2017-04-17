@@ -104,9 +104,9 @@
 
 1 原理角点检测是很多视觉任务的第一步，比如说视觉SLAM，需要实时提取图像的特征点，并进行匹配。大牛们已经设计出很多角点检测算法，比如说SIFT(DOG),Harris和SUSAN等，这些角点检测算法可以提取出质量很高的角点，但是它们计算非常耗时，无法在SLAM这样对实时性要">
 <meta property="og:image" content="http://on99gq8w5.bkt.clouddn.com/Snip20170407_1.png?imageMogr2/thumbnail/500x500">
-<meta property="og:image" content="http://on99gq8w5.bkt.clouddn.com/fast_api.png?imageMogr2/thumbnail/500x500">
+<meta property="og:image" content="http://on99gq8w5.bkt.clouddn.com/fast_api.png">
 <meta property="og:image" content="http://on99gq8w5.bkt.clouddn.com/fast.jpg?imageMogr2/thumbnail/500x500">
-<meta property="og:updated_time" content="2017-04-17T05:32:01.000Z">
+<meta property="og:updated_time" content="2017-04-17T05:34:55.000Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="【图像处理】FAST角点检测">
 <meta name="twitter:description" content="0 学习目标
@@ -405,7 +405,10 @@
 <ol>
 <li>对图像中的每一个候选点p,判断其是否为角点.首先，将它的像素值设为$I_p$.</li>
 <li>给定个阈值t.</li>
-<li>考虑候选点p周围圆形排列的16个像素点,如下图所示。<img src="http://on99gq8w5.bkt.clouddn.com/Snip20170407_1.png?imageMogr2/thumbnail/500x500" class="[Snip20170407_1]"></li>
+<li>考虑候选点p周围圆形排列的16个像素点,如下图所示。</li>
+</ol>
+<img src="http://on99gq8w5.bkt.clouddn.com/Snip20170407_1.png?imageMogr2/thumbnail/500x500" class="[Snip20170407_1]">
+<ol>
 <li>判断候选点是否为角点的标准如下：<ul>
 <li>如果16个像素点中有n个像素值大于$I_p+t$,或者小于$I_p-t$,那么p为角点；</li>
 <li>否则,p不是角点.</li>
@@ -454,7 +457,7 @@
 <li>对阈值的依赖性很强</li>
 </ol>
 <h1 id="3-源码解读"><a href="#3-源码解读" class="headerlink" title="3 源码解读"></a>3 源码解读</h1><figure class="highlight plain"><figcaption><span>hello.cpp</span></figcaption><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div></pre></td><td class="code"><pre><div class="line">#include &lt;iostream&gt;</div><div class="line">using namespace std;</div><div class="line">int main(void)</div><div class="line">&#123;</div><div class="line">    cout &lt;&lt; &quot;hello hexo&quot; &lt;&lt; endl;</div><div class="line">    return 0;</div><div class="line">&#125;</div></pre></td></tr></table></figure>
-<h1 id="4-OpenCV实现FAST角点检测"><a href="#4-OpenCV实现FAST角点检测" class="headerlink" title="4 OpenCV实现FAST角点检测"></a>4 OpenCV实现FAST角点检测</h1><img src="http://on99gq8w5.bkt.clouddn.com/fast_api.png?imageMogr2/thumbnail/500x500" class="[fast\_api]">
+<h1 id="4-OpenCV实现FAST角点检测"><a href="#4-OpenCV实现FAST角点检测" class="headerlink" title="4 OpenCV实现FAST角点检测"></a>4 OpenCV实现FAST角点检测</h1><img src="http://on99gq8w5.bkt.clouddn.com/fast_api.png" class="[fast\_api]">
 <figure class="highlight plain"><figcaption><span>FASTDetector.cpp</span></figcaption><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div><div class="line">17</div><div class="line">18</div><div class="line">19</div><div class="line">20</div><div class="line">21</div><div class="line">22</div><div class="line">23</div><div class="line">24</div><div class="line">25</div><div class="line">26</div><div class="line">27</div><div class="line">28</div><div class="line">29</div><div class="line">30</div><div class="line">31</div><div class="line">32</div><div class="line">33</div><div class="line">34</div><div class="line">35</div><div class="line">36</div></pre></td><td class="code"><pre><div class="line">#include &quot;opencv2/opencv.hpp&quot;</div><div class="line">#include &lt;iostream&gt;</div><div class="line">#include &lt;vector&gt;</div><div class="line"></div><div class="line">using namespace std;</div><div class="line">using namespace cv;</div><div class="line"></div><div class="line">int main(int argc, char** argv)</div><div class="line">&#123;</div><div class="line">	if (argc!=2)</div><div class="line">	&#123;</div><div class="line">		cout &lt;&lt; &quot;Please input just two parameters.&quot; &lt;&lt; endl;</div><div class="line">	&#125;</div><div class="line">	Mat img=imread(argv[1]);</div><div class="line">	Mat grayImg;</div><div class="line">	if (img.channels()!=1)</div><div class="line">	&#123;</div><div class="line">		cvtColor(img,grayImg,CV_RGB2GRAY);</div><div class="line">	&#125;</div><div class="line">	else</div><div class="line">	&#123;</div><div class="line">		img.copyTo(grayImg);</div><div class="line">	&#125;</div><div class="line"></div><div class="line">	vector&lt;KeyPoint&gt; keypoints; // used to save FAST keypoints</div><div class="line">	int threshold=50; // threshold in Non-maximal Suppression</div><div class="line">	FAST(grayImg,keypoints,threshold,true);// nonmaxSuppression open defalt</div><div class="line">	Mat keyPointImg;</div><div class="line">	drawKeypoints(img,keypoints,keyPointImg,Scalar(0,255,0),2); // draw FAST keypoints in KeyPointImg</div><div class="line"></div><div class="line">	namedWindow(&quot;image&quot;,CV_WINDOW_AUTOSIZE);</div><div class="line">	imshow(&quot;image&quot;,keyPointImg);</div><div class="line">	waitKey(0);</div><div class="line">	destroyAllWindows();</div><div class="line">	img.release();</div><div class="line">&#125;</div></pre></td></tr></table></figure>
 <img src="http://on99gq8w5.bkt.clouddn.com/fast.jpg?imageMogr2/thumbnail/500x500" class="[fast]">
 <h1 id="5-参考文献"><a href="#5-参考文献" class="headerlink" title="5 参考文献"></a>5 参考文献</h1><p>[1] Rosten E, Drummond T. Machine learning for high-speed corner detection[J]. Computer vision–ECCV 2006, 2006: 430-443.</p>
