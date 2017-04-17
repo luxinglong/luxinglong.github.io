@@ -26,6 +26,7 @@ categories: 【图像处理】
 2. 给定个阈值t.
 3. 考虑候选点p周围圆形排列的16个像素点,如下图所示。
 {% img [Snip20170407_1] http://on99gq8w5.bkt.clouddn.com/Snip20170407_1.png?imageMogr2/thumbnail/500x500 %}
+
 4. 判断候选点是否为角点的标准如下：
     * 如果16个像素点中有n个像素值大于$I_p+t$,或者小于$I_p-t$,那么p为角点；
     * 否则,p不是角点.
@@ -90,7 +91,17 @@ $$
 其中，$S_{bright}=\{x|I_{p\to x}\ge I_p+t\}$,$S_{dark}=\{x|I_{p\to x}\le I_p-t\}$.
 
 有了角点响应函数，计算每个角点的响应函数值，应用非最大抑制，如果一个角点有一个响应函数值更高的相邻的角点，那么这个角点要去掉。
-# 2 源码解读
+
+# 2 优缺点
+**优点：**
+1. 计算速度很快
+2. 可重复性好
+**缺点：**
+1. 对高层次的噪声不具有鲁棒性
+2. 可以检测到特定角度的一个像素宽度的线，但是当圆量子化以后，检测不到了
+3. 对阈值的依赖性很强
+
+# 3 源码解读
 {% codeblock hello.cpp %}
 #include <iostream>
 using namespace std;
@@ -100,9 +111,50 @@ int main(void)
     return 0;
 }
 {% endcodeblock %}
-# 3 OpenCV实现FAST角点检测
 
-# 4 参考文献
+# 4 OpenCV实现FAST角点检测
+{% img [fast\_api] http://on99gq8w5.bkt.clouddn.com/fast_api.png %}
+{% codeblock FASTDetector.cpp %}
+#include "opencv2/opencv.hpp"
+#include <iostream>
+#include <vector>
+
+using namespace std;
+using namespace cv;
+
+int main(int argc, char** argv)
+{
+	if (argc!=2)
+	{
+		cout << "Please input just two parameters." << endl;
+	}
+	Mat img=imread(argv[1]);
+	Mat grayImg;
+	if (img.channels()!=1)
+	{
+		cvtColor(img,grayImg,CV_RGB2GRAY);
+	}
+	else
+	{
+		img.copyTo(grayImg);
+	}
+
+	vector<KeyPoint> keypoints; // used to save FAST keypoints
+	int threshold=50; // threshold in Non-maximal Suppression
+	FAST(grayImg,keypoints,threshold,true);// nonmaxSuppression open defalt
+	Mat keyPointImg;
+	drawKeypoints(img,keypoints,keyPointImg,Scalar(0,255,0),2); // draw FAST keypoints in KeyPointImg
+
+	namedWindow("image",CV_WINDOW_AUTOSIZE);
+	imshow("image",keyPointImg);
+	waitKey(0);
+	destroyAllWindows();
+	img.release();
+}
+{% endcodeblock %}
+
+{% img [fast] http://on99gq8w5.bkt.clouddn.com/fast.jpg?imageMogr2/thumbnail/500x500 %}
+# 5 参考文献
 [1] Rosten E, Drummond T. Machine learning for high-speed corner detection[J]. Computer vision–ECCV 2006, 2006: 430-443.
-[2]
+[2] OpenCV documentation, http://docs.opencv.org/2.4/index.html
 
