@@ -102,7 +102,7 @@
 
 1 原理特征点的descriptor是很多视觉任务的重点，例如在物体检测，三维重建，SLAM中，都会用到特征检测和匹配。在视觉SLAM这种对实时性要求很高的领域，descriptor的快速计算显得尤为关键。BRIEF(Binary Robust Independent Elementary Features)是一种很方便计算，而">
 <meta property="og:image" content="http://on99gq8w5.bkt.clouddn.com/BRIEF_match.jpg">
-<meta property="og:updated_time" content="2017-04-17T12:27:17.000Z">
+<meta property="og:updated_time" content="2017-04-17T12:32:30.000Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="【图像处理】BRIEF特征">
 <meta name="twitter:description" content="0 学习目标
@@ -358,7 +358,7 @@
              <i class="fa fa-calendar-o"></i>
            </span>
            <span class="post-meta-item-text">字数统计:</span>
-           <span class="post-count">2,131(字)</span> 
+           <span class="post-count">2,125(字)</span> 
          </span>
          
          <span id="busuanzi_container_page_pv">
@@ -407,20 +407,17 @@
 <h2 id="具体方法"><a href="#具体方法" class="headerlink" title="具体方法"></a>具体方法</h2><p>首先，以特征点为中心，定义一个$S\times S$的patch区域(在OpenCV中默认48)，然后在这个patch上定义函数$\tau$<br>$$<br>\begin{eqnarray}<br>\tau (p;x,y)=<br>\begin{cases}<br>1,&amp; if p(x) &lt; p(y)\\<br>0,&amp; otherwise\\<br>\end{cases}<br>\end{eqnarray}<br>$$<br>其中，$p(x)$表示像素点$x=(u,v)^T$的像素值。<br>BRIEF特征可以定义为一个$n_d$维的二进制串：<br>$$<br>\begin{eqnarray}<br>f_{n_d}(p):=\sum_{1\le i \le n_d} 2^{i-1}\tau (p;x_i,y_i)<br>\end{eqnarray}<br>$$<br>其中，$n_d$可以取128，256，512，相应的特征表示为BRIEF-16，BRIEF-32和BRIEF-64.<br>具体实施过程中：</p>
 <ol>
 <li>为了增强BRIEF特征的抗干扰性和可重复性，需要选择合适的Gaussian Kernel进行平滑处理；在OpenCV中默认的kernel尺寸为9；</li>
-<li><p>在$S\times S$的patch中，选择$n_d$个测试点对$(x_i,y_i)$；文献[1]中介绍了五种方法：</p>
-<ul>
+<li>在$S\times S$的patch中，选择$n_d$个测试点对$(x_i,y_i)$；文献[1]中介绍了五种方法：<ul>
 <li>X和Y都服从在[-S/2，S/2]范围内的均匀分布，且相互独立；</li>
 <li>X和Y都服从均值为0，方差为$S^2/25$的高斯分布，且相互独立，即X和Y都以原点为中心，进行同方差的高斯分布；</li>
 <li>X服从均值为0，方差为$S^2/25$的高斯分布，而Y服从均值为$x_i$，方差为$S^2/100$的高斯分布，即先确定X的高斯分布得到$x_i$，同方法2，然后以$x_i$为中心，进行高斯分布确定$y_i$；</li>
 <li>在引入了空间量化的不精确极坐标网格的离散位置内，随机采样，得到$x_i$和$y_i$；</li>
-<li><p>$x_i$固定在原点处，$y_i$是所有可能的极坐标网格内的值。</p>
-<p>通过实验对比可知，前4种方法要好于第5种方法，而在前4种方法中，第2种方法会表现出少许的优势。</p>
-<p>在实际应用中，虽然点对都是按一定规则随机选择的，但在确定了补丁区域大小S的情况下，点对的坐标位置一旦随机选定，就不再更改，自始自终都用这些确定下来的点对坐标位置。也就是说这些点对的坐标位置其实是已知的，在编写程序的时候，这些坐标事先存储在系统中，在创建描述符时，只要调用这些坐标即可。另外，不但点对的坐标位置是确定好的，点对的两个像素之间的顺序和点对的顺序也必须是事先确定好的，这样才能保证描述符的一致性。点对的两个像素之间的顺序指的是在公式1中，两个像素哪个是$x_i$，哪个是$y_i$，因为在比较时是$x_i$的灰度值小于$y_i$的灰度值时，$\tau$才等于1。点对的顺序指的是$n_d$个点对之间要排序，这样二值位字符串中的各个位（公式2）就以该顺序排列。</p>
-</li>
+<li>$x_i$固定在原点处，$y_i$是所有可能的极坐标网格内的值。</li>
 </ul>
 </li>
-<li>计算Hamming距离。</li>
 </ol>
+<p>通过实验对比可知，前4种方法要好于第5种方法，而在前4种方法中，第2种方法会表现出少许的优势。</p>
+<p>在实际应用中，虽然点对都是按一定规则随机选择的，但在确定了补丁区域大小S的情况下，点对的坐标位置一旦随机选定，就不再更改，自始自终都用这些确定下来的点对坐标位置。也就是说这些点对的坐标位置其实是已知的，在编写程序的时候，这些坐标事先存储在系统中，在创建描述符时，只要调用这些坐标即可。另外，不但点对的坐标位置是确定好的，点对的两个像素之间的顺序和点对的顺序也必须是事先确定好的，这样才能保证描述符的一致性。点对的两个像素之间的顺序指的是在公式1中，两个像素哪个是$x_i$，哪个是$y_i$，因为在比较时是$x_i$的灰度值小于$y_i$的灰度值时，$\tau$才等于1。点对的顺序指的是$n_d$个点对之间要排序，这样二值位字符串中的各个位（公式2）就以该顺序排列。</p>
 <p>最后需要强调的是，BRIEF仅仅是一种特征点的描述符方法，它不提供特征点的检测方法。Calonder推荐使用CenSurE方法进行特征点的检测，该方法与BRIEF配合使用，效果会略好一些。在Opencv2.4.9中也提供了CenSurE方法，但是使用Star这个别名。</p>
 <h2 id="优点"><a href="#优点" class="headerlink" title="优点"></a>优点</h2><p>直接提取二进制串，计算快，占用内存小。</p>
 <h2 id="缺点"><a href="#缺点" class="headerlink" title="缺点"></a>缺点</h2><ol>
