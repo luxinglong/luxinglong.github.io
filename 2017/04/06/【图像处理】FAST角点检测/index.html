@@ -106,7 +106,7 @@
 <meta property="og:image" content="http://on99gq8w5.bkt.clouddn.com/Snip20170407_1.png?imageMogr2/thumbnail/500x500">
 <meta property="og:image" content="http://on99gq8w5.bkt.clouddn.com/fast_api.png">
 <meta property="og:image" content="http://on99gq8w5.bkt.clouddn.com/fast.jpg?imageMogr2/thumbnail/500x500">
-<meta property="og:updated_time" content="2017-04-17T08:46:36.000Z">
+<meta property="og:updated_time" content="2017-04-17T12:28:02.000Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="【图像处理】FAST角点检测">
 <meta name="twitter:description" content="0 学习目标
@@ -405,11 +405,11 @@
 <ol>
 <li>对图像中的每一个候选点p,判断其是否为角点.首先，将它的像素值设为$I_p$.</li>
 <li>给定个阈值t.</li>
-<li>考虑候选点p周围圆形排列的16个像素点,如下图所示。</li>
-</ol>
+<li><p>考虑候选点p周围圆形排列的16个像素点,如下图所示。</p>
 <img src="http://on99gq8w5.bkt.clouddn.com/Snip20170407_1.png?imageMogr2/thumbnail/500x500" class="[Snip20170407_1]">
-<ol>
-<li>判断候选点是否为角点的标准如下：<ul>
+</li>
+<li><p>判断候选点是否为角点的标准如下：</p>
+<ul>
 <li>如果16个像素点中有n个像素值大于$I_p+t$,或者小于$I_p-t$,那么p为角点；</li>
 <li>否则,p不是角点.</li>
 </ul>
