@@ -112,7 +112,7 @@
 <meta property="og:image" content="http://on99gq8w5.bkt.clouddn.com/epipolar_geometry.png">
 <meta property="og:image" content="http://on99gq8w5.bkt.clouddn.com/camera.jpg">
 <meta property="og:image" content="http://on99gq8w5.bkt.clouddn.com/homography.jpg">
-<meta property="og:updated_time" content="2017-04-19T07:41:21.000Z">
+<meta property="og:updated_time" content="2017-04-19T07:44:13.000Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="【机器视觉】基础矩阵F和本征矩阵E">
 <meta name="twitter:description" content="0 学习目标
@@ -414,9 +414,10 @@
 <p>对极几何关注的是空间三维点在两个图像平面上映射点之间的关系？也就是$x$和$x^{\prime}$之间的关系。</p>
 <h2 id="单应性矩阵和共面点成像"><a href="#单应性矩阵和共面点成像" class="headerlink" title="单应性矩阵和共面点成像"></a>单应性矩阵和共面点成像</h2><p>在计算机视觉中，平面的<strong>单应性</strong>被定义为一个平面到另外一个平面的投影映射。因此一个二维平面上的点映射到摄像机成像仪上的映射就是平面单应性的例子（如棋盘标定）。我们知道空间三维点$X=(X_w,Y_w,Z_w)$经过内参数矩阵K和外参数矩阵$[R|t]$可以投影到图像坐标系$x=(u,v)$。具体可以用下面的公式来表示：<br><img src="http://on99gq8w5.bkt.clouddn.com/camera.jpg" class="[camera]"></p>
 <blockquote>
-<p>此公式有个错误，要在第一个等号后面加$Z_C$.<br>而对于世界坐标系中共面的点，可以令其某一坐标为0，不妨设为$X=(X_w,Y_w,0)$，则单应性矩阵H可以用下面的公式推导：<br><img src="http://on99gq8w5.bkt.clouddn.com/homography.jpg" class="[homography]"></p>
-<h2 id="基础矩阵-Fundamental-Matrix"><a href="#基础矩阵-Fundamental-Matrix" class="headerlink" title="基础矩阵(Fundamental Matrix)"></a>基础矩阵(Fundamental Matrix)</h2><p>刚刚也说了基础矩阵就是对极几何的代数表示，也就是如何用代数的形式表示$x$和$x^{\prime}$之间的关系。图像平面上点$x$在另外一个平面上的对应点$x^{\prime}$在极线$l^{\prime}$上。而且存在着这样的映射关系$x \mapsto l^{\prime}$.这个映射关系可以通过两步来实现：<br>步骤一：<br>步骤二：</p>
+<p>此公式有个错误，要在第一个等号后面加$Z_C$.</p>
 </blockquote>
+<p>而对于世界坐标系中共面的点，可以令其某一坐标为0，不妨设为$X=(X_w,Y_w,0)$，则单应性矩阵H可以用下面的公式推导：<br><img src="http://on99gq8w5.bkt.clouddn.com/homography.jpg" class="[homography]"></p>
+<h2 id="基础矩阵-Fundamental-Matrix"><a href="#基础矩阵-Fundamental-Matrix" class="headerlink" title="基础矩阵(Fundamental Matrix)"></a>基础矩阵(Fundamental Matrix)</h2><p>刚刚也说了基础矩阵就是对极几何的代数表示，也就是如何用代数的形式表示$x$和$x^{\prime}$之间的关系。图像平面上点$x$在另外一个平面上的对应点$x^{\prime}$在极线$l^{\prime}$上。而且存在着这样的映射关系$x \mapsto l^{\prime}$.这个映射关系可以通过两步来实现：<br>步骤一：<br>步骤二：</p>
 <h2 id="本征矩阵-Essential-Matrix"><a href="#本征矩阵-Essential-Matrix" class="headerlink" title="本征矩阵(Essential Matrix)"></a>本征矩阵(Essential Matrix)</h2><h1 id="2-基础矩阵F的计算"><a href="#2-基础矩阵F的计算" class="headerlink" title="2 基础矩阵F的计算"></a>2 基础矩阵F的计算</h1><h1 id="3-本征矩阵E的计算"><a href="#3-本征矩阵E的计算" class="headerlink" title="3 本征矩阵E的计算"></a>3 本征矩阵E的计算</h1><h1 id="4-OpenCV源码解析"><a href="#4-OpenCV源码解析" class="headerlink" title="4 OpenCV源码解析"></a>4 OpenCV源码解析</h1><h1 id="5-实现"><a href="#5-实现" class="headerlink" title="5 实现"></a>5 实现</h1><h1 id="6-参考文献"><a href="#6-参考文献" class="headerlink" title="6 参考文献"></a>6 参考文献</h1><p>[1] Hartley R, Zisserman A. Multiple View Geometry in Computer Vision Second Edition[J]. Cambridge University Press, 2000.<br>[2] OpenCV documentation, <a href="http://docs.opencv.org/2.4/index.html" target="_blank" rel="external">http://docs.opencv.org/2.4/index.html</a></p>
 
       
