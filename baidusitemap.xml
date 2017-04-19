@@ -5,14 +5,21 @@
     
   <url>
     <loc>luxinglong.github.io/2017/04/19/%E3%80%90%E6%9C%BA%E5%99%A8%E8%A7%86%E8%A7%89%E3%80%91%E9%9A%8F%E6%9C%BA%E9%87%87%E6%A0%B7%E4%B8%80%E8%87%B4%E7%AE%97%E6%B3%95RANSAC/</loc>
-    <lastmod>2017-04-19T09:05:58.000Z</lastmod>
+    <lastmod>2017-04-19T09:10:43.000Z</lastmod>
     <data>
         <display>
         <title>【机器视觉】随机采样一致算法RANSAC</title>
         <pubTime>2017-04-19T09:05:58.000Z</pubTime>
         
+        <tag>Mutiple View Geometry</tag>
+         
+        <tag>computer vision</tag>
+         
          
            
+             
+              <breadCrumb title="【机器视觉】" url="luxinglong.github.io/categories/%E3%80%90%E6%9C%BA%E5%99%A8%E8%A7%86%E8%A7%89%E3%80%91/"/>
+          
         </display>
     </data>
     </url>
