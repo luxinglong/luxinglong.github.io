@@ -110,7 +110,7 @@
 
 几个对极几何中的概念">
 <meta property="og:image" content="http://on99gq8w5.bkt.clouddn.com/epipolar_geometry.png">
-<meta property="og:updated_time" content="2017-04-19T05:56:36.000Z">
+<meta property="og:updated_time" content="2017-04-19T06:02:34.000Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="【机器视觉】基础矩阵F和本征矩阵E">
 <meta name="twitter:description" content="0 学习目标
@@ -370,7 +370,7 @@
              <i class="fa fa-calendar-o"></i>
            </span>
            <span class="post-meta-item-text">字数统计:</span>
-           <span class="post-count">249(字)</span> 
+           <span class="post-count">312(字)</span> 
          </span>
          
          <span id="busuanzi_container_page_pv">
@@ -408,7 +408,8 @@
 </ul>
 <h1 id="1-基本概念"><a href="#1-基本概念" class="headerlink" title="1 基本概念"></a>1 基本概念</h1><h2 id="对极几何-Epipolar-geometry"><a href="#对极几何-Epipolar-geometry" class="headerlink" title="对极几何(Epipolar geometry)"></a>对极几何(Epipolar geometry)</h2><p>理解基础矩阵之前，首先要理解<strong>对极几何</strong>，因为基础矩阵就是对极几何的代数表示。对极几何在特征点匹配中发挥了很大的作用，可以极大减小匹配的搜索范围。对极几何可以用下图来描述：</p>
 <img src="http://on99gq8w5.bkt.clouddn.com/epipolar_geometry.png" class="[epipolar_geometry]">
-<p>几个对极几何中的概念：<br><strong>极点(epipole)：</strong>相机光心连线与图像平面的交点；<br><strong>极线：</strong><br><strong>极平面：</strong></p>
+<p>几个对极几何中的概念：<br><strong>极点(epipole)：</strong>相机光心连线与图像平面的交点；<br><strong>极平面(epipolar plane)：</strong>包含baseline的平面；<br><strong>极线(epipolar line)：</strong>极平面和图像平面相交的直线。</p>
+<p>对极几何关注的是空间三维点在两个图像平面上映射点之间的关系？也就是$x$和$x^’$之间的关系。</p>
 <h2 id="基础矩阵-Fundamental-Matrix"><a href="#基础矩阵-Fundamental-Matrix" class="headerlink" title="基础矩阵(Fundamental Matrix)"></a>基础矩阵(Fundamental Matrix)</h2><h2 id="本征矩阵-Essential-Matrix"><a href="#本征矩阵-Essential-Matrix" class="headerlink" title="本征矩阵(Essential Matrix)"></a>本征矩阵(Essential Matrix)</h2><h1 id="2-基础矩阵F的计算"><a href="#2-基础矩阵F的计算" class="headerlink" title="2 基础矩阵F的计算"></a>2 基础矩阵F的计算</h1><h1 id="3-本征矩阵E的计算"><a href="#3-本征矩阵E的计算" class="headerlink" title="3 本征矩阵E的计算"></a>3 本征矩阵E的计算</h1><h1 id="4-OpenCV源码解析"><a href="#4-OpenCV源码解析" class="headerlink" title="4 OpenCV源码解析"></a>4 OpenCV源码解析</h1><h1 id="5-实现"><a href="#5-实现" class="headerlink" title="5 实现"></a>5 实现</h1><h1 id="6-参考文献"><a href="#6-参考文献" class="headerlink" title="6 参考文献"></a>6 参考文献</h1><p>[1] Hartley R, Zisserman A. Multiple View Geometry in Computer Vision Second Edition[J]. Cambridge University Press, 2000.<br>[2] OpenCV documentation, <a href="http://docs.opencv.org/2.4/index.html" target="_blank" rel="external">http://docs.opencv.org/2.4/index.html</a></p>
 
       
