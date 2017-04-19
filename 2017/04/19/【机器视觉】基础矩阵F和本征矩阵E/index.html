@@ -113,7 +113,7 @@
 <meta property="og:image" content="http://on99gq8w5.bkt.clouddn.com/camera.jpg">
 <meta property="og:image" content="http://on99gq8w5.bkt.clouddn.com/homography.jpg">
 <meta property="og:image" content="http://on99gq8w5.bkt.clouddn.com/hpi.png">
-<meta property="og:updated_time" content="2017-04-19T08:18:24.000Z">
+<meta property="og:updated_time" content="2017-04-19T08:20:10.000Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="【机器视觉】基础矩阵F和本征矩阵E">
 <meta name="twitter:description" content="0 学习目标
@@ -418,9 +418,9 @@
 <p>此公式有个错误，要在第一个等号后面加$Z_C$.</p>
 </blockquote>
 <p>而对于世界坐标系中共面的点，可以令其某一坐标为0，不妨设为$X=(X_w,Y_w,0)$，则单应性矩阵H可以用下面的公式推导：<br><img src="http://on99gq8w5.bkt.clouddn.com/homography.jpg" class="[homography]"></p>
-<h2 id="基础矩阵-Fundamental-Matrix"><a href="#基础矩阵-Fundamental-Matrix" class="headerlink" title="基础矩阵(Fundamental Matrix)"></a>基础矩阵(Fundamental Matrix)</h2><p>刚刚也说了基础矩阵就是对极几何的代数表示，也就是如何用代数的形式表示$x$和$x^{\prime}$之间的关系。图像平面上点$x$在另外一个平面上的对应点$x^{\prime}$在极线$l^{\prime}$上。而且存在着这样的映射关系$x \mapsto l^{\prime}$.这个映射关系可以通过两步来实现：<br><img src="http://on99gq8w5.bkt.clouddn.com/hpi.png" class="[hpi]"><br>步骤一：通过单应性矩阵H，将$x$映射到右图像平面$x^{\prime}$，即$x^{\prime}=Hx$.<br>步骤二：穿过$x^{\prime}$和$e^{\prime}$的直线就是$x$对应的极线$l^{\prime}$。$l^{\prime}=e^{\prime}\times x^{\prime}=[e^{\prime}]_{\times}x^{\prime}=[e^{\prime}]_{\times}Hx=Fx$</p>
+<h2 id="基础矩阵-Fundamental-Matrix"><a href="#基础矩阵-Fundamental-Matrix" class="headerlink" title="基础矩阵(Fundamental Matrix)"></a>基础矩阵(Fundamental Matrix)</h2><p>刚刚也说了基础矩阵就是对极几何的代数表示，也就是如何用代数的形式表示$x$和$x^{\prime}$之间的关系。图像平面上点$x$在另外一个平面上的对应点$x^{\prime}$在极线$l^{\prime}$上。而且存在着这样的映射关系$x \mapsto l^{\prime}$.这个映射关系可以通过两步来实现：<br><img src="http://on99gq8w5.bkt.clouddn.com/hpi.png" class="[hpi]"><br>步骤一：通过单应性矩阵H，将$x$映射到右图像平面$x^{\prime}$，即$x^{\prime}=Hx$.<br>步骤二：穿过$x^{\prime}$和$e^{\prime}$的直线就是$x$对应的极线 $l^{\prime}$。$l^{\prime}=e^{\prime}\times x^{\prime}=[e^{\prime}]_{\times}x^{\prime}=[e^{\prime}]_{\times}Hx=Fx$.</p>
 <p>于是有，$l^{\prime}=Fx$.又因为$x^{\prime}$在直线$l^{\prime}$上，所以$x^{\prime T}l^{\prime}=x^{\prime T}Fx=0$</p>
-<p>基础矩阵的性质有：秩为2，因为F将二维点映射到一条穿过$e^{\prime}$的直线上，即二维到一维。另外，$e^{\prime}]_{\times}$秩为2， H秩为3.</p>
+<p>基础矩阵的性质有：秩为2，因为F将二维点映射到一条穿过$e^{\prime}$的直线上，即二维到一维。另外，$[e^{\prime}]_{\times}$秩为2， H秩为3.</p>
 <p>借用知乎上一句来通俗理解一下基础矩阵：</p>
 <blockquote>
 <p>基础矩阵：反应了<strong>空间一点X的像素点</strong>在<strong>不同视角摄像机</strong>下<strong>图像坐标系</strong>中的表示之间的关系。即$(u_1,v_1,1)$之间$(u_2,v_2,1)$的关系。因此包含了内参数信息。</p>
