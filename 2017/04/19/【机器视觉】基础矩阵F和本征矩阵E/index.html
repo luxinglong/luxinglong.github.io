@@ -91,11 +91,7 @@
 理解基础矩阵F和本征矩阵E的定义、区别和联系
 学习基础矩阵F和本征矩阵E的计算
 解析OpenCV相关源代码
-利用OpenCV求解实现
-
-1 基本概念对极几何(Epipolar geometry)理解基础矩阵之前，首先要理解对极几何，因为基础矩阵就是对极几何的代数表示。对极几何在特征点匹配中发挥了很大的作用，可以极大减小匹配的搜索范围。对极几何可以用下图来描述：
-
-几个对极几何中的概念">
+利用OpenCV求解实现">
 <meta property="og:type" content="article">
 <meta property="og:title" content="【机器视觉】基础矩阵F和本征矩阵E">
 <meta property="og:url" content="luxinglong.github.io/2017/04/19/【机器视觉】基础矩阵F和本征矩阵E/index.html">
@@ -104,27 +100,19 @@
 理解基础矩阵F和本征矩阵E的定义、区别和联系
 学习基础矩阵F和本征矩阵E的计算
 解析OpenCV相关源代码
-利用OpenCV求解实现
-
-1 基本概念对极几何(Epipolar geometry)理解基础矩阵之前，首先要理解对极几何，因为基础矩阵就是对极几何的代数表示。对极几何在特征点匹配中发挥了很大的作用，可以极大减小匹配的搜索范围。对极几何可以用下图来描述：
-
-几个对极几何中的概念">
+利用OpenCV求解实现">
 <meta property="og:image" content="http://on99gq8w5.bkt.clouddn.com/epipolar_geometry.png">
 <meta property="og:image" content="http://on99gq8w5.bkt.clouddn.com/camera.jpg">
 <meta property="og:image" content="http://on99gq8w5.bkt.clouddn.com/homography.jpg">
 <meta property="og:image" content="http://on99gq8w5.bkt.clouddn.com/hpi.png">
-<meta property="og:updated_time" content="2017-04-19T08:36:46.000Z">
+<meta property="og:updated_time" content="2017-04-19T08:40:01.000Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="【机器视觉】基础矩阵F和本征矩阵E">
 <meta name="twitter:description" content="0 学习目标
 理解基础矩阵F和本征矩阵E的定义、区别和联系
 学习基础矩阵F和本征矩阵E的计算
 解析OpenCV相关源代码
-利用OpenCV求解实现
-
-1 基本概念对极几何(Epipolar geometry)理解基础矩阵之前，首先要理解对极几何，因为基础矩阵就是对极几何的代数表示。对极几何在特征点匹配中发挥了很大的作用，可以极大减小匹配的搜索范围。对极几何可以用下图来描述：
-
-几个对极几何中的概念">
+利用OpenCV求解实现">
 <meta name="twitter:image" content="http://on99gq8w5.bkt.clouddn.com/epipolar_geometry.png">
 
 
@@ -409,6 +397,7 @@
 <li>解析OpenCV相关源代码</li>
 <li>利用OpenCV求解实现</li>
 </ul>
+<a id="more"></a>
 <h1 id="1-基本概念"><a href="#1-基本概念" class="headerlink" title="1 基本概念"></a>1 基本概念</h1><h2 id="对极几何-Epipolar-geometry"><a href="#对极几何-Epipolar-geometry" class="headerlink" title="对极几何(Epipolar geometry)"></a>对极几何(Epipolar geometry)</h2><p>理解基础矩阵之前，首先要理解<strong>对极几何</strong>，因为基础矩阵就是对极几何的代数表示。对极几何在特征点匹配中发挥了很大的作用，可以极大减小匹配的搜索范围。对极几何可以用下图来描述：</p>
 <img src="http://on99gq8w5.bkt.clouddn.com/epipolar_geometry.png" class="[epipolar_geometry]">
 <p>几个对极几何中的概念：<br><strong>极点(epipole)：</strong>相机光心连线与图像平面的交点$e$和$e^{\prime}$；<br><strong>极平面(epipolar plane)：</strong>包含baseline的平面$\pi$；<br><strong>极线(epipolar line)：</strong>极平面和图像平面相交的直线$l$和$l^{\prime}$。</p>
