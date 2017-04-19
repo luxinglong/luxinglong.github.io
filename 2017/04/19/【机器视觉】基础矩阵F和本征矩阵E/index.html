@@ -112,7 +112,8 @@
 <meta property="og:image" content="http://on99gq8w5.bkt.clouddn.com/epipolar_geometry.png">
 <meta property="og:image" content="http://on99gq8w5.bkt.clouddn.com/camera.jpg">
 <meta property="og:image" content="http://on99gq8w5.bkt.clouddn.com/homography.jpg">
-<meta property="og:updated_time" content="2017-04-19T07:44:13.000Z">
+<meta property="og:image" content="http://on99gq8w5.bkt.clouddn.com/hpi.png">
+<meta property="og:updated_time" content="2017-04-19T07:52:48.000Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="【机器视觉】基础矩阵F和本征矩阵E">
 <meta name="twitter:description" content="0 学习目标
@@ -372,7 +373,7 @@
              <i class="fa fa-calendar-o"></i>
            </span>
            <span class="post-meta-item-text">字数统计:</span>
-           <span class="post-count">632(字)</span> 
+           <span class="post-count">676(字)</span> 
          </span>
          
          <span id="busuanzi_container_page_pv">
@@ -417,7 +418,7 @@
 <p>此公式有个错误，要在第一个等号后面加$Z_C$.</p>
 </blockquote>
 <p>而对于世界坐标系中共面的点，可以令其某一坐标为0，不妨设为$X=(X_w,Y_w,0)$，则单应性矩阵H可以用下面的公式推导：<br><img src="http://on99gq8w5.bkt.clouddn.com/homography.jpg" class="[homography]"></p>
-<h2 id="基础矩阵-Fundamental-Matrix"><a href="#基础矩阵-Fundamental-Matrix" class="headerlink" title="基础矩阵(Fundamental Matrix)"></a>基础矩阵(Fundamental Matrix)</h2><p>刚刚也说了基础矩阵就是对极几何的代数表示，也就是如何用代数的形式表示$x$和$x^{\prime}$之间的关系。图像平面上点$x$在另外一个平面上的对应点$x^{\prime}$在极线$l^{\prime}$上。而且存在着这样的映射关系$x \mapsto l^{\prime}$.这个映射关系可以通过两步来实现：<br>步骤一：<br>步骤二：</p>
+<h2 id="基础矩阵-Fundamental-Matrix"><a href="#基础矩阵-Fundamental-Matrix" class="headerlink" title="基础矩阵(Fundamental Matrix)"></a>基础矩阵(Fundamental Matrix)</h2><p>刚刚也说了基础矩阵就是对极几何的代数表示，也就是如何用代数的形式表示$x$和$x^{\prime}$之间的关系。图像平面上点$x$在另外一个平面上的对应点$x^{\prime}$在极线$l^{\prime}$上。而且存在着这样的映射关系$x \mapsto l^{\prime}$.这个映射关系可以通过两步来实现：<br><img src="http://on99gq8w5.bkt.clouddn.com/hpi.png" class="[hpi]"><br>步骤一：通过单应性矩阵H，将$x$映射到右图像平面$x^{\prime}$，即$x^{\prime}=Hx$.<br>步骤二：穿过$x^{\prime}$和$e^{\prime}$的直线就是$x$对应的极线$l^{\prime}$。</p>
 <h2 id="本征矩阵-Essential-Matrix"><a href="#本征矩阵-Essential-Matrix" class="headerlink" title="本征矩阵(Essential Matrix)"></a>本征矩阵(Essential Matrix)</h2><h1 id="2-基础矩阵F的计算"><a href="#2-基础矩阵F的计算" class="headerlink" title="2 基础矩阵F的计算"></a>2 基础矩阵F的计算</h1><h1 id="3-本征矩阵E的计算"><a href="#3-本征矩阵E的计算" class="headerlink" title="3 本征矩阵E的计算"></a>3 本征矩阵E的计算</h1><h1 id="4-OpenCV源码解析"><a href="#4-OpenCV源码解析" class="headerlink" title="4 OpenCV源码解析"></a>4 OpenCV源码解析</h1><h1 id="5-实现"><a href="#5-实现" class="headerlink" title="5 实现"></a>5 实现</h1><h1 id="6-参考文献"><a href="#6-参考文献" class="headerlink" title="6 参考文献"></a>6 参考文献</h1><p>[1] Hartley R, Zisserman A. Multiple View Geometry in Computer Vision Second Edition[J]. Cambridge University Press, 2000.<br>[2] OpenCV documentation, <a href="http://docs.opencv.org/2.4/index.html" target="_blank" rel="external">http://docs.opencv.org/2.4/index.html</a></p>
 
       
