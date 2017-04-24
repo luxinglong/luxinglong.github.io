@@ -112,7 +112,7 @@
 可以快速计算的具有方向信息的BRIEF描述子rBRIEF
 对">
 <meta property="og:image" content="http://on99gq8w5.bkt.clouddn.com/orientation.png">
-<meta property="og:updated_time" content="2017-04-24T03:05:30.000Z">
+<meta property="og:updated_time" content="2017-04-24T03:13:52.000Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="【图像处理】ORB特征">
 <meta name="twitter:description" content="0 学习目标
@@ -373,7 +373,7 @@
              <i class="fa fa-calendar-o"></i>
            </span>
            <span class="post-meta-item-text">字数统计:</span>
-           <span class="post-count">1,333(字)</span> 
+           <span class="post-count">1,399(字)</span> 
          </span>
          
          <span id="busuanzi_container_page_pv">
@@ -427,7 +427,7 @@
 <p>我们知道圆心是固定的而且随着物体的旋转而旋转。当我们以PQ作为坐标轴时，在不同的旋转角度下，我们以同一取点模式取出来的点是一致的。这就解决了旋转一致性的问题。</p>
 <p>另外，文献[1]还比较了灰度重心法(Intensity Centroid)和基于梯度的MAX、BIN方法在旋转不变性上的表现。MAX方法选择X、Y方向最大的梯度方向，BIN方法在候选点周围每隔10度，计算一次梯度，选择最大的梯度方向。基于梯度的方法都要提前对图像进行平滑处理。</p>
 <h2 id="rBRIEF-Rotation-Aware-BRIEF"><a href="#rBRIEF-Rotation-Aware-BRIEF" class="headerlink" title="rBRIEF:Rotation-Aware BRIEF"></a>rBRIEF:Rotation-Aware BRIEF</h2><p><strong>如何解决对噪声敏感的问题：</strong><br>BRIEF使用的是pixel跟pixel的大小来构造描述子的每一个bit。这样的后果就是对噪声敏感。因此，在ORB的方案中，做了这样的改进，不再使用pixel-pair，而是使用patch-pair，也就是说，在$31\times 31$的窗口中，产生随机点对，然后以随机点为中心，取一个$5\times 5$的patch,对patch的像素值之和进行比较。（可以通过积分图快速计算）。</p>
-<p><strong>使BRIEF特征具有旋转不变性</strong><br>得到特征点的主方向$theta$，BRIEF作者提出将每个patch旋转，然后计算BRIEF特征，但是这种方法计算效率不高。ORB采用的做法是：在每个特征点处，对产生的所有点对，进行旋转，然后进行判别，生成二进制串。<br>首先：对于候选点区域的n个点对，建立一个$2\times n$的矩阵<br>$$<br>S=\left[<br>\begin{matrix}<br>x_1 &amp; \cdots &amp;x_n\\<br>y_1 &amp; \cdots &amp;y_n\\<br>\end{matrix}<br>\right]<br>$$</p>
+<p><strong>使BRIEF特征具有旋转不变性</strong><br>得到特征点的主方向$\theta$，BRIEF作者提出将每个patch旋转，然后计算BRIEF特征，但是这种方法计算效率不高。ORB采用的做法是：在每个特征点处，对产生的所有点对，进行旋转，然后进行判别，生成二进制串。<br>首先：对于候选点区域的n个点对，建立一个$2\times n$的矩阵<br>$$<br>S=\left[<br>\begin{matrix}<br>x_1 &amp; \cdots &amp;x_n\\<br>y_1 &amp; \cdots &amp;y_n\\<br>\end{matrix}<br>\right]<br>$$<br>利用主方向$\theta$建立的旋转矩阵$R_{\theta}$，对S进行旋转变换得到$S_{\theta}$<br>$$<br>S_{\theta}=R_{\theta}S<br>$$<br>这样就可以计算BRIEF特征了<br>$$<br>g_n(p,\theta):=f_n(p)|(x_i,y_i)\in S_{\theta}=\sum_{1\le i \le n}2^{i-1}\tau(p;x_i,y_i)<br>$$</p>
 <h2 id="优点"><a href="#优点" class="headerlink" title="优点"></a>优点</h2><ol>
 <li>具有旋转不变性</li>
 <li>性能与SIFT接近，但是计算比SIFT快2的阶数次方</li>
