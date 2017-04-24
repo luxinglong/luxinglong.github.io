@@ -94,7 +94,9 @@
 
 1 原理ORB (Oriented FAST and Rotated BRIEF)特征基于BRIEF特征，但是具有旋转不变性，并具有抗干扰的能力。ORB特征的贡献有：
 
-为FAST角点增加了可以快速计算和精确的方向信息">
+为FAST角点增加了可以快速计算和精确的方向信息
+可以快速计算的具有方向信息的BRIEF描述子rBRIEF
+对">
 <meta property="og:type" content="article">
 <meta property="og:title" content="【图像处理】ORB特征">
 <meta property="og:url" content="luxinglong.github.io/2017/04/17/【图像处理】ORB特征/index.html">
@@ -106,9 +108,11 @@
 
 1 原理ORB (Oriented FAST and Rotated BRIEF)特征基于BRIEF特征，但是具有旋转不变性，并具有抗干扰的能力。ORB特征的贡献有：
 
-为FAST角点增加了可以快速计算和精确的方向信息">
+为FAST角点增加了可以快速计算和精确的方向信息
+可以快速计算的具有方向信息的BRIEF描述子rBRIEF
+对">
 <meta property="og:image" content="http://on99gq8w5.bkt.clouddn.com/orientation.png">
-<meta property="og:updated_time" content="2017-04-17T15:13:34.000Z">
+<meta property="og:updated_time" content="2017-04-24T03:05:30.000Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="【图像处理】ORB特征">
 <meta name="twitter:description" content="0 学习目标
@@ -118,7 +122,9 @@
 
 1 原理ORB (Oriented FAST and Rotated BRIEF)特征基于BRIEF特征，但是具有旋转不变性，并具有抗干扰的能力。ORB特征的贡献有：
 
-为FAST角点增加了可以快速计算和精确的方向信息">
+为FAST角点增加了可以快速计算和精确的方向信息
+可以快速计算的具有方向信息的BRIEF描述子rBRIEF
+对">
 <meta name="twitter:image" content="http://on99gq8w5.bkt.clouddn.com/orientation.png">
 
 
@@ -367,7 +373,7 @@
              <i class="fa fa-calendar-o"></i>
            </span>
            <span class="post-meta-item-text">字数统计:</span>
-           <span class="post-count">903(字)</span> 
+           <span class="post-count">1,333(字)</span> 
          </span>
          
          <span id="busuanzi_container_page_pv">
@@ -405,13 +411,24 @@
 <h1 id="1-原理"><a href="#1-原理" class="headerlink" title="1 原理"></a>1 原理</h1><p>ORB (Oriented FAST and Rotated BRIEF)特征基于BRIEF特征，但是具有旋转不变性，并具有抗干扰的能力。ORB特征的贡献有：</p>
 <ul>
 <li>为FAST角点增加了可以快速计算和精确的方向信息</li>
-<li></li>
+<li>可以快速计算的具有方向信息的BRIEF描述子rBRIEF</li>
+<li>对rBRIEF方差和相关特性进行了分析</li>
+<li>一种基于学习的具有旋转不变性的解相关BRIEF特征，在最近邻算法应用中表现很好</li>
 </ul>
 <a id="more"></a>
 <h2 id="oFAST-FAST-Keyoint-Orientation"><a href="#oFAST-FAST-Keyoint-Orientation" class="headerlink" title="oFAST:FAST Keyoint Orientation"></a>oFAST:FAST Keyoint Orientation</h2><p>ORB特征点的提取是在FAST的基础上改进的，称为oFAST，也就是为每个FAST特征点增加一个方向信息，以此来使其具有旋转不变性。</p>
-<p><strong>如何使其具有旋转不变性：</strong><br>回顾一下BRIEF描述子的计算过程：<br>在当前关键点P周围以一定模式选取N个点对，组合这N个点对的T操作的结果就为最终的描述子。当我们选取点对的时候，是以当前关键点为原点，以水平方向为X轴，以垂直方向为Y轴建立坐标系。当图片发生旋转时，坐标系不变，同样的取点模式取出来的点却不一样，计算得到的描述子也不一样，这是不符合我们要求的。因此我们需要重新建立坐标系，使新的坐标系可以跟随图片的旋转而旋转。这样我们以相同的取点模式取出来的点将具有一致性。打个比方，我有一个印章，上面刻着一些直线。用这个印章在一张图片上盖一个章子。印章不变动的情况下，转动下图片，再盖一个章子，但这次取出来的点对就和之前的不一样。为了使2次取出来的点一样，我需要将章子也旋转同一个角度再盖章。ORB在计算BRIEF描述子时建立的坐标系是以关键点为圆心，以关键点和取点区域的形心的连线为X轴建立2维坐标系。<br><img src="http://on99gq8w5.bkt.clouddn.com/orientation.png" class="[orientation]"><br>P为关键点。圆内为取点区域，每个小格子代表一个像素。现在我们把这块圆心区域看做一块木板，木板上每个点的质量等于其对应的像素值。根据积分学的知识我们可以求出这个密度不均匀木板的质心Q。计算公式如下。其中R为圆的半径。<br>$$<br>m_{pq}=\sum_{x=-R}^R\sum_{y=-R}^Rx^py^qI(x,y)<br>$$<br>$$<br>C=(m_{10}/m_{00},m_{01}/m_{00})<br>$$<br>$$<br>\theta=atan2(m_{01},m_{10});<br>$$<br>我们知道圆心是固定的而且随着物体的旋转而旋转。当我们以PQ作为坐标轴时，在不同的旋转角度下，我们以同一取点模式取出来的点是一致的。这就解决了旋转一致性的问题。</p>
-<p><strong>如何解决对噪声敏感的问题：</strong><br>BRIEF使用的是pixel跟pixel的大小来构造描述子的每一个bit。这样的后果就是对噪声敏感。因此，在ORB的方案中，做了这样的改进，不再使用pixel-pair，而是使用9×9的patch-pair，也就是说，对比patch的像素值之和。（可以通过积分图快速计算）。</p>
-<h2 id="rBRIEF-Rotation-Aware-BRIEF"><a href="#rBRIEF-Rotation-Aware-BRIEF" class="headerlink" title="rBRIEF:Rotation-Aware BRIEF"></a>rBRIEF:Rotation-Aware BRIEF</h2><h2 id="优点"><a href="#优点" class="headerlink" title="优点"></a>优点</h2><ol>
+<p><strong>FAST特征检测</strong></p>
+<ol>
+<li>首先要检测FAST-9角点；</li>
+<li>在每个FAST角点处，计算Harris角点响应值，根据响应值进行排序，选取前N个角点；</li>
+<li>计算图像的高斯金字塔，在不同的尺度上进行上述两步。<br>这样便可以使ORB特征具有<strong>尺度不变性</strong>。</li>
+</ol>
+<p><strong>如何使其具有旋转不变性：</strong><br>回顾一下BRIEF描述子的计算过程：<br>在当前关键点P周围以一定模式选取N个点对，组合这N个点对的$\tau$操作的结果就为最终的描述子。当我们选取点对的时候，是以当前关键点为原点，以水平方向为X轴，以垂直方向为Y轴建立坐标系。当图片发生旋转时，坐标系不变，同样的取点模式取出来的点却不一样，计算得到的描述子也不一样，这是不符合我们要求的。因此我们需要重新建立坐标系，使新的坐标系可以跟随图片的旋转而旋转。这样我们以相同的取点模式取出来的点将具有一致性。<br>打个比方，我有一个印章，上面刻着一些直线。用这个印章在一张图片上盖一个章子。印章不变动的情况下，转动下图片，再盖一个章子，但这次取出来的点对就和之前的不一样。为了使2次取出来的点一样，我需要将章子也旋转同一个角度再盖章。ORB在计算BRIEF描述子时建立的坐标系是以关键点为圆心，以关键点和取点区域的形心的连线为X轴建立2维坐标系。<br><img src="http://on99gq8w5.bkt.clouddn.com/orientation.png" class="[orientation]"><br>P为关键点。圆内为取点区域，每个小格子代表一个像素。现在我们把这块圆心区域看做一块木板，木板上每个点的质量等于其对应的像素值。根据积分学的知识我们可以求出这个密度不均匀木板的质心Q。计算公式如下。其中R为圆的半径。<br>$$<br>m_{pq}=\sum_{x=-R}^R\sum_{y=-R}^Rx^py^qI(x,y)<br>$$<br>$$<br>C=(m_{10}/m_{00},m_{01}/m_{00})<br>$$<br>$$<br>\theta=atan2(m_{01},m_{10});<br>$$<br>atan2表示反正切，得到的$\theta$值就是FAST特征点的主方向。</p>
+<p>我们知道圆心是固定的而且随着物体的旋转而旋转。当我们以PQ作为坐标轴时，在不同的旋转角度下，我们以同一取点模式取出来的点是一致的。这就解决了旋转一致性的问题。</p>
+<p>另外，文献[1]还比较了灰度重心法(Intensity Centroid)和基于梯度的MAX、BIN方法在旋转不变性上的表现。MAX方法选择X、Y方向最大的梯度方向，BIN方法在候选点周围每隔10度，计算一次梯度，选择最大的梯度方向。基于梯度的方法都要提前对图像进行平滑处理。</p>
+<h2 id="rBRIEF-Rotation-Aware-BRIEF"><a href="#rBRIEF-Rotation-Aware-BRIEF" class="headerlink" title="rBRIEF:Rotation-Aware BRIEF"></a>rBRIEF:Rotation-Aware BRIEF</h2><p><strong>如何解决对噪声敏感的问题：</strong><br>BRIEF使用的是pixel跟pixel的大小来构造描述子的每一个bit。这样的后果就是对噪声敏感。因此，在ORB的方案中，做了这样的改进，不再使用pixel-pair，而是使用patch-pair，也就是说，在$31\times 31$的窗口中，产生随机点对，然后以随机点为中心，取一个$5\times 5$的patch,对patch的像素值之和进行比较。（可以通过积分图快速计算）。</p>
+<p><strong>使BRIEF特征具有旋转不变性</strong><br>得到特征点的主方向$theta$，BRIEF作者提出将每个patch旋转，然后计算BRIEF特征，但是这种方法计算效率不高。ORB采用的做法是：在每个特征点处，对产生的所有点对，进行旋转，然后进行判别，生成二进制串。<br>首先：对于候选点区域的n个点对，建立一个$2\times n$的矩阵<br>$$<br>S=\left[<br>\begin{matrix}<br>x_1 &amp; \cdots &amp;x_n\\<br>y_1 &amp; \cdots &amp;y_n\\<br>\end{matrix}<br>\right]<br>$$</p>
+<h2 id="优点"><a href="#优点" class="headerlink" title="优点"></a>优点</h2><ol>
 <li>具有旋转不变性</li>
 <li>性能与SIFT接近，但是计算比SIFT快2的阶数次方</li>
 </ol>
@@ -547,7 +564,7 @@
           
             <div class="site-state-item site-state-posts">
               <a href="/">
-                <span class="site-state-item-count">11</span>
+                <span class="site-state-item-count">13</span>
                 <span class="site-state-item-name">日志</span>
               </a>
             </div>

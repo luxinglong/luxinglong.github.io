@@ -4,6 +4,58 @@
 
     
   <url>
+    <loc>luxinglong.github.io/2017/04/17/%E3%80%90%E5%9B%BE%E5%83%8F%E5%A4%84%E7%90%86%E3%80%91ORB%E7%89%B9%E5%BE%81/</loc>
+    <lastmod>2017-04-24T03:05:30.000Z</lastmod>
+    <data>
+        <display>
+        <title>【图像处理】ORB特征</title>
+        <pubTime>2017-04-17T12:34:58.000Z</pubTime>
+        
+        <tag>image processing</tag>
+         
+        <tag>local feature</tag>
+         
+         
+           
+             
+              <breadCrumb title="【图像处理】" url="luxinglong.github.io/categories/%E3%80%90%E5%9B%BE%E5%83%8F%E5%A4%84%E7%90%86%E3%80%91/"/>
+          
+        </display>
+    </data>
+    </url>
+
+    
+  <url>
+    <loc>luxinglong.github.io/2017/04/24/%E3%80%90%E5%9B%BE%E5%83%8F%E5%A4%84%E7%90%86%E3%80%91SURF%E7%89%B9%E5%BE%81/</loc>
+    <lastmod>2017-04-24T01:56:36.000Z</lastmod>
+    <data>
+        <display>
+        <title>【图像处理】SURF特征</title>
+        <pubTime>2017-04-24T01:56:36.000Z</pubTime>
+        
+         
+           
+        </display>
+    </data>
+    </url>
+
+    
+  <url>
+    <loc>luxinglong.github.io/2017/04/24/%E3%80%90%E5%9B%BE%E5%83%8F%E5%A4%84%E7%90%86%E3%80%91SIFT%E7%89%B9%E5%BE%81/</loc>
+    <lastmod>2017-04-24T01:56:08.000Z</lastmod>
+    <data>
+        <display>
+        <title>【图像处理】SIFT特征</title>
+        <pubTime>2017-04-24T01:56:08.000Z</pubTime>
+        
+         
+           
+        </display>
+    </data>
+    </url>
+
+    
+  <url>
     <loc>luxinglong.github.io/2017/04/19/%E3%80%90%E6%9C%BA%E5%99%A8%E8%A7%86%E8%A7%89%E3%80%91%E9%9A%8F%E6%9C%BA%E9%87%87%E6%A0%B7%E4%B8%80%E8%87%B4%E7%AE%97%E6%B3%95RANSAC/</loc>
     <lastmod>2017-04-19T09:10:43.000Z</lastmod>
     <data>
@@ -41,28 +93,6 @@
            
              
               <breadCrumb title="【机器视觉】" url="luxinglong.github.io/categories/%E3%80%90%E6%9C%BA%E5%99%A8%E8%A7%86%E8%A7%89%E3%80%91/"/>
-          
-        </display>
-    </data>
-    </url>
-
-    
-  <url>
-    <loc>luxinglong.github.io/2017/04/17/%E3%80%90%E5%9B%BE%E5%83%8F%E5%A4%84%E7%90%86%E3%80%91ORB%E7%89%B9%E5%BE%81/</loc>
-    <lastmod>2017-04-17T15:13:34.000Z</lastmod>
-    <data>
-        <display>
-        <title>【图像处理】ORB特征</title>
-        <pubTime>2017-04-17T12:34:58.000Z</pubTime>
-        
-        <tag>image processing</tag>
-         
-        <tag>local feature</tag>
-         
-         
-           
-             
-              <breadCrumb title="【图像处理】" url="luxinglong.github.io/categories/%E3%80%90%E5%9B%BE%E5%83%8F%E5%A4%84%E7%90%86%E3%80%91/"/>
           
         </display>
     </data>
