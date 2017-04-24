@@ -101,7 +101,7 @@ resize()函数。最直接的方法，只要给定输入输出图像，以及目
 pyrUp(),pyrDown()函数。即图像金字塔相关的两个函数，对图像进行向上采样，向下采样的操作">
 <meta property="og:image" content="http://on99gq8w5.bkt.clouddn.com/GP.png">
 <meta property="og:image" content="http://on99gq8w5.bkt.clouddn.com/LP.png">
-<meta property="og:updated_time" content="2017-04-24T07:00:01.000Z">
+<meta property="og:updated_time" content="2017-04-24T07:26:10.000Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="【图像处理】图像金字塔">
 <meta name="twitter:description" content="0 引言在图像处理中，经常需要改变图像的尺寸，比如在图像识别时需要将图像归一化到某一标准尺寸，在目标检测中需要在不同尺度的图像上进行检测，以应对尺度变化。OpenCV提供了如下两种方式来改变图像尺寸：
@@ -356,7 +356,7 @@ pyrUp(),pyrDown()函数。即图像金字塔相关的两个函数，对图像进
              <i class="fa fa-calendar-o"></i>
            </span>
            <span class="post-meta-item-text">字数统计:</span>
-           <span class="post-count">783(字)</span> 
+           <span class="post-count">1,230(字)</span> 
          </span>
          
          <span id="busuanzi_container_page_pv">
@@ -413,7 +413,26 @@ pyrUp(),pyrDown()函数。即图像金字塔相关的两个函数，对图像进
 <p>这两个步骤(向下和向上采样)分别通过OpenCV函数pyrUp和pyrDown实现。</p>
 <h2 id="1-2-拉普拉斯金字塔"><a href="#1-2-拉普拉斯金字塔" class="headerlink" title="1.2 拉普拉斯金字塔"></a>1.2 拉普拉斯金字塔</h2><p>拉普拉斯金字塔第i层的数学定义为：<br>$$<br>L_i=G_i-UP(G_{i+1})\otimes G_{5\times 5}=G_i-PyrUp(G_{i+1})<br>$$<br>其中，$G_{5\times 5}$表示$5\times 5$的高斯内核，$\otimes$表示卷积。<br>也就是说，拉普拉斯金字塔的第i层是通过高斯金字塔第i层减去高斯金字塔第i层先缩小后放大的图像得到的。</p>
 <p>整个拉普拉斯金字塔的的求解过程可以用下图表示：<br><img src="http://on99gq8w5.bkt.clouddn.com/LP.png" class="[LP]"></p>
-<h1 id="2-resize-函数解析"><a href="#2-resize-函数解析" class="headerlink" title="2 resize()函数解析"></a>2 resize()函数解析</h1>
+<p>关于图像金字塔非常重要的一个应用就是实现图像分割。图像分割的话，先要建立一个图像金字塔，然后在$G_i$和$G_{i+1}的像素直接依照对应关系，建立起“父与子”的关系。而快速初始分割可以先在金字塔高层的低分辨率图像上完成，然后逐层对分割加以优化。</p>
+<h1 id="2-resize-函数解析"><a href="#2-resize-函数解析" class="headerlink" title="2 resize()函数解析"></a>2 resize()函数解析</h1><p>首先看一下它的函数原型：<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">C++: void resize(InputArray src,OutputArray dst,Size dsize,double fx=0,double fy=0,int interpolation=INTER_LINEAR)</div></pre></td></tr></table></figure></p>
+<ul>
+<li>第一个参数：输入图像，Mat类型的对象即可。</li>
+<li>第二个参数：输出图像，当其非0时，有着dsize的尺寸，或者通过src.size()来计算。</li>
+<li>第三个参数：输出图像的大小；如果它等于零，则由下式进行计算<br>$$<br>dsize=Size(round(fx<em>src.cols),round(fy</em>src.rows))<br>$$<br>其中，dsize,fx,fy不能同时为0.</li>
+<li>第四个参数：沿水平轴的缩放系数，有默认值0，当其等于0时，由下式进行计算<br>$$<br>  (double)dsize.width/src.cols<br>$$</li>
+<li>第五个参数：沿垂直轴的缩放系数，有默认值0，当其等于0时，由下式进行计算<br>$$<br>  (double)dsize.height/src.rows<br>$$</li>
+<li>第六个参数：用于指定插值方式，默认为线性插值(INTER_LINEAR)</li>
+</ul>
+<p>可选的插值方式有：</p>
+<ul>
+<li>INTER_NEAREST-最近邻插值</li>
+<li>INTER_LINEAR-线性插值</li>
+<li>INTER_AREA-区域插值（利用像素区域关系的重采样插值）</li>
+<li>INTER_CUBIC-三次样条插值（超过4*4像素领域内的双三次插值）</li>
+<li>INTER_LANCZOS4-Lanczos插值（超过8*8像素领域内的Lanczos插值）</li>
+</ul>
+<p>若要缩小图像，一般情况下最好使用CV_INTER_AREA来插值；<br>若要放大图像，一般情况下最好用INTER_CUBIC（效率不高）或INTER_LINEAR（效率较高）</p>
+<h1 id="3-pyrUp-函数剖析"><a href="#3-pyrUp-函数剖析" class="headerlink" title="3 pyrUp()函数剖析"></a>3 pyrUp()函数剖析</h1>
       
     </div>
 
@@ -628,7 +647,7 @@ pyrUp(),pyrDown()函数。即图像金字塔相关的两个函数，对图像进
             
 
             
-              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-1"><a class="nav-link" href="#0-引言"><span class="nav-number">1.</span> <span class="nav-text">0 引言</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#1-图像金字塔原理"><span class="nav-number">2.</span> <span class="nav-text">1 图像金字塔原理</span></a><ol class="nav-child"><li class="nav-item nav-level-2"><a class="nav-link" href="#1-1-高斯金字塔"><span class="nav-number">2.1.</span> <span class="nav-text">1.1 高斯金字塔</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#1-2-拉普拉斯金字塔"><span class="nav-number">2.2.</span> <span class="nav-text">1.2 拉普拉斯金字塔</span></a></li></ol></li><li class="nav-item nav-level-1"><a class="nav-link" href="#2-resize-函数解析"><span class="nav-number">3.</span> <span class="nav-text">2 resize()函数解析</span></a></li></ol></div>
+              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-1"><a class="nav-link" href="#0-引言"><span class="nav-number">1.</span> <span class="nav-text">0 引言</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#1-图像金字塔原理"><span class="nav-number">2.</span> <span class="nav-text">1 图像金字塔原理</span></a><ol class="nav-child"><li class="nav-item nav-level-2"><a class="nav-link" href="#1-1-高斯金字塔"><span class="nav-number">2.1.</span> <span class="nav-text">1.1 高斯金字塔</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#1-2-拉普拉斯金字塔"><span class="nav-number">2.2.</span> <span class="nav-text">1.2 拉普拉斯金字塔</span></a></li></ol></li><li class="nav-item nav-level-1"><a class="nav-link" href="#2-resize-函数解析"><span class="nav-number">3.</span> <span class="nav-text">2 resize()函数解析</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#3-pyrUp-函数剖析"><span class="nav-number">4.</span> <span class="nav-text">3 pyrUp()函数剖析</span></a></li></ol></div>
             
 
           </div>
