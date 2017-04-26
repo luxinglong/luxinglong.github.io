@@ -4,28 +4,8 @@
 
     
   <url>
-    <loc>luxinglong.github.io/2017/04/24/%E3%80%90%E6%95%B0%E6%8D%AE%E7%BB%93%E6%9E%84%E3%80%91hash%E8%A1%A8/</loc>
-    <lastmod>2017-04-24T08:31:08.000Z</lastmod>
-    <data>
-        <display>
-        <title>【数据结构】hash表</title>
-        <pubTime>2017-04-24T08:30:09.000Z</pubTime>
-        
-        <tag>数据结构</tag>
-         
-         
-           
-             
-              <breadCrumb title="【数据结构】" url="luxinglong.github.io/categories/%E3%80%90%E6%95%B0%E6%8D%AE%E7%BB%93%E6%9E%84%E3%80%91/"/>
-          
-        </display>
-    </data>
-    </url>
-
-    
-  <url>
     <loc>luxinglong.github.io/2017/04/24/%E3%80%90%E5%9B%BE%E5%83%8F%E5%A4%84%E7%90%86%E3%80%91SIFT%E7%89%B9%E5%BE%81/</loc>
-    <lastmod>2017-04-24T08:09:41.000Z</lastmod>
+    <lastmod>2017-04-26T02:40:30.000Z</lastmod>
     <data>
         <display>
         <title>【图像处理】SIFT特征</title>
@@ -39,6 +19,61 @@
            
              
               <breadCrumb title="【图像处理】" url="luxinglong.github.io/categories/%E3%80%90%E5%9B%BE%E5%83%8F%E5%A4%84%E7%90%86%E3%80%91/"/>
+          
+        </display>
+    </data>
+    </url>
+
+    
+  <url>
+    <loc>luxinglong.github.io/2017/04/24/%E3%80%90SLAM%E3%80%91%E7%A0%94%E7%A9%B6%E6%96%B9%E5%90%91%E6%8E%A2%E7%B4%A2/</loc>
+    <lastmod>2017-04-24T09:23:40.000Z</lastmod>
+    <data>
+        <display>
+        <title>【SLAM】研究方向探索</title>
+        <pubTime>2017-04-24T09:23:40.000Z</pubTime>
+        
+         
+           
+        </display>
+    </data>
+    </url>
+
+    
+  <url>
+    <loc>luxinglong.github.io/2017/04/24/%E3%80%90%E6%9C%BA%E5%99%A8%E8%A7%86%E8%A7%89%E3%80%91%E4%BB%BF%E5%B0%84%E5%8F%98%E6%8D%A2Affine%20Transformation/</loc>
+    <lastmod>2017-04-24T08:45:35.000Z</lastmod>
+    <data>
+        <display>
+        <title>【机器视觉】仿射变换Affine Transformation</title>
+        <pubTime>2017-04-24T08:43:16.000Z</pubTime>
+        
+        <tag>computer vision</tag>
+         
+         
+           
+             
+              <breadCrumb title="【机器视觉】" url="luxinglong.github.io/categories/%E3%80%90%E6%9C%BA%E5%99%A8%E8%A7%86%E8%A7%89%E3%80%91/"/>
+          
+        </display>
+    </data>
+    </url>
+
+    
+  <url>
+    <loc>luxinglong.github.io/2017/04/24/%E3%80%90%E6%95%B0%E6%8D%AE%E7%BB%93%E6%9E%84%E3%80%91hash%E8%A1%A8/</loc>
+    <lastmod>2017-04-24T08:31:08.000Z</lastmod>
+    <data>
+        <display>
+        <title>【数据结构】hash表</title>
+        <pubTime>2017-04-24T08:30:09.000Z</pubTime>
+        
+        <tag>数据结构</tag>
+         
+         
+           
+             
+              <breadCrumb title="【数据结构】" url="luxinglong.github.io/categories/%E3%80%90%E6%95%B0%E6%8D%AE%E7%BB%93%E6%9E%84%E3%80%91/"/>
           
         </display>
     </data>
@@ -119,9 +154,9 @@
         <title>【机器视觉】随机采样一致算法RANSAC</title>
         <pubTime>2017-04-19T09:05:58.000Z</pubTime>
         
-        <tag>Mutiple View Geometry</tag>
-         
         <tag>computer vision</tag>
+         
+        <tag>Mutiple View Geometry</tag>
          
          
            
@@ -141,9 +176,9 @@
         <title>【机器视觉】基础矩阵F和本征矩阵E</title>
         <pubTime>2017-04-19T05:11:54.000Z</pubTime>
         
-        <tag>Mutiple View Geometry</tag>
-         
         <tag>computer vision</tag>
+         
+        <tag>Mutiple View Geometry</tag>
          
          
            
