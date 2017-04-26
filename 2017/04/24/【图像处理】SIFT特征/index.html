@@ -93,7 +93,7 @@
 <meta property="og:url" content="luxinglong.github.io/2017/04/24/【图像处理】SIFT特征/index.html">
 <meta property="og:site_name" content="LB's Home">
 <meta property="og:description" content="0 引言Harris角点被誉为是局部特征领域中的第一篇文章，而SIFT特征则是最重要的一篇文章，现在的科研工作者正在向最后一篇文章努力。作为最重要的一篇论文提出的SIFT特征，之所以重要，是因为它具有尺度和旋转不变性，即使在仿射变换、视角变化、含有噪声和光照变化的条件下，特征匹配也具有鲁棒性。那么接下来，就分析一下，为什么SIFT具有这些特性？最后给出一些利用OpenCV实现的例子。">
-<meta property="og:updated_time" content="2017-04-26T03:10:50.000Z">
+<meta property="og:updated_time" content="2017-04-26T03:17:23.000Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="【图像处理】SIFT特征">
 <meta name="twitter:description" content="0 引言Harris角点被誉为是局部特征领域中的第一篇文章，而SIFT特征则是最重要的一篇文章，现在的科研工作者正在向最后一篇文章努力。作为最重要的一篇论文提出的SIFT特征，之所以重要，是因为它具有尺度和旋转不变性，即使在仿射变换、视角变化、含有噪声和光照变化的条件下，特征匹配也具有鲁棒性。那么接下来，就分析一下，为什么SIFT具有这些特性？最后给出一些利用OpenCV实现的例子。">
@@ -344,7 +344,7 @@
              <i class="fa fa-calendar-o"></i>
            </span>
            <span class="post-meta-item-text">字数统计:</span>
-           <span class="post-count">831(字)</span> 
+           <span class="post-count">893(字)</span> 
          </span>
          
          <span id="busuanzi_container_page_pv">
@@ -384,8 +384,7 @@
 <li>为每个关键点建立描述子，就是用一个特征向量来表示关键点，便于后面的相似度计算。</li>
 </ol>
 <p>下面对上述的四个步骤，进行详细分析：</p>
-<h2 id="1-1-尺度空间的极值检测"><a href="#1-1-尺度空间的极值检测" class="headerlink" title="1.1 尺度空间的极值检测"></a>1.1 尺度空间的极值检测</h2><p>首先，定义<strong>尺度空间</strong>:输入图像$I(x,y)$与高斯滤波器$G(x,y,\sigma)$卷积。如下式：<br>$$<br>L(x,y,\sigma)=G(x,y,\sigma)\ast I(x,y)<br>$$<br>其中，<em>号是卷积操作。高斯滤波器的形式为：<br>$$<br>G(x,y,\sigma)=\frac{1}{\sqrt{2\pi \sigma ^2}}e^{(x^2+y^2)/2\sigma ^2}<br>$$<br>为了提取兴趣点，需要回顾几个概念：<br><strong>梯度算子</strong>：$\nabla f=(\frac{\partial f}{\partial x_1},\cdots,\frac{\partial f}{\partial x_n})$<br><strong>拉普拉斯算子</strong>：$\triangle f=\nabla^2 f=\sum_{i=1}^n\frac{\partial^2f}{\partial x_i^2}$<br>下面推导LOG算子和DOG算子，并说明为什么GOG算子是LOG算子的近似。<br><strong>LOG算子</strong>：<br>Gaussian kernel of width $\sigma$:<br>$$<br>G(x,y,\sigma)=\frac{1}{\sqrt{2\pi \sigma ^2}}e^{-(x^2+y^2)/2\sigma ^2}<br>$$<br>利用高斯平滑一副图像：<br>$$<br>\triangle [G(x,y,\sigma)\ast f(x,y)]=[\triangle G(x,y,\sigma)\ast f(x,y)]=LOG\ast f(x,y)<br>$$<br>$$<br>\frac{\partial}{\partial x}G(x,y,\sigma)=\frac{\partial}{\partial x}e^{-(x^2+y^2)/2\sigma ^2}<br>=-\frac{x}{\sigma^2}^{-(x^2+y^2)/2\sigma ^2}<br>$$<br>$$<br>\frac{\partial^2}{\partial x^2}G(x,y,\sigma)=\frac{\partial}{\partial x}[-\frac{x}{\sigma^2}^{-(x^2+y^2)/2\sigma ^2}]<br>=\frac{x^2-\sigma^2}{\sigma^4}e^{-(x^2+y^2)/2\sigma ^2}<br>$$<br>$$<br>LOG\triangleq\triangle G(x,y,\sigma)=\frac{\partial^2}{\partial x^2}G(x,y,\sigma)+\frac{\partial^2}{\partial y^2}G(x,y,\sigma)=\frac{x^2+y^2-2\sigma^2}{\sigma^4}e^{-(x^2+y^2)/2\sigma ^2}<br>$$<br><em>*DOG算子</em></em>：<br>$$<br>G(x,y,\sigma_1)=\frac{1}{\sqrt{2\pi \sigma_1 ^2}}e^{(x^2+y^2)/2\sigma_1 ^2}<br>G(x,y,\sigma_2)=\frac{1}{\sqrt{2\pi \sigma_2 ^2}}e^{(x^2+y^2)/2\sigma_2 ^2}<br>g(x,y,\sigma_1)=G(x,y,\sigma_1)\ast f(x,y)<br>g(x,y,\sigma_2)=G(x,y,\sigma_2)\ast f(x,y)</p>
-<p>$$</p>
+<h2 id="1-1-尺度空间的极值检测"><a href="#1-1-尺度空间的极值检测" class="headerlink" title="1.1 尺度空间的极值检测"></a>1.1 尺度空间的极值检测</h2><p>首先，定义<strong>尺度空间</strong>:输入图像$I(x,y)$与高斯滤波器$G(x,y,\sigma)$卷积。如下式：<br>$$<br>L(x,y,\sigma)=G(x,y,\sigma)\ast I(x,y)<br>$$<br>其中，<em>号是卷积操作。高斯滤波器的形式为：<br>$$<br>G(x,y,\sigma)=\frac{1}{\sqrt{2\pi \sigma ^2}}e^{(x^2+y^2)/2\sigma ^2}<br>$$<br>为了提取兴趣点，需要回顾几个概念：<br><strong>梯度算子</strong>：$\nabla f=(\frac{\partial f}{\partial x_1},\cdots,\frac{\partial f}{\partial x_n})$<br><strong>拉普拉斯算子</strong>：$\triangle f=\nabla^2 f=\sum_{i=1}^n\frac{\partial^2f}{\partial x_i^2}$<br>下面推导LOG算子和DOG算子，并说明为什么GOG算子是LOG算子的近似。<br><strong>LOG算子</strong>：<br>Gaussian kernel of width $\sigma$:<br>$$<br>G(x,y,\sigma)=\frac{1}{\sqrt{2\pi \sigma ^2}}e^{-(x^2+y^2)/2\sigma ^2}<br>$$<br>利用高斯平滑一副图像：<br>$$<br>\triangle [G(x,y,\sigma)\ast f(x,y)]=[\triangle G(x,y,\sigma)\ast f(x,y)]=LOG\ast f(x,y)<br>$$<br>$$<br>\frac{\partial}{\partial x}G(x,y,\sigma)=\frac{\partial}{\partial x}e^{-(x^2+y^2)/2\sigma ^2}<br>=-\frac{x}{\sigma^2}^{-(x^2+y^2)/2\sigma ^2}<br>$$<br>$$<br>\frac{\partial^2}{\partial x^2}G(x,y,\sigma)=\frac{\partial}{\partial x}[-\frac{x}{\sigma^2}^{-(x^2+y^2)/2\sigma ^2}]<br>=\frac{x^2-\sigma^2}{\sigma^4}e^{-(x^2+y^2)/2\sigma ^2}<br>$$<br>$$<br>LOG\triangleq\triangle G(x,y,\sigma)=\frac{\partial^2}{\partial x^2}G(x,y,\sigma)+\frac{\partial^2}{\partial y^2}G(x,y,\sigma)=\frac{x^2+y^2-2\sigma^2}{\sigma^4}e^{-(x^2+y^2)/2\sigma ^2}<br>$$<br><em>*DOG算子</em></em>：<br>$$<br>G(x,y,\sigma_1)=\frac{1}{\sqrt{2\pi \sigma_1 ^2}}e^{(x^2+y^2)/2\sigma_1 ^2}<br>$$<br>$$<br>G(x,y,\sigma_2)=\frac{1}{\sqrt{2\pi \sigma_2 ^2}}e^{(x^2+y^2)/2\sigma_2 ^2}<br>$$<br>$$<br>g(x,y,\sigma_1)=G(x,y,\sigma_1)\ast f(x,y)<br>$$<br>$$<br>g(x,y,\sigma_2)=G(x,y,\sigma_2)\ast f(x,y)<br>$$<br>$$<br>g(x,y,\sigma_1)-g(x,y,\sigma_2)=(G(x,y,\sigma_1)-G(x,y,\sigma_2))\ast f(x,y)=DOG\ast f(x,y)<br>$$<br>$$<br>DOG=\triangleq G(x,y,\sigma_1)-G(x,y,\sigma_2)=\frac{1}{\sqrt{2\pi}}(\frac{1}{\sigma_1}e^{(x^2+y^2)/2\sigma_1 ^2}-\frac{1}{\sigma_2}e^{(x^2+y^2)/2\sigma_2 ^2)<br>$$</p>
 <h2 id="1-2-关键点的精确定位"><a href="#1-2-关键点的精确定位" class="headerlink" title="1.2 关键点的精确定位"></a>1.2 关键点的精确定位</h2><h2 id="1-3"><a href="#1-3" class="headerlink" title="1.3"></a>1.3</h2><h1 id="2"><a href="#2" class="headerlink" title="2"></a>2</h1><h1 id="参考文献"><a href="#参考文献" class="headerlink" title="参考文献"></a>参考文献</h1><p>[1] Lowe D G. Distinctive image features from scale-invariant keypoints[J]. International journal of computer vision, 2004, 60(2): 91-110.</p>
 
       
