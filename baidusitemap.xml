@@ -4,6 +4,28 @@
 
     
   <url>
+    <loc>luxinglong.github.io/2017/04/24/%E3%80%90SLAM%E3%80%91%E7%A0%94%E7%A9%B6%E6%96%B9%E5%90%91%E6%8E%A2%E7%B4%A2/</loc>
+    <lastmod>2017-10-19T01:52:40.000Z</lastmod>
+    <data>
+        <display>
+        <title>【SLAM】视觉SLAM和激光SLAM总结</title>
+        <pubTime>2017-04-24T09:23:40.000Z</pubTime>
+        
+        <tag>slam</tag>
+         
+        <tag>总结</tag>
+         
+         
+           
+             
+              <breadCrumb title="【SLAM】" url="luxinglong.github.io/categories/%E3%80%90SLAM%E3%80%91/"/>
+          
+        </display>
+    </data>
+    </url>
+
+    
+  <url>
     <loc>luxinglong.github.io/2017/10/19/%E3%80%90%E7%94%9F%E4%BA%A7%E5%B7%A5%E5%85%B7%E3%80%91hexo-github%E4%B8%AA%E4%BA%BA%E5%8D%9A%E5%AE%A2/</loc>
     <lastmod>2017-10-19T01:37:36.000Z</lastmod>
     <data>
@@ -62,21 +84,6 @@
              
               <breadCrumb title="【图像处理】" url="luxinglong.github.io/categories/%E3%80%90%E5%9B%BE%E5%83%8F%E5%A4%84%E7%90%86%E3%80%91/"/>
           
-        </display>
-    </data>
-    </url>
-
-    
-  <url>
-    <loc>luxinglong.github.io/2017/04/24/%E3%80%90SLAM%E3%80%91%E7%A0%94%E7%A9%B6%E6%96%B9%E5%90%91%E6%8E%A2%E7%B4%A2/</loc>
-    <lastmod>2017-04-24T09:23:40.000Z</lastmod>
-    <data>
-        <display>
-        <title>【SLAM】研究方向探索</title>
-        <pubTime>2017-04-24T09:23:40.000Z</pubTime>
-        
-         
-           
         </display>
     </data>
     </url>

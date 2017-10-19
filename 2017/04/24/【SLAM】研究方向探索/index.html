@@ -71,7 +71,7 @@
 <link href="/css/main.css?v=5.1.0" rel="stylesheet" type="text/css" />
 
 
-  <meta name="keywords" content="Hexo, NexT" />
+  <meta name="keywords" content="slam,总结," />
 
 
 
@@ -87,16 +87,19 @@
 
 
 
-<meta name="description" content="Computer Vision - Control and Navigation">
+<meta name="description" content="0 前言搞过半年的视觉SLAM，看了不少文章，跑了一些demo，但是苦于找不到入手点，所以放弃这部分的研究。但是为了不使看过的东西白看，特此总结下来。
+SLAM技术，按照传感器分类可以分为激光SLAM和视觉SLAM，而视觉SLAM根据使用的摄像头不同，又可以分为单目、双目、RGBSD、IMU+camera等种类。">
 <meta property="og:type" content="article">
-<meta property="og:title" content="【SLAM】研究方向探索">
+<meta property="og:title" content="【SLAM】视觉SLAM和激光SLAM总结">
 <meta property="og:url" content="luxinglong.github.io/2017/04/24/【SLAM】研究方向探索/index.html">
 <meta property="og:site_name" content="LB's Home">
-<meta property="og:description" content="Computer Vision - Control and Navigation">
-<meta property="og:updated_time" content="2017-04-24T09:23:40.000Z">
+<meta property="og:description" content="0 前言搞过半年的视觉SLAM，看了不少文章，跑了一些demo，但是苦于找不到入手点，所以放弃这部分的研究。但是为了不使看过的东西白看，特此总结下来。
+SLAM技术，按照传感器分类可以分为激光SLAM和视觉SLAM，而视觉SLAM根据使用的摄像头不同，又可以分为单目、双目、RGBSD、IMU+camera等种类。">
+<meta property="og:updated_time" content="2017-10-19T01:52:40.000Z">
 <meta name="twitter:card" content="summary">
-<meta name="twitter:title" content="【SLAM】研究方向探索">
-<meta name="twitter:description" content="Computer Vision - Control and Navigation">
+<meta name="twitter:title" content="【SLAM】视觉SLAM和激光SLAM总结">
+<meta name="twitter:description" content="0 前言搞过半年的视觉SLAM，看了不少文章，跑了一些demo，但是苦于找不到入手点，所以放弃这部分的研究。但是为了不使看过的东西白看，特此总结下来。
+SLAM技术，按照传感器分类可以分为激光SLAM和视觉SLAM，而视觉SLAM根据使用的摄像头不同，又可以分为单目、双目、RGBSD、IMU+camera等种类。">
 
 
 
@@ -130,7 +133,7 @@
 
 
 
-  <title> 【SLAM】研究方向探索 | LB's Home </title><!-- hexo-inject:begin --><!-- hexo-inject:end -->
+  <title> 【SLAM】视觉SLAM和激光SLAM总结 | LB's Home </title><!-- hexo-inject:begin --><!-- hexo-inject:end -->
 </head>
 
 <body itemscope itemtype="http://schema.org/WebPage" lang="zh-Hans">
@@ -290,7 +293,7 @@
             
             
               
-                【SLAM】研究方向探索
+                【SLAM】视觉SLAM和激光SLAM总结
               
             
           </h1>
@@ -316,13 +319,35 @@
           </span>
 
           
+            <span class="post-category" >
+            
+              <span class="post-meta-divider">|</span>
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-folder-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">分类于</span>
+              
+              
+                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
+                  <a href="/categories/【SLAM】/" itemprop="url" rel="index">
+                    <span itemprop="name">【SLAM】</span>
+                  </a>
+                </span>
+
+                
+                
+              
+            </span>
+          
 <span class="post-time">
 	   &nbsp; | &nbsp;
            <span class="post-meta-item-icon">
              <i class="fa fa-calendar-o"></i>
            </span>
            <span class="post-meta-item-text">字数统计:</span>
-           <span class="post-count">0(字)</span> 
+           <span class="post-count">126(字)</span> 
          </span>
          
          <span id="busuanzi_container_page_pv">
@@ -352,7 +377,10 @@
       
 
       
-        
+        <h1 id="0-前言"><a href="#0-前言" class="headerlink" title="0 前言"></a>0 前言</h1><p>搞过半年的视觉SLAM，看了不少文章，跑了一些demo，但是苦于找不到入手点，所以放弃这部分的研究。<br>但是为了不使看过的东西白看，特此总结下来。</p>
+<p>SLAM技术，按照传感器分类可以分为激光SLAM和视觉SLAM，而视觉SLAM根据使用的摄像头不同，又可以<br>分为单目、双目、RGBSD、IMU+camera等种类。</p>
+<a id="more"></a>
+<h1 id="1-视觉SLAM"><a href="#1-视觉SLAM" class="headerlink" title="1 视觉SLAM"></a>1 视觉SLAM</h1><h1 id="2-激光SLAM"><a href="#2-激光SLAM" class="headerlink" title="2 激光SLAM"></a>2 激光SLAM</h1><h1 id="3-总结"><a href="#3-总结" class="headerlink" title="3 总结"></a>3 总结</h1><h1 id="4-参考文献"><a href="#4-参考文献" class="headerlink" title="4 参考文献"></a>4 参考文献</h1>
       
     </div>
 
@@ -378,6 +406,14 @@
     </div>
 
     <footer class="post-footer">
+      
+        <div class="post-tags">
+          
+            <a href="/tags/slam/" rel="tag"># slam</a>
+          
+            <a href="/tags/总结/" rel="tag"># 总结</a>
+          
+        </div>
       
 
       
@@ -447,8 +483,17 @@
       
 
       
+        <ul class="sidebar-nav motion-element">
+          <li class="sidebar-nav-toc sidebar-nav-active" data-target="post-toc-wrap" >
+            文章目录
+          </li>
+          <li class="sidebar-nav-overview" data-target="site-overview">
+            站点概览
+          </li>
+        </ul>
+      
 
-      <section class="site-overview sidebar-panel sidebar-panel-active">
+      <section class="site-overview sidebar-panel">
         <div class="site-author motion-element" itemprop="author" itemscope itemtype="http://schema.org/Person">
           <img class="site-author-image" itemprop="image"
                src="/images/avatar.jpg"
@@ -474,7 +519,7 @@
             
             <div class="site-state-item site-state-categories">
               <a href="/categories/index.html">
-                <span class="site-state-item-count">9</span>
+                <span class="site-state-item-count">10</span>
                 <span class="site-state-item-name">分类</span>
               </a>
             </div>
@@ -485,7 +530,7 @@
             
             <div class="site-state-item site-state-tags">
               <a href="/tags/index.html">
-                <span class="site-state-item-count">18</span>
+                <span class="site-state-item-count">20</span>
                 <span class="site-state-item-name">标签</span>
               </a>
             </div>
@@ -544,6 +589,22 @@
 
       </section>
 
+      
+      <!--noindex-->
+        <section class="post-toc-wrap motion-element sidebar-panel sidebar-panel-active">
+          <div class="post-toc">
+
+            
+              
+            
+
+            
+              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-1"><a class="nav-link" href="#0-前言"><span class="nav-number">1.</span> <span class="nav-text">0 前言</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#1-视觉SLAM"><span class="nav-number">2.</span> <span class="nav-text">1 视觉SLAM</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#2-激光SLAM"><span class="nav-number">3.</span> <span class="nav-text">2 激光SLAM</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#3-总结"><span class="nav-number">4.</span> <span class="nav-text">3 总结</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#4-参考文献"><span class="nav-number">5.</span> <span class="nav-text">4 参考文献</span></a></li></ol></div>
+            
+
+          </div>
+        </section>
+      <!--/noindex-->
       
 
       
