@@ -4,6 +4,28 @@
 
     
   <url>
+    <loc>luxinglong.github.io/2017/10/19/%E3%80%90%E5%BC%BA%E5%8C%96%E5%AD%A6%E4%B9%A0%E3%80%91%E5%AD%A6%E4%B9%A0%E8%B7%AF%E7%BA%BF/</loc>
+    <lastmod>2017-10-19T02:43:42.000Z</lastmod>
+    <data>
+        <display>
+        <title>【强化学习】学习路线</title>
+        <pubTime>2017-10-19T02:02:14.000Z</pubTime>
+        
+        <tag>RL</tag>
+         
+        <tag>robotics</tag>
+         
+         
+           
+             
+              <breadCrumb title="【强化学习】【机器学习】" url="luxinglong.github.io/categories/%E3%80%90%E5%BC%BA%E5%8C%96%E5%AD%A6%E4%B9%A0%E3%80%91%E3%80%90%E6%9C%BA%E5%99%A8%E5%AD%A6%E4%B9%A0%E3%80%91/"/>
+          
+        </display>
+    </data>
+    </url>
+
+    
+  <url>
     <loc>luxinglong.github.io/2017/04/24/%E3%80%90SLAM%E3%80%91%E7%A0%94%E7%A9%B6%E6%96%B9%E5%90%91%E6%8E%A2%E7%B4%A2/</loc>
     <lastmod>2017-10-19T01:52:40.000Z</lastmod>
     <data>
@@ -53,9 +75,9 @@
         <title>【机器人学】从零搭建ROS差速小车(1)</title>
         <pubTime>2017-10-18T16:07:58.000Z</pubTime>
         
-        <tag>ros</tag>
-         
         <tag>robotics</tag>
+         
+        <tag>ros</tag>
          
          
            
