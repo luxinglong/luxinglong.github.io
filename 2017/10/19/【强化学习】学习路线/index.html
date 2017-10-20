@@ -89,26 +89,23 @@
 
 <meta name="description" content="0 引言项目需要，所以学习强化学习。强化学习以及深度强化学习可以使机器人变得更加智能。总体的学习路线
 
-理论部分学习
-
-实践部分">
+理论部分学习首先学习强化学习的基本概念，然后慢慢学习强化学习解决问题的思路，最后学习强化学习的基本处理方法。
+实践部分主要开展基于强化学习环境OpenAI gym和深度学习框架mxnet和tensorflow的仿真试验。首先，研究几个案例，包括倒立摆模型和找金币棋盘游戏，学习他们的环境和学习策略">
 <meta property="og:type" content="article">
-<meta property="og:title" content="【强化学习】学习路线">
+<meta property="og:title" content="【强化学习】基本概念">
 <meta property="og:url" content="luxinglong.github.io/2017/10/19/【强化学习】学习路线/index.html">
 <meta property="og:site_name" content="LB's Home">
 <meta property="og:description" content="0 引言项目需要，所以学习强化学习。强化学习以及深度强化学习可以使机器人变得更加智能。总体的学习路线
 
-理论部分学习
-
-实践部分">
-<meta property="og:updated_time" content="2017-10-19T02:43:42.000Z">
+理论部分学习首先学习强化学习的基本概念，然后慢慢学习强化学习解决问题的思路，最后学习强化学习的基本处理方法。
+实践部分主要开展基于强化学习环境OpenAI gym和深度学习框架mxnet和tensorflow的仿真试验。首先，研究几个案例，包括倒立摆模型和找金币棋盘游戏，学习他们的环境和学习策略">
+<meta property="og:updated_time" content="2017-10-20T11:30:26.000Z">
 <meta name="twitter:card" content="summary">
-<meta name="twitter:title" content="【强化学习】学习路线">
+<meta name="twitter:title" content="【强化学习】基本概念">
 <meta name="twitter:description" content="0 引言项目需要，所以学习强化学习。强化学习以及深度强化学习可以使机器人变得更加智能。总体的学习路线
 
-理论部分学习
-
-实践部分">
+理论部分学习首先学习强化学习的基本概念，然后慢慢学习强化学习解决问题的思路，最后学习强化学习的基本处理方法。
+实践部分主要开展基于强化学习环境OpenAI gym和深度学习框架mxnet和tensorflow的仿真试验。首先，研究几个案例，包括倒立摆模型和找金币棋盘游戏，学习他们的环境和学习策略">
 
 
 
@@ -142,7 +139,7 @@
 
 
 
-  <title> 【强化学习】学习路线 | LB's Home </title><!-- hexo-inject:begin --><!-- hexo-inject:end -->
+  <title> 【强化学习】基本概念 | LB's Home </title><!-- hexo-inject:begin --><!-- hexo-inject:end -->
 </head>
 
 <body itemscope itemtype="http://schema.org/WebPage" lang="zh-Hans">
@@ -302,7 +299,7 @@
             
             
               
-                【强化学习】学习路线
+                【强化学习】基本概念
               
             
           </h1>
@@ -340,8 +337,8 @@
               
               
                 <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
-                  <a href="/categories/【强化学习】【机器学习】/" itemprop="url" rel="index">
-                    <span itemprop="name">【强化学习】【机器学习】</span>
+                  <a href="/categories/【强化学习】/" itemprop="url" rel="index">
+                    <span itemprop="name">【强化学习】</span>
                   </a>
                 </span>
 
@@ -356,7 +353,7 @@
              <i class="fa fa-calendar-o"></i>
            </span>
            <span class="post-meta-item-text">字数统计:</span>
-           <span class="post-count">261(字)</span> 
+           <span class="post-count">459(字)</span> 
          </span>
          
          <span id="busuanzi_container_page_pv">
@@ -388,19 +385,17 @@
       
         <h1 id="0-引言"><a href="#0-引言" class="headerlink" title="0 引言"></a>0 引言</h1><p>项目需要，所以学习强化学习。强化学习以及深度强化学习可以使机器人变得更加智能。<br>总体的学习路线</p>
 <ol>
-<li><p>理论部分学习</p>
-</li>
-<li><p>实践部分</p>
-</li>
+<li>理论部分学习<br>首先学习强化学习的基本概念，然后慢慢学习强化学习解决问题的思路，最后学习强化学习的基本处理方法。</li>
+<li>实践部分<br>主要开展基于强化学习环境OpenAI gym和深度学习框架mxnet和tensorflow的仿真试验。<br>首先，研究几个案例，包括倒立摆模型和找金币棋盘游戏，学习他们的环境和学习策略。然后，对避障算法进行建模，并设计仿真环境。最后，避障算法进行策略学习和试验。</li>
 </ol>
 <a id="more"></a>
-<h1 id="1-强化学习的基本概念"><a href="#1-强化学习的基本概念" class="headerlink" title="1 强化学习的基本概念"></a>1 强化学习的基本概念</h1><p>一个关于强化学习的智能体要包含策略、值函数和环境模型三个部分。<br>策略：是状态空间到动作空间的映射</p>
-<p>值函数：未来回报值的期望，用来衡量当前状态的好坏</p>
+<h1 id="1-强化学习的基本概念"><a href="#1-强化学习的基本概念" class="headerlink" title="1 强化学习的基本概念"></a>1 强化学习的基本概念</h1><p>一个关于强化学习的智能体要包含策略、值函数和环境模型三个部分。<br>策略：是状态空间到动作空间的映射，即$\pi:(x)=a$<br>值函数：未来回报值的期望，用来衡量当前状态的好坏 $</p>
 <p>模型：环境状态的转移概率分布</p>
 <p>智能体和环境：<br>智能体的状态：$S^{a}_{t}$智能体内部的状态，用来决定自己怎么采取下一步的动作<br>环境的状态：$S^{e}_{t}$</p>
 <p>马尔可夫状态：当$S_{t}$满足，$\mathbb{P}[S_{t+1}|S_{t}]=\mathbb{P}[S_{t+1}|S_{1},\cdots,S_{t}]$</p>
 <p>预测和控制：<br>prediction: 评估未来，在给定的策略下<br>control: 优化未来，选出最好的策略</p>
-<h1 id="2-为什么要加“深度”？"><a href="#2-为什么要加“深度”？" class="headerlink" title="2 为什么要加“深度”？"></a>2 为什么要加“深度”？</h1>
+<h1 id="2-为什么要加“深度”？"><a href="#2-为什么要加“深度”？" class="headerlink" title="2 为什么要加“深度”？"></a>2 为什么要加“深度”？</h1><p>因为一般的问题，状态空间和动作空间都是离散的，可以通过简单的映射关系找到值函数，但是对于连续的状态空间和动作k n g</p>
+
       
     </div>
 
@@ -539,7 +534,7 @@
             
             <div class="site-state-item site-state-categories">
               <a href="/categories/index.html">
-                <span class="site-state-item-count">11</span>
+                <span class="site-state-item-count">12</span>
                 <span class="site-state-item-name">分类</span>
               </a>
             </div>
