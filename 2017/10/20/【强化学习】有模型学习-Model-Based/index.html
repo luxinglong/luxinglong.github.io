@@ -92,7 +92,7 @@
 <meta property="og:url" content="luxinglong.github.io/2017/10/20/【强化学习】有模型学习-Model-Based/index.html">
 <meta property="og:site_name" content="LB's Home">
 <meta property="og:image" content="http://on99gq8w5.bkt.clouddn.com/policy_iteration.png?imageMogr2/thumbnail/500x400">
-<meta property="og:updated_time" content="2017-10-20T13:21:23.000Z">
+<meta property="og:updated_time" content="2017-10-20T13:24:45.000Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="【强化学习】有模型学习(Model-Based)">
 <meta name="twitter:image" content="http://on99gq8w5.bkt.clouddn.com/policy_iteration.png?imageMogr2/thumbnail/500x400">
@@ -343,7 +343,7 @@
              <i class="fa fa-calendar-o"></i>
            </span>
            <span class="post-meta-item-text">字数统计:</span>
-           <span class="post-count">666(字)</span> 
+           <span class="post-count">745(字)</span> 
          </span>
          
          <span id="busuanzi_container_page_pv">
@@ -383,8 +383,9 @@
 <p>但是，如果写成这样，给定一个MDP和策略$\pi$，怎么去计算相应的值函数呢？显然，不太容易。所以这里采用了递归的形式，把这个问题分解成小问题。由此便可以得到<strong>Bellman等式</strong>。<br>$$<br>V^{\pi}_{T}(x)=\sum_{a\in A}\pi(x,a)\sum_{x^{\prime}\in X}P^{a}_{x\to x^{\prime}}(\frac{1}{T}R^{a}_{x\to x^{\prime}}+\frac{T-1}{T}V^{\pi}_{T-1}(x^{\prime}))<br>$$<br>$$<br>V^{\pi}_{\gamma}(x)=\sum_{a\in A}\pi(x,a)\sum_{x^{\prime}\in X}P^{a}_{x\to x^{\prime}}(R^{a}_{x\to x^{\prime}}+\gamma V^{\pi}_{\gamma}(x^{\prime}))<br>$$</p>
 <p>注意：一个策略对应一个值函数，</p>
 <h1 id="2-策略改进"><a href="#2-策略改进" class="headerlink" title="2 策略改进"></a>2 策略改进</h1><p>如何判断策略改进呢？那就是改进后的策略对应的值函数优于改进前的策略。</p>
-<p>$$<br>\pi^{\prime}(x)=\underbrace{argmax}_{a\in A} q_{\pi}(x,a)<br>$$<br>就是说，在现有的策略基础上，对每一个状态，求使该状态下动作-状态值函数获得最大的动作，作为新的策略。这个方法也被成为贪婪法。<br>那么怎么证明$\pi^{\prime}$优于$\pi$呢？<br>$$<br>q_{\pi}(x,\pi^{\prime}(x))=\underbrace{max}_{a\in A}q_{\pi}(x,a)\ge q_{\pi}(x,\pi(x))=V_{\pi}(x)<br>$$</p>
-<h1 id="3-策略迭代和值迭代"><a href="#3-策略迭代和值迭代" class="headerlink" title="3 策略迭代和值迭代"></a>3 策略迭代和值迭代</h1><h1 id="参考文献"><a href="#参考文献" class="headerlink" title="参考文献"></a>参考文献</h1><p>[1] 周志华,《机器学习》,清华大学出版社,2016<br>[2] David Silver, reinforcement learning lecture 2 and 3</p>
+<p>$$<br>\pi^{\prime}(x)=\underbrace{argmax}_{a\in A} q_{\pi}(x,a)<br>$$<br>就是说，在现有的策略基础上，对每一个状态，求使该状态下动作-状态值函数获得最大的动作，作为新的策略。这个方法也被成为贪婪法。<br>那么怎么证明$\pi^{\prime}$优于$\pi$呢？<br>$$<br>q_{\pi}(x,\pi^{\prime}(x))=\underbrace{max}_{a\in A}q_{\pi}(x,a)\ge q_{\pi}(x,\pi(x))=V_{\pi}(x)<br>$$<br>所以说，策略改进后对应的值函数优于改进前的值函数，$V_{\pi^{\prime}}(x)\ge V_{\pi}$</p>
+<h1 id="3-策略迭代和值迭代"><a href="#3-策略迭代和值迭代" class="headerlink" title="3 策略迭代和值迭代"></a>3 策略迭代和值迭代</h1><p>如文章开头的图示，策略迭代就是从一个初始的策略开始，不断进行策略评估和策略改进，直到收敛到最优的策略为止。</p>
+<h1 id="参考文献"><a href="#参考文献" class="headerlink" title="参考文献"></a>参考文献</h1><p>[1] 周志华,《机器学习》,清华大学出版社,2016<br>[2] David Silver, reinforcement learning lecture 2 and 3</p>
 
       
     </div>
