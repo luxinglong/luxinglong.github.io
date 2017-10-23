@@ -99,7 +99,7 @@
 
 理论部分学习首先学习强化学习的基本概念，然后慢慢学习强化学习解决问题的思路，最后学习强化学习的基本处理方法。
 实践部分主要开展基于强化学习环境OpenAI gym和深度学习框架mxnet和tensorflow的仿真试验。首先，研究几个案例，包括倒立摆模型和找金币棋盘游戏，学习他们的环境和学习策略">
-<meta property="og:updated_time" content="2017-10-23T03:21:24.000Z">
+<meta property="og:updated_time" content="2017-10-23T03:24:32.000Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="【强化学习】基本概念">
 <meta name="twitter:description" content="0 引言项目需要，所以学习强化学习。强化学习以及深度强化学习可以使机器人变得更加智能。总体的学习路线
@@ -353,7 +353,7 @@
              <i class="fa fa-calendar-o"></i>
            </span>
            <span class="post-meta-item-text">字数统计:</span>
-           <span class="post-count">682(字)</span> 
+           <span class="post-count">680(字)</span> 
          </span>
          
          <span id="busuanzi_container_page_pv">
@@ -394,10 +394,10 @@
 <p>智能体和环境：<br>智能体的状态：$S^{a}_{t}$智能体内部的状态，用来决定自己怎么采取下一步的动作<br>环境的状态：$S^{e}_{t}$</p>
 <p>马尔可夫状态：当$S_{t}$满足，$\mathbb{P}[S_{t+1}|S_{t}]=\mathbb{P}[S_{t+1}|S_{1},\cdots,S_{t}]$</p>
 <p>预测和控制：<br>prediction: 评估未来，在给定的策略下 策略评估<br>control: 优化未来，选出最好的策略    策略改进： 策略迭代、值迭代</p>
-<p>最优值函数：<br>$$<br>v_{\ast}(x)=\max \limits_{\pi}v_{\pi}(x)<br>$$<br>$$<br>q_{\ast}(x,a)=\max \limits_{\pi}q_{\pi}(x,a)<br>$$<br>MDP或者说强化学习的目标就是获得最优值函数。因为有了值函数，便可以得到最优策略。<br>最优策略：<br>首先，怎么定义一个策略比另外一个策略好呢？<br>$$<br>\pi \ge \pi^{\prime}, if\quad v_{\pi}(x) \ge v_{\pi^{\prime}}(x), \forall x<br>$$<br>然后，MDP的性质：</p>
+<p>最优值函数：<br>$$<br>v_{\ast}(x)=\max \limits_{\pi}v_{\pi}(x)<br>q_{\ast}(x,a)=\max \limits_{\pi}q_{\pi}(x,a)<br>$$<br>MDP或者说强化学习的目标就是获得最优值函数。因为有了值函数，便可以得到最优策略。<br>最优策略：<br>首先，怎么定义一个策略比另外一个策略好呢？<br>$$<br>\pi \ge \pi^{\prime}, if\quad v_{\pi}(x) \ge v_{\pi^{\prime}}(x), \forall x<br>$$<br>然后，MDP的性质：</p>
 <ol>
 <li>一个MDP问题，至少存在一个最优策略$\pi_{\star}$，好于或等于其他策略$\pi_{\ast} \ge \pi, \ge \pi$</li>
-<li>所有的最优策略都实现最优的值函数<br>最后，在最优值函数的前提下，如何获得最优策略呢？<br>$$<br>\begin{equation}<br>\pi_{\ast}(a\mid x)=<br>\begin{cases}<br>1&amp; \text{if\quad a=arg\max \limits_{a \in A}q_{\ast}(s, a)} \\<br>0&amp; \text{otherwise}<br>\end{cases}<br>\end{equation}<br>$$</li>
+<li>所有的最优策略都实现最优的值函数<br>最后，在最优值函数的前提下，如何获得最优策略呢？<br>$$<br>\begin{equation<em>}<br>\pi_{\ast}(a\mid x)=<br>\begin{cases}<br>1&amp; \text{if a=\max \limits_{a \in A}q_{\ast}(s, a)} \\<br>0&amp; \text{otherwise}<br>\end{cases}<br>\end{equation</em>}<br>$$</li>
 </ol>
 <h1 id="2-为什么要加“深度”？"><a href="#2-为什么要加“深度”？" class="headerlink" title="2 为什么要加“深度”？"></a>2 为什么要加“深度”？</h1><p>因为一般的问题，状态空间和动作空间都是离散的，可以通过简单的映射关系找到值函数，但是对于连续的状态空间和动作k n g</p>
 
