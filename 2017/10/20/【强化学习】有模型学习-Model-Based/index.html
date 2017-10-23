@@ -92,7 +92,8 @@
 <meta property="og:url" content="luxinglong.github.io/2017/10/20/【强化学习】有模型学习-Model-Based/index.html">
 <meta property="og:site_name" content="LB's Home">
 <meta property="og:image" content="http://on99gq8w5.bkt.clouddn.com/policy_iteration.png?imageMogr2/thumbnail/500x400">
-<meta property="og:updated_time" content="2017-10-20T14:33:52.000Z">
+<meta property="og:image" content="http://on99gq8w5.bkt.clouddn.com/policy_iteration.png?imageMogr2/thumbnail/500x400">
+<meta property="og:updated_time" content="2017-10-23T08:08:40.000Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="【强化学习】有模型学习(Model-Based)">
 <meta name="twitter:image" content="http://on99gq8w5.bkt.clouddn.com/policy_iteration.png?imageMogr2/thumbnail/500x400">
@@ -343,7 +344,7 @@
              <i class="fa fa-calendar-o"></i>
            </span>
            <span class="post-meta-item-text">字数统计:</span>
-           <span class="post-count">858(字)</span> 
+           <span class="post-count">862(字)</span> 
          </span>
          
          <span id="busuanzi_container_page_pv">
@@ -376,6 +377,7 @@
         <img src="http://on99gq8w5.bkt.clouddn.com/policy_iteration.png?imageMogr2/thumbnail/500x400" class="[iteration]">
 <a id="more"></a>
 <h1 id="0-引言"><a href="#0-引言" class="headerlink" title="0 引言"></a>0 引言</h1><p><strong>有模型学习</strong>，通常的说法是智能体(agent)对环境进行了建模，可以不观察环境，就能模拟出与环境相同或近似的情况。更容易理解的说法是，对任意状态$x, x^{\prime}$和动作$a$，在$x$状态下执行动作$a$转移到$x^{\prime}$的概率$P^{a}_{x\to x^{\prime}}$是已知的，该转移带来的奖赏$R^{a}_{x\to x^{\prime}}$也是已知的。</p>
+<p>举个例子：<br><img src="http://on99gq8w5.bkt.clouddn.com/policy_iteration.png?imageMogr2/thumbnail/500x400" class="[iteration]"></p>
 <p>在有模型的情况下，下面将要讨论，如何对一个策略的好坏进行评估，那么就会引出值函数和Bellman方程；如果一个策略不是很好，那么如何进行改进？策略迭代和值迭代就会出现。</p>
 <p><strong>马尔可夫决策过程</strong>，MDP=<x,a,p,r,$\gamma$></x,a,p,r,$\gamma$></p>
 <h1 id="1-策略评价"><a href="#1-策略评价" class="headerlink" title="1 策略评价"></a>1 策略评价</h1><p>如果现在有个策略$\pi$，那么如何评价该策略是好是坏呢？一般是估计该策略带来的期望累积奖赏。也就是值函数，下面定义值函数，值函数有两种定义方式：</p>
