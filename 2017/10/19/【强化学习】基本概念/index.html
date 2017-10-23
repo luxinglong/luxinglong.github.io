@@ -99,7 +99,7 @@
 
 理论部分学习首先学习强化学习的基本概念，然后慢慢学习强化学习解决问题的思路，最后学习强化学习的基本处理方法。
 实践部分主要开展基于强化学习环境OpenAI gym和深度学习框架mxnet和tensorflow的仿真试验。首先，研究几个案例，包括倒立摆模型和找金币棋盘游戏，学习他们的环境和学习策略">
-<meta property="og:updated_time" content="2017-10-23T05:46:00.000Z">
+<meta property="og:updated_time" content="2017-10-23T06:00:09.000Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="【强化学习】基本概念">
 <meta name="twitter:description" content="0 引言项目需要，所以学习强化学习。强化学习以及深度强化学习可以使机器人变得更加智能。总体的学习路线
@@ -353,7 +353,7 @@
              <i class="fa fa-calendar-o"></i>
            </span>
            <span class="post-meta-item-text">字数统计:</span>
-           <span class="post-count">783(字)</span> 
+           <span class="post-count">834(字)</span> 
          </span>
          
          <span id="busuanzi_container_page_pv">
@@ -400,9 +400,11 @@
 <li>一个MDP问题，至少存在一个最优策略$\pi_{\star}$，好于或等于其他策略$\pi_{\ast} \ge \pi, \ge \pi$</li>
 <li>所有的最优策略都实现最优的值函数</li>
 </ul>
-<p>最后，在最优值函数的前提下，如何获得最优策略呢？<br>$$<br>[<br>\pi_{\ast}(a\mid x)=<br>\begin{cases}<br>1&amp; \max \limits_{a \in A}q_{\ast}(x, a)\\<br>0&amp; \text{otherwise}<br>\end{cases}<br>]<br>$$</p>
+<p>最后，在最优值函数的前提下，如何获得最优策略呢？最大化动作-状态值函数。<br>$$<br>[<br>\pi_{\ast}(a\mid x)=<br>\begin{cases}<br>1&amp; \max \limits_{a \in A}q_{\ast}(x, a)\\<br>0&amp; \text{otherwise}<br>\end{cases}<br>]<br>$$</p>
 <p>既然说所有的MDP问题，都是在求最优值函数，那么如何求解呢？这里就需要引入最优Bellman等式。<br>$$<br>v_{\ast}(x)=\max \limits_a q_{\ast}(x,a) \\<br>q_{\ast}(x,a)=R^a_x+\gamma sum_{x^{\prime}\in X}P^a_{ss^{\prime}}v_{\ast}(x^{\prime}) \\<br>v_{\ast}=\max \limits_a R^a_x+\gamma sum_{x^{\prime}\in X}P^a_{xx^{\prime}}v_{\ast}(x^{\prime}) \\<br>q_{\ast}(x,a)=R^a_x+\gamma sum_{x^{\prime}\in X}P^a_{xx^{\prime}} \max \limits_{a^{\prime}}q_{\ast}(x^{\prime},a^{\prime})<br>$$</p>
-<h1 id="2-为什么要加“深度”？"><a href="#2-为什么要加“深度”？" class="headerlink" title="2 为什么要加“深度”？"></a>2 为什么要加“深度”？</h1><p>因为一般的问题，状态空间和动作空间都是离散的，可以通过简单的映射关系找到值函数，但是对于连续的状态空间和动作k n g</p>
+<p>在最优Bellman等式的基础上，可以采用迭代的方式求解，如值迭代、策略迭代、Q-learning和Sarsa等方法。</p>
+<h1 id="2-为什么要加“深度”？"><a href="#2-为什么要加“深度”？" class="headerlink" title="2 为什么要加“深度”？"></a>2 为什么要加“深度”？</h1><p>因为一般的问题，状态空间和动作空间都是离散的，可以通过简单的映射关系找到值函数，但是对于连续的动作空间</p>
+<h1 id="3-参考文献"><a href="#3-参考文献" class="headerlink" title="3 参考文献"></a>3 参考文献</h1><p>[1] David Silver, reinforcement learning lecture 2</p>
 
       
     </div>
@@ -622,7 +624,7 @@
             
 
             
-              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-1"><a class="nav-link" href="#0-引言"><span class="nav-number">1.</span> <span class="nav-text">0 引言</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#1-强化学习的基本概念"><span class="nav-number">2.</span> <span class="nav-text">1 强化学习的基本概念</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#2-为什么要加“深度”？"><span class="nav-number">3.</span> <span class="nav-text">2 为什么要加“深度”？</span></a></li></ol></div>
+              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-1"><a class="nav-link" href="#0-引言"><span class="nav-number">1.</span> <span class="nav-text">0 引言</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#1-强化学习的基本概念"><span class="nav-number">2.</span> <span class="nav-text">1 强化学习的基本概念</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#2-为什么要加“深度”？"><span class="nav-number">3.</span> <span class="nav-text">2 为什么要加“深度”？</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#3-参考文献"><span class="nav-number">4.</span> <span class="nav-text">3 参考文献</span></a></li></ol></div>
             
 
           </div>
