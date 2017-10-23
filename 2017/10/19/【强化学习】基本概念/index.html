@@ -99,7 +99,7 @@
 
 理论部分学习首先学习强化学习的基本概念，然后慢慢学习强化学习解决问题的思路，最后学习强化学习的基本处理方法。
 实践部分主要开展基于强化学习环境OpenAI gym和深度学习框架mxnet和tensorflow的仿真试验。首先，研究几个案例，包括倒立摆模型和找金币棋盘游戏，学习他们的环境和学习策略">
-<meta property="og:updated_time" content="2017-10-23T03:19:25.000Z">
+<meta property="og:updated_time" content="2017-10-23T03:21:24.000Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="【强化学习】基本概念">
 <meta name="twitter:description" content="0 引言项目需要，所以学习强化学习。强化学习以及深度强化学习可以使机器人变得更加智能。总体的学习路线
@@ -397,7 +397,7 @@
 <p>最优值函数：<br>$$<br>v_{\ast}(x)=\max \limits_{\pi}v_{\pi}(x)<br>$$<br>$$<br>q_{\ast}(x,a)=\max \limits_{\pi}q_{\pi}(x,a)<br>$$<br>MDP或者说强化学习的目标就是获得最优值函数。因为有了值函数，便可以得到最优策略。<br>最优策略：<br>首先，怎么定义一个策略比另外一个策略好呢？<br>$$<br>\pi \ge \pi^{\prime}, if\quad v_{\pi}(x) \ge v_{\pi^{\prime}}(x), \forall x<br>$$<br>然后，MDP的性质：</p>
 <ol>
 <li>一个MDP问题，至少存在一个最优策略$\pi_{\star}$，好于或等于其他策略$\pi_{\ast} \ge \pi, \ge \pi$</li>
-<li>所有的最优策略都实现最优的值函数<br>最后，在最优值函数的前提下，如何获得最优策略呢？<br>$$<br>\begin{equation}<br>\pi_{\ast}(a\mid x)=<br>\begin(cases)<br>1&amp; \text{if\quad a=arg\max \limits_{a \in A}q_{\ast}(s, a)} \\<br>0&amp; \text{otherwise}<br>\end(cases)<br>\end{equation}<br>$$</li>
+<li>所有的最优策略都实现最优的值函数<br>最后，在最优值函数的前提下，如何获得最优策略呢？<br>$$<br>\begin{equation}<br>\pi_{\ast}(a\mid x)=<br>\begin{cases}<br>1&amp; \text{if\quad a=arg\max \limits_{a \in A}q_{\ast}(s, a)} \\<br>0&amp; \text{otherwise}<br>\end{cases}<br>\end{equation}<br>$$</li>
 </ol>
 <h1 id="2-为什么要加“深度”？"><a href="#2-为什么要加“深度”？" class="headerlink" title="2 为什么要加“深度”？"></a>2 为什么要加“深度”？</h1><p>因为一般的问题，状态空间和动作空间都是离散的，可以通过简单的映射关系找到值函数，但是对于连续的状态空间和动作k n g</p>
 
