@@ -94,7 +94,7 @@
 <meta property="og:site_name" content="LB's Home">
 <meta property="og:description" content="0 引言在现实的强化学习任务中，环境的模型，也就是状态转移概率、奖赏函数不易得知，因此需要进行免模型学习。">
 <meta property="og:image" content="http://on99gq8w5.bkt.clouddn.com/mc.png?imageMogr2/thumbnail/400x500">
-<meta property="og:updated_time" content="2017-10-25T09:10:23.000Z">
+<meta property="og:updated_time" content="2017-10-25T11:16:49.000Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="【强化学习】免模型学习(Model-Free)">
 <meta name="twitter:description" content="0 引言在现实的强化学习任务中，环境的模型，也就是状态转移概率、奖赏函数不易得知，因此需要进行免模型学习。">
@@ -346,7 +346,7 @@
              <i class="fa fa-calendar-o"></i>
            </span>
            <span class="post-meta-item-text">字数统计:</span>
-           <span class="post-count">1,129(字)</span> 
+           <span class="post-count">1,187(字)</span> 
          </span>
          
          <span id="busuanzi_container_page_pv">
@@ -405,7 +405,8 @@
 <h3 id="1-2-2-TD-lambda"><a href="#1-2-2-TD-lambda" class="headerlink" title="1.2.2 TD$(\lambda)$"></a>1.2.2 TD$(\lambda)$</h3><h1 id="2-控制"><a href="#2-控制" class="headerlink" title="2 控制"></a>2 控制</h1><h2 id="2-1-蒙特卡罗"><a href="#2-1-蒙特卡罗" class="headerlink" title="2.1 蒙特卡罗"></a>2.1 蒙特卡罗</h2><img src="http://on99gq8w5.bkt.clouddn.com/mc.png?imageMogr2/thumbnail/400x500" class="[mc]">
 <p>这个算法需要记录两个值，一个是每个动作-状态对出现的次数，另外一个是每个状态的动作-状态值函数。<br>策略评估使用<br>$$<br>V(x_t) \gets V(x_t)+\frac{1}{N(x_t)}(G_t-V(x_t)) \\<br>其中，N(x_t) \gets N(x_t)+1<br>$$<br>对于，返回值$G_t$，使用。。。。来计算。</p>
 <p>策略提升环节，使用$\epsilon -$贪婪法<br>$$<br>\epsilon \gets \frac{1}{s} \\<br>\pi \gets \epsilon - greedy(Q)<br>$$<br>最终，动作-状态值函数会收敛到最优，$Q(x,a) \to q_{\ast}(x,a)$.</p>
-<h2 id="2-2-Sarsa"><a href="#2-2-Sarsa" class="headerlink" title="2.2 Sarsa"></a>2.2 Sarsa</h2><p>$$<br>Q(X,A)\gets Q(X,A)+\alpha (R+\gamma Q(X^{\prime},A^{\prime})-Q(X,A))<br>$$</p>
+<h2 id="2-2-Sarsa"><a href="#2-2-Sarsa" class="headerlink" title="2.2 Sarsa"></a>2.2 Sarsa</h2><p>在评估策略时，TD相比MC有很多优点，比如说小方差、在线学习、根据不完整的episode学习等。同样的在控制问题上，也可以利用TD的这些优点，如Sarsa算法。</p>
+<p>$$<br>Q(X,A)\gets Q(X,A)+\alpha (R+\gamma Q(X^{\prime},A^{\prime})-Q(X,A))<br>$$</p>
 <p>Sarsa算法收敛到最优状态-动作值函数的收敛条件：</p>
 <ul>
 <li></li>
