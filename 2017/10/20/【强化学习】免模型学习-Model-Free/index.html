@@ -93,7 +93,7 @@
 <meta property="og:url" content="luxinglong.github.io/2017/10/20/【强化学习】免模型学习-Model-Free/index.html">
 <meta property="og:site_name" content="LB's Home">
 <meta property="og:description" content="0 引言在现实的强化学习任务中，环境的模型，也就是状态转移概率、奖赏函数不易得知，因此需要进行免模型学习。">
-<meta property="og:updated_time" content="2017-10-25T07:43:08.000Z">
+<meta property="og:updated_time" content="2017-10-25T08:41:47.000Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="【强化学习】免模型学习(Model-Free)">
 <meta name="twitter:description" content="0 引言在现实的强化学习任务中，环境的模型，也就是状态转移概率、奖赏函数不易得知，因此需要进行免模型学习。">
@@ -344,7 +344,7 @@
              <i class="fa fa-calendar-o"></i>
            </span>
            <span class="post-meta-item-text">字数统计:</span>
-           <span class="post-count">607(字)</span> 
+           <span class="post-count">977(字)</span> 
          </span>
          
          <span id="busuanzi_container_page_pv">
@@ -376,15 +376,26 @@
       
         <h1 id="0-引言"><a href="#0-引言" class="headerlink" title="0 引言"></a>0 引言</h1><p>在现实的强化学习任务中，环境的模型，也就是状态转移概率、奖赏函数不易得知，因此需要进行免模型学习。</p>
 <a id="more"></a>
-<h1 id="1-估计"><a href="#1-估计" class="headerlink" title="1 估计"></a>1 估计</h1><p>在没有环境模型的情形下，策略迭代面临两大困难：一是无法对一个给定的策略进行评估，因为P、R未知，无法得到Bellman等式。二是无法建立状态值函数和动作-状态值函数的联系。(策略迭代算法估计的是最优状态值函数，而最优策略要由最优动作-状态值函数获得)</p>
+<h1 id="1-评估"><a href="#1-评估" class="headerlink" title="1 评估"></a>1 评估</h1><p>在没有环境模型的情形下，策略迭代面临两大困难：一是无法对一个给定的策略进行评估，因为P、R未知，无法得到Bellman等式。二是无法建立状态值函数和动作-状态值函数的联系。(策略迭代算法估计的是最优状态值函数，而最优策略要由最优动作-状态值函数获得)</p>
 <h2 id="1-1-蒙特卡罗"><a href="#1-1-蒙特卡罗" class="headerlink" title="1.1 蒙特卡罗"></a>1.1 蒙特卡罗</h2><p>对于问题一，蒙特卡罗采用采样的办法，即通过在环境中执行动作，观察环境的状态转移和得到的奖赏，经过多次“采样”，求取平均累积奖赏作为期望累积奖赏。对于问题二，蒙特卡罗绕过状态值函数，直接估计动作-状态值函数。</p>
 <p>采样获得的“轨迹”或者“片段”，是基于一个策略$\pi$生成的。<br>episode：$\langle x_0,a_0,r_1,x_1,a_1,r_2,\cdots,x_{T-1},a_{T-1},r_T,x_T\rangle \sim \pi$</p>
 <p>在计算累积奖励时，如果某个状态在经过几次转换之后，又回到了这个状态，那么这个状态记录几次呢？两种策略，First-Visit只记录第一次出现时的一次，Every-Visit每次出现都会记录。</p>
 <p>$$<br>G_t = r_{t+1}+\gamma r_{t+2}+ \cdots + \gamma^{T-1}r_{T}<br>$$</p>
 <p>为了对策略$\pi$进行评估，需要增量地计算值函数<br>对于每一个状态$x_t$和累积奖励$G_t$<br>$$<br>V(x_t) \gets V(x_t)+\frac{1}{N(x_t)}(G_t-V(x_t)) \\<br>其中，N(x_t) \gets N(x_t)+1<br>$$</p>
 <p>在某些情况下（不太理解），可以将$\frac{1}{N(x_t)}$换成一个固定大小的值$\alpha$<br>$$<br>V(x_t) \gets V(x_t)+\alpha (G_t-V(x_t))<br>$$</p>
-<h2 id="1-2-时序差分"><a href="#1-2-时序差分" class="headerlink" title="1.2 时序差分"></a>1.2 时序差分</h2><p>蒙特卡罗方法效率较低，而时序差分结合了蒙特卡罗和动态规划的思想。</p>
-<h3 id="1-2-1-TD-0"><a href="#1-2-1-TD-0" class="headerlink" title="1.2.1 TD(0)"></a>1.2.1 TD(0)</h3><h3 id="1-2-2-TD-lambda"><a href="#1-2-2-TD-lambda" class="headerlink" title="1.2.2 TD$(\lambda)$"></a>1.2.2 TD$(\lambda)$</h3><h1 id="2-控制"><a href="#2-控制" class="headerlink" title="2 控制"></a>2 控制</h1><h2 id="2-1-蒙特卡罗"><a href="#2-1-蒙特卡罗" class="headerlink" title="2.1 蒙特卡罗"></a>2.1 蒙特卡罗</h2><h2 id="2-2-Sarsa"><a href="#2-2-Sarsa" class="headerlink" title="2.2 Sarsa"></a>2.2 Sarsa</h2><p>$$<br>Q(X,A)\gets Q(X,A)+\alpha (R+\gamma Q(X^{\prime},A^{\prime})-Q(X,A))<br>$$</p>
+<h2 id="1-2-时序差分TD"><a href="#1-2-时序差分TD" class="headerlink" title="1.2 时序差分TD"></a>1.2 时序差分TD</h2><p>蒙特卡罗方法必须从完成的episode中进行学习效率较低，而时序差分结合了蒙特卡罗和动态规划的思想，可以从不完整的episode中学习。</p>
+<h3 id="1-2-1-TD-0"><a href="#1-2-1-TD-0" class="headerlink" title="1.2.1 TD(0)"></a>1.2.1 TD(0)</h3><p>在TD(0)中使用估计的返回值$R_{t+1}+\gamma V(x_{t+1})$，而不是采样计算的$G_t$来更新状态值，<br>$$<br>V(x_t) \gets V(x_t)+\alpha (R_{t+1}+\gamma V(x_{t+1}-V(x_t))<br>$$<br>其中，$R_{t+1}+\gamma V(x_{t+1}$称为TD的目标；<br>     $\delta_{t}=R_{t+1}+\gamma V(x_{t+1}-V(x_t)$称为TD误差。</p>
+<p><strong>TD和MC的区别一</strong></p>
+<ul>
+<li>TD可以在得到最后的结果前进行学习：<br>TD可以每一步后在线学习<br>MC必须等到整个episode结束后才可以进行学习</li>
+<li>TD可以在没有最后结果的情况下学习：<br>TD可以从不完整的序列中学习<br>MC只能从完整的序列中学习<br>TD可以在连续状态（没有结束状态）的环境中工作<br>MC只能在包含完整episode的情况下工作</li>
+</ul>
+<p><strong>TD和MC的区别二</strong></p>
+<ul>
+<li>MC有着比较高的方差variance，没有偏移误差bias<br>$G_t = r_{t+1}+\gamma r_{t+2}+ \cdots + \gamma^{T-1}r_{T}$是对$v_{\pi}(x_t)$的无偏估计<br>高方差：返回$G_t$依赖于很多随机的动作、状态转移和奖励<br>对初值不太敏感</li>
+<li>TD有着比较低的方差variance，有一些偏移误差bias<br>$R_{t+1}+\gamma V(x_{t+1}$是对$v_{\pi}(x_t)$的有偏估计<br>低方差：只依赖于一个随机的动作、状态转移和奖励<br>对初值敏感</li>
+</ul>
+<h3 id="1-2-2-TD-lambda"><a href="#1-2-2-TD-lambda" class="headerlink" title="1.2.2 TD$(\lambda)$"></a>1.2.2 TD$(\lambda)$</h3><h1 id="2-控制"><a href="#2-控制" class="headerlink" title="2 控制"></a>2 控制</h1><h2 id="2-1-蒙特卡罗"><a href="#2-1-蒙特卡罗" class="headerlink" title="2.1 蒙特卡罗"></a>2.1 蒙特卡罗</h2><h2 id="2-2-Sarsa"><a href="#2-2-Sarsa" class="headerlink" title="2.2 Sarsa"></a>2.2 Sarsa</h2><p>$$<br>Q(X,A)\gets Q(X,A)+\alpha (R+\gamma Q(X^{\prime},A^{\prime})-Q(X,A))<br>$$</p>
 <p>Sarsa算法收敛到最优状态-动作值函数的收敛条件：</p>
 <ul>
 <li></li>
@@ -610,7 +621,7 @@
             
 
             
-              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-1"><a class="nav-link" href="#0-引言"><span class="nav-number">1.</span> <span class="nav-text">0 引言</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#1-估计"><span class="nav-number">2.</span> <span class="nav-text">1 估计</span></a><ol class="nav-child"><li class="nav-item nav-level-2"><a class="nav-link" href="#1-1-蒙特卡罗"><span class="nav-number">2.1.</span> <span class="nav-text">1.1 蒙特卡罗</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#1-2-时序差分"><span class="nav-number">2.2.</span> <span class="nav-text">1.2 时序差分</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#1-2-1-TD-0"><span class="nav-number">2.2.1.</span> <span class="nav-text">1.2.1 TD(0)</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#1-2-2-TD-lambda"><span class="nav-number">2.2.2.</span> <span class="nav-text">1.2.2 TD$(\lambda)$</span></a></li></ol></li></ol></li><li class="nav-item nav-level-1"><a class="nav-link" href="#2-控制"><span class="nav-number">3.</span> <span class="nav-text">2 控制</span></a><ol class="nav-child"><li class="nav-item nav-level-2"><a class="nav-link" href="#2-1-蒙特卡罗"><span class="nav-number">3.1.</span> <span class="nav-text">2.1 蒙特卡罗</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#2-2-Sarsa"><span class="nav-number">3.2.</span> <span class="nav-text">2.2 Sarsa</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#2-3-Sarsa-lambda"><span class="nav-number">3.3.</span> <span class="nav-text">2.3 Sarsa$(\lambda)$</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#2-4-Q-learning"><span class="nav-number">3.4.</span> <span class="nav-text">2.4 Q-learning</span></a></li></ol></li><li class="nav-item nav-level-1"><a class="nav-link" href="#参考文献"><span class="nav-number">4.</span> <span class="nav-text">参考文献</span></a></li></ol></div>
+              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-1"><a class="nav-link" href="#0-引言"><span class="nav-number">1.</span> <span class="nav-text">0 引言</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#1-评估"><span class="nav-number">2.</span> <span class="nav-text">1 评估</span></a><ol class="nav-child"><li class="nav-item nav-level-2"><a class="nav-link" href="#1-1-蒙特卡罗"><span class="nav-number">2.1.</span> <span class="nav-text">1.1 蒙特卡罗</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#1-2-时序差分TD"><span class="nav-number">2.2.</span> <span class="nav-text">1.2 时序差分TD</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#1-2-1-TD-0"><span class="nav-number">2.2.1.</span> <span class="nav-text">1.2.1 TD(0)</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#1-2-2-TD-lambda"><span class="nav-number">2.2.2.</span> <span class="nav-text">1.2.2 TD$(\lambda)$</span></a></li></ol></li></ol></li><li class="nav-item nav-level-1"><a class="nav-link" href="#2-控制"><span class="nav-number">3.</span> <span class="nav-text">2 控制</span></a><ol class="nav-child"><li class="nav-item nav-level-2"><a class="nav-link" href="#2-1-蒙特卡罗"><span class="nav-number">3.1.</span> <span class="nav-text">2.1 蒙特卡罗</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#2-2-Sarsa"><span class="nav-number">3.2.</span> <span class="nav-text">2.2 Sarsa</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#2-3-Sarsa-lambda"><span class="nav-number">3.3.</span> <span class="nav-text">2.3 Sarsa$(\lambda)$</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#2-4-Q-learning"><span class="nav-number">3.4.</span> <span class="nav-text">2.4 Q-learning</span></a></li></ol></li><li class="nav-item nav-level-1"><a class="nav-link" href="#参考文献"><span class="nav-number">4.</span> <span class="nav-text">参考文献</span></a></li></ol></div>
             
 
           </div>
