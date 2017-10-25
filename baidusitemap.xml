@@ -4,8 +4,32 @@
 
     
   <url>
+    <loc>luxinglong.github.io/2017/10/25/%E3%80%90%E6%9C%BA%E5%99%A8%E5%AD%A6%E4%B9%A0%E3%80%91%E6%BF%80%E6%B4%BB%E5%87%BD%E6%95%B0/</loc>
+    <lastmod>2017-10-25T11:05:03.000Z</lastmod>
+    <data>
+        <display>
+        <title>【机器学习】激活函数</title>
+        <pubTime>2017-10-25T10:35:06.000Z</pubTime>
+        
+        <tag>machine leaning</tag>
+         
+        <tag>pattern recognition</tag>
+         
+        <tag>deep learning]</tag>
+         
+         
+           
+             
+              <breadCrumb title="【机器学习】" url="luxinglong.github.io/categories/%E3%80%90%E6%9C%BA%E5%99%A8%E5%AD%A6%E4%B9%A0%E3%80%91/"/>
+          
+        </display>
+    </data>
+    </url>
+
+    
+  <url>
     <loc>luxinglong.github.io/2017/10/20/%E3%80%90%E5%BC%BA%E5%8C%96%E5%AD%A6%E4%B9%A0%E3%80%91%E5%85%8D%E6%A8%A1%E5%9E%8B%E5%AD%A6%E4%B9%A0-Model-Free/</loc>
-    <lastmod>2017-10-25T08:57:46.000Z</lastmod>
+    <lastmod>2017-10-25T09:10:23.000Z</lastmod>
     <data>
         <display>
         <title>【强化学习】免模型学习(Model-Free)</title>
@@ -291,9 +315,9 @@
         <title>【机器视觉】随机采样一致算法RANSAC</title>
         <pubTime>2017-04-19T09:05:58.000Z</pubTime>
         
-        <tag>computer vision</tag>
-         
         <tag>Mutiple View Geometry</tag>
+         
+        <tag>computer vision</tag>
          
          
            
@@ -313,9 +337,9 @@
         <title>【机器视觉】基础矩阵F和本征矩阵E</title>
         <pubTime>2017-04-19T05:11:54.000Z</pubTime>
         
-        <tag>computer vision</tag>
-         
         <tag>Mutiple View Geometry</tag>
+         
+        <tag>computer vision</tag>
          
          
            
