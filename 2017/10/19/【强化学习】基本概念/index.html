@@ -99,13 +99,15 @@
 
 理论部分学习首先学习强化学习的基本概念，然后慢慢学习强化学习解决问题的思路，最后学习强化学习的基本处理方法。
 实践部分主要开展基于强化学习环境OpenAI gym和深度学习框架mxnet和tensorflow的仿真试验。首先，研究几个案例，包括倒立摆模型和找金币棋盘游戏，学习他们的环境和学习策略">
-<meta property="og:updated_time" content="2017-10-23T06:00:09.000Z">
+<meta property="og:image" content="http://on99gq8w5.bkt.clouddn.com/rl.png?imageMogr2/thumbnail/300x200">
+<meta property="og:updated_time" content="2017-10-25T05:57:04.000Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="【强化学习】基本概念">
 <meta name="twitter:description" content="0 引言项目需要，所以学习强化学习。强化学习以及深度强化学习可以使机器人变得更加智能。总体的学习路线
 
 理论部分学习首先学习强化学习的基本概念，然后慢慢学习强化学习解决问题的思路，最后学习强化学习的基本处理方法。
 实践部分主要开展基于强化学习环境OpenAI gym和深度学习框架mxnet和tensorflow的仿真试验。首先，研究几个案例，包括倒立摆模型和找金币棋盘游戏，学习他们的环境和学习策略">
+<meta name="twitter:image" content="http://on99gq8w5.bkt.clouddn.com/rl.png?imageMogr2/thumbnail/300x200">
 
 
 
@@ -353,7 +355,7 @@
              <i class="fa fa-calendar-o"></i>
            </span>
            <span class="post-meta-item-text">字数统计:</span>
-           <span class="post-count">834(字)</span> 
+           <span class="post-count">955(字)</span> 
          </span>
          
          <span id="busuanzi_container_page_pv">
@@ -389,7 +391,9 @@
 <li>实践部分<br>主要开展基于强化学习环境OpenAI gym和深度学习框架mxnet和tensorflow的仿真试验。<br>首先，研究几个案例，包括倒立摆模型和找金币棋盘游戏，学习他们的环境和学习策略。然后，对避障算法进行建模，并设计仿真环境。最后，避障算法进行策略学习和试验。</li>
 </ol>
 <a id="more"></a>
-<h1 id="1-强化学习的基本概念"><a href="#1-强化学习的基本概念" class="headerlink" title="1 强化学习的基本概念"></a>1 强化学习的基本概念</h1><p>一个关于强化学习的智能体要包含策略、值函数和环境模型三个部分。<br>策略：是状态空间到动作空间的映射，即$\pi:(x)=a$<br>值函数：未来回报值的期望，用来衡量当前状态的好坏 $</p>
+<h1 id="1-强化学习的基本概念"><a href="#1-强化学习的基本概念" class="headerlink" title="1 强化学习的基本概念"></a>1 强化学习的基本概念</h1><img src="http://on99gq8w5.bkt.clouddn.com/rl.png?imageMogr2/thumbnail/300x200" class="[rl]">
+<p>强化学习作为一个学习的问题，就是通过最大化长远奖励来学习控制一个系统。强化学习的框架可以表示成上图的形式，一个控制器接受到被控制系统的状态和最新的奖励，然后按照学习到的策略给系统一个动作。同时，系统转化到一个新的状态并给出一个奖赏值。如此反复，达到控制的目的。</p>
+<p>一个关于强化学习的智能体要包含策略、值函数和环境模型三个部分。<br>策略：是状态空间到动作空间的映射，即$\pi:(x)=a$<br>值函数：未来回报值的期望，用来衡量当前状态的好坏 $</p>
 <p>模型：环境状态的转移概率分布</p>
 <p>智能体和环境：<br>智能体的状态：$S^{a}_{t}$智能体内部的状态，用来决定自己怎么采取下一步的动作<br>环境的状态：$S^{e}_{t}$</p>
 <p>马尔可夫状态：当$S_{t}$满足，$\mathbb{P}[S_{t+1}|S_{t}]=\mathbb{P}[S_{t+1}|S_{1},\cdots,S_{t}]$</p>
@@ -533,7 +537,7 @@
           
             <div class="site-state-item site-state-posts">
               <a href="/">
-                <span class="site-state-item-count">22</span>
+                <span class="site-state-item-count">23</span>
                 <span class="site-state-item-name">日志</span>
               </a>
             </div>
@@ -544,7 +548,7 @@
             
             <div class="site-state-item site-state-categories">
               <a href="/categories/index.html">
-                <span class="site-state-item-count">12</span>
+                <span class="site-state-item-count">11</span>
                 <span class="site-state-item-name">分类</span>
               </a>
             </div>
