@@ -97,7 +97,7 @@
 <meta property="og:image" content="http://on99gq8w5.bkt.clouddn.com/mc.png?imageMogr2/thumbnail/400x500">
 <meta property="og:image" content="http://on99gq8w5.bkt.clouddn.com/sarsa.png?imageMogr2/thumbnail/400x500">
 <meta property="og:image" content="http://on99gq8w5.bkt.clouddn.com/ql.png?imageMogr2/thumbnail/400x500">
-<meta property="og:updated_time" content="2017-10-26T11:37:23.000Z">
+<meta property="og:updated_time" content="2017-10-26T11:49:52.000Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="【强化学习】免模型学习(Model-Free)">
 <meta name="twitter:description" content="0 引言在现实的强化学习任务中，环境的模型，也就是状态转移概率、奖赏函数不易得知，因此需要进行免模型学习。">
@@ -349,7 +349,7 @@
              <i class="fa fa-calendar-o"></i>
            </span>
            <span class="post-meta-item-text">字数统计:</span>
-           <span class="post-count">1,501(字)</span> 
+           <span class="post-count">1,601(字)</span> 
          </span>
          
          <span id="busuanzi_container_page_pv">
@@ -407,7 +407,8 @@
 </ul>
 <h3 id="1-2-2-TD-lambda"><a href="#1-2-2-TD-lambda" class="headerlink" title="1.2.2 TD$(\lambda)$"></a>1.2.2 TD$(\lambda)$</h3><p>TD(0)在策略评估时，只是在当前状态往前走一步，如果要是多走几步再更新状态值函数，就会引出n-step预测。<br><strong>n-Step Prediction</strong></p>
 <img src="http://on99gq8w5.bkt.clouddn.com/n-step.png?imageMogr2/thumbnail/400x500" class="[n-step]">
-<p>n-step return: $G_t^{(n)}=R_{t+1}+\gamma R_{t+2}+\cdots+\gamma^{n-1}R_{t+n}+\gamma^nV(X_{t+n})$</p>
+<p>n-step return: $G_t^{(n)}=R_{t+1}+\gamma R_{t+2}+\cdots+\gamma^{n-1}R_{t+n}+\gamma^nV(X_{t+n})$<br>那么n-step的TD学习模型为：<br>$$<br>V(x_t) \gets V(x_t)+\alpha(G_t^{(n)}-V(x_t))<br>$$<br>那么在不同的$\alpha$和$n$，效果会怎么样呢？</p>
+<p>如何在不增加计算量的前提下，综合考虑不同的步数预测？为此引出，TD$(\lambda)$。<br>$(\lambda)$-return: $G_t^{\gamma}=(1-\lambda)\sum_{n=1}^{\infty}\lambda^{n-1}G_t^{(n)}$<br>那么TD$(\lambda)$学习模型为：<br>$$<br>V(x_t) \gets V(x_t)+\alpha(G_t^{\lambda}-V(x_t))<br>$$</p>
 <p><strong>效用追踪</strong>(Eligibility Traces)<br>例子：&lt;铃响、铃响、铃响、灯亮、电击&gt;，请问是铃响还是灯亮导致了电击发生？<br>$$<br>E_0(x)=0 \\<br>E_t(x)=\gamma \lambda E_{t-1}(x)+1(X_t=x)<br>$$</p>
 <h1 id="2-控制"><a href="#2-控制" class="headerlink" title="2 控制"></a>2 控制</h1><h2 id="2-1-蒙特卡罗"><a href="#2-1-蒙特卡罗" class="headerlink" title="2.1 蒙特卡罗"></a>2.1 蒙特卡罗</h2><img src="http://on99gq8w5.bkt.clouddn.com/mc.png?imageMogr2/thumbnail/400x500" class="[mc]">
 <p>这个算法需要记录两个值，一个是每个动作-状态对出现的次数，另外一个是每个状态的动作-状态值函数。<br>策略评估使用<br>$$<br>V(x_t) \gets V(x_t)+\frac{1}{N(x_t)}(G_t-V(x_t)) \\<br>其中，N(x_t) \gets N(x_t)+1<br>$$<br>对于，返回值$G_t$，使用。。。。来计算。</p>
