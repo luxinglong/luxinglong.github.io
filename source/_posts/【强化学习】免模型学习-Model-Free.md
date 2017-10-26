@@ -74,16 +74,54 @@ $R_{t+1}+\gamma V(x_{t+1}$是对$v_{\pi}(x_t)$的有偏估计
 
 ### 1.2.2 TD$(\lambda)$
 
+TD(0)在策略评估时，只是在当前状态往前走一步，如果要是多走几步再更新状态值函数，就会引出n-step预测。
+**n-Step Prediction**
+
+{% img [n-step] http://on99gq8w5.bkt.clouddn.com/n-step.png?imageMogr2/thumbnail/400x500 %}
+
+n-step return:    $G_t^{(n)}=R_{t+1}+\gamma R_{t+2}+\cdots+\gamma^{n-1}R_{t+n}+\gamma^nV(X_{t+n})$
+那么n-step的TD学习模型为：
+$$
+V(x_t) \gets V(x_t)+\alpha(G_t^{(n)}-V(x_t))
+$$
+那么在不同的$\alpha$和$n$，效果会怎么样呢？
+
+如何在不增加计算量的前提下，综合考虑不同的步数预测？为此引出，TD$(\lambda)$。
+$\lambda$-return:   $G_t^{\gamma}=(1-\lambda)\sum_{n=1}^{\infty}\lambda^{n-1}G_t^{(n)}$
+为$G_t^{(n)}$增加一个$(1-\lambda)\lambda^{n-1}$的权重，然后累加。权重单调递减，衰减到零。
+那么TD$(\lambda)$学习模型为：
+$$
+V(x_t) \gets V(x_t)+\alpha(G_t^{\lambda}-V(x_t))
+$$
+
+由于TD$(\lambda)$的return考虑了所有步长的预测，因此需要完整的episode，这也带来了MC算法的计算效率问题。$\lambda$取值范围是0-1，事实上，当$\lambda=1$，TD$(\lambda)$等效于MC算法。为了解决这个问题，引入效用追踪。
 
 **效用追踪**(Eligibility Traces)
 例子：<铃响、铃响、铃响、灯亮、电击>，请问是铃响还是灯亮导致了电击发生？
+频率启发(Frequency heuristic)：将原因归于出现频率最高的状态，如铃响
+就近启发(Recency heuristic)：将原因归于最近的状态，如灯亮
+效用追踪综合考虑频率启发和就近启发。
 $$
 E_0(x)=0 \\
 E_t(x)=\gamma \lambda E_{t-1}(x)+1(X_t=x)
 $$
+下图给出了$E_t(x)$对于t的一个可能的曲线图：
+{% img [et] http://on99gq8w5.bkt.clouddn.com/et.png?imageMogr2/thumbnail/400x500 %}
+该图横坐标是时间，横坐标下面的竖线的位置代表当前进入了状态x，纵坐标是效用追踪值$E_t(x)$。可以看出当一个状态连续出现时，E值就会在一定衰减的基础上有一个单位数值的提高，此时将增加该状态对于最终收获贡献的比重。如果该状态距离最终状态比较远，则其对最终收获的贡献越小。
 
+特别地，E值不需要等到完整的episode结束才能计算出来，它可以每经过一个时刻就得到更新。E值存在饱和值，有一个瞬时上限：$E_{\max}=1(1-\gamma\lambda)$
 
+$$
+V(x)\gets V(x)+\alpha\delta_t E_t(x) \\
+其中，\delta_t=R_{t+1}+\gamma V(x_{t+1})-V(x_t)为TD-error \\
+     E_t(x)是效用追踪
+$$
 
+注意：每个状态x都有一个E值，E值随时间而变化。
+
+这样就可以在线实时更新状态值函数，而不用使用完整的序列。同时，通过效用追踪，可以将状态出现的频率和就近性考虑进状态值函数。
+
+注：ET是一个非常符合神经科学相关理论的、非常精巧的设计。把它看成是神经元的一个参数，它反映了神经元对某一刺激的敏感性和适应性。神经元在接受刺激时会有反馈，在持续刺激时反馈一般也比较强，当间歇一段时间不刺激时，神经元又逐渐趋于静息状态；同时不论如何增加刺激的频率，神经元有一个最大饱和反馈。
 
 # 2 控制
 
@@ -109,7 +147,9 @@ $$
 
 ## 2.2 Sarsa
 在评估策略时，TD相比MC有很多优点，比如说小方差、在线学习、根据不完整的episode学习等。同样的在控制问题上，也可以利用TD的这些优点，如Sarsa算法。
+
 为什么取名字叫Sarsa呢？因为算法的求解需要用到上一时刻的状态S，上一时刻的动作A，当前的奖赏R，当前状态$S^{\prime}$，当前动作$A^{\prime}$.
+
 对于状态-动作值函数的估计采用下面的公式：
 $$
 Q(X,A)\gets Q(X,A)+\alpha (R+\gamma Q(X^{\prime},A^{\prime})-Q(X,A))
@@ -123,8 +163,49 @@ Sarsa算法收敛到最优状态-动作值函数的收敛条件：
 看不懂。。
 
 ## 2.3 Sarsa$(\lambda)$
+**n-Step Sarsa**
+n-step Q-return:   $q_t^{(n)}=R_{t+1}+\gamma R_{t+2}+\cdots+\gamma^{n-1}R_{t+n}+\gamma^nQ(x_{t+n})$
 
+这里的$q_t$对应的是一个状态行为对$\<x_t,a_t\>$，表示在某个状态下执行某个动作的价值大小。
 
+对于$q_t^1$,表示状态行为对$\<x_t,a_t\>$的Q价值可以分成两部分。一部分是执行动作$a_t$离开状态$x_t$的即时奖励$R_{t+1}$，即时奖励只与状态有关，与该状态下采取的行为无关；另一部分是新状态行为对$\<x_{t+1},a_{t+1}\>$的Q价值：环境给了个体一个新状态$x_{t+1}$，观察在$x_{t+1}$状态时基于**当前策略**得到的行为$a_{t+1}$时的$Q(x_{t+1},a_{t+1})$，后续的Q价值考虑衰减系数。
+
+n-Step Sarsa学习模型为：
+$$
+Q(x_t,a_t)\gets Q(x_t,a_t)+\alpha(q_t^{(n)}-Q(x_t,a_t))
+$$
+
+**Sarsa$(\lambda)$**
+如果给每一个n-step Q-return分配一个权重，并求和，就会得到$q^{\lambda}$-return，它结合了所有n-step Q-return：
+$$
+q_t^{\lambda}=(1-\lambda)\sum_{n=1}^{\infty}\lambda^{n-1}q_t^{(n)}
+$$
+
+**Sarsa$(\lambda)$前向认识**
+使用$q_t^{\lambda}$来替换状态-动作价值更新递推公式中的返回，那么可以得到Sarsa$(\lambda)$学习模型为：
+$$
+Q(x_t,a_t)\gets Q(x_t,a_t)+\alpha(q_t^{\lambda}-Q(x_t,a_t))
+$$
+这就是前向认识的Sarsa$(\lambda)$，它需要完整的episode才能完成更新。
+
+**Sarsa$(\lambda)$反向认识**
+与TD$(\lambda)$类似，这里同样引入效用追踪来达到在线更新的效果。不过这次E值针对的不是一个状态，而是一个动作-状态对：
+$$
+E_0(x,a)=0 \\
+E_t(x,a)=\gamma \lambda E_{t-1},a(x)+1(X_t=x,A_t=a)
+$$
+
+综合考虑TD-error和效用追踪可以得到新的学习模型：
+$$
+Q(x_t,a_t)\gets Q(x_t,a_t)+\alpha\delta_tE_t(x,a) \\
+其中，\delta_t=R_{t+1}+\gamma Q(x_{t+1},a_{t+1})-Q(x_t,a_t)为TD-error \\
+     E_t(x,a)是效用追踪
+$$
+
+Sarsa$(\lambda)$的伪代码如下：
+{% img [sarsa-l] http://on99gq8w5.bkt.clouddn.com/sarsa-l.png?imageMogr2/thumbnail/400x500 %}
+
+这里要提及一下的是E(s,a)在每遍历完一个Episode后需要重新置0，这体现了ET仅在一个Episode中发挥作用；其次要提及的是算法更新Q和E的时候针对的不是某个Episode里的Q或E，而是针对个体掌握的整个状态空间和行为空间产生的Q和E。
 
 ## 2.4 Q-learning
 Sarsa是同策略算法，也就是说评估和提升的策略是同一个。如果将Sarsa改成异策略，那么就得到类Q-learning算法。这时候评估和提升的策略不是同一个。
@@ -134,3 +215,4 @@ Sarsa是同策略算法，也就是说评估和提升的策略是同一个。如
 #  参考文献
 [1] 周志华,《机器学习》,清华大学出版社,2016
 [2] David Silver, reinforcement learning lecture 4 and 5
+[3] 叶强, David Silver强化学习公开课中文讲解及实践, 知乎专栏
