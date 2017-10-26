@@ -5,11 +5,55 @@
     
   <url>
     <loc>luxinglong.github.io/2017/10/20/%E3%80%90%E5%BC%BA%E5%8C%96%E5%AD%A6%E4%B9%A0%E3%80%91%E5%85%8D%E6%A8%A1%E5%9E%8B%E5%AD%A6%E4%B9%A0-Model-Free/</loc>
-    <lastmod>2017-10-26T12:37:38.000Z</lastmod>
+    <lastmod>2017-10-26T13:13:50.000Z</lastmod>
     <data>
         <display>
         <title>【强化学习】免模型学习(Model-Free)</title>
         <pubTime>2017-10-20T10:57:59.000Z</pubTime>
+        
+        <tag>RL</tag>
+         
+        <tag>robotics</tag>
+         
+         
+           
+             
+              <breadCrumb title="【强化学习】" url="luxinglong.github.io/categories/%E3%80%90%E5%BC%BA%E5%8C%96%E5%AD%A6%E4%B9%A0%E3%80%91/"/>
+          
+        </display>
+    </data>
+    </url>
+
+    
+  <url>
+    <loc>luxinglong.github.io/2017/10/26/%E3%80%90%E5%BC%BA%E5%8C%96%E5%AD%A6%E4%B9%A0%E3%80%91%E7%AE%97%E6%B3%95%E5%AE%9E%E8%B7%B52/</loc>
+    <lastmod>2017-10-26T13:13:43.000Z</lastmod>
+    <data>
+        <display>
+        <title>【强化学习】算法实践2</title>
+        <pubTime>2017-10-26T13:12:07.000Z</pubTime>
+        
+        <tag>RL</tag>
+         
+        <tag>robotics</tag>
+         
+         
+           
+             
+              <breadCrumb title="【强化学习】" url="luxinglong.github.io/categories/%E3%80%90%E5%BC%BA%E5%8C%96%E5%AD%A6%E4%B9%A0%E3%80%91/"/>
+          
+        </display>
+    </data>
+    </url>
+
+    
+  <url>
+    <loc>luxinglong.github.io/2017/10/26/%E3%80%90%E5%BC%BA%E5%8C%96%E5%AD%A6%E4%B9%A0%E3%80%91%E7%AE%97%E6%B3%95%E5%AE%9E%E8%B7%B51/</loc>
+    <lastmod>2017-10-26T13:13:40.000Z</lastmod>
+    <data>
+        <display>
+        <title>【强化学习】算法实践1</title>
+        <pubTime>2017-10-26T12:57:32.000Z</pubTime>
         
         <tag>RL</tag>
          
@@ -315,9 +359,9 @@
         <title>【机器视觉】随机采样一致算法RANSAC</title>
         <pubTime>2017-04-19T09:05:58.000Z</pubTime>
         
-        <tag>Mutiple View Geometry</tag>
-         
         <tag>computer vision</tag>
+         
+        <tag>Mutiple View Geometry</tag>
          
          
            
@@ -337,9 +381,9 @@
         <title>【机器视觉】基础矩阵F和本征矩阵E</title>
         <pubTime>2017-04-19T05:11:54.000Z</pubTime>
         
-        <tag>Mutiple View Geometry</tag>
-         
         <tag>computer vision</tag>
+         
+        <tag>Mutiple View Geometry</tag>
          
          
            

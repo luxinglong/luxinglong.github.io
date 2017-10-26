@@ -97,8 +97,9 @@
 <meta property="og:image" content="http://on99gq8w5.bkt.clouddn.com/et.png?imageMogr2/thumbnail/400x500">
 <meta property="og:image" content="http://on99gq8w5.bkt.clouddn.com/mc.png?imageMogr2/thumbnail/400x500">
 <meta property="og:image" content="http://on99gq8w5.bkt.clouddn.com/sarsa.png?imageMogr2/thumbnail/400x500">
+<meta property="og:image" content="http://on99gq8w5.bkt.clouddn.com/sarsa-l.png?imageMogr2/thumbnail/400x500">
 <meta property="og:image" content="http://on99gq8w5.bkt.clouddn.com/ql.png?imageMogr2/thumbnail/400x500">
-<meta property="og:updated_time" content="2017-10-26T12:37:38.000Z">
+<meta property="og:updated_time" content="2017-10-26T13:13:50.000Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="【强化学习】免模型学习(Model-Free)">
 <meta name="twitter:description" content="0 引言在现实的强化学习任务中，环境的模型，也就是状态转移概率、奖赏函数不易得知，因此需要进行免模型学习。">
@@ -350,7 +351,7 @@
              <i class="fa fa-calendar-o"></i>
            </span>
            <span class="post-meta-item-text">字数统计:</span>
-           <span class="post-count">2,276(字)</span> 
+           <span class="post-count">2,718(字)</span> 
          </span>
          
          <span id="busuanzi_container_page_pv">
@@ -412,7 +413,7 @@
 <p>如何在不增加计算量的前提下，综合考虑不同的步数预测？为此引出，TD$(\lambda)$。<br>$\lambda$-return:   $G_t^{\gamma}=(1-\lambda)\sum_{n=1}^{\infty}\lambda^{n-1}G_t^{(n)}$<br>为$G_t^{(n)}$增加一个$(1-\lambda)\lambda^{n-1}$的权重，然后累加。权重单调递减，衰减到零。<br>那么TD$(\lambda)$学习模型为：<br>$$<br>V(x_t) \gets V(x_t)+\alpha(G_t^{\lambda}-V(x_t))<br>$$</p>
 <p>由于TD$(\lambda)$的return考虑了所有步长的预测，因此需要完整的episode，这也带来了MC算法的计算效率问题。$\lambda$取值范围是0-1，事实上，当$\lambda=1$，TD$(\lambda)$等效于MC算法。为了解决这个问题，引入效用追踪。</p>
 <p><strong>效用追踪</strong>(Eligibility Traces)<br>例子：&lt;铃响、铃响、铃响、灯亮、电击&gt;，请问是铃响还是灯亮导致了电击发生？<br>频率启发(Frequency heuristic)：将原因归于出现频率最高的状态，如铃响<br>就近启发(Recency heuristic)：将原因归于最近的状态，如灯亮<br>效用追踪综合考虑频率启发和就近启发。<br>$$<br>E_0(x)=0 \\<br>E_t(x)=\gamma \lambda E_{t-1}(x)+1(X_t=x)<br>$$<br>下图给出了$E_t(x)$对于t的一个可能的曲线图：<br><img src="http://on99gq8w5.bkt.clouddn.com/et.png?imageMogr2/thumbnail/400x500" class="[et]"><br>该图横坐标是时间，横坐标下面的竖线的位置代表当前进入了状态x，纵坐标是效用追踪值$E_t(x)$。可以看出当一个状态连续出现时，E值就会在一定衰减的基础上有一个单位数值的提高，此时将增加该状态对于最终收获贡献的比重。如果该状态距离最终状态比较远，则其对最终收获的贡献越小。</p>
-<p>特别地，E值不需要等到完整的episode结束才能计算出来，它可以每经过一个时刻就得到更新。E值存在饱和值，哟一个瞬时上限：$E_{\max}=1(1-\gamma\lambda)$</p>
+<p>特别地，E值不需要等到完整的episode结束才能计算出来，它可以每经过一个时刻就得到更新。E值存在饱和值，有一个瞬时上限：$E_{\max}=1(1-\gamma\lambda)$</p>
 <p>$$<br>V(x)\gets V(x)+\alpha\delta_t E_t(x) \\<br>其中，\delta_t=R_{t+1}+\gamma V(x_{t+1})-V(x_t)为TD-error \\<br>     E_t(x)是效用追踪<br>$$</p>
 <p>注意：每个状态x都有一个E值，E值随时间而变化。</p>
 <p>这样就可以在线实时更新状态值函数，而不用使用完整的序列。同时，通过效用追踪，可以将状态出现的频率和就近性考虑进状态值函数。</p>
@@ -431,8 +432,13 @@
 <li>步长系数$\alpha_t$满足：$\sum^{\infty}_{t=1}\alpha_t=\infty$，且$\sum^{\infty}_{t=1}\alpha^2_t &lt; \infty$<br>看不懂。。</li>
 </ul>
 <h2 id="2-3-Sarsa-lambda"><a href="#2-3-Sarsa-lambda" class="headerlink" title="2.3 Sarsa$(\lambda)$"></a>2.3 Sarsa$(\lambda)$</h2><p><strong>n-Step Sarsa</strong><br>n-step Q-return:   $q_t^{(n)}=R_{t+1}+\gamma R_{t+2}+\cdots+\gamma^{n-1}R_{t+n}+\gamma^nQ(x_{t+n})$</p>
+<p>这里的$q_t$对应的是一个状态行为对$\<x_t,a_t\>$，表示在某个状态下执行某个动作的价值大小。<br>对于$q_t^1$,表示状态行为对$\<x_t,a_t\>$的Q价值可以分成两部分。一部分是执行动作$a_t$离开状态$x_t$的即时奖励$R_{t+1}$，即时奖励只与状态有关，与该状态下采取的行为无关；另一部分是新状态行为对$\<x_{t+1},a_{t+1}\>$的Q价值：环境给了个体一个新状态$x_{t+1}$，观察在$x_{t+1}$状态时基于<strong>当前策略</strong>得到的行为$a_{t+1}$时的$Q(x_{t+1},a_{t+1})$，后续的Q价值考虑衰减系数。</x_{t+1},a_{t+1}\></x_t,a_t\></x_t,a_t\></p>
 <p>n-Step Sarsa学习模型为：<br>$$<br>Q(x_t,a_t)\gets Q(x_t,a_t)+\alpha(q_t^{(n)}-Q(x_t,a_t))<br>$$</p>
-<p><strong>Sarsa$(\lambda)$</strong></p>
+<p><strong>Sarsa$(\lambda)$</strong><br>如果给每一个n-step Q-return分配一个权重，并求和，就会得到$q^{\lambda}$-return，它结合了所有n-step Q-return：<br>$$<br>q_t^{\lambda}=(1-\lambda)\sum_{n=1}^{\infty}\lambda^{n-1}q_t^{(n)}<br>$$</p>
+<p><strong>Sarsa$(\lambda)$前向认识</strong><br>使用$q_t^{\lambda}$来替换状态-动作价值更新递推公式中的返回，那么可以得到Sarsa$(\lambda)$学习模型为：<br>$$<br>Q(x_t,a_t)\gets Q(x_t,a_t)+\alpha(q_t^{\lambda}-Q(x_t,a_t))<br>$$<br>这就是前向认识的Sarsa$(\lambda)$，它需要完整的episode才能完成更新。</p>
+<p><strong>Sarsa$(\lambda)$反向认识</strong><br>与TD$(\lambda)$类似，这里同样引入效用追踪来达到在线更新的效果。不过这次E值针对的不是一个状态，而是一个动作-状态对：<br>$$<br>E_0(x,a)=0 \\<br>E_t(x,a)=\gamma \lambda E_{t-1},a(x)+1(X_t=x,A_t=a)<br>$$</p>
+<p>综合考虑TD-error和效用追踪可以得到新的学习模型：<br>$$<br>Q(x_t,a_t)\gets Q(x_t,a_t)+\alpha\delta_tE_t(x,a) \\<br>其中，\delta_t=R_{t+1}+\gamma Q(x_{t+1},a_{t+1})-Q(x_t,a_t)为TD-error \\<br>     E_t(x,a)是效用追踪<br>$$</p>
+<p>Sarsa$(\lambda)$的伪代码如下：<br><img src="http://on99gq8w5.bkt.clouddn.com/sarsa-l.png?imageMogr2/thumbnail/400x500" class="[sarsa-l]"></p>
 <h2 id="2-4-Q-learning"><a href="#2-4-Q-learning" class="headerlink" title="2.4 Q-learning"></a>2.4 Q-learning</h2><p>Sarsa是同策略算法，也就是说评估和提升的策略是同一个。如果将Sarsa改成异策略，那么就得到类Q-learning算法。这时候评估和提升的策略不是同一个。<br><img src="http://on99gq8w5.bkt.clouddn.com/ql.png?imageMogr2/thumbnail/400x500" class="[ql]"></p>
 <h1 id="参考文献"><a href="#参考文献" class="headerlink" title="参考文献"></a>参考文献</h1><p>[1] 周志华,《机器学习》,清华大学出版社,2016<br>[2] David Silver, reinforcement learning lecture 4 and 5<br>[3] 叶强, David Silver强化学习公开课中文讲解及实践, 知乎专栏</p>
 
@@ -563,7 +569,7 @@
           
             <div class="site-state-item site-state-posts">
               <a href="/">
-                <span class="site-state-item-count">24</span>
+                <span class="site-state-item-count">26</span>
                 <span class="site-state-item-name">日志</span>
               </a>
             </div>
