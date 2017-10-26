@@ -368,12 +368,9 @@
 
       
         
-          
-          0 引言常见的激活函数有sigmoid, tanh, relu等。sigmoid: $f(x)=\frac{1}{1+exp(-x)}$，导数：$f(x)^{\prime}=f(x)(1-f(x))$
-tanh: $f(x)=tanh(x)$，导数：$f(x)^{\prime}=1-(f(x))^2$
-relu: $f(x)=\max(0,x)$，导数：$f(x)^{\prime}=\max(0,1)$
-1 梯度消失、梯度发散、梯度爆炸这种问题表现为，越靠后的隐含层收敛速度越快，前面隐含层可能不会收敛，甚至发散。原因是激活函数在求导的时候，如果很小，那么在误差反向传播过程中，由于链式法则，越靠
-          ...
+          <h1 id="0-引言"><a href="#0-引言" class="headerlink" title="0 引言"></a>0 引言</h1><p>常见的激活函数有sigmoid, tanh, relu等。<br>sigmoid: $f(x)=\frac{1}{1+exp(-x)}$，导数：$f(x)^{\prime}=f(x)(1-f(x))$</p>
+<p>tanh: $f(x)=tanh(x)$，导数：$f(x)^{\prime}=1-(f(x))^2$</p>
+<p>relu: $f(x)=\max(0,x)$，导数：$f(x)^{\prime}=\max(0,1)$</p>
           <!--noindex-->
           <div class="post-button text-center">
             <a class="btn" href="/2017/10/25/【机器学习】激活函数/#more" rel="contents">
@@ -520,11 +517,7 @@ relu: $f(x)=\max(0,x)$，导数：$f(x)^{\prime}=\max(0,1)$
 
       
         
-          
-          0 引言为什么要进行值函数逼近呢？建立一个表格保存所有的状态以及对应的值函数值，这种方法在解决大规模问题上，会遇到两个问题，一是
-1参考文献[1] 周志华,《机器学习》,清华大学出版社,2016[2] David Silver, reinforcement learning lecture 4 and 5
-
-          
+          <h1 id="0-引言"><a href="#0-引言" class="headerlink" title="0 引言"></a>0 引言</h1><p>为什么要进行值函数逼近呢？<br>建立一个表格保存所有的状态以及对应的值函数值，这种方法在解决大规模问题上，会遇到两个问题，一是</p>
           <!--noindex-->
           <div class="post-button text-center">
             <a class="btn" href="/2017/10/24/【强化学习】值函数逼近/#more" rel="contents">

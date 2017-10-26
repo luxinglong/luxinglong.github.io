@@ -97,7 +97,7 @@ relu: $f(x)=\max(0,x)$，导数：$f(x)^{\prime}=\max(0,">
 <meta property="og:description" content="0 引言常见的激活函数有sigmoid, tanh, relu等。sigmoid: $f(x)=\frac{1}{1+exp(-x)}$，导数：$f(x)^{\prime}=f(x)(1-f(x))$
 tanh: $f(x)=tanh(x)$，导数：$f(x)^{\prime}=1-(f(x))^2$
 relu: $f(x)=\max(0,x)$，导数：$f(x)^{\prime}=\max(0,">
-<meta property="og:updated_time" content="2017-10-25T11:05:03.000Z">
+<meta property="og:updated_time" content="2017-10-26T10:44:16.000Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="【机器学习】激活函数">
 <meta name="twitter:description" content="0 引言常见的激活函数有sigmoid, tanh, relu等。sigmoid: $f(x)=\frac{1}{1+exp(-x)}$，导数：$f(x)^{\prime}=f(x)(1-f(x))$
@@ -383,6 +383,7 @@ relu: $f(x)=\max(0,x)$，导数：$f(x)^{\prime}=\max(0,">
         <h1 id="0-引言"><a href="#0-引言" class="headerlink" title="0 引言"></a>0 引言</h1><p>常见的激活函数有sigmoid, tanh, relu等。<br>sigmoid: $f(x)=\frac{1}{1+exp(-x)}$，导数：$f(x)^{\prime}=f(x)(1-f(x))$</p>
 <p>tanh: $f(x)=tanh(x)$，导数：$f(x)^{\prime}=1-(f(x))^2$</p>
 <p>relu: $f(x)=\max(0,x)$，导数：$f(x)^{\prime}=\max(0,1)$</p>
+<a id="more"></a>
 <h1 id="1-梯度消失、梯度发散、梯度爆炸"><a href="#1-梯度消失、梯度发散、梯度爆炸" class="headerlink" title="1 梯度消失、梯度发散、梯度爆炸"></a>1 梯度消失、梯度发散、梯度爆炸</h1><p>这种问题表现为，越靠后的隐含层收敛速度越快，前面隐含层可能不会收敛，甚至发散。<br>原因是激活函数在求导的时候，如果很小，那么在误差反向传播过程中，由于链式法则，越靠近前面的隐含层参数的导数就越小，学习的效率就越低。如果传到前面，导数已经下降到零。此时就会导致前面隐含层的参数不会更新。</p>
 <p>尤其是sigmoid函数和tanh函数，sigmoid函数的导数，在0处取最大值为0.25，tanh函数的导数在0处取最大值为1，当连续相乘多次的时候，必然会越来越小。那么解决梯度消失的方法是使用relu。</p>
 <h1 id="2-为什么梯度方向下降最快？"><a href="#2-为什么梯度方向下降最快？" class="headerlink" title="2 为什么梯度方向下降最快？"></a>2 为什么梯度方向下降最快？</h1><p>对二元函数$f(x,y)$进行泰勒展开，得到下面的公式<br>$$<br>f(x+\Delta x, y+\Delta y) - f(x,y) \approx [\frac{\partial f(x,y)}{\partial x},\frac{\partial f(x,y)}{\partial y}][\Delta x, \Delta y]^T<br>$$</p>

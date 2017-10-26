@@ -4,12 +4,12 @@
 
     
   <url>
-    <loc>luxinglong.github.io/2017/10/20/%E3%80%90%E5%BC%BA%E5%8C%96%E5%AD%A6%E4%B9%A0%E3%80%91%E5%85%8D%E6%A8%A1%E5%9E%8B%E5%AD%A6%E4%B9%A0-Model-Free/</loc>
-    <lastmod>2017-10-25T14:49:40.000Z</lastmod>
+    <loc>luxinglong.github.io/2017/10/24/%E3%80%90%E5%BC%BA%E5%8C%96%E5%AD%A6%E4%B9%A0%E3%80%91%E5%80%BC%E5%87%BD%E6%95%B0%E9%80%BC%E8%BF%91/</loc>
+    <lastmod>2017-10-26T10:45:34.000Z</lastmod>
     <data>
         <display>
-        <title>【强化学习】免模型学习(Model-Free)</title>
-        <pubTime>2017-10-20T10:57:59.000Z</pubTime>
+        <title>【强化学习】值函数逼近</title>
+        <pubTime>2017-10-24T12:11:37.000Z</pubTime>
         
         <tag>RL</tag>
          
@@ -27,7 +27,7 @@
     
   <url>
     <loc>luxinglong.github.io/2017/10/25/%E3%80%90%E6%9C%BA%E5%99%A8%E5%AD%A6%E4%B9%A0%E3%80%91%E6%BF%80%E6%B4%BB%E5%87%BD%E6%95%B0/</loc>
-    <lastmod>2017-10-25T11:05:03.000Z</lastmod>
+    <lastmod>2017-10-26T10:44:16.000Z</lastmod>
     <data>
         <display>
         <title>【机器学习】激活函数</title>
@@ -43,6 +43,28 @@
            
              
               <breadCrumb title="【机器学习】" url="luxinglong.github.io/categories/%E3%80%90%E6%9C%BA%E5%99%A8%E5%AD%A6%E4%B9%A0%E3%80%91/"/>
+          
+        </display>
+    </data>
+    </url>
+
+    
+  <url>
+    <loc>luxinglong.github.io/2017/10/20/%E3%80%90%E5%BC%BA%E5%8C%96%E5%AD%A6%E4%B9%A0%E3%80%91%E5%85%8D%E6%A8%A1%E5%9E%8B%E5%AD%A6%E4%B9%A0-Model-Free/</loc>
+    <lastmod>2017-10-25T14:49:40.000Z</lastmod>
+    <data>
+        <display>
+        <title>【强化学习】免模型学习(Model-Free)</title>
+        <pubTime>2017-10-20T10:57:59.000Z</pubTime>
+        
+        <tag>RL</tag>
+         
+        <tag>robotics</tag>
+         
+         
+           
+             
+              <breadCrumb title="【强化学习】" url="luxinglong.github.io/categories/%E3%80%90%E5%BC%BA%E5%8C%96%E5%AD%A6%E4%B9%A0%E3%80%91/"/>
           
         </display>
     </data>
@@ -78,28 +100,6 @@
         <display>
         <title>【强化学习】有模型学习(Model-Based)</title>
         <pubTime>2017-10-20T10:57:34.000Z</pubTime>
-        
-        <tag>RL</tag>
-         
-        <tag>robotics</tag>
-         
-         
-           
-             
-              <breadCrumb title="【强化学习】" url="luxinglong.github.io/categories/%E3%80%90%E5%BC%BA%E5%8C%96%E5%AD%A6%E4%B9%A0%E3%80%91/"/>
-          
-        </display>
-    </data>
-    </url>
-
-    
-  <url>
-    <loc>luxinglong.github.io/2017/10/24/%E3%80%90%E5%BC%BA%E5%8C%96%E5%AD%A6%E4%B9%A0%E3%80%91%E5%80%BC%E5%87%BD%E6%95%B0%E9%80%BC%E8%BF%91/</loc>
-    <lastmod>2017-10-24T14:06:51.000Z</lastmod>
-    <data>
-        <display>
-        <title>【强化学习】值函数逼近</title>
-        <pubTime>2017-10-24T12:11:37.000Z</pubTime>
         
         <tag>RL</tag>
          
