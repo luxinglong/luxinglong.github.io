@@ -98,7 +98,7 @@
 <meta property="og:image" content="http://on99gq8w5.bkt.clouddn.com/mc.png?imageMogr2/thumbnail/400x500">
 <meta property="og:image" content="http://on99gq8w5.bkt.clouddn.com/sarsa.png?imageMogr2/thumbnail/400x500">
 <meta property="og:image" content="http://on99gq8w5.bkt.clouddn.com/ql.png?imageMogr2/thumbnail/400x500">
-<meta property="og:updated_time" content="2017-10-26T12:07:34.000Z">
+<meta property="og:updated_time" content="2017-10-26T12:31:02.000Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="【强化学习】免模型学习(Model-Free)">
 <meta name="twitter:description" content="0 引言在现实的强化学习任务中，环境的模型，也就是状态转移概率、奖赏函数不易得知，因此需要进行免模型学习。">
@@ -350,7 +350,7 @@
              <i class="fa fa-calendar-o"></i>
            </span>
            <span class="post-meta-item-text">字数统计:</span>
-           <span class="post-count">1,764(字)</span> 
+           <span class="post-count">2,202(字)</span> 
          </span>
          
          <span id="busuanzi_container_page_pv">
@@ -411,7 +411,12 @@
 <p>n-step return:    $G_t^{(n)}=R_{t+1}+\gamma R_{t+2}+\cdots+\gamma^{n-1}R_{t+n}+\gamma^nV(X_{t+n})$<br>那么n-step的TD学习模型为：<br>$$<br>V(x_t) \gets V(x_t)+\alpha(G_t^{(n)}-V(x_t))<br>$$<br>那么在不同的$\alpha$和$n$，效果会怎么样呢？</p>
 <p>如何在不增加计算量的前提下，综合考虑不同的步数预测？为此引出，TD$(\lambda)$。<br>$\lambda$-return:   $G_t^{\gamma}=(1-\lambda)\sum_{n=1}^{\infty}\lambda^{n-1}G_t^{(n)}$<br>为$G_t^{(n)}$增加一个$(1-\lambda)\lambda^{n-1}$的权重，然后累加。权重单调递减，衰减到零。<br>那么TD$(\lambda)$学习模型为：<br>$$<br>V(x_t) \gets V(x_t)+\alpha(G_t^{\lambda}-V(x_t))<br>$$</p>
 <p>由于TD$(\lambda)$的return考虑了所有步长的预测，因此需要完整的episode，这也带来了MC算法的计算效率问题。$\lambda$取值范围是0-1，事实上，当$\lambda=1$，TD$(\lambda)$等效于MC算法。为了解决这个问题，引入效用追踪。</p>
-<p><strong>效用追踪</strong>(Eligibility Traces)<br>例子：&lt;铃响、铃响、铃响、灯亮、电击&gt;，请问是铃响还是灯亮导致了电击发生？<br>频率启发(Frequency heuristic)：将原因归于出现频率最高的状态，如铃响<br>就近启发(Recency heuristic)：将原因归于最近的状态，如灯亮<br>效用追踪综合考虑频率启发和就近启发。<br>$$<br>E_0(x)=0 \\<br>E_t(x)=\gamma \lambda E_{t-1}(x)+1(X_t=x)<br>$$<br><img src="http://on99gq8w5.bkt.clouddn.com/et.png?imageMogr2/thumbnail/400x500" class="[et]"></p>
+<p><strong>效用追踪</strong>(Eligibility Traces)<br>例子：&lt;铃响、铃响、铃响、灯亮、电击&gt;，请问是铃响还是灯亮导致了电击发生？<br>频率启发(Frequency heuristic)：将原因归于出现频率最高的状态，如铃响<br>就近启发(Recency heuristic)：将原因归于最近的状态，如灯亮<br>效用追踪综合考虑频率启发和就近启发。<br>$$<br>E_0(x)=0 \\<br>E_t(x)=\gamma \lambda E_{t-1}(x)+1(X_t=x)<br>$$<br>下图给出了$E_t(x)$对于t的一个可能的曲线图：<br><img src="http://on99gq8w5.bkt.clouddn.com/et.png?imageMogr2/thumbnail/400x500" class="[et]"><br>该图横坐标是时间，横坐标下面的竖线的位置代表当前进入了状态x，纵坐标是效用追踪值$E_t(x)$。可以看出当一个状态连续出现时，E值就会在一定衰减的基础上有一个单位数值的提高，此时将增加该状态对于最终收获贡献的比重。如果该状态距离最终状态比较远，则其对最终收获的贡献越小。</p>
+<p>特别地，E值不需要等到完整的episode结束才能计算出来，它可以每经过一个时刻就得到更新。E值存在饱和值，哟一个瞬时上限：$E_{\max}=1(1-\gamma\lambda)$</p>
+<p>$$<br>V(x)\gets V(x)+\alpha\delta_t E_t(x) \\<br>其中，\delta_t=R_{t+1}+\gamma V(x_{t+1})-V(x_t)为TD-error \\<br>     E_t(x)是效用追踪<br>$$</p>
+<p>注意：每个状态x都有一个E值，E值随时间而变化。</p>
+<p>这样就可以在线实时更新状态值函数，而不用使用完整的序列。同时，通过效用追踪，可以将状态出现的频率和就近性考虑进状态值函数。</p>
+<p>注：ET是一个非常符合神经科学相关理论的、非常精巧的设计。把它看成是神经元的一个参数，它反映了神经元对某一刺激的敏感性和适应性。神经元在接受刺激时会有反馈，在持续刺激时反馈一般也比较强，当间歇一段时间不刺激时，神经元又逐渐趋于静息状态；同时不论如何增加刺激的频率，神经元有一个最大饱和反馈。</p>
 <h1 id="2-控制"><a href="#2-控制" class="headerlink" title="2 控制"></a>2 控制</h1><h2 id="2-1-蒙特卡罗"><a href="#2-1-蒙特卡罗" class="headerlink" title="2.1 蒙特卡罗"></a>2.1 蒙特卡罗</h2><img src="http://on99gq8w5.bkt.clouddn.com/mc.png?imageMogr2/thumbnail/400x500" class="[mc]">
 <p>这个算法需要记录两个值，一个是每个动作-状态对出现的次数，另外一个是每个状态的动作-状态值函数。<br>策略评估使用<br>$$<br>V(x_t) \gets V(x_t)+\frac{1}{N(x_t)}(G_t-V(x_t)) \\<br>其中，N(x_t) \gets N(x_t)+1<br>$$<br>对于，返回值$G_t$，使用。。。。来计算。</p>
 <p>策略提升环节，使用$\epsilon -$贪婪法<br>$$<br>\epsilon \gets \frac{1}{s} \\<br>\pi \gets \epsilon - greedy(Q)<br>$$<br>最终，动作-状态值函数会收敛到最优，$Q(x,a) \to q_{\ast}(x,a)$.</p>
