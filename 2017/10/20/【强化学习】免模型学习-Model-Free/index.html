@@ -98,7 +98,7 @@
 <meta property="og:image" content="http://on99gq8w5.bkt.clouddn.com/mc.png?imageMogr2/thumbnail/400x500">
 <meta property="og:image" content="http://on99gq8w5.bkt.clouddn.com/sarsa.png?imageMogr2/thumbnail/400x500">
 <meta property="og:image" content="http://on99gq8w5.bkt.clouddn.com/ql.png?imageMogr2/thumbnail/400x500">
-<meta property="og:updated_time" content="2017-10-26T12:31:02.000Z">
+<meta property="og:updated_time" content="2017-10-26T12:37:38.000Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="【强化学习】免模型学习(Model-Free)">
 <meta name="twitter:description" content="0 引言在现实的强化学习任务中，环境的模型，也就是状态转移概率、奖赏函数不易得知，因此需要进行免模型学习。">
@@ -350,7 +350,7 @@
              <i class="fa fa-calendar-o"></i>
            </span>
            <span class="post-meta-item-text">字数统计:</span>
-           <span class="post-count">2,202(字)</span> 
+           <span class="post-count">2,276(字)</span> 
          </span>
          
          <span id="busuanzi_container_page_pv">
@@ -430,8 +430,11 @@
 <li>任何时候的策略$\pi_t(a \mid x)$符合GLIE特性；</li>
 <li>步长系数$\alpha_t$满足：$\sum^{\infty}_{t=1}\alpha_t=\infty$，且$\sum^{\infty}_{t=1}\alpha^2_t &lt; \infty$<br>看不懂。。</li>
 </ul>
-<h2 id="2-3-Sarsa-lambda"><a href="#2-3-Sarsa-lambda" class="headerlink" title="2.3 Sarsa$(\lambda)$"></a>2.3 Sarsa$(\lambda)$</h2><h2 id="2-4-Q-learning"><a href="#2-4-Q-learning" class="headerlink" title="2.4 Q-learning"></a>2.4 Q-learning</h2><p>Sarsa是同策略算法，也就是说评估和提升的策略是同一个。如果将Sarsa改成异策略，那么就得到类Q-learning算法。这时候评估和提升的策略不是同一个。<br><img src="http://on99gq8w5.bkt.clouddn.com/ql.png?imageMogr2/thumbnail/400x500" class="[ql]"></p>
-<h1 id="参考文献"><a href="#参考文献" class="headerlink" title="参考文献"></a>参考文献</h1><p>[1] 周志华,《机器学习》,清华大学出版社,2016<br>[2] David Silver, reinforcement learning lecture 4 and 5</p>
+<h2 id="2-3-Sarsa-lambda"><a href="#2-3-Sarsa-lambda" class="headerlink" title="2.3 Sarsa$(\lambda)$"></a>2.3 Sarsa$(\lambda)$</h2><p><strong>n-Step Sarsa</strong><br>n-step Q-return:   $q_t^{(n)}=R_{t+1}+\gamma R_{t+2}+\cdots+\gamma^{n-1}R_{t+n}+\gamma^nQ(x_{t+n})$</p>
+<p>n-Step Sarsa学习模型为：<br>$$<br>Q(x_t,a_t)\gets Q(x_t,a_t)+\alpha(q_t^{(n)}-Q(x_t,a_t))<br>$$</p>
+<p><strong>Sarsa$(\lambda)$</strong></p>
+<h2 id="2-4-Q-learning"><a href="#2-4-Q-learning" class="headerlink" title="2.4 Q-learning"></a>2.4 Q-learning</h2><p>Sarsa是同策略算法，也就是说评估和提升的策略是同一个。如果将Sarsa改成异策略，那么就得到类Q-learning算法。这时候评估和提升的策略不是同一个。<br><img src="http://on99gq8w5.bkt.clouddn.com/ql.png?imageMogr2/thumbnail/400x500" class="[ql]"></p>
+<h1 id="参考文献"><a href="#参考文献" class="headerlink" title="参考文献"></a>参考文献</h1><p>[1] 周志华,《机器学习》,清华大学出版社,2016<br>[2] David Silver, reinforcement learning lecture 4 and 5<br>[3] 叶强, David Silver强化学习公开课中文讲解及实践, 知乎专栏</p>
 
       
     </div>
