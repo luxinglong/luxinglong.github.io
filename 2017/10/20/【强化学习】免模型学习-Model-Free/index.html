@@ -96,7 +96,7 @@
 <meta property="og:image" content="http://on99gq8w5.bkt.clouddn.com/mc.png?imageMogr2/thumbnail/400x500">
 <meta property="og:image" content="http://on99gq8w5.bkt.clouddn.com/sarsa.png?imageMogr2/thumbnail/400x500">
 <meta property="og:image" content="http://on99gq8w5.bkt.clouddn.com/ql.png?imageMogr2/thumbnail/400x500">
-<meta property="og:updated_time" content="2017-10-25T11:31:52.000Z">
+<meta property="og:updated_time" content="2017-10-25T14:49:40.000Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="【强化学习】免模型学习(Model-Free)">
 <meta name="twitter:description" content="0 引言在现实的强化学习任务中，环境的模型，也就是状态转移概率、奖赏函数不易得知，因此需要进行免模型学习。">
@@ -348,7 +348,7 @@
              <i class="fa fa-calendar-o"></i>
            </span>
            <span class="post-meta-item-text">字数统计:</span>
-           <span class="post-count">1,318(字)</span> 
+           <span class="post-count">1,430(字)</span> 
          </span>
          
          <span id="busuanzi_container_page_pv">
@@ -404,15 +404,17 @@
 <li>TD利用了马尔可夫特性</li>
 <li>MC没有用到马尔可夫特性</li>
 </ul>
-<h3 id="1-2-2-TD-lambda"><a href="#1-2-2-TD-lambda" class="headerlink" title="1.2.2 TD$(\lambda)$"></a>1.2.2 TD$(\lambda)$</h3><h1 id="2-控制"><a href="#2-控制" class="headerlink" title="2 控制"></a>2 控制</h1><h2 id="2-1-蒙特卡罗"><a href="#2-1-蒙特卡罗" class="headerlink" title="2.1 蒙特卡罗"></a>2.1 蒙特卡罗</h2><img src="http://on99gq8w5.bkt.clouddn.com/mc.png?imageMogr2/thumbnail/400x500" class="[mc]">
+<h3 id="1-2-2-TD-lambda"><a href="#1-2-2-TD-lambda" class="headerlink" title="1.2.2 TD$(\lambda)$"></a>1.2.2 TD$(\lambda)$</h3><p><strong>效用追踪</strong>(Eligibility Traces)<br>例子：&lt;铃响、铃响、铃响、灯亮、电击&gt;，请问是铃响还是灯亮导致了电击发生？<br>$$<br>E_0(x)=0 \\<br>E_t(x)=\gamma \lambda E_{t-1}(x)+1(X_t=x)<br>$$</p>
+<h1 id="2-控制"><a href="#2-控制" class="headerlink" title="2 控制"></a>2 控制</h1><h2 id="2-1-蒙特卡罗"><a href="#2-1-蒙特卡罗" class="headerlink" title="2.1 蒙特卡罗"></a>2.1 蒙特卡罗</h2><img src="http://on99gq8w5.bkt.clouddn.com/mc.png?imageMogr2/thumbnail/400x500" class="[mc]">
 <p>这个算法需要记录两个值，一个是每个动作-状态对出现的次数，另外一个是每个状态的动作-状态值函数。<br>策略评估使用<br>$$<br>V(x_t) \gets V(x_t)+\frac{1}{N(x_t)}(G_t-V(x_t)) \\<br>其中，N(x_t) \gets N(x_t)+1<br>$$<br>对于，返回值$G_t$，使用。。。。来计算。</p>
 <p>策略提升环节，使用$\epsilon -$贪婪法<br>$$<br>\epsilon \gets \frac{1}{s} \\<br>\pi \gets \epsilon - greedy(Q)<br>$$<br>最终，动作-状态值函数会收敛到最优，$Q(x,a) \to q_{\ast}(x,a)$.</p>
+<p><strong>GILE</strong>(Greedy in the Limit with Infinite Exploration),就是在有限的时间进行无限可能的探索。</p>
 <h2 id="2-2-Sarsa"><a href="#2-2-Sarsa" class="headerlink" title="2.2 Sarsa"></a>2.2 Sarsa</h2><p>在评估策略时，TD相比MC有很多优点，比如说小方差、在线学习、根据不完整的episode学习等。同样的在控制问题上，也可以利用TD的这些优点，如Sarsa算法。<br>为什么取名字叫Sarsa呢？因为算法的求解需要用到上一时刻的状态S，上一时刻的动作A，当前的奖赏R，当前状态$S^{\prime}$，当前动作$A^{\prime}$.<br>对于状态-动作值函数的估计采用下面的公式：<br>$$<br>Q(X,A)\gets Q(X,A)+\alpha (R+\gamma Q(X^{\prime},A^{\prime})-Q(X,A))<br>$$</p>
 <img src="http://on99gq8w5.bkt.clouddn.com/sarsa.png?imageMogr2/thumbnail/400x500" class="[sarsa]">
 <p>Sarsa算法收敛到最优状态-动作值函数的收敛条件：</p>
 <ul>
-<li></li>
-<li>看不懂。。</li>
+<li>任何时候的策略$\pi_t(a \mid x)$符合GLIE特性；</li>
+<li>步长系数$\alpha_t$满足：$\sum^{\infty}_{t=1}\alpha_t=\infty$，且$\sum^{\infty}_{t=1}\alpha^2_t &lt; \infty$<br>看不懂。。</li>
 </ul>
 <h2 id="2-3-Sarsa-lambda"><a href="#2-3-Sarsa-lambda" class="headerlink" title="2.3 Sarsa$(\lambda)$"></a>2.3 Sarsa$(\lambda)$</h2><h2 id="2-4-Q-learning"><a href="#2-4-Q-learning" class="headerlink" title="2.4 Q-learning"></a>2.4 Q-learning</h2><p>Sarsa是同策略算法，也就是说评估和提升的策略是同一个。如果将Sarsa改成异策略，那么就得到类Q-learning算法。这时候评估和提升的策略不是同一个。<br><img src="http://on99gq8w5.bkt.clouddn.com/ql.png?imageMogr2/thumbnail/400x500" class="[ql]"></p>
 <h1 id="参考文献"><a href="#参考文献" class="headerlink" title="参考文献"></a>参考文献</h1><p>[1] 周志华,《机器学习》,清华大学出版社,2016<br>[2] David Silver, reinforcement learning lecture 4 and 5</p>
