@@ -100,7 +100,7 @@
 状态空间：16个位置，其中0和15代表结束状态动作空间：上(n)、下(s)、左(w)、右(e)状态转移：离开格子的动作，保持原状态；其他动作，100%转移到相应的状态。奖励函数：结束状态奖励为0，其他状态奖励为-1折扣因子：$\gamma=1$
 当">
 <meta property="og:image" content="http://on99gq8w5.bkt.clouddn.com/gw.png?imageMogr2/thumbnail/500x400">
-<meta property="og:updated_time" content="2017-10-27T08:09:54.000Z">
+<meta property="og:updated_time" content="2017-10-27T08:16:18.000Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="【强化学习】算法实践-Small GridWorld">
 <meta name="twitter:description" content="0 引言Small GridWorld问题是David Silver在强化学习课程中举的一个例子，该例子很好的描述了有模型的策略评估和策略改进方法。
@@ -355,7 +355,7 @@
              <i class="fa fa-calendar-o"></i>
            </span>
            <span class="post-meta-item-text">字数统计:</span>
-           <span class="post-count">220(字)</span> 
+           <span class="post-count">238(字)</span> 
          </span>
          
          <span id="busuanzi_container_page_pv">
@@ -388,11 +388,13 @@
         <h1 id="0-引言"><a href="#0-引言" class="headerlink" title="0 引言"></a>0 引言</h1><p>Small GridWorld问题是David Silver在强化学习课程中举的一个例子，该例子很好的描述了有模型的策略评估和策略改进方法。</p>
 <img src="http://on99gq8w5.bkt.clouddn.com/gw.png?imageMogr2/thumbnail/500x400" class="[gw]">
 <p>状态空间：16个位置，其中0和15代表结束状态<br>动作空间：上(n)、下(s)、左(w)、右(e)<br>状态转移：离开格子的动作，保持原状态；其他动作，100%转移到相应的状态。<br>奖励函数：结束状态奖励为0，其他状态奖励为-1<br>折扣因子：$\gamma=1$</p>
-<p>当前策略：$\pi(n\or \cdot)=\pi(s\or \cdot)=\pi(w\or \cdot)=\pi(e\or \cdot)=\frac{1}{4}$</p>
+<p>当前策略：$\pi(n\mid \cdot)=\pi(s\mid \cdot)=\pi(w\mid \cdot)=\pi(e\mid \cdot)=\frac{1}{4}$</p>
 <a id="more"></a>
 <h1 id="1-值迭代实现"><a href="#1-值迭代实现" class="headerlink" title="1 值迭代实现"></a>1 值迭代实现</h1><p>注：以下代码来自[1]</p>
-<h2 id="定义状态空间"><a href="#定义状态空间" class="headerlink" title="定义状态空间"></a>定义状态空间</h2><figure class="highlight plain"><figcaption><span>value_iteration.py</span></figcaption><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">states = [i for i in range(16)]</div></pre></td></tr></table></figure>
-<h1 id="参考文献"><a href="#参考文献" class="headerlink" title="参考文献"></a>参考文献</h1><p>[1] 叶强, David Silver强化学习公开课中文讲解及实践, 知乎专栏<br>[2] David Silver, reinforcement learning lecture 2 and 3</p>
+<h2 id="定义状态空间"><a href="#定义状态空间" class="headerlink" title="定义状态空间"></a>定义状态空间</h2><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">states = [i for i in range(16)]</div></pre></td></tr></table></figure>
+<h2 id="定义动作空间"><a href="#定义动作空间" class="headerlink" title="定义动作空间"></a>定义动作空间</h2><pre><code>actions = [&quot;n&quot;, &quot;s&quot;, &quot;w&quot;, &quot;e&quot;]
+</code></pre><h2 id="定义折扣因子"><a href="#定义折扣因子" class="headerlink" title="定义折扣因子"></a>定义折扣因子</h2><pre><code>gamma = 1
+</code></pre><h1 id="参考文献"><a href="#参考文献" class="headerlink" title="参考文献"></a>参考文献</h1><p>[1] 叶强, David Silver强化学习公开课中文讲解及实践, 知乎专栏<br>[2] David Silver, reinforcement learning lecture 2 and 3</p>
 
       
     </div>
@@ -614,7 +616,7 @@
             
 
             
-              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-1"><a class="nav-link" href="#0-引言"><span class="nav-number">1.</span> <span class="nav-text">0 引言</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#1-值迭代实现"><span class="nav-number">2.</span> <span class="nav-text">1 值迭代实现</span></a><ol class="nav-child"><li class="nav-item nav-level-2"><a class="nav-link" href="#定义状态空间"><span class="nav-number">2.1.</span> <span class="nav-text">定义状态空间</span></a></li></ol></li><li class="nav-item nav-level-1"><a class="nav-link" href="#参考文献"><span class="nav-number">3.</span> <span class="nav-text">参考文献</span></a></li></ol></div>
+              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-1"><a class="nav-link" href="#0-引言"><span class="nav-number">1.</span> <span class="nav-text">0 引言</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#1-值迭代实现"><span class="nav-number">2.</span> <span class="nav-text">1 值迭代实现</span></a><ol class="nav-child"><li class="nav-item nav-level-2"><a class="nav-link" href="#定义状态空间"><span class="nav-number">2.1.</span> <span class="nav-text">定义状态空间</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#定义动作空间"><span class="nav-number">2.2.</span> <span class="nav-text">定义动作空间</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#定义折扣因子"><span class="nav-number">2.3.</span> <span class="nav-text">定义折扣因子</span></a></li></ol></li><li class="nav-item nav-level-1"><a class="nav-link" href="#参考文献"><span class="nav-number">3.</span> <span class="nav-text">参考文献</span></a></li></ol></div>
             
 
           </div>
