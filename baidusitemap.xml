@@ -4,8 +4,30 @@
 
     
   <url>
+    <loc>luxinglong.github.io/2017/10/20/%E3%80%90%E5%BC%BA%E5%8C%96%E5%AD%A6%E4%B9%A0%E3%80%91%E6%9C%89%E6%A8%A1%E5%9E%8B%E5%AD%A6%E4%B9%A0-Model-Based/</loc>
+    <lastmod>2017-10-27T09:33:02.000Z</lastmod>
+    <data>
+        <display>
+        <title>【强化学习】有模型学习(Model-Based)</title>
+        <pubTime>2017-10-20T10:57:34.000Z</pubTime>
+        
+        <tag>RL</tag>
+         
+        <tag>robotics</tag>
+         
+         
+           
+             
+              <breadCrumb title="【强化学习】" url="luxinglong.github.io/categories/%E3%80%90%E5%BC%BA%E5%8C%96%E5%AD%A6%E4%B9%A0%E3%80%91/"/>
+          
+        </display>
+    </data>
+    </url>
+
+    
+  <url>
     <loc>luxinglong.github.io/2017/10/26/%E3%80%90%E5%BC%BA%E5%8C%96%E5%AD%A6%E4%B9%A0%E3%80%91%E7%AE%97%E6%B3%95%E5%AE%9E%E8%B7%B5-OpenAI%20gym/</loc>
-    <lastmod>2017-10-27T09:17:37.000Z</lastmod>
+    <lastmod>2017-10-27T09:21:58.000Z</lastmod>
     <data>
         <display>
         <title>【强化学习】算法实践-OpenAI gym</title>
@@ -161,28 +183,6 @@
         <display>
         <title>【强化学习】基本概念</title>
         <pubTime>2017-10-19T02:02:14.000Z</pubTime>
-        
-        <tag>RL</tag>
-         
-        <tag>robotics</tag>
-         
-         
-           
-             
-              <breadCrumb title="【强化学习】" url="luxinglong.github.io/categories/%E3%80%90%E5%BC%BA%E5%8C%96%E5%AD%A6%E4%B9%A0%E3%80%91/"/>
-          
-        </display>
-    </data>
-    </url>
-
-    
-  <url>
-    <loc>luxinglong.github.io/2017/10/20/%E3%80%90%E5%BC%BA%E5%8C%96%E5%AD%A6%E4%B9%A0%E3%80%91%E6%9C%89%E6%A8%A1%E5%9E%8B%E5%AD%A6%E4%B9%A0-Model-Based/</loc>
-    <lastmod>2017-10-25T04:59:28.000Z</lastmod>
-    <data>
-        <display>
-        <title>【强化学习】有模型学习(Model-Based)</title>
-        <pubTime>2017-10-20T10:57:34.000Z</pubTime>
         
         <tag>RL</tag>
          
