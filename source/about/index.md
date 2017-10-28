@@ -5,6 +5,8 @@ type: "about"
 comments: false
 ---
 
+{% img [luxinglong] http://on99gq8w5.bkt.clouddn.com/luxinglong.jpg?imageMogr2/thumbnail/600x600 %}
+
 我叫鲁班。河北人氏。
 
 2012-2016年，在**华中科技大学**自动化实验班就读，担任四年班长，并取得工学学士学位。
