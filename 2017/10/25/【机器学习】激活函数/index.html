@@ -97,7 +97,7 @@ relu: $f(x)=\max(0,x)$，导数：$f(x)^{\prime}=\max(0,">
 <meta property="og:description" content="0 引言常见的激活函数有sigmoid, tanh, relu等。sigmoid: $f(x)=\frac{1}{1+exp(-x)}$，导数：$f(x)^{\prime}=f(x)(1-f(x))$
 tanh: $f(x)=tanh(x)$，导数：$f(x)^{\prime}=1-(f(x))^2$
 relu: $f(x)=\max(0,x)$，导数：$f(x)^{\prime}=\max(0,">
-<meta property="og:updated_time" content="2017-10-26T10:44:16.000Z">
+<meta property="og:updated_time" content="2017-10-28T12:43:47.000Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="【机器学习】激活函数">
 <meta name="twitter:description" content="0 引言常见的激活函数有sigmoid, tanh, relu等。sigmoid: $f(x)=\frac{1}{1+exp(-x)}$，导数：$f(x)^{\prime}=f(x)(1-f(x))$
@@ -350,7 +350,7 @@ relu: $f(x)=\max(0,x)$，导数：$f(x)^{\prime}=\max(0,">
              <i class="fa fa-calendar-o"></i>
            </span>
            <span class="post-meta-item-text">字数统计:</span>
-           <span class="post-count">420(字)</span> 
+           <span class="post-count">657(字)</span> 
          </span>
          
          <span id="busuanzi_container_page_pv">
@@ -388,7 +388,19 @@ relu: $f(x)=\max(0,x)$，导数：$f(x)^{\prime}=\max(0,">
 <p>尤其是sigmoid函数和tanh函数，sigmoid函数的导数，在0处取最大值为0.25，tanh函数的导数在0处取最大值为1，当连续相乘多次的时候，必然会越来越小。那么解决梯度消失的方法是使用relu。</p>
 <h1 id="2-为什么梯度方向下降最快？"><a href="#2-为什么梯度方向下降最快？" class="headerlink" title="2 为什么梯度方向下降最快？"></a>2 为什么梯度方向下降最快？</h1><p>对二元函数$f(x,y)$进行泰勒展开，得到下面的公式<br>$$<br>f(x+\Delta x, y+\Delta y) - f(x,y) \approx [\frac{\partial f(x,y)}{\partial x},\frac{\partial f(x,y)}{\partial y}][\Delta x, \Delta y]^T<br>$$</p>
 <p>按照$[\Delta x, \Delta y]$方向走固定大小的距离，函数的衰减值越大，下降越快。那么将梯度向量和变化向量全部化成单位向量，提出一个常量，那么当行走方向和梯度方向重合的时候，变化最大。也就是下降最快。</p>
-<h1 id="3"><a href="#3" class="headerlink" title="3"></a>3</h1><h1 id="参考文献"><a href="#参考文献" class="headerlink" title="参考文献"></a>参考文献</h1>
+<h1 id="3-当目标函数非凸时，应该采用什么优化方法？"><a href="#3-当目标函数非凸时，应该采用什么优化方法？" class="headerlink" title="3 当目标函数非凸时，应该采用什么优化方法？"></a>3 当目标函数非凸时，应该采用什么优化方法？</h1><p>凸优化：一个问题是凸优化问题，必须满足两个条件：</p>
+<ol>
+<li>目标函数为凸函数</li>
+<li>由约束条件形成的定义域为凸集</li>
+</ol>
+<p>如果有其中一个条件不满足，那么则称为非凸优化。</p>
+<p>如果一个问题是凸优化问题，那么可以采用梯度下降等方法，得到的局部最优，也是全局最优。而如果一个问题是非凸优化，一般会有两种解决办法。一种是将非凸优化问题转化成凸优化问题。</p>
+<ol>
+<li>将目标函数处理成凸函数</li>
+<li>放宽约束条件的限制，使之成为凸集</li>
+</ol>
+<p>另外一种是使用非凸优化的方法，如蒙特卡罗方法，找出所有的局部最优，从中选出全局最优。这种方法计算量很大。</p>
+<h1 id="参考文献"><a href="#参考文献" class="headerlink" title="参考文献"></a>参考文献</h1>
       
     </div>
 
@@ -621,7 +633,7 @@ relu: $f(x)=\max(0,x)$，导数：$f(x)^{\prime}=\max(0,">
             
 
             
-              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-1"><a class="nav-link" href="#0-引言"><span class="nav-number">1.</span> <span class="nav-text">0 引言</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#1-梯度消失、梯度发散、梯度爆炸"><span class="nav-number">2.</span> <span class="nav-text">1 梯度消失、梯度发散、梯度爆炸</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#2-为什么梯度方向下降最快？"><span class="nav-number">3.</span> <span class="nav-text">2 为什么梯度方向下降最快？</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#3"><span class="nav-number">4.</span> <span class="nav-text">3</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#参考文献"><span class="nav-number">5.</span> <span class="nav-text">参考文献</span></a></li></ol></div>
+              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-1"><a class="nav-link" href="#0-引言"><span class="nav-number">1.</span> <span class="nav-text">0 引言</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#1-梯度消失、梯度发散、梯度爆炸"><span class="nav-number">2.</span> <span class="nav-text">1 梯度消失、梯度发散、梯度爆炸</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#2-为什么梯度方向下降最快？"><span class="nav-number">3.</span> <span class="nav-text">2 为什么梯度方向下降最快？</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#3-当目标函数非凸时，应该采用什么优化方法？"><span class="nav-number">4.</span> <span class="nav-text">3 当目标函数非凸时，应该采用什么优化方法？</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#参考文献"><span class="nav-number">5.</span> <span class="nav-text">参考文献</span></a></li></ol></div>
             
 
           </div>
