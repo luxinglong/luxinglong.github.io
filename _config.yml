@@ -5,7 +5,7 @@
 # Site
 title: LB's Home
 subtitle: Coding - Thinking
-description: Computer Vision - Control and Navigation
+description: Make Robot Feel The World
 author: LB
 language: zh-Hans
 timezone:
@@ -85,6 +85,9 @@ deploy:
 links_title: Links
 links:
   OverLeaf: https://www.overleaf.com/dash
+  LeetCode: https://leetcode.com
+  Kaggle: https://www.kaggle.com
+  Tianchi: https://tianchi.aliyun.com
 
 #sitemap
 sitemap: 
