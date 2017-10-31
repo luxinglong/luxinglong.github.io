@@ -96,10 +96,10 @@
 <meta property="og:image" content="http://on99gq8w5.bkt.clouddn.com/n-step.png?imageMogr2/thumbnail/400x500">
 <meta property="og:image" content="http://on99gq8w5.bkt.clouddn.com/et.png?imageMogr2/thumbnail/400x500">
 <meta property="og:image" content="http://on99gq8w5.bkt.clouddn.com/mc.png?imageMogr2/thumbnail/400x500">
-<meta property="og:image" content="http://on99gq8w5.bkt.clouddn.com/sarsa.png?imageMogr2/thumbnail/400x500">
+<meta property="og:image" content="http://on99gq8w5.bkt.clouddn.com/sarsa2.png?imageMogr2/thumbnail/400x500">
 <meta property="og:image" content="http://on99gq8w5.bkt.clouddn.com/sarsa-l.png?imageMogr2/thumbnail/400x500">
 <meta property="og:image" content="http://on99gq8w5.bkt.clouddn.com/ql.png?imageMogr2/thumbnail/400x500">
-<meta property="og:updated_time" content="2017-10-31T05:22:22.000Z">
+<meta property="og:updated_time" content="2017-10-31T05:25:39.000Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="【强化学习】免模型学习(Model-Free)">
 <meta name="twitter:description" content="0 引言在现实的强化学习任务中，环境的模型，也就是状态转移概率、奖赏函数不易得知，因此需要进行免模型学习。">
@@ -425,7 +425,7 @@
 <h2 id="2-2-Sarsa"><a href="#2-2-Sarsa" class="headerlink" title="2.2 Sarsa"></a>2.2 Sarsa</h2><p>在评估策略时，TD相比MC有很多优点，比如说小方差、在线学习、根据不完整的episode学习等。同样的在控制问题上，也可以利用TD的这些优点，如Sarsa算法。</p>
 <p>为什么取名字叫Sarsa呢？因为算法的求解需要用到上一时刻的状态S，上一时刻的动作A，当前的奖赏R，当前状态$S^{\prime}$，当前动作$A^{\prime}$.</p>
 <p>对于状态-动作值函数的估计采用下面的公式：<br>$$<br>Q(X,A)\gets Q(X,A)+\alpha (R+\gamma Q(X^{\prime},A^{\prime})-Q(X,A))<br>$$</p>
-<img src="http://on99gq8w5.bkt.clouddn.com/sarsa.png?imageMogr2/thumbnail/400x500" class="[sarsa]">
+<img src="http://on99gq8w5.bkt.clouddn.com/sarsa2.png?imageMogr2/thumbnail/400x500" class="[sarsa2]">
 <p>Sarsa算法收敛到最优状态-动作值函数的收敛条件：</p>
 <ul>
 <li>任何时候的策略$\pi_t(a \mid x)$符合GLIE特性；</li>
