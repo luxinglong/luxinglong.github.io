@@ -99,8 +99,8 @@
 <meta property="og:image" content="http://on99gq8w5.bkt.clouddn.com/sarsa1.png?imageMogr2/thumbnail/500x500">
 <meta property="og:image" content="http://on99gq8w5.bkt.clouddn.com/sarsa2.png?imageMogr2/thumbnail/500x500">
 <meta property="og:image" content="http://on99gq8w5.bkt.clouddn.com/sarsa-l.png?imageMogr2/thumbnail/400x500">
-<meta property="og:image" content="http://on99gq8w5.bkt.clouddn.com/ql.png?imageMogr2/thumbnail/400x500">
-<meta property="og:updated_time" content="2017-10-31T06:06:18.000Z">
+<meta property="og:image" content="http://on99gq8w5.bkt.clouddn.com/qlearning.png?imageMogr2/thumbnail/400x500">
+<meta property="og:updated_time" content="2017-10-31T08:10:58.000Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="【强化学习】免模型学习(Model-Free)">
 <meta name="twitter:description" content="0 引言在现实的强化学习任务中，环境的模型，也就是状态转移概率、奖赏函数不易得知，因此需要进行免模型学习。">
@@ -442,7 +442,7 @@
 <p>综合考虑TD-error和效用追踪可以得到新的学习模型：<br>$$<br>Q(x_t,a_t)\gets Q(x_t,a_t)+\alpha\delta_tE_t(x,a) \\<br>其中，\delta_t=R_{t+1}+\gamma Q(x_{t+1},a_{t+1})-Q(x_t,a_t)为TD-error \\<br>     E_t(x,a)是效用追踪<br>$$</p>
 <p>Sarsa$(\lambda)$的伪代码如下：<br><img src="http://on99gq8w5.bkt.clouddn.com/sarsa-l.png?imageMogr2/thumbnail/400x500" class="[sarsa-l]"></p>
 <p>这里要提及一下的是E(s,a)在每遍历完一个Episode后需要重新置0，这体现了ET仅在一个Episode中发挥作用；其次要提及的是算法更新Q和E的时候针对的不是某个Episode里的Q或E，而是针对个体掌握的整个状态空间和行为空间产生的Q和E。</p>
-<h2 id="2-4-Q-learning"><a href="#2-4-Q-learning" class="headerlink" title="2.4 Q-learning"></a>2.4 Q-learning</h2><p>Sarsa是同策略算法，也就是说评估和提升的策略是同一个。如果将Sarsa改成异策略，那么就得到类Q-learning算法。这时候评估和提升的策略不是同一个。<br><img src="http://on99gq8w5.bkt.clouddn.com/ql.png?imageMogr2/thumbnail/400x500" class="[ql]"></p>
+<h2 id="2-4-Q-learning"><a href="#2-4-Q-learning" class="headerlink" title="2.4 Q-learning"></a>2.4 Q-learning</h2><p>Sarsa是同策略算法，也就是说评估和提升的策略是同一个。如果将Sarsa改成异策略，那么就得到类Q-learning算法。这时候评估和提升的策略不是同一个。<br><img src="http://on99gq8w5.bkt.clouddn.com/qlearning.png?imageMogr2/thumbnail/400x500" class="[qlearning]"></p>
 <h1 id="参考文献"><a href="#参考文献" class="headerlink" title="参考文献"></a>参考文献</h1><p>[1] 周志华,《机器学习》,清华大学出版社,2016<br>[2] David Silver, reinforcement learning lecture 4 and 5<br>[3] 叶强, David Silver强化学习公开课中文讲解及实践, 知乎专栏</p>
 
       
