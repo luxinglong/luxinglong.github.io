@@ -127,7 +127,7 @@ $$
 
 ## 2.1 蒙特卡罗 
 
-{% img [mc] http://on99gq8w5.bkt.clouddn.com/mc.png?imageMogr2/thumbnail/400x500 %}
+{% img [mc-on] http://on99gq8w5.bkt.clouddn.com/mc-on.png?imageMogr2/thumbnail/400x500 %}
 这个算法需要记录两个值，一个是每个动作-状态对出现的次数，另外一个是每个状态的动作-状态值函数。
 策略评估使用
 $$
@@ -154,8 +154,11 @@ $$
 $$
 Q(X,A)\gets Q(X,A)+\alpha (R+\gamma Q(X^{\prime},A^{\prime})-Q(X,A))
 $$
+Sarsa算法的实现有两种思路，一是值迭代[1],二是策略迭代[2].值迭代如下图所示：
+{% img [sarsa1] http://on99gq8w5.bkt.clouddn.com/sarsa1.png?imageMogr2/thumbnail/500x500 %}
 
-{% img [sarsa] http://on99gq8w5.bkt.clouddn.com/sarsa.png?imageMogr2/thumbnail/400x500 %}
+策略迭代如下图所示：
+{% img [sarsa2] http://on99gq8w5.bkt.clouddn.com/sarsa2.png?imageMogr2/thumbnail/400x400 %}
 
 Sarsa算法收敛到最优状态-动作值函数的收敛条件：
 * 任何时候的策略$\pi_t(a \mid x)$符合GLIE特性；
@@ -166,9 +169,9 @@ Sarsa算法收敛到最优状态-动作值函数的收敛条件：
 **n-Step Sarsa**
 n-step Q-return:   $q_t^{(n)}=R_{t+1}+\gamma R_{t+2}+\cdots+\gamma^{n-1}R_{t+n}+\gamma^nQ(x_{t+n})$
 
-这里的$q_t$对应的是一个状态行为对$\<x_t,a_t\>$，表示在某个状态下执行某个动作的价值大小。
+这里的$q_t$对应的是一个状态行为对$\langle x_t,a_t\rangle$，表示在某个状态下执行某个动作的价值大小。
 
-对于$q_t^1$,表示状态行为对$\<x_t,a_t\>$的Q价值可以分成两部分。一部分是执行动作$a_t$离开状态$x_t$的即时奖励$R_{t+1}$，即时奖励只与状态有关，与该状态下采取的行为无关；另一部分是新状态行为对$\<x_{t+1},a_{t+1}\>$的Q价值：环境给了个体一个新状态$x_{t+1}$，观察在$x_{t+1}$状态时基于**当前策略**得到的行为$a_{t+1}$时的$Q(x_{t+1},a_{t+1})$，后续的Q价值考虑衰减系数。
+对于$q_t^1$,表示状态行为对$\langle x_t,a_t\rangle$的Q价值可以分成两部分。一部分是执行动作$a_t$离开状态$x_t$的即时奖励$R_{t+1}$，即时奖励只与状态有关，与该状态下采取的行为无关；另一部分是新状态行为对$\langle x_{t+1},a_{t+1}\rangle$的Q价值：环境给了个体一个新状态$x_{t+1}$，观察在$x_{t+1}$状态时基于**当前策略**得到的行为$a_{t+1}$时的$Q(x_{t+1},a_{t+1})$，后续的Q价值考虑衰减系数。
 
 n-Step Sarsa学习模型为：
 $$
@@ -209,7 +212,7 @@ Sarsa$(\lambda)$的伪代码如下：
 
 ## 2.4 Q-learning
 Sarsa是同策略算法，也就是说评估和提升的策略是同一个。如果将Sarsa改成异策略，那么就得到类Q-learning算法。这时候评估和提升的策略不是同一个。
-{% img [ql] http://on99gq8w5.bkt.clouddn.com/ql.png?imageMogr2/thumbnail/400x500 %}
+{% img [qlearning] http://on99gq8w5.bkt.clouddn.com/qlearning.png?imageMogr2/thumbnail/400x400 %}
 
 
 #  参考文献
