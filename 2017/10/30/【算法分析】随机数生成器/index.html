@@ -71,7 +71,7 @@
 <link href="/css/main.css?v=5.1.0" rel="stylesheet" type="text/css" />
 
 
-  <meta name="keywords" content="computer vision,Mutiple View Geometry," />
+  <meta name="keywords" content="algorithm," />
 
 
 
@@ -87,16 +87,28 @@
 
 
 
-<meta name="description" content="0 学习目标">
+<meta name="description" content="0 引言随机数生成器主要分为三类：
+
+真随机数生成器
+伪随机数生成器
+随机数表法">
 <meta property="og:type" content="article">
-<meta property="og:title" content="【机器视觉】随机采样一致算法RANSAC">
-<meta property="og:url" content="luxinglong.github.io/2017/04/19/【机器视觉】随机采样一致算法RANSAC/index.html">
+<meta property="og:title" content="【算法分析】随机数生成器">
+<meta property="og:url" content="luxinglong.github.io/2017/10/30/【算法分析】随机数生成器/index.html">
 <meta property="og:site_name" content="LB's Home">
-<meta property="og:description" content="0 学习目标">
-<meta property="og:updated_time" content="2017-04-19T09:10:43.000Z">
+<meta property="og:description" content="0 引言随机数生成器主要分为三类：
+
+真随机数生成器
+伪随机数生成器
+随机数表法">
+<meta property="og:updated_time" content="2017-10-30T12:53:36.000Z">
 <meta name="twitter:card" content="summary">
-<meta name="twitter:title" content="【机器视觉】随机采样一致算法RANSAC">
-<meta name="twitter:description" content="0 学习目标">
+<meta name="twitter:title" content="【算法分析】随机数生成器">
+<meta name="twitter:description" content="0 引言随机数生成器主要分为三类：
+
+真随机数生成器
+伪随机数生成器
+随机数表法">
 
 
 
@@ -124,13 +136,13 @@
 
 
 
-  <link rel="canonical" href="luxinglong.github.io/2017/04/19/【机器视觉】随机采样一致算法RANSAC/"/>
+  <link rel="canonical" href="luxinglong.github.io/2017/10/30/【算法分析】随机数生成器/"/>
 
 
 
 
 
-  <title> 【机器视觉】随机采样一致算法RANSAC | LB's Home </title><!-- hexo-inject:begin --><!-- hexo-inject:end -->
+  <title> 【算法分析】随机数生成器 | LB's Home </title><!-- hexo-inject:begin --><!-- hexo-inject:end -->
 </head>
 
 <body itemscope itemtype="http://schema.org/WebPage" lang="zh-Hans">
@@ -269,7 +281,7 @@
   
 
   <article class="post post-type-normal " itemscope itemtype="http://schema.org/Article">
-    <link itemprop="mainEntityOfPage" href="luxinglong.github.io/2017/04/19/【机器视觉】随机采样一致算法RANSAC/">
+    <link itemprop="mainEntityOfPage" href="luxinglong.github.io/2017/10/30/【算法分析】随机数生成器/">
 
     <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
       <meta itemprop="name" content="LB">
@@ -290,7 +302,7 @@
             
             
               
-                【机器视觉】随机采样一致算法RANSAC
+                【算法分析】随机数生成器
               
             
           </h1>
@@ -305,8 +317,8 @@
               
                 <span class="post-meta-item-text">发表于</span>
               
-              <time title="创建于" itemprop="dateCreated datePublished" datetime="2017-04-19T17:05:58+08:00">
-                2017-04-19
+              <time title="创建于" itemprop="dateCreated datePublished" datetime="2017-10-30T19:00:17+08:00">
+                2017-10-30
               </time>
             
 
@@ -328,8 +340,8 @@
               
               
                 <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
-                  <a href="/categories/【机器视觉】/" itemprop="url" rel="index">
-                    <span itemprop="name">【机器视觉】</span>
+                  <a href="/categories/【算法分析】/" itemprop="url" rel="index">
+                    <span itemprop="name">【算法分析】</span>
                   </a>
                 </span>
 
@@ -344,7 +356,7 @@
              <i class="fa fa-calendar-o"></i>
            </span>
            <span class="post-meta-item-text">字数统计:</span>
-           <span class="post-count">5(字)</span> 
+           <span class="post-count">232(字)</span> 
          </span>
          
          <span id="busuanzi_container_page_pv">
@@ -374,7 +386,36 @@
       
 
       
-        <h1 id="0-学习目标"><a href="#0-学习目标" class="headerlink" title="0 学习目标"></a>0 学习目标</h1>
+        <h1 id="0-引言"><a href="#0-引言" class="headerlink" title="0 引言"></a>0 引言</h1><p>随机数生成器主要分为三类：</p>
+<ol>
+<li>真随机数生成器</li>
+<li>伪随机数生成器</li>
+<li>随机数表法</li>
+</ol>
+<a id="more"></a>
+<h1 id="1-真随机数生成器"><a href="#1-真随机数生成器" class="headerlink" title="1 真随机数生成器"></a>1 真随机数生成器</h1><ul>
+<li><p>基于电路</p>
+</li>
+<li><p>基于物理</p>
+</li>
+<li><p>基于其他因素</p>
+</li>
+</ul>
+<h1 id="2-伪随机数生成器"><a href="#2-伪随机数生成器" class="headerlink" title="2 伪随机数生成器"></a>2 伪随机数生成器</h1><ul>
+<li><p>同余法</p>
+</li>
+<li><p>梅森旋转算法</p>
+</li>
+</ul>
+<h1 id="参考文献"><a href="#参考文献" class="headerlink" title="参考文献"></a>参考文献</h1><p>[1] <a href="http://blog.csdn.net/lihui126/article/details/46236109" target="_blank" rel="external">http://blog.csdn.net/lihui126/article/details/46236109</a></p>
+<p>景驰科技宣讲会</p>
+<p>2017-4 pre-A: $5000万</p>
+<p>汽车发展的三大趋势：电动化 共享化 智能化（软件为主，硬件为辅）<br>特斯拉：辅助性<br>谷歌：全自助 多传感器融合</p>
+<p>定位、障碍物检测：激光雷达、毫米波雷达、摄像头、高精GPS和IMU<br>高精地图：基于激光雷达的点云地图、标记路面标志和信号灯的语义地图<br>深度感知：检测、跟踪、行为预测</p>
+<p>email: campus@jingchi.ai<br>一公里：十几M ROS third-library</p>
+<p>RL</p>
+<p>感知：深度学习，检测</p>
+
       
     </div>
 
@@ -403,9 +444,7 @@
       
         <div class="post-tags">
           
-            <a href="/tags/computer-vision/" rel="tag"># computer vision</a>
-          
-            <a href="/tags/Mutiple-View-Geometry/" rel="tag"># Mutiple View Geometry</a>
+            <a href="/tags/algorithm/" rel="tag"># algorithm</a>
           
         </div>
       
@@ -418,8 +457,8 @@
         <div class="post-nav">
           <div class="post-nav-next post-nav-item">
             
-              <a href="/2017/04/19/【机器视觉】基础矩阵F和本征矩阵E/" rel="next" title="【机器视觉】基础矩阵F和本征矩阵E">
-                <i class="fa fa-chevron-left"></i> 【机器视觉】基础矩阵F和本征矩阵E
+              <a href="/2017/10/28/【强化学习】算法实践-GridWorld Sarsa Sarsa/" rel="next" title="【强化学习】算法实践-GridWorld Sarsa Sarsa($\lambda$)">
+                <i class="fa fa-chevron-left"></i> 【强化学习】算法实践-GridWorld Sarsa Sarsa($\lambda$)
               </a>
             
           </div>
@@ -428,8 +467,8 @@
 
           <div class="post-nav-prev post-nav-item">
             
-              <a href="/2017/04/24/【图像处理】SIFT特征/" rel="prev" title="【图像处理】SIFT特征">
-                【图像处理】SIFT特征 <i class="fa fa-chevron-right"></i>
+              <a href="/2017/10/31/【生产工具】vim命令/" rel="prev" title="【生产工具】vim命令">
+                【生产工具】vim命令 <i class="fa fa-chevron-right"></i>
               </a>
             
           </div>
@@ -605,7 +644,7 @@
             
 
             
-              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-1"><a class="nav-link" href="#0-学习目标"><span class="nav-number">1.</span> <span class="nav-text">0 学习目标</span></a></li></ol></div>
+              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-1"><a class="nav-link" href="#0-引言"><span class="nav-number">1.</span> <span class="nav-text">0 引言</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#1-真随机数生成器"><span class="nav-number">2.</span> <span class="nav-text">1 真随机数生成器</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#2-伪随机数生成器"><span class="nav-number">3.</span> <span class="nav-text">2 伪随机数生成器</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#参考文献"><span class="nav-number">4.</span> <span class="nav-text">参考文献</span></a></li></ol></div>
             
 
           </div>
