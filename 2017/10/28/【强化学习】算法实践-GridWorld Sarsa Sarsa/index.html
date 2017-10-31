@@ -92,7 +92,7 @@
 <meta property="og:url" content="luxinglong.github.io/2017/10/28/【强化学习】算法实践-GridWorld Sarsa Sarsa/index.html">
 <meta property="og:site_name" content="LB's Home">
 <meta property="og:image" content="http://on99gq8w5.bkt.clouddn.com/GW.jpg?imageMogr2/thumbnail/600x600">
-<meta property="og:updated_time" content="2017-10-28T11:22:41.000Z">
+<meta property="og:updated_time" content="2017-10-31T06:03:05.000Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="【强化学习】算法实践-GridWorld Sarsa Sarsa($\lambda$)">
 <meta name="twitter:image" content="http://on99gq8w5.bkt.clouddn.com/GW.jpg?imageMogr2/thumbnail/600x600">
@@ -343,7 +343,7 @@
              <i class="fa fa-calendar-o"></i>
            </span>
            <span class="post-meta-item-text">字数统计:</span>
-           <span class="post-count">173(字)</span> 
+           <span class="post-count">212(字)</span> 
          </span>
          
          <span id="busuanzi_container_page_pv">
@@ -376,7 +376,8 @@
         <img src="http://on99gq8w5.bkt.clouddn.com/GW.jpg?imageMogr2/thumbnail/600x600" class="[GW]">
 <a id="more"></a>
 <h1 id="0-引言"><a href="#0-引言" class="headerlink" title="0 引言"></a>0 引言</h1><p>David Silver课程中使用了很多GridWorld的例子，如Samll GridWorld, Random Walk, Windy GridWorld, GridWorld, Cliff Walking. 这些例子中状态空间和动作空间都是离散的有限值，可以用gym中Discrete类来描述，另外这些例子都是用格子来表示世界，动作都是上下左右，所以可以考虑建立一个通用的GridWorld环境类，通过配置格子的数量、属性等来具体描述每一个例子。</p>
-<h1 id="1-通用的GridWorld环境类"><a href="#1-通用的GridWorld环境类" class="headerlink" title="1 通用的GridWorld环境类"></a>1 通用的GridWorld环境类</h1><h1 id="2-Sarsa实现"><a href="#2-Sarsa实现" class="headerlink" title="2 Sarsa实现"></a>2 Sarsa实现</h1><h1 id="3-Sarsa-lambda-实现"><a href="#3-Sarsa-lambda-实现" class="headerlink" title="3 Sarsa($\lambda$)实现"></a>3 Sarsa($\lambda$)实现</h1><h1 id="4-总结"><a href="#4-总结" class="headerlink" title="4 总结"></a>4 总结</h1><h1 id="参考文献"><a href="#参考文献" class="headerlink" title="参考文献"></a>参考文献</h1><p>[1] David Silver, reinforcement learning lecture<br>[2] 叶强, David Silver强化学习公开课中文讲解及实践, 知乎专栏</p>
+<h1 id="1-通用的GridWorld环境类"><a href="#1-通用的GridWorld环境类" class="headerlink" title="1 通用的GridWorld环境类"></a>1 通用的GridWorld环境类</h1><h1 id="2-Sarsa实现"><a href="#2-Sarsa实现" class="headerlink" title="2 Sarsa实现"></a>2 Sarsa实现</h1><p>Sarsa算法需要维护一个动作-状态值函数表$Q(x,a)$，也就是处于状态$x$的时候，采取动作$a$的价值。</p>
+<h1 id="3-Sarsa-lambda-实现"><a href="#3-Sarsa-lambda-实现" class="headerlink" title="3 Sarsa($\lambda$)实现"></a>3 Sarsa($\lambda$)实现</h1><h1 id="4-总结"><a href="#4-总结" class="headerlink" title="4 总结"></a>4 总结</h1><h1 id="参考文献"><a href="#参考文献" class="headerlink" title="参考文献"></a>参考文献</h1><p>[1] David Silver, reinforcement learning lecture<br>[2] 叶强, David Silver强化学习公开课中文讲解及实践, 知乎专栏</p>
 
       
     </div>

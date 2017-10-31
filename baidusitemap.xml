@@ -4,28 +4,8 @@
 
     
   <url>
-    <loc>luxinglong.github.io/2017/10/31/%E3%80%90%E7%94%9F%E4%BA%A7%E5%B7%A5%E5%85%B7%E3%80%91vim%E5%91%BD%E4%BB%A4/</loc>
-    <lastmod>2017-10-31T05:25:53.000Z</lastmod>
-    <data>
-        <display>
-        <title>【生产工具】vim命令</title>
-        <pubTime>2017-10-31T02:52:59.000Z</pubTime>
-        
-        <tag>tools</tag>
-         
-         
-           
-             
-              <breadCrumb title="【生产工具】" url="luxinglong.github.io/categories/%E3%80%90%E7%94%9F%E4%BA%A7%E5%B7%A5%E5%85%B7%E3%80%91/"/>
-          
-        </display>
-    </data>
-    </url>
-
-    
-  <url>
     <loc>luxinglong.github.io/2017/10/20/%E3%80%90%E5%BC%BA%E5%8C%96%E5%AD%A6%E4%B9%A0%E3%80%91%E5%85%8D%E6%A8%A1%E5%9E%8B%E5%AD%A6%E4%B9%A0-Model-Free/</loc>
-    <lastmod>2017-10-31T05:25:39.000Z</lastmod>
+    <lastmod>2017-10-31T06:06:18.000Z</lastmod>
     <data>
         <display>
         <title>【强化学习】免模型学习(Model-Free)</title>
@@ -39,6 +19,50 @@
            
              
               <breadCrumb title="【强化学习】" url="luxinglong.github.io/categories/%E3%80%90%E5%BC%BA%E5%8C%96%E5%AD%A6%E4%B9%A0%E3%80%91/"/>
+          
+        </display>
+    </data>
+    </url>
+
+    
+  <url>
+    <loc>luxinglong.github.io/2017/10/28/%E3%80%90%E5%BC%BA%E5%8C%96%E5%AD%A6%E4%B9%A0%E3%80%91%E7%AE%97%E6%B3%95%E5%AE%9E%E8%B7%B5-GridWorld%20Sarsa%20Sarsa/</loc>
+    <lastmod>2017-10-31T06:03:05.000Z</lastmod>
+    <data>
+        <display>
+        <title>【强化学习】算法实践-GridWorld Sarsa Sarsa($\lambda$)</title>
+        <pubTime>2017-10-28T07:52:36.000Z</pubTime>
+        
+        <tag>RL</tag>
+         
+        <tag>robotics</tag>
+         
+        <tag>python</tag>
+         
+         
+           
+             
+              <breadCrumb title="【强化学习】" url="luxinglong.github.io/categories/%E3%80%90%E5%BC%BA%E5%8C%96%E5%AD%A6%E4%B9%A0%E3%80%91/"/>
+          
+        </display>
+    </data>
+    </url>
+
+    
+  <url>
+    <loc>luxinglong.github.io/2017/10/31/%E3%80%90%E7%94%9F%E4%BA%A7%E5%B7%A5%E5%85%B7%E3%80%91vim%E5%91%BD%E4%BB%A4/</loc>
+    <lastmod>2017-10-31T05:25:53.000Z</lastmod>
+    <data>
+        <display>
+        <title>【生产工具】vim命令</title>
+        <pubTime>2017-10-31T02:52:59.000Z</pubTime>
+        
+        <tag>tools</tag>
+         
+         
+           
+             
+              <breadCrumb title="【生产工具】" url="luxinglong.github.io/categories/%E3%80%90%E7%94%9F%E4%BA%A7%E5%B7%A5%E5%85%B7%E3%80%91/"/>
           
         </display>
     </data>
@@ -89,30 +113,6 @@
     </url>
 
     
-    
-  <url>
-    <loc>luxinglong.github.io/2017/10/28/%E3%80%90%E5%BC%BA%E5%8C%96%E5%AD%A6%E4%B9%A0%E3%80%91%E7%AE%97%E6%B3%95%E5%AE%9E%E8%B7%B5-GridWorld%20Sarsa%20Sarsa/</loc>
-    <lastmod>2017-10-28T11:22:41.000Z</lastmod>
-    <data>
-        <display>
-        <title>【强化学习】算法实践-GridWorld Sarsa Sarsa($\lambda$)</title>
-        <pubTime>2017-10-28T07:52:36.000Z</pubTime>
-        
-        <tag>RL</tag>
-         
-        <tag>robotics</tag>
-         
-        <tag>python</tag>
-         
-         
-           
-             
-              <breadCrumb title="【强化学习】" url="luxinglong.github.io/categories/%E3%80%90%E5%BC%BA%E5%8C%96%E5%AD%A6%E4%B9%A0%E3%80%91/"/>
-          
-        </display>
-    </data>
-    </url>
-
     
   <url>
     <loc>luxinglong.github.io/2017/10/26/%E3%80%90%E5%BC%BA%E5%8C%96%E5%AD%A6%E4%B9%A0%E3%80%91%E7%AE%97%E6%B3%95%E5%AE%9E%E8%B7%B5-OpenAI%20gym/</loc>
