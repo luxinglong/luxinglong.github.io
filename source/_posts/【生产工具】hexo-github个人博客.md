@@ -52,3 +52,26 @@ hexo用来存放网站的原始文件，master用来存放生成的静态网页
 当重装电脑之后，或者想在其他电脑上修改博客，可以使用下列步骤：
 1. 使用git clone git@github.com:CrazyMilk/CrazyMilk.github.io.git拷贝仓库（默认分支为hexo）；
 2. 在本地新拷贝的http://CrazyMilk.github.io文件夹下通过Git bash依次执行下列指令：npm install hexo、npm install、npm install hexo-deployer-git（记得，不需要hexo init这条指令）。
+
+# 5 博客多媒体
+1. 公式
+2. 图片
+```JavaScript
+{% img [img_name] "src"+?imageMogr2/thumbnail/600x600 %}
+```
+3. 视频
+```JavaScript
+<video src=' ' type='video/mp4' controls='controls'  width='100%' height='100%'>
+</video>
+```
+ 其中，src是七牛云的视频外链。
+
+4. 代码段
+```Markdown
+    ```Language names
+    code
+    ``` # end of codeblock
+```
+Language names: C++\Bash\Python\JavaScript\Markdown
+
+
