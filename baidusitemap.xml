@@ -4,6 +4,30 @@
 
     
   <url>
+    <loc>luxinglong.github.io/2017/11/01/%E3%80%90%E5%BC%BA%E5%8C%96%E5%AD%A6%E4%B9%A0%E3%80%91%E7%AE%97%E6%B3%95%E5%AE%9E%E8%B7%B5-DQN/</loc>
+    <lastmod>2017-11-01T12:47:04.000Z</lastmod>
+    <data>
+        <display>
+        <title>【强化学习】算法实践-DQN</title>
+        <pubTime>2017-11-01T06:57:01.000Z</pubTime>
+        
+        <tag>RL</tag>
+         
+        <tag>robotics</tag>
+         
+        <tag>python</tag>
+         
+         
+           
+             
+              <breadCrumb title="【强化学习】" url="luxinglong.github.io/categories/%E3%80%90%E5%BC%BA%E5%8C%96%E5%AD%A6%E4%B9%A0%E3%80%91/"/>
+          
+        </display>
+    </data>
+    </url>
+
+    
+  <url>
     <loc>luxinglong.github.io/2017/11/01/%E3%80%90%E7%A1%AC%E4%BB%B6%E8%AE%BE%E5%A4%87%E3%80%91Jetson-TX2%E6%B7%B1%E5%BA%A6%E5%AD%A6%E4%B9%A0%E5%BA%93%E5%AE%89%E8%A3%85/</loc>
     <lastmod>2017-11-01T10:31:18.000Z</lastmod>
     <data>
@@ -45,30 +69,6 @@
            
              
               <breadCrumb title="【机器学习】" url="luxinglong.github.io/categories/%E3%80%90%E6%9C%BA%E5%99%A8%E5%AD%A6%E4%B9%A0%E3%80%91/"/>
-          
-        </display>
-    </data>
-    </url>
-
-    
-  <url>
-    <loc>luxinglong.github.io/2017/11/01/%E3%80%90%E5%BC%BA%E5%8C%96%E5%AD%A6%E4%B9%A0%E3%80%91%E7%AE%97%E6%B3%95%E5%AE%9E%E8%B7%B5-DQN/</loc>
-    <lastmod>2017-11-01T09:16:00.000Z</lastmod>
-    <data>
-        <display>
-        <title>【强化学习】算法实践-DQN</title>
-        <pubTime>2017-11-01T06:57:01.000Z</pubTime>
-        
-        <tag>RL</tag>
-         
-        <tag>robotics</tag>
-         
-        <tag>python</tag>
-         
-         
-           
-             
-              <breadCrumb title="【强化学习】" url="luxinglong.github.io/categories/%E3%80%90%E5%BC%BA%E5%8C%96%E5%AD%A6%E4%B9%A0%E3%80%91/"/>
           
         </display>
     </data>
