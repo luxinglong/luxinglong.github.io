@@ -98,7 +98,7 @@ class Transition(object):
     def s1(self): return self.data[4]
 ```
 **场景片段(Episode)类**
-
+Episode类的主要功能是记录一系列的Episode，这些Episode就是由一系列的有序Transition对象构成，同时为了便于分析，我们额外增加一些功能，比如在记录一个Transition对象的同时，累加其即时奖励值以获得个体在经历一个Episode时获得的总奖励；又比如我们可以从Episode中随机获取一定数量、无序的Transition，以提高离线学习的准确性；此外由于一个Episode是不是一个完整的Episode在强化学习里是一个非常重要的信息，为此特别设计了一个方法来执行这一功能。
 ```Python
 class Episode(object):
     def __init__(self, e_id = 0):
@@ -147,12 +147,109 @@ class Episode(object):
         return self.len
 
 ```
+**经历(Experience)类**
+一个个Episode组成了agent的经历(Experience)。也有一些模型使用一个叫“Memory”的概念来记录agent个体既往的经历，其建模思想是Memory仅无序存储一系列的Transition，不使用Episode这一概念，不反映Transition对象之间的关联，这是可以完成基于记忆的离线学习的强化学习算法的，甚至其随机采样过程更简单。但是文献还是跟随[2]的思想，使用Episode作为中间数据结构，以后根据实践的情况再做调整。
 
-# 2 
+一般来说，经历或者记忆的容量是有限的，为此需要设定一个能够表示记录Transition对象的最大上限，称为容量(capacity).一旦agent经历的Transition数量超过该容量，则将抹去最早期的Transition，为最近期的Transition腾出空间。可以想象，一个Experience类应该至少具备如下功能：移除早期的Transition；记住一个Transition；从Experience中随机采样一定数量的Transition。
+
+```Python
+class Experience(object):
+    '''this class is used to record the whole experience of an agent organized
+    by an episode list. agent can randomly sample transitions or episode from
+    its experience.
+    '''
+    def __init__(self, capacity = 20000):
+        self.capacity = capacity   # 容量：指的是trans总数量
+        self.episodes = []         # episode列表
+        self.next_id = 0           # 下一个episode的ID
+        self.total_trans = 0       # 总的状态转换数量
+    
+    def __str__(self):   # python中的特殊方法，以字符串的形式返回对象的信息，调用方式，print experience 
+        return "exp info:{0:5} episodes, memory usage {1}/{2}".\
+                format(self.len, self.total_trans, self.capacity)
+
+    def __len__(self):   # python中的特殊方法，返回集合中所含项目的数量，即Experience中episode的数量
+        return self.len
+
+    @property
+    def len(self):
+        return len(self.episodes)
+
+    def _remove(self, index = 0): # 私有方法，类外方法不可以访问
+        '''扔掉一个Episode，默认第一个
+           remove an episode, default the first one
+           args:
+            the index of the episode to remove
+           return:
+            if exists return the episode else return None
+        '''
+        if index > self.len - 1:
+            raise(Exception("invalid index"))
+        if self.len > 0:
+            episode = self.episodes[index]
+            self.episodes.remove(episode)
+            self.total_trans -= episode.len
+            return episode
+        else:
+            return None
+    
+    def _remove_first(self):
+        self._remove(index = 0)
+
+    def push(self, trans):
+        '''压入一个状态转换
+        '''
+        if self.capacity <= 0:
+            return
+        while self.total_trans >= self.capacity: 
+            episode = self._remove_first()
+        cur_episode = None
+        if self.len == 0 or self.episodes[self.len-1].is_complete():
+            cur_episode = Episode(self.next_id)
+            self.next_id += 1
+            self.episodes.append(cur_episode)
+        else:
+            cur_episode = self.episode[self.len-1]
+        self.total_trans += 1
+        return cur_episode.push(trans)   # return total reward of an episode
+
+    def sample(self, batch_size = 1):
+        '''randomly sample some transitions from agent's experience.abs
+        随机获取一定数量的Transition对象
+        args:
+            number of transitions need to be sampled
+        return:
+            list of Transition
+        '''
+        sample_trans = []
+        for _ in range(batch_size):
+            index = int(random.random() * self.len)
+            sample_trans += self.episodes[index].sample()
+        return sample_trans
+
+    def sample_episode(self, episode_num = 1):
+        '''随机获取一定数量完整的Episode
+        '''
+        return random.sample(self.episodes, k = episode_num)
+
+    @property
+    def last(self):
+        if self.len > 0:
+            return self.episodes[self.len-1]
+        return None
+
+```
+# 2 PuckWorld
+在[1]中第七讲提到了PuckWorld，就是让一个“搞怪的小妖精”去抓取目标，目标随机出现在区域的一个位置，并且每隔30秒刷新一次。
+{% img [puckworld] http://on99gq8w5.bkt.clouddn.com/puckworld.png?imageMogr2/thumbnail/400x400 %}
+PuckWorld问题的强化学习模型描述如下：
+状态空间：puck的位置、速度和目标的位置，即{$p_x,p_y,v_x,v_y,d_x,d_y$}
+动作空间：上、下、左、右以及不作为
+奖励函数：离目标越近，奖励值越大
 
 
-<video src='http://on99gq8w5.bkt.clouddn.com/Decentralized%20Multi-agent%20Collision%20Avoidance%20with%20Deep%20Reinforcement%20Learning.mp4' type='video/mp4' controls='controls'  width='100%' height='100%'>
-</video>
+# 3 DQN算法实现
+
 # 参考文献
-[1] David Silver, reinforcement learning lecture 6
-[2] 
+[1] David Silver, reinforcement learning lecture 6 and 7
+[2] 叶强, David Silver强化学习公开课中文讲解及实践, 知乎专栏
