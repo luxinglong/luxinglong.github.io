@@ -92,7 +92,7 @@
 <meta property="og:url" content="luxinglong.github.io/2017/10/24/【强化学习】值函数逼近/index.html">
 <meta property="og:site_name" content="LB's Home">
 <meta property="og:image" content="http://on99gq8w5.bkt.clouddn.com/fa.png?imageMogr2/thumbnail/600x600">
-<meta property="og:updated_time" content="2017-11-01T05:10:54.000Z">
+<meta property="og:updated_time" content="2017-11-05T11:51:41.000Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="【强化学习】值函数逼近">
 <meta name="twitter:image" content="http://on99gq8w5.bkt.clouddn.com/fa.png?imageMogr2/thumbnail/600x600">
@@ -343,7 +343,7 @@
              <i class="fa fa-calendar-o"></i>
            </span>
            <span class="post-meta-item-text">字数统计:</span>
-           <span class="post-count">96(字)</span> 
+           <span class="post-count">307(字)</span> 
          </span>
          
          <span id="busuanzi_container_page_pv">
@@ -375,8 +375,10 @@
       
         <img src="http://on99gq8w5.bkt.clouddn.com/fa.png?imageMogr2/thumbnail/600x600" class="[fa]">
 <a id="more"></a>
-<h1 id="0-引言"><a href="#0-引言" class="headerlink" title="0 引言"></a>0 引言</h1><p>为什么要进行值函数逼近呢？<br>建立一个表格保存所有的状态以及对应的值函数值，这种方法在解决大规模问题上，会遇到两个问题，一是</p>
-<h1 id="1-线性函数"><a href="#1-线性函数" class="headerlink" title="1 线性函数"></a>1 线性函数</h1><h1 id="2-神经网络"><a href="#2-神经网络" class="headerlink" title="2 神经网络"></a>2 神经网络</h1><h1 id="参考文献"><a href="#参考文献" class="headerlink" title="参考文献"></a>参考文献</h1><p>[1] 周志华,《机器学习》,清华大学出版社,2016<br>[2] David Silver, reinforcement learning lecture 6</p>
+<h1 id="0-引言"><a href="#0-引言" class="headerlink" title="0 引言"></a>0 引言</h1><p>为什么要进行值函数逼近呢？<br>建立一个表格保存所有的状态以及对应的值函数值，这种方法在解决大规模问题上，会遇到两个问题，一是状态空间很大，内存无法保存Q表；二是对于很大的状态空间，学习起来也非常慢。于是，一个自然的想法就是用函数逼近状态值函数或者动作-状态值函数，这样就可以从有限的状态中学习到一个近似的状态值函数，而且可以泛化到没有见过的状态。使用MC或者TD学习来更新函数参数。</p>
+<p>$$<br>\hat{v}(s,w) \approx v_{\pi}(s) \<br>or \hat{q}(s,a,w) \approx q_{\pi}(s,a)<br>$$</p>
+<p>本文主要将近似方法分为两大类，增量法和批处理法。增量法主要用于在线更新，每一步都会更新近似函数；批处理法一次处理一批数据，并从这批数据中拟合出最好的近似函数。</p>
+<h1 id="1-增量法-Incremental-Methods"><a href="#1-增量法-Incremental-Methods" class="headerlink" title="1 增量法 Incremental Methods"></a>1 增量法 Incremental Methods</h1><h1 id="2-批处理法-Batch-Methods"><a href="#2-批处理法-Batch-Methods" class="headerlink" title="2 批处理法 Batch Methods"></a>2 批处理法 Batch Methods</h1><h1 id="参考文献"><a href="#参考文献" class="headerlink" title="参考文献"></a>参考文献</h1><p>[1] 周志华,《机器学习》,清华大学出版社,2016<br>[2] David Silver, reinforcement learning lecture 6</p>
 
       
     </div>
@@ -505,7 +507,7 @@
           
             <div class="site-state-item site-state-posts">
               <a href="/">
-                <span class="site-state-item-count">33</span>
+                <span class="site-state-item-count">34</span>
                 <span class="site-state-item-name">日志</span>
               </a>
             </div>
@@ -608,7 +610,7 @@
             
 
             
-              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-1"><a class="nav-link" href="#0-引言"><span class="nav-number">1.</span> <span class="nav-text">0 引言</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#1-线性函数"><span class="nav-number">2.</span> <span class="nav-text">1 线性函数</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#2-神经网络"><span class="nav-number">3.</span> <span class="nav-text">2 神经网络</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#参考文献"><span class="nav-number">4.</span> <span class="nav-text">参考文献</span></a></li></ol></div>
+              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-1"><a class="nav-link" href="#0-引言"><span class="nav-number">1.</span> <span class="nav-text">0 引言</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#1-增量法-Incremental-Methods"><span class="nav-number">2.</span> <span class="nav-text">1 增量法 Incremental Methods</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#2-批处理法-Batch-Methods"><span class="nav-number">3.</span> <span class="nav-text">2 批处理法 Batch Methods</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#参考文献"><span class="nav-number">4.</span> <span class="nav-text">参考文献</span></a></li></ol></div>
             
 
           </div>
