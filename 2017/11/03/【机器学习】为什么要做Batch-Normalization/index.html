@@ -88,21 +88,18 @@
 
 
 <meta name="description" content="之前介绍过梯度爆炸，就是说在误差反向传播的过程中，由于激活函数的导数值小于1，链式法则导致传过来的偏导越来越小，结果前面几层网络的权值得不到更新。
-现在介绍的批量归一化是干什么的呢？当f(xw+b)，由于激活函数一般在正负一之间，当w和b固定的时候，x较小的时候，y=wx+b也比较小，当x较大的时候，y就会处在饱和区。对于大值区分不出来。这就是NN遇到的问题，解决的办法就是批量归一化。
-tens">
+现在介绍的批量归一化是干什么的呢？当f(xw+b)，由于激活函数一般在正负一之间，当w和b固定的时候，x较小的时候，y=wx+b也比较小，当x较大的时候，y就会处在饱和区。对于大值区分不出来。这就是NN遇到的问题，解决的办法就是批量归一化。">
 <meta property="og:type" content="article">
 <meta property="og:title" content="【机器学习】为什么要做Batch Normalization?">
 <meta property="og:url" content="luxinglong.github.io/2017/11/03/【机器学习】为什么要做Batch-Normalization/index.html">
 <meta property="og:site_name" content="LB's Home">
 <meta property="og:description" content="之前介绍过梯度爆炸，就是说在误差反向传播的过程中，由于激活函数的导数值小于1，链式法则导致传过来的偏导越来越小，结果前面几层网络的权值得不到更新。
-现在介绍的批量归一化是干什么的呢？当f(xw+b)，由于激活函数一般在正负一之间，当w和b固定的时候，x较小的时候，y=wx+b也比较小，当x较大的时候，y就会处在饱和区。对于大值区分不出来。这就是NN遇到的问题，解决的办法就是批量归一化。
-tens">
-<meta property="og:updated_time" content="2017-11-03T09:02:53.000Z">
+现在介绍的批量归一化是干什么的呢？当f(xw+b)，由于激活函数一般在正负一之间，当w和b固定的时候，x较小的时候，y=wx+b也比较小，当x较大的时候，y就会处在饱和区。对于大值区分不出来。这就是NN遇到的问题，解决的办法就是批量归一化。">
+<meta property="og:updated_time" content="2017-11-05T14:19:34.000Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="【机器学习】为什么要做Batch Normalization?">
 <meta name="twitter:description" content="之前介绍过梯度爆炸，就是说在误差反向传播的过程中，由于激活函数的导数值小于1，链式法则导致传过来的偏导越来越小，结果前面几层网络的权值得不到更新。
-现在介绍的批量归一化是干什么的呢？当f(xw+b)，由于激活函数一般在正负一之间，当w和b固定的时候，x较小的时候，y=wx+b也比较小，当x较大的时候，y就会处在饱和区。对于大值区分不出来。这就是NN遇到的问题，解决的办法就是批量归一化。
-tens">
+现在介绍的批量归一化是干什么的呢？当f(xw+b)，由于激活函数一般在正负一之间，当w和b固定的时候，x较小的时候，y=wx+b也比较小，当x较大的时候，y就会处在饱和区。对于大值区分不出来。这就是NN遇到的问题，解决的办法就是批量归一化。">
 
 
 
@@ -380,9 +377,8 @@ tens">
       
 
       
-        <a id="more"></a>
-<p>之前介绍过<strong>梯度爆炸</strong>，就是说在误差反向传播的过程中，由于激活函数的导数值小于1，链式法则导致传过来的偏导越来越小，结果前面几层网络的权值得不到更新。</p>
-<p>现在介绍的批量归一化是干什么的呢？<br>当f(x<em>w+b)，由于激活函数一般在正负一之间，当w和b固定的时候，x较小的时候，y=w</em>x+b也比较小，当x较大的时候，y就会处在饱和区。对于大值区分不出来。这就是NN遇到的问题，解决的办法就是批量归一化。</p>
+        <p>之前介绍过<strong>梯度爆炸</strong>，就是说在误差反向传播的过程中，由于激活函数的导数值小于1，链式法则导致传过来的偏导越来越小，结果前面几层网络的权值得不到更新。</p>
+<p>现在介绍的批量归一化是干什么的呢？<br>当f(x<em>w+b)，由于激活函数一般在正负一之间，当w和b固定的时候，x较小的时候，y=w</em>x+b也比较小，当x较大的时候，y就会处在饱和区。对于大值区分不出来。这就是NN遇到的问题，解决的办法就是批量归一化。<br><a id="more"></a></p>
 <p>tensorflow学习<br>基本概念<br>会话Session<br><figure class="highlight python"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div></pre></td><td class="code"><pre><div class="line"><span class="comment"># Method one</span></div><div class="line"><span class="keyword">import</span> tensorflow <span class="keyword">as</span> tf</div><div class="line">sess = tf.Session()</div><div class="line">sess.run()</div><div class="line">sess.close()</div><div class="line"></div><div class="line"><span class="comment"># Method two</span></div><div class="line"><span class="keyword">with</span> tf.Session() <span class="keyword">as</span> sess:</div><div class="line">    sess.run()</div></pre></td></tr></table></figure></p>
 <p>变量Variable<br>tf.Variable()<br>tf.constant()<br>tf.initialize_all_variables()</p>
 <p>placeholder<br>input1 = tf.placeholder(tf.float32)<br>input2 = tf.placeholder(tf.float32)</p>
