@@ -93,7 +93,7 @@
 <meta property="og:site_name" content="LB's Home">
 <meta property="og:image" content="http://on99gq8w5.bkt.clouddn.com/fa.png?imageMogr2/thumbnail/600x600">
 <meta property="og:image" content="http://on99gq8w5.bkt.clouddn.com/fa_c.png?imageMogr2/thumbnail/500x500">
-<meta property="og:updated_time" content="2017-11-06T05:00:19.000Z">
+<meta property="og:updated_time" content="2017-11-06T05:14:09.000Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="【强化学习】值函数逼近">
 <meta name="twitter:image" content="http://on99gq8w5.bkt.clouddn.com/fa.png?imageMogr2/thumbnail/600x600">
@@ -344,7 +344,7 @@
              <i class="fa fa-calendar-o"></i>
            </span>
            <span class="post-meta-item-text">字数统计:</span>
-           <span class="post-count">739(字)</span> 
+           <span class="post-count">926(字)</span> 
          </span>
          
          <span id="busuanzi_container_page_pv">
@@ -386,7 +386,18 @@
 <img src="http://on99gq8w5.bkt.clouddn.com/fa_c.png?imageMogr2/thumbnail/500x500" class="[fa_c]">
 <p>从一个开始的参数，一直迭代直到收敛。</p>
 <p>状态-动作值函数的逼近原理相同。</p>
-<h1 id="2-批处理法-Batch-Methods"><a href="#2-批处理法-Batch-Methods" class="headerlink" title="2 批处理法 Batch Methods"></a>2 批处理法 Batch Methods</h1><h1 id="参考文献"><a href="#参考文献" class="headerlink" title="参考文献"></a>参考文献</h1><p>[1] 周志华,《机器学习》,清华大学出版社,2016<br>[2] David Silver, reinforcement learning lecture 6</p>
+<h1 id="2-批处理法-Batch-Methods"><a href="#2-批处理法-Batch-Methods" class="headerlink" title="2 批处理法 Batch Methods"></a>2 批处理法 Batch Methods</h1><p>梯度下降法比较简单，但是并不是很有效。批处理方法引入<strong>经验</strong>的概念，将经验作为训练数据，然后利用监督学习的方法，拟合出该数据集最好的值函数。</p>
+<p>经验数据：<br>$$<br>\mathcal{D}={\langle s_1,v^{\pi}_1 \rangle,\langle s_2,v^{\pi}_2 \rangle,\cdots,\langle s_T,v^{\pi}_T \rangle}<br>$$</p>
+<p>最小二乘法：<br>$$<br>LS(w)=\sum^T_{t=1}(v^{\pi}_t-\hat{v}(s_t,w))^2=\mathbb{E}_{\mathcal{D}}[(v^{pi}-\hat{v}(s_t,w))^2]<br>$$</p>
+<p>利用经验回放的随机梯度下降：</p>
+<ol>
+<li>从经验中采样<br>$$<br>\langle s, v^{pi} \rangle ~ \mathcal{D}<br>$$</li>
+<li><p>使用随机梯度下降更新参数<br>$$<br>\Delta w = \alpha (v^{pi}-\hat{v}(s_t,w)) \nabla_w\hat{v}(S,w)<br>$$</p>
+</li>
+<li><p>收敛到最优解<br>$$<br>w^{\pi}=arg\min\limits_{w} LS(w)<br>$$</p>
+</li>
+</ol>
+<h1 id="参考文献"><a href="#参考文献" class="headerlink" title="参考文献"></a>参考文献</h1><p>[1] 周志华,《机器学习》,清华大学出版社,2016<br>[2] David Silver, reinforcement learning lecture 6</p>
 
       
     </div>
