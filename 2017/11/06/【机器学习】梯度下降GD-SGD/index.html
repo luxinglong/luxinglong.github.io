@@ -88,21 +88,18 @@
 
 
 <meta name="description" content="0 引言对于优化问题，经常使用的就是梯度下降算法，但是始终没有搞清楚GD和SGD的差别，翻看了《深度学习》找到了差别，特此记录。
-问题描述：对每个样本的损失函数求期望$$J(\theta) = \mathbb{E}_{x,y~\hat{p}_{data}}L(x,y,\theta)=\frac{1}{m}\sum^{m}_{i=1}L(x^{(i)},y^{(i)},\theta)$$
-1 GD$">
+问题描述：对每个样本的损失函数求期望$$J(\theta) = \mathbb{E}_{x,y~\hat{p}_{data}}L(x,y,\theta)=\frac{1}{m}\sum^{m}_{i=1}L(x^{(i)},y^{(i)},\theta)$$">
 <meta property="og:type" content="article">
 <meta property="og:title" content="【机器学习】梯度下降GD,SGD">
 <meta property="og:url" content="luxinglong.github.io/2017/11/06/【机器学习】梯度下降GD-SGD/index.html">
 <meta property="og:site_name" content="LB's Home">
 <meta property="og:description" content="0 引言对于优化问题，经常使用的就是梯度下降算法，但是始终没有搞清楚GD和SGD的差别，翻看了《深度学习》找到了差别，特此记录。
-问题描述：对每个样本的损失函数求期望$$J(\theta) = \mathbb{E}_{x,y~\hat{p}_{data}}L(x,y,\theta)=\frac{1}{m}\sum^{m}_{i=1}L(x^{(i)},y^{(i)},\theta)$$
-1 GD$">
-<meta property="og:updated_time" content="2017-11-06T02:55:21.000Z">
+问题描述：对每个样本的损失函数求期望$$J(\theta) = \mathbb{E}_{x,y~\hat{p}_{data}}L(x,y,\theta)=\frac{1}{m}\sum^{m}_{i=1}L(x^{(i)},y^{(i)},\theta)$$">
+<meta property="og:updated_time" content="2017-11-06T02:58:47.000Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="【机器学习】梯度下降GD,SGD">
 <meta name="twitter:description" content="0 引言对于优化问题，经常使用的就是梯度下降算法，但是始终没有搞清楚GD和SGD的差别，翻看了《深度学习》找到了差别，特此记录。
-问题描述：对每个样本的损失函数求期望$$J(\theta) = \mathbb{E}_{x,y~\hat{p}_{data}}L(x,y,\theta)=\frac{1}{m}\sum^{m}_{i=1}L(x^{(i)},y^{(i)},\theta)$$
-1 GD$">
+问题描述：对每个样本的损失函数求期望$$J(\theta) = \mathbb{E}_{x,y~\hat{p}_{data}}L(x,y,\theta)=\frac{1}{m}\sum^{m}_{i=1}L(x^{(i)},y^{(i)},\theta)$$">
 
 
 
@@ -350,7 +347,7 @@
              <i class="fa fa-calendar-o"></i>
            </span>
            <span class="post-meta-item-text">字数统计:</span>
-           <span class="post-count">264(字)</span> 
+           <span class="post-count">336(字)</span> 
          </span>
          
          <span id="busuanzi_container_page_pv">
@@ -381,9 +378,10 @@
 
       
         <h1 id="0-引言"><a href="#0-引言" class="headerlink" title="0 引言"></a>0 引言</h1><p>对于优化问题，经常使用的就是梯度下降算法，但是始终没有搞清楚GD和SGD的差别，翻看了《深度学习》找到了差别，特此记录。</p>
-<p>问题描述：对每个样本的损失函数求期望<br>$$<br>J(\theta) = \mathbb{E}_{x,y~\hat{p}_{data}}L(x,y,\theta)=\frac{1}{m}\sum^{m}_{i=1}L(x^{(i)},y^{(i)},\theta)<br>$$</p>
-<h1 id="1-GD"><a href="#1-GD" class="headerlink" title="1 GD"></a>1 GD</h1><p>$$<br>\nabla_{\theta}J(\theta)=\frac{1}{m}\sum^{m}_{i=1}\nabla_{\theta}L(x^{(i)},y^{(i)},\theta)<br>$$<br>由于梯度下降要对所有的样本的损失函数求期望，所以当样本容量很大的时候，这种方法就不太实用了。</p>
+<p>问题描述：对每个样本的损失函数求期望<br>$$<br>J(\theta) = \mathbb{E}_{x,y~\hat{p}_{data}}L(x,y,\theta)=\frac{1}{m}\sum^{m}_{i=1}L(x^{(i)},y^{(i)},\theta)<br>$$<br><a id="more"></a></p>
+<h1 id="1-GD"><a href="#1-GD" class="headerlink" title="1 GD"></a>1 GD</h1><p>$$<br>\nabla_{\theta}J(\theta)=\frac{1}{m}\sum^{m}_{i=1}\nabla_{\theta}L(x^{(i)},y^{(i)},\theta)<br>$$<br>由于梯度下降要对所有的样本的损失函数求期望，所以当样本容量很大的时候，这种方法就不太实用了。但是该方法可以收敛到全局最优解。</p>
 <h1 id="2-SGD"><a href="#2-SGD" class="headerlink" title="2 SGD"></a>2 SGD</h1><p>随机梯度下降的想法就是用样本集合一个比较小的集合来估计这个期望。通常子集合的容量在1到几百之间。<br>$$<br>g=\frac{1}{m^{\prime}}\sum^{m^{\prime}}_{i=1}\nabla_{\theta}L(x^{(i)},y^{(i)},\theta)<br>$$<br>然后使用随机梯度来更新参数：<br>$$<br>\theta \gets \theta - \eta g<br>$$<br>其中，$\eta$是学习率。</p>
+<p>缺点是SGD的噪音较GD要多，使得SGD并不是每次迭代都向着整体最优化方向。虽然SGD的训练速度快，但是准确率下降了，也不能得到全局最优解。</p>
 <h1 id="参考文献"><a href="#参考文献" class="headerlink" title="参考文献"></a>参考文献</h1><p>[1] DEEP LEARNING, Yoshua Bengio</p>
 
       
