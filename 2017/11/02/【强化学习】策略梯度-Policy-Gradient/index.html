@@ -94,7 +94,7 @@
 <meta property="og:image" content="http://on99gq8w5.bkt.clouddn.com/pg.png?imageMogr2/thumbnail/600x600">
 <meta property="og:image" content="http://on99gq8w5.bkt.clouddn.com/pg_t.png?imageMogr2/thumbnail/500x500">
 <meta property="og:image" content="http://on99gq8w5.bkt.clouddn.com/mcpg.png?imageMogr2/thumbnail/400x400">
-<meta property="og:updated_time" content="2017-11-06T06:35:35.000Z">
+<meta property="og:updated_time" content="2017-11-06T06:44:15.000Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="【强化学习】策略梯度-Policy Gradient">
 <meta name="twitter:image" content="http://on99gq8w5.bkt.clouddn.com/pg.png?imageMogr2/thumbnail/600x600">
@@ -397,7 +397,7 @@
 <p>得分函数Score Function<br>$$<br>\nabla_{\theta}\pi_{\theta}(s,a)=\pi_{\theta}(s,a)\frac{\nabla_{\theta}\pi_{\theta}(s,a)}{\pi_{\theta}(s,a)}=\pi_{\theta}(s,a)\nabla_{\theta}log\pi_{\theta}(s,a)<br>$$<br>其中，$\nabla_{\theta}log\pi_{\theta}(s,a)$为得分函数。<br>Softmax策略<br>对于离散的动作空间，可以用Softmax策略来逼近真实的策略，它的输出为采取各个动作的概率。即<br>$$<br>\pi_{\theta}(s,a)\propto e^\phi(s,a)^T\theta<br>$$<br>这样，得分函数为：<br>$$<br>\nabla_{\theta}log\pi_{\theta}(s,a)=\phi(s,a)-\mathbb{E}_{\pi_{\theta}}[\phi(s,\cdot)]<br>$$<br>Gaussian策略<br>当动作空间是连续的时候，采用高斯策略更为合理，输出采取各个动作的分布。即<br>$$<br>a \sim \mathcal{N}(\eta(s),\sigma^2)<br>$$<br>这样，得分函数为：<br>$$<br>\nabla_{\theta}log\pi_{\theta}(s,a)=\frac{(a-\eta(s))\phi(s)}{\sigma^2}<br>$$</p>
 <p><strong>策略梯度定理</strong><br><img src="http://on99gq8w5.bkt.clouddn.com/pg_t.png?imageMogr2/thumbnail/500x500" class="[pg_t]"></p>
 <p><strong>基于MC的策略梯度</strong><br>伪代码为：<br><img src="http://on99gq8w5.bkt.clouddn.com/mcpg.png?imageMogr2/thumbnail/400x400" class="[mcpg]"></p>
-<h1 id="参考文献"><a href="#参考文献" class="headerlink" title="参考文献"></a>参考文献</h1><p>[1] David Silver, reinforcement learning lecture 6</p>
+<h1 id="参考文献"><a href="#参考文献" class="headerlink" title="参考文献"></a>参考文献</h1><p>[1] David Silver, reinforcement learning lecture 7</p>
 
       
     </div>

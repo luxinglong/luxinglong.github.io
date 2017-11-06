@@ -88,13 +88,14 @@
 
 
 <meta property="og:type" content="article">
-<meta property="og:title" content="【强化学习】Actor-Critic">
+<meta property="og:title" content="【强化学习】演员-评论家算法 Actor-Critic">
 <meta property="og:url" content="luxinglong.github.io/2017/11/05/【强化学习】Actor-Critic/index.html">
 <meta property="og:site_name" content="LB's Home">
 <meta property="og:image" content="http://on99gq8w5.bkt.clouddn.com/AC1.png?imageMogr2/thumbnail/600x600">
-<meta property="og:updated_time" content="2017-11-05T14:18:23.000Z">
+<meta property="og:image" content="http://on99gq8w5.bkt.clouddn.com/qac.png?imageMogr2/thumbnail/500x500">
+<meta property="og:updated_time" content="2017-11-06T07:23:50.000Z">
 <meta name="twitter:card" content="summary">
-<meta name="twitter:title" content="【强化学习】Actor-Critic">
+<meta name="twitter:title" content="【强化学习】演员-评论家算法 Actor-Critic">
 <meta name="twitter:image" content="http://on99gq8w5.bkt.clouddn.com/AC1.png?imageMogr2/thumbnail/600x600">
 
 
@@ -129,7 +130,7 @@
 
 
 
-  <title> 【强化学习】Actor-Critic | LB's Home </title><!-- hexo-inject:begin --><!-- hexo-inject:end -->
+  <title> 【强化学习】演员-评论家算法 Actor-Critic | LB's Home </title><!-- hexo-inject:begin --><!-- hexo-inject:end -->
 </head>
 
 <body itemscope itemtype="http://schema.org/WebPage" lang="zh-Hans">
@@ -289,7 +290,7 @@
             
             
               
-                【强化学习】Actor-Critic
+                【强化学习】演员-评论家算法 Actor-Critic
               
             
           </h1>
@@ -343,7 +344,7 @@
              <i class="fa fa-calendar-o"></i>
            </span>
            <span class="post-meta-item-text">字数统计:</span>
-           <span class="post-count">3(字)</span> 
+           <span class="post-count">48(字)</span> 
          </span>
          
          <span id="busuanzi_container_page_pv">
@@ -375,7 +376,12 @@
       
         <img src="http://on99gq8w5.bkt.clouddn.com/AC1.png?imageMogr2/thumbnail/600x600" class="[AC1]">
 <a id="more"></a>
-<h1 id="0-引言"><a href="#0-引言" class="headerlink" title="0 引言"></a>0 引言</h1>
+<h1 id="0-引言"><a href="#0-引言" class="headerlink" title="0 引言"></a>0 引言</h1><p>同时逼近策略和值函数，可以用“演员-评论家”算法来实现。</p>
+<p>它的优点是：</p>
+<h1 id="1-QAC"><a href="#1-QAC" class="headerlink" title="1 QAC"></a>1 QAC</h1><p>伪代码为：</p>
+<img src="http://on99gq8w5.bkt.clouddn.com/qac.png?imageMogr2/thumbnail/500x500" class="[qac]">
+<h1 id="参考文献"><a href="#参考文献" class="headerlink" title="参考文献"></a>参考文献</h1><p>[1] David Silver, reinforcement learning lecture 7</p>
+
       
     </div>
 
@@ -419,8 +425,8 @@
         <div class="post-nav">
           <div class="post-nav-next post-nav-item">
             
-              <a href="/2017/11/05/【强化学习】算法实践-PG/" rel="next" title="【强化学习】算法实践-PG">
-                <i class="fa fa-chevron-left"></i> 【强化学习】算法实践-PG
+              <a href="/2017/11/05/【强化学习】算法实践-PG/" rel="next" title="【强化学习】算法实践-策略梯度PG">
+                <i class="fa fa-chevron-left"></i> 【强化学习】算法实践-策略梯度PG
               </a>
             
           </div>
@@ -606,7 +612,7 @@
             
 
             
-              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-1"><a class="nav-link" href="#0-引言"><span class="nav-number">1.</span> <span class="nav-text">0 引言</span></a></li></ol></div>
+              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-1"><a class="nav-link" href="#0-引言"><span class="nav-number">1.</span> <span class="nav-text">0 引言</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#1-QAC"><span class="nav-number">2.</span> <span class="nav-text">1 QAC</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#参考文献"><span class="nav-number">3.</span> <span class="nav-text">参考文献</span></a></li></ol></div>
             
 
           </div>
