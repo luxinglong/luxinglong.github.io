@@ -4,18 +4,18 @@
 
     
   <url>
-    <loc>luxinglong.github.io/2017/10/26/%E3%80%90%E5%BC%BA%E5%8C%96%E5%AD%A6%E4%B9%A0%E3%80%91%E7%AE%97%E6%B3%95%E5%AE%9E%E8%B7%B5-OpenAI%20gym/</loc>
-    <lastmod>2017-11-06T11:02:46.000Z</lastmod>
+    <loc>luxinglong.github.io/2017/11/01/%E3%80%90%E5%BC%BA%E5%8C%96%E5%AD%A6%E4%B9%A0%E3%80%91%E7%AE%97%E6%B3%95%E5%AE%9E%E8%B7%B5-DQN/</loc>
+    <lastmod>2017-11-06T11:16:37.000Z</lastmod>
     <data>
         <display>
-        <title>【强化学习】算法实践-OpenAI gym</title>
-        <pubTime>2017-10-26T13:12:07.000Z</pubTime>
+        <title>【强化学习】算法实践-DQN</title>
+        <pubTime>2017-11-01T06:57:01.000Z</pubTime>
         
         <tag>RL</tag>
          
         <tag>robotics</tag>
          
-        <tag>OpenAI gym</tag>
+        <tag>python</tag>
          
          
            
@@ -28,18 +28,40 @@
 
     
   <url>
-    <loc>luxinglong.github.io/2017/11/01/%E3%80%90%E5%BC%BA%E5%8C%96%E5%AD%A6%E4%B9%A0%E3%80%91%E7%AE%97%E6%B3%95%E5%AE%9E%E8%B7%B5-DQN/</loc>
-    <lastmod>2017-11-06T10:46:02.000Z</lastmod>
+    <loc>luxinglong.github.io/2017/10/24/%E3%80%90%E5%BC%BA%E5%8C%96%E5%AD%A6%E4%B9%A0%E3%80%91%E5%80%BC%E5%87%BD%E6%95%B0%E9%80%BC%E8%BF%91/</loc>
+    <lastmod>2017-11-06T11:16:27.000Z</lastmod>
     <data>
         <display>
-        <title>【强化学习】算法实践-DQN</title>
-        <pubTime>2017-11-01T06:57:01.000Z</pubTime>
+        <title>【强化学习】值函数逼近</title>
+        <pubTime>2017-10-24T12:11:37.000Z</pubTime>
         
         <tag>RL</tag>
          
         <tag>robotics</tag>
          
-        <tag>python</tag>
+         
+           
+             
+              <breadCrumb title="【强化学习】" url="luxinglong.github.io/categories/%E3%80%90%E5%BC%BA%E5%8C%96%E5%AD%A6%E4%B9%A0%E3%80%91/"/>
+          
+        </display>
+    </data>
+    </url>
+
+    
+  <url>
+    <loc>luxinglong.github.io/2017/10/26/%E3%80%90%E5%BC%BA%E5%8C%96%E5%AD%A6%E4%B9%A0%E3%80%91%E7%AE%97%E6%B3%95%E5%AE%9E%E8%B7%B5-OpenAI%20gym/</loc>
+    <lastmod>2017-11-06T11:02:46.000Z</lastmod>
+    <data>
+        <display>
+        <title>【强化学习】算法实践-OpenAI gym</title>
+        <pubTime>2017-10-26T13:12:07.000Z</pubTime>
+        
+        <tag>RL</tag>
+         
+        <tag>robotics</tag>
+         
+        <tag>OpenAI gym</tag>
          
          
            
@@ -132,28 +154,6 @@
         <display>
         <title>【强化学习】算法实践-策略梯度PG</title>
         <pubTime>2017-11-05T13:49:57.000Z</pubTime>
-        
-        <tag>RL</tag>
-         
-        <tag>robotics</tag>
-         
-         
-           
-             
-              <breadCrumb title="【强化学习】" url="luxinglong.github.io/categories/%E3%80%90%E5%BC%BA%E5%8C%96%E5%AD%A6%E4%B9%A0%E3%80%91/"/>
-          
-        </display>
-    </data>
-    </url>
-
-    
-  <url>
-    <loc>luxinglong.github.io/2017/10/24/%E3%80%90%E5%BC%BA%E5%8C%96%E5%AD%A6%E4%B9%A0%E3%80%91%E5%80%BC%E5%87%BD%E6%95%B0%E9%80%BC%E8%BF%91/</loc>
-    <lastmod>2017-11-06T05:51:06.000Z</lastmod>
-    <data>
-        <display>
-        <title>【强化学习】值函数逼近</title>
-        <pubTime>2017-10-24T12:11:37.000Z</pubTime>
         
         <tag>RL</tag>
          
