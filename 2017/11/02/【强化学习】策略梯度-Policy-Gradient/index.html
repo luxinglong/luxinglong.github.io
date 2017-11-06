@@ -92,7 +92,7 @@
 <meta property="og:url" content="luxinglong.github.io/2017/11/02/【强化学习】策略梯度-Policy-Gradient/index.html">
 <meta property="og:site_name" content="LB's Home">
 <meta property="og:image" content="http://on99gq8w5.bkt.clouddn.com/pg.png?imageMogr2/thumbnail/600x600">
-<meta property="og:updated_time" content="2017-11-06T05:48:57.000Z">
+<meta property="og:updated_time" content="2017-11-06T06:01:37.000Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="【强化学习】策略梯度-Policy Gradient">
 <meta name="twitter:image" content="http://on99gq8w5.bkt.clouddn.com/pg.png?imageMogr2/thumbnail/600x600">
@@ -343,7 +343,7 @@
              <i class="fa fa-calendar-o"></i>
            </span>
            <span class="post-meta-item-text">字数统计:</span>
-           <span class="post-count">178(字)</span> 
+           <span class="post-count">367(字)</span> 
          </span>
          
          <span id="busuanzi_container_page_pv">
@@ -375,16 +375,21 @@
       
         <img src="http://on99gq8w5.bkt.clouddn.com/pg.png?imageMogr2/thumbnail/600x600" class="[pg]">
 <a id="more"></a>
-<h1 id="0-引言"><a href="#0-引言" class="headerlink" title="0 引言"></a>0 引言</h1><p>之前一讲，通过值函数逼近，获得状态值函数或者动作-状态值函数的估计值，然后采用贪婪法获得最优策略。本讲中，直接用函数逼近策略，即<br>$$<br>\pi_{\theta}(s,a)=\mathbb{P}[a|s,\theta]<br>$$<br>这样做的优点是：</p>
+<h1 id="0-引言"><a href="#0-引言" class="headerlink" title="0 引言"></a>0 引言</h1><p>之前一讲，通过值函数逼近，获得状态值函数或者动作-状态值函数的估计值，然后采用贪婪法获得最优策略。本讲中，直接用函数逼近策略，即<br>$$<br>\pi_{\theta}(s,a)=\mathbb{P}[a|s,\theta]<br>$$</p>
+<p>这样做的优点是：</p>
 <ul>
 <li>更好的收敛特性</li>
 <li>在高维或者连续动作空间中更加有效</li>
-<li>可以学习到随机策略<br>当然，也有缺点：</li>
+<li>可以学习到随机策略</li>
+</ul>
+<p>当然，也有缺点：</p>
+<ul>
 <li>通常收敛到一个局部最优解而不是全局最优解</li>
 <li>策略评估通常不够高效且具有很大的方差</li>
 </ul>
 <h1 id="1-策略梯度"><a href="#1-策略梯度" class="headerlink" title="1 策略梯度"></a>1 策略梯度</h1><p><strong>状态重名</strong></p>
-<p><strong>策略目标函数</strong></p>
+<p><strong>策略目标函数</strong><br>策略梯度法的目标是：给定一个带有参数$\theta$的策略$\pi_{\theta}(s,a)$,寻找最好的参数$\theta$<br>三类目标函数：<br>在有始有终的环境中，目标函数为开始状态值函数的期望：<br>$$<br>J_1(\theta)=V^{\pi_{\theta}}(s_1)=\mathbb{E}_{\pi_{\theta}}[v_1]<br>$$<br>在连续的环境中，利用状态分布求得所有状态值函数的期望：<br>$$<br>J_{av}(\theta)=\sum_s d^{\pi_{\theta}}(s)V^{\pi_{\theta}}(s)<br>$$<br>平均每步回报<br>$$<br>J_{avR}(\theta)=\sum_s d^{\pi_{\theta}}(s)\sum_a\pi_{\theta}(s,a)\mathcal{R}^a_s<br>$$<br>其中，$d^{\pi_{\theta}}(s)$是一个稳定的状态分布。</p>
+<p><strong>策略优化</strong><br>基于策略的强化学习就是一个最优化问题，目标是寻找一个参数$\theta$最大化目标函数：</p>
 <h1 id="参考文献"><a href="#参考文献" class="headerlink" title="参考文献"></a>参考文献</h1><p>[1] David Silver, reinforcement learning lecture 6</p>
 
       

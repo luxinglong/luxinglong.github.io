@@ -5,11 +5,33 @@
     
   <url>
     <loc>luxinglong.github.io/2017/11/02/%E3%80%90%E5%BC%BA%E5%8C%96%E5%AD%A6%E4%B9%A0%E3%80%91%E7%AD%96%E7%95%A5%E6%A2%AF%E5%BA%A6-Policy-Gradient/</loc>
-    <lastmod>2017-11-06T05:48:57.000Z</lastmod>
+    <lastmod>2017-11-06T06:01:37.000Z</lastmod>
     <data>
         <display>
         <title>【强化学习】策略梯度-Policy Gradient</title>
         <pubTime>2017-11-02T05:00:04.000Z</pubTime>
+        
+        <tag>RL</tag>
+         
+        <tag>robotics</tag>
+         
+         
+           
+             
+              <breadCrumb title="【强化学习】" url="luxinglong.github.io/categories/%E3%80%90%E5%BC%BA%E5%8C%96%E5%AD%A6%E4%B9%A0%E3%80%91/"/>
+          
+        </display>
+    </data>
+    </url>
+
+    
+  <url>
+    <loc>luxinglong.github.io/2017/10/24/%E3%80%90%E5%BC%BA%E5%8C%96%E5%AD%A6%E4%B9%A0%E3%80%91%E5%80%BC%E5%87%BD%E6%95%B0%E9%80%BC%E8%BF%91/</loc>
+    <lastmod>2017-11-06T05:51:06.000Z</lastmod>
+    <data>
+        <display>
+        <title>【强化学习】值函数逼近</title>
+        <pubTime>2017-10-24T12:11:37.000Z</pubTime>
         
         <tag>RL</tag>
          
@@ -39,28 +61,6 @@
            
              
               <breadCrumb title="【机器学习】" url="luxinglong.github.io/categories/%E3%80%90%E6%9C%BA%E5%99%A8%E5%AD%A6%E4%B9%A0%E3%80%91/"/>
-          
-        </display>
-    </data>
-    </url>
-
-    
-  <url>
-    <loc>luxinglong.github.io/2017/10/24/%E3%80%90%E5%BC%BA%E5%8C%96%E5%AD%A6%E4%B9%A0%E3%80%91%E5%80%BC%E5%87%BD%E6%95%B0%E9%80%BC%E8%BF%91/</loc>
-    <lastmod>2017-11-06T05:40:54.000Z</lastmod>
-    <data>
-        <display>
-        <title>【强化学习】值函数逼近</title>
-        <pubTime>2017-10-24T12:11:37.000Z</pubTime>
-        
-        <tag>RL</tag>
-         
-        <tag>robotics</tag>
-         
-         
-           
-             
-              <breadCrumb title="【强化学习】" url="luxinglong.github.io/categories/%E3%80%90%E5%BC%BA%E5%8C%96%E5%AD%A6%E4%B9%A0%E3%80%91/"/>
           
         </display>
     </data>

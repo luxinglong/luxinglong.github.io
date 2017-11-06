@@ -94,7 +94,7 @@
 <meta property="og:image" content="http://on99gq8w5.bkt.clouddn.com/fa.png?imageMogr2/thumbnail/600x600">
 <meta property="og:image" content="http://on99gq8w5.bkt.clouddn.com/fa_c.png?imageMogr2/thumbnail/500x500">
 <meta property="og:image" content="http://on99gq8w5.bkt.clouddn.com/dqn_a.png?imageMogr2/thumbnail/500x500">
-<meta property="og:updated_time" content="2017-11-06T05:40:54.000Z">
+<meta property="og:updated_time" content="2017-11-06T05:51:06.000Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="【强化学习】值函数逼近">
 <meta name="twitter:image" content="http://on99gq8w5.bkt.clouddn.com/fa.png?imageMogr2/thumbnail/600x600">
@@ -383,7 +383,7 @@
 <h1 id="1-增量法-Incremental-Methods"><a href="#1-增量法-Incremental-Methods" class="headerlink" title="1 增量法 Incremental Methods"></a>1 增量法 Incremental Methods</h1><p>使用梯度下降法来逼近值函数：<br>目标函数：<br>$$<br>J(w)=\mathbb{E}_{\pi}[(v_{\pi}(S)-\hat{v}(S,w))^2]<br>$$<br>定义梯度：<br>$$<br>\nabla_w J(w)=(\frac{\partial J(w)}{\partial w_1}, \cdots, \frac{\partial J(w)}{\partial w_n})^T<br>$$<br>梯度下降：<br>$$<br>\Delta w=-\frac{1}{2}\alpha\nabla_w J(w) = \alpha \mathbb{E}_{\pi}[(v_{\pi}(S)-\hat{v}(S,w))\nabla_w \hat{v}(S,w)]<br>$$<br>随机梯度下降：<br>$$<br>\Delta w=\alpha(v_{\pi}(S)-\hat{v}(S,w))\nabla_w\hat{v}(S,w)<br>$$<br>注：随机梯度下降和梯度下降的区别见【机器学习】梯度下降GD,SGD</p>
 <p>将特征表示成向量的形式：<br>$$<br>x(S)=(x_1(S),\cdots,x_n(S))^T<br>$$<br>则值函数可以用线性模型来估计：<br>$$<br>\hat{v}(S,w)=x(S)^Tw=\sum^n_{j=1}x_j(S)w_j<br>$$<br>将上式代入目标函数可以求的随机梯度为：<br>$$<br>\Delta w=\alpha(v_{\pi}(S)-\hat{v}(S,w))x(S)<br>$$</p>
 <p>问题出现了，这并不是监督学习，并没有$v_{\pi}(S)$，只有奖励值rewards.于是，只能用奖励返回值来代替$v_{\pi}(S)$。<br>对于MC<br>$$<br>\Delta w=\alpha(G_t-\hat{v}(S_t,w))\nabla_w\hat{v}(S_t,w)<br>$$<br>对于TD(0)<br>$$<br>\Delta w=\alpha(R_{t+1} + \gamma\hat{v}(S_{t+1},w)-\hat{v}(S_t,w))\nabla_w\hat{v}(S_t,w)<br>$$<br>对于TD($\lambda$)<br>$$<br>\Delta w=\alpha(G^{\lambda}_t-\hat{v}(S_t,w))\nabla_w\hat{v}(S_t,w)<br>$$</p>
-<p>那么如何进行学习呢？这里仅举TD($\lambda$),其他相似<br>准备训练数据：<br>$$<br>\langle S_1, G^{\lambda}_1 \rangle , \langle S_2, G^{\lambda}_2 \rangle, \cdots, \langle S_{T-1}, G^{\lambda}_{T-1} \rangle<br>$$<br>前向看：<br>$$<br>\Delta w=\alpha(G^{\lambda}_t-\hat{v}(S_t,w))x(S_t)<br>$$<br>向后看：<br>$$<br>\delta_t = R_{t+1}+\gamma\hat{v}(S_{t+1},w)-\hat{v}(S_t,w) \<br>E_t = \gamma\lambda E_{t-1} + x(S_t) \<br>\Delta w = \alpha\delta_t E_t<br>$$</p>
+<p>那么如何进行学习呢？这里仅举TD($\lambda$),其他相似<br>准备训练数据：<br>$$<br>\langle S_1, G^{\lambda}_1 \rangle , \langle S_2, G^{\lambda}_2 \rangle, \cdots, \langle S_{T-1}, G^{\lambda}_{T-1} \rangle<br>$$<br>前向看：<br>$$<br>\Delta w=\alpha(G^{\lambda}_t-\hat{v}(S_t,w))x(S_t)<br>$$<br>向后看：<br>$$<br>\delta_t = R_{t+1}+\gamma\hat{v}(S_{t+1},w)-\hat{v}(S_t,w)<br>$$<br>$$<br>E_t = \gamma\lambda E_{t-1} + x(S_t)<br>$$<br>$$<br>\Delta w = \alpha\delta_t E_t<br>$$</p>
 <img src="http://on99gq8w5.bkt.clouddn.com/fa_c.png?imageMogr2/thumbnail/500x500" class="[fa_c]">
 <p>从一个开始的参数，一直迭代直到收敛。</p>
 <p>状态-动作值函数的逼近原理相同。</p>
