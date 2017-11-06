@@ -96,7 +96,7 @@
 <meta property="og:image" content="http://on99gq8w5.bkt.clouddn.com/a_e.png?imageMogr2/thumbnail/550x450">
 <meta property="og:image" content="http://on99gq8w5.bkt.clouddn.com/cartpole.png?imageMogr2/thumbnail/500x400">
 <meta property="og:image" content="http://on99gq8w5.bkt.clouddn.com/cp.png?imageMogr2/thumbnail/550x550">
-<meta property="og:updated_time" content="2017-10-28T07:48:48.000Z">
+<meta property="og:updated_time" content="2017-11-06T11:02:46.000Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="【强化学习】算法实践-OpenAI gym">
 <meta name="twitter:description" content="0 引言OpenAI gym是当下非常热门的强化学习库，使用者只需要定义环境就可以测试自己的强化学习算法。本文主要介绍如何在ubuntu 16.04上配置gym开发环境，gym的建模思想，以及自己动手搭建一个gym环境。">
@@ -348,7 +348,7 @@
              <i class="fa fa-calendar-o"></i>
            </span>
            <span class="post-meta-item-text">字数统计:</span>
-           <span class="post-count">3,405(字)</span> 
+           <span class="post-count">3,562(字)</span> 
          </span>
          
          <span id="busuanzi_container_page_pv">
@@ -412,7 +412,8 @@ env = gym.make(&quot;registered_env_name&quot;)
 <figure class="highlight python"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div></pre></td><td class="code"><pre><div class="line">register(</div><div class="line">    id=<span class="string">'MyEnv-V0'</span>,  <span class="comment"># 调用gym.make('id')时候的id，名字可以随便取</span></div><div class="line">    entry_point=<span class="string">'gym.envs.classic_control:MyEnv'</span>,  <span class="comment"># 函数路径</span></div><div class="line">    max_episode_steps=<span class="number">200</span>,</div><div class="line">    reward_threshold=<span class="number">100.0</span></div><div class="line">)</div></pre></td></tr></table></figure>
 </li>
 </ul>
-<h2 id="测试"><a href="#测试" class="headerlink" title="测试"></a>测试</h2><figure class="highlight python"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div></pre></td><td class="code"><pre><div class="line"><span class="keyword">import</span> gym</div><div class="line">env = gym.make(<span class="string">'MyEnv-V0'</span>)</div><div class="line">env.reset()</div><div class="line">env.render()</div></pre></td></tr></table></figure>
+<h2 id="测试"><a href="#测试" class="headerlink" title="测试"></a>测试</h2><figure class="highlight python"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div></pre></td><td class="code"><pre><div class="line"><span class="comment"># 简单测试程序</span></div><div class="line"><span class="keyword">import</span> gym</div><div class="line">env = gym.make(<span class="string">'MyEnv-v0'</span>)</div><div class="line">env.reset()</div><div class="line">env.render()</div></pre></td></tr></table></figure>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div></pre></td><td class="code"><pre><div class="line"><span class="comment"># -*- coding:utf-8 -*-</span></div><div class="line"><span class="comment">#稍微复杂的测试程序</span></div><div class="line"><span class="keyword">import</span> gym</div><div class="line">env = gym.make(<span class="string">'MyEnv-v0'</span>)        <span class="comment"># 创建环境</span></div><div class="line"><span class="keyword">for</span> i_episode <span class="keyword">in</span> range(<span class="number">20</span>):       <span class="comment"># agent每次尝试一条episode</span></div><div class="line">    observation = env.reset()     <span class="comment"># 每条episode都要重置观测，重新开始</span></div><div class="line">    <span class="keyword">for</span> t <span class="keyword">in</span> range(<span class="number">100</span>):          <span class="comment"># 每条episode尝试100步</span></div><div class="line">        env.render()              <span class="comment"># 绘制场景</span></div><div class="line">        <span class="keyword">print</span> observation         <span class="comment"># 打印观测</span></div><div class="line">        action =  env.action_space.sample()  <span class="comment"># 从动作空间随机采样一个动作</span></div><div class="line">        observation, reward, done, info =  env.step(action)  <span class="comment"># 与环境交互，获得即时奖励和下一步状态</span></div><div class="line">        <span class="keyword">if</span> done:  <span class="comment"># 如果这条episode有终止状态，打印输出完成这个过程用了多少步</span></div><div class="line">            <span class="keyword">print</span> <span class="string">"Episode finished after &#123;&#125; timesteps"</span>.format(t+<span class="number">1</span>)</div><div class="line">            <span class="keyword">break</span></div></pre></td></tr></table></figure>
 <p>学习和测试都是在这部分完成</p>
 <h1 id="参考文献"><a href="#参考文献" class="headerlink" title="参考文献"></a>参考文献</h1><p>[1] 叶强, David Silver强化学习公开课中文讲解及实践, 知乎专栏<br>[2] 天津包子馅儿, 强化学习实战, 知乎专栏<br>[3] David Silver, reinforcement learning lecture 1</p>
 
