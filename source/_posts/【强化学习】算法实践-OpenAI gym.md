@@ -334,10 +334,27 @@ register(
 ```
 ## 测试
 ```Python
+# 简单测试程序
 import gym
-env = gym.make('MyEnv-V0')
+env = gym.make('MyEnv-v0')
 env.reset()
 env.render()
+```
+```Python
+# -*- coding:utf-8 -*-
+#稍微复杂的测试程序
+import gym
+env = gym.make('MyEnv-v0')        # 创建环境
+for i_episode in range(20):       # agent每次尝试一条episode
+    observation = env.reset()     # 每条episode都要重置观测，重新开始
+    for t in range(100):          # 每条episode尝试100步
+        env.render()              # 绘制场景
+        print observation         # 打印观测
+        action =  env.action_space.sample()  # 从动作空间随机采样一个动作
+        observation, reward, done, info =  env.step(action)  # 与环境交互，获得即时奖励和下一步状态
+        if done:  # 如果这条episode有终止状态，打印输出完成这个过程用了多少步
+            print "Episode finished after {} timesteps".format(t+1)
+            break
 ```
 学习和测试都是在这部分完成
 

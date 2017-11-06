@@ -30,7 +30,7 @@ https://github.com/peterlee0127/tensorflow-tx2
 沐神带我飞
 http://mxnet.incubator.apache.org/get_started/install.html
 # 4 PyTorch
-深度强化学习Atari的CNN+ 使用过。
+深度强化学习Atari的CNN+DQN使用过。
 ```Bash
 #!/bin/bash
 #

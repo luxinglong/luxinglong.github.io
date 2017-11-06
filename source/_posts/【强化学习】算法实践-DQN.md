@@ -247,9 +247,474 @@ PuckWorld问题的强化学习模型描述如下：
 动作空间：上、下、左、右以及不作为
 奖励函数：离目标越近，奖励值越大
 
+下面展示PuckWorld的实现：
+```Python
+class PuckWorldEnv(gym.Env): 
+    
+    def __init__(self):
+        self.width = 600          # 场景的宽度
+        self.height = 600         # 场景的长度
+        self.l_unit = 1.0         # 场景的长度单位
+        self.v_unit = 1.0         # 速度单位
+        self.max_speed = 0.025    # agent沿着某一个轴的最大速度
+
+        self.re_pos_interval = 30 # 目标重置的时间间隔
+        self.accel = 0.002        # agent的加速度
+        self.rad = 0.05           # agent半径
+        self.target_rad = 0.01    # 目标半径
+        self.goal_dis = self.rad  # 目标接近距离
+        self.t = 0                # PuckWorld时钟
+        self.update_time = 100    # 目标重置时间
+
+        self.low = np.array([0,                # agent px 的最小值 
+                             0,                # agent py 的最小值 
+                             -self.max_speed,  # agent vx 的最小值 
+                             -self.max_speed,  # agent vy 的最小值 
+                             0,                # 目标 dx 的最小值
+                             0])               # 目标 dy 的最小值
+
+        self.high = np.array([self.l_uint,
+                              self.l_uint,
+                              self.max_speed,
+                              self.max_speed,
+                              self.l_uint,
+                              self.l_uint])   
+
+        self.reward = 0
+        self.action = None
+        self.viewer = None
+
+        # 0,1,2,3,4 分别表示左、右、上、下和静止不动五个动作
+        self.action_space = spaces.Discrete(5)
+        # 观察空间由low和high决定
+        self.observation_space = spaces.Box(self.low, self.high)   
+
+        self._seed()
+        self.reset()  
+```
+“物理引擎”实现如下：
+```Python
+def _step(self, action):
+    assert self.action_space.contains(action), \
+        "%r (%s) invalid" % (action, type(action))
+
+    self.action = action
+
+    ppx,ppy,pvx,pvy,tx,ty = self.state  # 获取当前状态
+    ppx,ppy = ppx+pvx, ppy+pvy    # 更新agent的位置
+    pvx,pvy = pvx*0.95, pvy*0.95  # natural velocity loss
+
+    if action == 0: pvx -= self.accel  # 左
+    if action == 1: pvx += self.accel  # 右
+    if action == 2: pvy += self.accel  # 上
+    if action == 3: pvy -= self.accel  # 下
+    if action == 4: pass               # 不动
+
+    # 碰壁处理
+    if ppx < self.rad:
+        pvx *= -0.5
+        ppx = self.rad
+    if ppx > 1 - self.rad:
+        pvx *= -0.5
+        ppx = 1 - self.rad
+    if ppy < self.rad:
+        pvy *= -0.5
+        ppy = self.rad
+    if ppy > 1 - self.rad
+        pvy *= -0.5
+        ppy = 1 - self.rad
+
+    self.t += 1
+    if self.t %  self.update_time == 0:
+        tx = self._random_pos()
+        ty = self._random_pos()
+
+    dx, dy = ppx - tx, ppy - ty
+    dis = self._compute_dist(dx, dy)
+
+    self.reward = self.goal_dis - dis  # agent半径减去中心距离
+
+    done = bool(dis <= self.goal_dis)
+
+    self.state = (ppx, ppy, pvx, pvy, tx, ty)
+    return np.array(self.state), self.reward, done, {}
+
+def _random_pos(self):
+    return self.np_random.uniform(low = 0, high = self.l_uint)
+
+def _compute_dis(self, dx, dy):
+    return math.sqrt(math.pow(dx,2)+math.pow(dy,2))
+```
+“图像引擎”实现如下：
+```Python
+def _render(self, mode='human', close=False):
+    if close:
+        if self.Viewer is not None:
+            self.viewer.close()
+            self.viewer = None
+        return 
+
+    scale = self.width / self.l_uint  # 计算两者的映射关系
+    rad = self.rad * scale            # 用像素尺寸来描述agent的半径
+    t_rad = self.target_rad * scale   # 用像素尺寸来描述目标的半径
+
+    if self.Viewer is None:
+        from gym.env.classic_control import rendering
+        self.viewer = rendering.Viewer(self.width, self.height)
+
+        # 绘制目标和黑边框
+        target = rendering.make_circle(t_rad, 30, True)
+        target.set_color(0.1, 0.9, 0.1)
+        self.viewer.add_geom(target)
+        target_circle =  rendering.make_circle(t_rad, 30, False)
+        target_circle.set_color(0, 0, 0)
+        self.viewer.add_geom(target)
+        self.target_trans = rendering.Transform()
+        target.add_attr(self.target_trans)
+        target_trans.add_attr(self.target_trans)
+
+        # 绘制agent和黑边框
+        self.agent = rendering.make_circle(rad, 30, True)
+        self.agent.set_color(0, 1, 0)
+        self.viewer.add_geom(self.agent)
+        self.agent_trans = rendering.Transform()
+        self.agent.add_attr(self.agent_trans)
+        agent_circle = rendering.make_circle(rad, 30, True)
+        agent_circle.set_color(0, 0, 0)
+        agent_circle.add_attr(self.agent_trans)
+        self.viewer.add_geom(agent_circle)
+
+        self.line_trans = rendering.Transform()
+        self.arrow = rendering.FilledPolygon([
+            (0.7*rad, 0.15*rad),
+            (rad,0),
+            (0.7*rad, -0.15*rad) 
+        ])
+        self.arrow.set_color(0, 0, 0)
+        self.arrow.add_attr(self.line_trans)
+        self.viewer.add_geom(self.arrow)
+    
+    # 更新目标和小车的位置
+    ppx,ppy,_,_,tx,ty = self.state
+    self.target_trans.set_translation(tx*scale, ty*scale)
+    self.agent_trans.set_translation(ppx*scale, ppy*scale)
+
+    # 按距离给agent着色
+    vv, ms = self.reward + 0.3, 1 
+    r, g, b = 0, 1, 0
+    # vv >= 0 表示agent距离target比较近，越大越近，最大可以达到0.35，则 0.65\1\0.65 很绿
+    # vv < 0 表示agent距离target比较远，越小越远，最小可以达到-1，则 1\0\0 很红
+    if vv >= 0:
+        r, g, b = 1 - vv*ms, 1, 1 - vv*ms
+    else:
+        r, g, b = 1, 1 + ms*vv, 1 + ms*vv
+    self.agent.set_color(r, g, b)
+
+    a = self.action
+    if a in [0, 1, 2, 3]:
+        # 根据action绘制箭头
+        if a == 0: degree = 180
+        elif a == 1: degree = 0
+        elif a == 2: degree = 90
+        else: degree = 270
+
+        self.line_trans.set_translation(ppx*scale, ppy*scale)
+        self.line_trans.set_rotation(degree/RAD2DEG)
+        self.arrow.set_color(0, 0, 0)
+    else:
+        self.arrow.set_color(r,g,b)
+    
+    return self.viewer.render(return_rgb_arrgy = mode == 'rgb_array')
+```
+"重置函数"实现：
+```Python
+def _reset(self):
+    self.state = np.array([
+        self._random_pos(),
+        self._random_pos(),
+        0,
+        0,
+        self._random_pos(),
+        self._random_pos()
+    ])
+    return self.state
+```
 
 # 3 DQN算法实现
+
+{% img [dqn_a] http://on99gq8w5.bkt.clouddn.com/dqn_a.png?imageMogr2/thumbnail/500x500 %}
+
+把使用神经网络近似表示价值函数的功能封装到一个Approximator类中，然后再实现包含此价值函数的继承自Agent基类的个体类：ApproxQAgent，最后观察其在PuckWorld和CartPole环境中的训练效果。基于深度学习的部分使用PyTorch库。
+
+**Approximator类的实现**
+Approximator类作为价值函数的近似函数，其要实现的功能很简单：一是输出基于一个状态-动作对$\langle s,a \rangle$在参数w描述的环境下的价值$Q(s,a,w)$；二是调整参数来更新状态-动作对$\langle s,a \rangle$的价值。
+
+在本例中，使用第三种值函数逼近方式，也就是输入为状态，输出为s与不同动作组成的状态-动作值函数值。在__init__构造函数中声明基于一个隐含层的神经网络。
+```Python
+# -*- coding:utf-8 -*-
+import numpy as np
+import torch
+from torch.autograd import Variable
+import copy
+
+class Approximator(torch.nn.Module):
+    def __init__(self, dim_input = 1, dim_ouput = 1, dim_hidden = 16):
+        super(Approximator, self).__init__()
+        self.dim_input = dim_input
+        self.dim_output = dim_output
+        self.dim_hidden = dim_hidden
+        
+        self.linear1 = torch.nn.Linear(self.dim_input, self.dim_hidden)
+        self.linear2 = torch.nn.Linear(self.dim_hidden, self.dim_output)
+```
+
+前向传输，预测状态x对应的价值：
+```Python
+def _forward(self, x):
+    h_relu = self.linear1(x).clamp(min=0)
+    y_pred = self.linear2(h_relu)
+    return y_pred
+```
+
+利用fit方法来训练，更新网络参数：
+```Python
+def fit(self,x,
+             y,
+             criterion=None,
+             optimizer=None,
+             epochs=1,
+             learning_rate=1e-4):
+
+if criterion is None:
+    criterion = torch.nn.MSELoss(size_average = False)
+if optimizer is None:
+    optimizer = torch.optim.Adam(self.parameters(), lr = learning_rate)
+if epochs < 1:
+    epochs = 1
+
+x = self._prepare_data(x)
+y = self._prepare_data(y,False)
+
+for t in range(epochs):
+    y_pred = self._forward(x)
+    loss = criterion(y_pred, y)
+    optimizer.zero_grad()
+    loss.backward()
+    optimizer.step()
+
+return loss
+```
+
+还需要设计一个方法_prepare_data来对输入数据进行一定的修饰
+```Python
+def _prepare_data(self, x, requires_grad = True):
+'''将numpy格式的数据转化为Torch的Variable
+'''
+    if isinstance(x, np.ndarray):
+        x = Variable(torch.from_numpy(x), requires_grad = requires_grad)
+    if isinstance(x, int):
+        x = Variable(torch.Tensor([[x]]), requires_grad = requires_grad)
+
+    x = x.float() 
+    if x.data.dim() == 1:
+        x = x.unsqueeze(0)
+    return x
+```
+
+同时，为了使得agent在使用近似函数时更加简洁，可以为Approximator类写一个__call__方法，使得可以像执行函数一样来使用该类提供的方法：
+```Python
+def __call__(self, x):
+    '''return an output given input. similar to predict function
+    '''
+    x = self._prepare_data(x)
+    pred = self._foward(x)
+    return pred.data.numpy()
+```
+
+最后一个比较重要的事情，由于一些高级的DQN算法使用两个近似函数+经验回放的机制来训练agent，因此会产生将一个近似函数的神经网络参数拷贝给另一个近似函数的神经网络的过程，也就是拷贝网络的过程，我们也需要提供一个能完成此功能的方法：
+```Python
+def clone(self):
+    '''返回当前模型的深度拷贝对象
+    '''
+    return copy.deepcopy(self)
+```
+
+**ApproxQAgent类的实现**
+构造函数：
+```Python
+class ApproxQAgent(Agent):
+    '''使用近似的价值函数实现的Q学习个体
+    '''
+    def __init__(self, env=None,
+                       trans_capacity = 20000,
+                       hidden_dim = 16):
+        if env is None:
+            raise "agent should have an enviornment"
+        super(ApproxQAgent, self).__init__(env, trans_capacity)
+        self.input_dim, self.output_dim = 1, 1
+
+        # 适应不同的状态和行为空间类型
+        if isinstance(env.observation_space, spaces.Discrete):
+            self.input_dim = 1
+        elif isinstance(env.observation_space, spaces.Box):
+            self.input_dim = env.observation_space.shape[0]
+
+        if isinstance(env.action_space, spaces.Discrete):
+            self.input_dim = env.action_space.n
+        elif isinstance(env.action_space, spaces.Box):
+            self.input_dim = env.action_space.shape[0]
+
+        # 隐藏层神经元的数量
+        self.hidden_dim = hidden_dim
+
+        # 关键在下面两句，声明了两个近似价值函数
+        # 变量Q是一个策略评估网络
+        # 该网络参数在一定时间段不更新参数
+        self.Q = Approximator(dim_input = self.input_dim,
+                              dim_output = self.output_dim,
+                              dim_hidden = self.hidden_dim)
+        # 变量PQ是一个策略近似网络
+        # 该网络参数每一步都会更新
+        self.PQ = self.Q.clone()
+```
+从经历中学习：
+```Python
+def _learn_from_memory(self, gamma, batch_size, learning_rate, epochs):
+    trans_pieces = self.sample(batch_size)
+    states_0 = np.vstack([x.s0 for x in trans_pieces])
+    actions_0 = np.array([x.a0 for x in trans_pieces])
+    reward_1 = np.array([x.reward for x in trans_pieces])
+    is_done = np.array([x.is_done for x in trans_pieces])
+    states_1 = np.vstack([x.s1 for x in trans_pieces])
+
+    X_batch = states_0
+    y_batch = self.Q(states_0)
+
+    # 使用了Batch
+    Q_target = reward_1 + gamma * np.max(self.Q(states_1),axis=1)*(~is_done)
+    y_batch[np.arange(len(X_batch)),actions_0] = Q_target
+
+    loss = self.PQ.fit(
+        x = X_batch,
+        y = y_batch,
+        learning_rate = learning_rate,
+        epochs = epochs
+    )
+    mean_loss = loss.sum().data[0] / batch_size
+    self._update_Q_net()
+    return mean_loss
+```
+
+学习方法：
+```Python
+def learning(self, gamma=0.99,
+                   learning_rate=1e-5,
+                   max_episodes=1000,
+                   batch_size=64,
+                   min_epsilon=0.2,
+                   epsilon_factor=0.1,
+                   epochs=1):
+    '''learning的主要工作是构建经历，当构建的经历足够时，同时启动基于经历的学习
+    '''
+    total_steps, step_in_episode, num_episode = 0, 0, 0
+    target_episode = max_episodes * epsilon_factor
+    while num_episode < max_episodes:
+        epsilon = self._decayed_epsilon(
+            cur_episode = num_episode,
+            max_episode = 1,
+            target_episode = target_episode
+        )
+        self.state = self.env.reset()
+        step_in_episode = 0
+        loss, mean_loss = 0.00, 0.00
+        is_done = False
+        while not is_done:
+            s0 = self.state
+            a0 = self.performPolicy(s0, epsilon)
+            s1, r1, is_done, info, total_reward = self.act(a0)
+            step_in_episode += 1
+
+            if self.total_trans > batch_size:
+                loss += self._learn_from_memory(
+                    gamma,
+                    batch_size,
+                    learning_rate,
+                    epochs
+                )
+        
+        mean_loss = loss / step_in_episode
+        print("{0} epsilon:{1:3.2f}, loss:{2:.3f}".\
+            format(self.experience.last, epsilon, mean))
+
+        total_steps += step_in_episode
+        num_episode += 1
+    return
+```
+添加一些重要的辅助方法
+```Python
+def _decayed_epsilon(self,cur_episode,
+                          min_epsilon,
+                          max_epsilon,
+                          target_episode):
+    '''获得一个在一定范围内的epsilon
+    '''
+    slope = (min_epsilon - max_epsilon) / (target_episode)
+    intercept = max_epsilon
+    return max(max_epsilon, slope * cur_episode + intercept)
+
+def _curPolicy(self, s, epsilon = None):
+    '''依据更新策略的价值函数网络产生一个行为
+    '''
+    Q_s = self.PQ(s)
+    rand_value = random()
+    if epsilon is not None and rand_value < epsilon:
+        return self.env.action_space.sample()
+    else:
+        return int(np.argmax(Q_s))
+
+def performPolicy(self, s, epsilon=None):
+    return self._curPolicy(s, epsilon)
+
+```
+最后，还需要一个方法来将一直在更新参数的近似函数网络的参数拷贝给评估网络：
+```Python
+def _update_Q_net(self):
+    self.Q = self.PQ.clone()
+```
+
+**观察DQN在PuckWorld和CartPole环境中的表现**
+测试代码：
+```Python
+from random import random, choice
+import gym
+from core import Transition, Experience, Agent
+from approximator import Approximator
+from agents import ApproxQAgent
+import torch
+
+def testApproxQAgent():
+    env.gym.make()
+
+    agent = ApproxQAgent(env,
+                         trans_capacity = 10000, # 记忆容量
+                         hidden_dim = 16         # 隐藏层神经元的数量
+                        )
+    env.reset()
+    print('Learning...')
+    agent.learning(
+        gamma = 0.99,               # 衰减因子
+        learning_rate = 1e-3,       # 学习率
+        batch_size = 64,            # 批处理的规模
+        max_episode = 20000,        # 最大训练量
+        min_epsilon = 0.01,         # 最小 epsilon
+        epsilon_factor = 0.3,       # 
+        epochs = 2                  # 每个batch_size训练的次数
+    )
+if __name__ == "__main__":
+    testApproxQAgent()
+```
 
 # 参考文献
 [1] David Silver, reinforcement learning lecture 6 and 7
 [2] 叶强, David Silver强化学习公开课中文讲解及实践, 知乎专栏
+[3] Mnih V, Kavukcuoglu K, Silver D, et al. Human-level control through deep reinforcement learning[J]. Nature, 2015, 518(7540): 529-533.
