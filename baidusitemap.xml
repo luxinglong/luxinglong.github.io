@@ -4,6 +4,28 @@
 
     
   <url>
+    <loc>luxinglong.github.io/2017/10/24/%E3%80%90%E5%BC%BA%E5%8C%96%E5%AD%A6%E4%B9%A0%E3%80%91%E5%80%BC%E5%87%BD%E6%95%B0%E9%80%BC%E8%BF%91/</loc>
+    <lastmod>2017-11-06T02:17:42.000Z</lastmod>
+    <data>
+        <display>
+        <title>【强化学习】值函数逼近</title>
+        <pubTime>2017-10-24T12:11:37.000Z</pubTime>
+        
+        <tag>RL</tag>
+         
+        <tag>robotics</tag>
+         
+         
+           
+             
+              <breadCrumb title="【强化学习】" url="luxinglong.github.io/categories/%E3%80%90%E5%BC%BA%E5%8C%96%E5%AD%A6%E4%B9%A0%E3%80%91/"/>
+          
+        </display>
+    </data>
+    </url>
+
+    
+  <url>
     <loc>luxinglong.github.io/2017/11/03/%E3%80%90%E6%9C%BA%E5%99%A8%E5%AD%A6%E4%B9%A0%E3%80%91%E4%B8%BA%E4%BB%80%E4%B9%88%E8%A6%81%E5%81%9ABatch-Normalization/</loc>
     <lastmod>2017-11-05T14:19:34.000Z</lastmod>
     <data>
@@ -107,28 +129,6 @@
            
              
               <breadCrumb title="【硬件设备】" url="luxinglong.github.io/categories/%E3%80%90%E7%A1%AC%E4%BB%B6%E8%AE%BE%E5%A4%87%E3%80%91/"/>
-          
-        </display>
-    </data>
-    </url>
-
-    
-  <url>
-    <loc>luxinglong.github.io/2017/10/24/%E3%80%90%E5%BC%BA%E5%8C%96%E5%AD%A6%E4%B9%A0%E3%80%91%E5%80%BC%E5%87%BD%E6%95%B0%E9%80%BC%E8%BF%91/</loc>
-    <lastmod>2017-11-05T11:51:41.000Z</lastmod>
-    <data>
-        <display>
-        <title>【强化学习】值函数逼近</title>
-        <pubTime>2017-10-24T12:11:37.000Z</pubTime>
-        
-        <tag>RL</tag>
-         
-        <tag>robotics</tag>
-         
-         
-           
-             
-              <breadCrumb title="【强化学习】" url="luxinglong.github.io/categories/%E3%80%90%E5%BC%BA%E5%8C%96%E5%AD%A6%E4%B9%A0%E3%80%91/"/>
           
         </display>
     </data>
