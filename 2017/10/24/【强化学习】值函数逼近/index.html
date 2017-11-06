@@ -92,7 +92,7 @@
 <meta property="og:url" content="luxinglong.github.io/2017/10/24/【强化学习】值函数逼近/index.html">
 <meta property="og:site_name" content="LB's Home">
 <meta property="og:image" content="http://on99gq8w5.bkt.clouddn.com/fa.png?imageMogr2/thumbnail/600x600">
-<meta property="og:updated_time" content="2017-11-06T03:19:14.000Z">
+<meta property="og:updated_time" content="2017-11-06T03:21:12.000Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="【强化学习】值函数逼近">
 <meta name="twitter:image" content="http://on99gq8w5.bkt.clouddn.com/fa.png?imageMogr2/thumbnail/600x600">
@@ -378,7 +378,7 @@
 <h1 id="0-引言"><a href="#0-引言" class="headerlink" title="0 引言"></a>0 引言</h1><p>为什么要进行值函数逼近呢？<br>建立一个表格保存所有的状态以及对应的值函数值，这种方法在解决大规模问题上，会遇到两个问题，一是状态空间很大，内存无法保存Q表；二是对于很大的状态空间，学习起来也非常慢。于是，一个自然的想法就是用函数逼近状态值函数或者动作-状态值函数，这样就可以从有限的状态中学习到一个近似的状态值函数，而且可以泛化到没有见过的状态。使用MC或者TD学习来更新函数参数。</p>
 <p>$$<br>\hat{v}(s,w) \approx v_{\pi}(s) \<br>or \hat{q}(s,a,w) \approx q_{\pi}(s,a)<br>$$</p>
 <p>本文主要将近似方法分为两大类，增量法和批处理法。增量法主要用于在线更新，每一步都会更新近似函数；批处理法一次处理一批数据，并从这批数据中拟合出最好的近似函数。</p>
-<h1 id="1-增量法-Incremental-Methods"><a href="#1-增量法-Incremental-Methods" class="headerlink" title="1 增量法 Incremental Methods"></a>1 增量法 Incremental Methods</h1><p>使用梯度下降法来逼近值函数：<br>目标函数：<br>$$<br>J(w)=\mathbb{E}_{\pi}[(v_{\pi}(S)-\hat{v}(S,w))^2]<br>$$<br>定义梯度：<br>$$<br>\nabla_w J(w)=(\frac{\partial J(w)}{\partial w_1}, \cdots, \frac{\partial J(w)}{\partial w_n})^T<br>$$<br>梯度下降：<br>$$<br>\Delta w=-\frac{1}{2}\alpha\nabla_w J(w) = \alpha \mathbb{E}_{\pi}[(v_{\pi}(S)-\hat{v}(S,w))\nabla_w \hat{v}(S,w)]<br>$$<br>随机梯度下降：<br>\Delta w=\alpha (v_{\pi}(S)-\hat{v}(S,w))\nabla_w \hat{v}(S,w)</p>
+<h1 id="1-增量法-Incremental-Methods"><a href="#1-增量法-Incremental-Methods" class="headerlink" title="1 增量法 Incremental Methods"></a>1 增量法 Incremental Methods</h1><p>使用梯度下降法来逼近值函数：<br>目标函数：<br>$$<br>J(w)=\mathbb{E}_{\pi}[(v_{\pi}(S)-\hat{v}(S,w))^2]<br>$$<br>定义梯度：<br>$$<br>\nabla_w J(w)=(\frac{\partial J(w)}{\partial w_1}, \cdots, \frac{\partial J(w)}{\partial w_n})^T<br>$$<br>梯度下降：<br>$$<br>\Delta w=-\frac{1}{2}\alpha\nabla_w J(w) = \alpha \mathbb{E}_{\pi}[(v_{\pi}(S)-\hat{v}(S,w))\nabla_w \hat{v}(S,w)]<br>$$<br>随机梯度下降：<br>\Delta w=\alpha(v_{\pi}(S)-\hat{v}(S,w))\nabla_w\hat{v}(S,w)</p>
 <p>注：随机梯度下降和梯度下降的区别见【机器学习】梯度下降GD,SGD</p>
 <p>将特征表示成向量的形式：<br>$$<br>x(S)=(x_1(S),\cdots,x_n(S))^T<br>$$<br>则值函数可以用线性模型来估计：<br>$$<br>\hat{v}(S,w)=x(S)^Tw=\sum^n_{j=1}x_j(S)w_j<br>$$<br>将上式代入目标函数可以求的随机梯度为：<br>$$<br>\Delta w=\alpha(v_{\pi}(S)-\hat{v}(S,w))x(S)<br>$$</p>
 <p>问题出现了，这并不是监督学习，并没有$v_{\pi}(S)$，只有奖励值rewards.于是，只能用奖励返回值来代替$v_{\pi}(S)$。<br>对于MC</p>
