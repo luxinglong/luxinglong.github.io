@@ -71,7 +71,7 @@
 <link href="/css/main.css?v=5.1.0" rel="stylesheet" type="text/css" />
 
 
-  <meta name="keywords" content="tools," />
+  <meta name="keywords" content="Hexo, NexT" />
 
 
 
@@ -87,16 +87,16 @@
 
 
 
-<meta name="description" content="0 前言为了避免重复工作，整理积累所学的知识，特此搭建此博客(PS: 有装X的嫌疑)。">
+<meta name="description" content="Make Robot Feel The World">
 <meta property="og:type" content="article">
-<meta property="og:title" content="【生产工具】hexo+github个人博客">
-<meta property="og:url" content="luxinglong.github.io/2017/10/19/【生产工具】hexo-github个人博客/index.html">
+<meta property="og:title" content="【强化学习】模型估计">
+<meta property="og:url" content="luxinglong.github.io/2017/11/06/【强化学习】模型估计/index.html">
 <meta property="og:site_name" content="LB's Home">
-<meta property="og:description" content="0 前言为了避免重复工作，整理积累所学的知识，特此搭建此博客(PS: 有装X的嫌疑)。">
-<meta property="og:updated_time" content="2017-11-01T13:23:20.000Z">
+<meta property="og:description" content="Make Robot Feel The World">
+<meta property="og:updated_time" content="2017-11-06T07:49:47.000Z">
 <meta name="twitter:card" content="summary">
-<meta name="twitter:title" content="【生产工具】hexo+github个人博客">
-<meta name="twitter:description" content="0 前言为了避免重复工作，整理积累所学的知识，特此搭建此博客(PS: 有装X的嫌疑)。">
+<meta name="twitter:title" content="【强化学习】模型估计">
+<meta name="twitter:description" content="Make Robot Feel The World">
 
 
 
@@ -124,13 +124,13 @@
 
 
 
-  <link rel="canonical" href="luxinglong.github.io/2017/10/19/【生产工具】hexo-github个人博客/"/>
+  <link rel="canonical" href="luxinglong.github.io/2017/11/06/【强化学习】模型估计/"/>
 
 
 
 
 
-  <title> 【生产工具】hexo+github个人博客 | LB's Home </title><!-- hexo-inject:begin --><!-- hexo-inject:end -->
+  <title> 【强化学习】模型估计 | LB's Home </title><!-- hexo-inject:begin --><!-- hexo-inject:end -->
 </head>
 
 <body itemscope itemtype="http://schema.org/WebPage" lang="zh-Hans">
@@ -269,7 +269,7 @@
   
 
   <article class="post post-type-normal " itemscope itemtype="http://schema.org/Article">
-    <link itemprop="mainEntityOfPage" href="luxinglong.github.io/2017/10/19/【生产工具】hexo-github个人博客/">
+    <link itemprop="mainEntityOfPage" href="luxinglong.github.io/2017/11/06/【强化学习】模型估计/">
 
     <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
       <meta itemprop="name" content="LB">
@@ -290,7 +290,7 @@
             
             
               
-                【生产工具】hexo+github个人博客
+                【强化学习】模型估计
               
             
           </h1>
@@ -305,8 +305,8 @@
               
                 <span class="post-meta-item-text">发表于</span>
               
-              <time title="创建于" itemprop="dateCreated datePublished" datetime="2017-10-19T00:27:05+08:00">
-                2017-10-19
+              <time title="创建于" itemprop="dateCreated datePublished" datetime="2017-11-06T15:49:47+08:00">
+                2017-11-06
               </time>
             
 
@@ -316,35 +316,13 @@
           </span>
 
           
-            <span class="post-category" >
-            
-              <span class="post-meta-divider">|</span>
-            
-              <span class="post-meta-item-icon">
-                <i class="fa fa-folder-o"></i>
-              </span>
-              
-                <span class="post-meta-item-text">分类于</span>
-              
-              
-                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
-                  <a href="/categories/【生产工具】/" itemprop="url" rel="index">
-                    <span itemprop="name">【生产工具】</span>
-                  </a>
-                </span>
-
-                
-                
-              
-            </span>
-          
 <span class="post-time">
 	   &nbsp; | &nbsp;
            <span class="post-meta-item-icon">
              <i class="fa fa-calendar-o"></i>
            </span>
            <span class="post-meta-item-text">字数统计:</span>
-           <span class="post-count">744(字)</span> 
+           <span class="post-count">0(字)</span> 
          </span>
          
          <span id="busuanzi_container_page_pv">
@@ -374,50 +352,7 @@
       
 
       
-        <h1 id="0-前言"><a href="#0-前言" class="headerlink" title="0 前言"></a>0 前言</h1><p>为了避免重复工作，整理积累所学的知识，特此搭建此博客(PS: 有装X的嫌疑)。</p>
-<a id="more"></a>
-<h1 id="1-搭建流程"><a href="#1-搭建流程" class="headerlink" title="1 搭建流程"></a>1 搭建流程</h1><ol>
-<li>创建仓库，<a href="http://username.github.io；" target="_blank" rel="external">http://username.github.io；</a></li>
-<li>创建两个分支：master 与 hexo；</li>
-<li>设置hexo为默认分支（因为我们只需要手动管理这个分支上的Hexo网站文件）；</li>
-<li>使用git clone git@github.com:username/username.github.io.git拷贝仓库；</li>
-<li>在本地<a href="http://username.github.io文件夹下通过Git" target="_blank" rel="external">http://username.github.io文件夹下通过Git</a> bash依次执行npm install hexo、hexo init、npm install 和 npm install hexo-deployer-git（此时当前分支应显示为hexo）;</li>
-<li>修改_config.yml中的deploy参数，分支应为master；</li>
-<li>依次执行git add .、git commit -m “…”、git push origin hexo提交网站相关的文件；</li>
-<li>执行hexo g -d生成网站并部署到GitHub上。<br>这样一来，在GitHub上的<a href="http://username.github.io仓库就有两个分支，一个hexo分支用来存放网站的原始文件，一个master分支用来存放生成的静态网页。" target="_blank" rel="external">http://username.github.io仓库就有两个分支，一个hexo分支用来存放网站的原始文件，一个master分支用来存放生成的静态网页。</a></li>
-</ol>
-<h1 id="2-博客配置"><a href="#2-博客配置" class="headerlink" title="2 博客配置"></a>2 博客配置</h1><p>博客的配置文件是_config.yml</p>
-<h1 id="3-文章发布"><a href="#3-文章发布" class="headerlink" title="3 文章发布"></a>3 文章发布</h1><p>新建文章<br>hexo new “文章题目” ： 在source/_posts下便可以看到对应的文件夹和.md文件</p>
-<p>本地部署<br>hexo server : 打开弹出的链接，便可以看到本地部署的效果</p>
-<p>网络部署，如果要让别人看到你的博客，需要进行如下两步<br>hexo generate<br>hexo deploy </p>
-<p>也可以：执行hexo g -d生成网站并部署到GitHub上</p>
-<h1 id="4-多设备同步"><a href="#4-多设备同步" class="headerlink" title="4 多设备同步"></a>4 多设备同步</h1><p>创建两个分支 master hexo<br>设置hexo为git的默认分支，<br>设置master为hexo的发布的默认分支，修改_config.yml中的deploy参数，分支应为master<br>hexo用来存放网站的原始文件，master用来存放生成的静态网页</p>
-<p>在本地对博客进行修改（添加新博文、修改样式等等）后，通过下面的流程进行管理。</p>
-<ol>
-<li>依次执行git add .、git commit -m “…”、git push origin hexo指令将改动推送到GitHub（此时当前分支应为hexo）；</li>
-<li>然后才执行hexo g -d发布网站到master分支上。</li>
-</ol>
-<p>虽然两个过程顺序调转一般不会有问题，不过逻辑上这样的顺序是绝对没问题的（例如突然死机要重装了，悲催….的情况，调转顺序就有问题了）。</p>
-<p>当重装电脑之后，或者想在其他电脑上修改博客，可以使用下列步骤：</p>
-<ol>
-<li>使用git clone git@github.com:CrazyMilk/CrazyMilk.github.io.git拷贝仓库（默认分支为hexo）；</li>
-<li>在本地新拷贝的<a href="http://CrazyMilk.github.io文件夹下通过Git" target="_blank" rel="external">http://CrazyMilk.github.io文件夹下通过Git</a> bash依次执行下列指令：npm install hexo、npm install、npm install hexo-deployer-git（记得，不需要hexo init这条指令）。</li>
-</ol>
-<h1 id="5-博客多媒体"><a href="#5-博客多媒体" class="headerlink" title="5 博客多媒体"></a>5 博客多媒体</h1><ol>
-<li>公式</li>
-<li><p>图片</p>
-<figure class="highlight javascript"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">&#123;% img [img_name] <span class="string">"src"</span>+?imageMogr2/thumbnail/<span class="number">600</span>x600 %&#125;</div></pre></td></tr></table></figure>
-</li>
-<li><p>视频</p>
-<figure class="highlight javascript"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div></pre></td><td class="code"><pre><div class="line">&lt;video src=<span class="string">' '</span> type=<span class="string">'video/mp4'</span> controls=<span class="string">'controls'</span>  width=<span class="string">'100%'</span> height=<span class="string">'100%'</span>&gt;</div><div class="line">&lt;/video&gt;</div></pre></td></tr></table></figure>
-<p>其中，src是七牛云的视频外链。</p>
-</li>
-<li><p>代码段</p>
-<figure class="highlight markdown"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div></pre></td><td class="code"><pre><div class="line"><span class="code">```Language names</span></div><div class="line">code</div><div class="line">``` # end of codeblock</div></pre></td></tr></table></figure>
-</li>
-</ol>
-<p>Language names: C++\Bash\Python\JavaScript\Markdown</p>
-
+        
       
     </div>
 
@@ -444,12 +379,6 @@
 
     <footer class="post-footer">
       
-        <div class="post-tags">
-          
-            <a href="/tags/tools/" rel="tag"># tools</a>
-          
-        </div>
-      
 
       
         
@@ -459,8 +388,8 @@
         <div class="post-nav">
           <div class="post-nav-next post-nav-item">
             
-              <a href="/2017/10/19/【机器人学】从零搭建ROS差速小车-1/" rel="next" title="【机器人学】从零搭建ROS差速小车(1)">
-                <i class="fa fa-chevron-left"></i> 【机器人学】从零搭建ROS差速小车(1)
+              <a href="/2017/11/06/【强化学习】算法实践-Q-learning/" rel="next" title="【强化学习】算法实践-Q-learning">
+                <i class="fa fa-chevron-left"></i> 【强化学习】算法实践-Q-learning
               </a>
             
           </div>
@@ -468,10 +397,6 @@
           <span class="post-nav-divider"></span>
 
           <div class="post-nav-prev post-nav-item">
-            
-              <a href="/2017/10/19/【强化学习】基本概念/" rel="prev" title="【强化学习】基本概念">
-                【强化学习】基本概念 <i class="fa fa-chevron-right"></i>
-              </a>
             
           </div>
         </div>
@@ -518,17 +443,8 @@
       
 
       
-        <ul class="sidebar-nav motion-element">
-          <li class="sidebar-nav-toc sidebar-nav-active" data-target="post-toc-wrap" >
-            文章目录
-          </li>
-          <li class="sidebar-nav-overview" data-target="site-overview">
-            站点概览
-          </li>
-        </ul>
-      
 
-      <section class="site-overview sidebar-panel">
+      <section class="site-overview sidebar-panel sidebar-panel-active">
         <div class="site-author motion-element" itemprop="author" itemscope itemtype="http://schema.org/Person">
           <img class="site-author-image" itemprop="image"
                src="/images/avatar.jpg"
@@ -636,22 +552,6 @@
 
       </section>
 
-      
-      <!--noindex-->
-        <section class="post-toc-wrap motion-element sidebar-panel sidebar-panel-active">
-          <div class="post-toc">
-
-            
-              
-            
-
-            
-              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-1"><a class="nav-link" href="#0-前言"><span class="nav-number">1.</span> <span class="nav-text">0 前言</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#1-搭建流程"><span class="nav-number">2.</span> <span class="nav-text">1 搭建流程</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#2-博客配置"><span class="nav-number">3.</span> <span class="nav-text">2 博客配置</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#3-文章发布"><span class="nav-number">4.</span> <span class="nav-text">3 文章发布</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#4-多设备同步"><span class="nav-number">5.</span> <span class="nav-text">4 多设备同步</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#5-博客多媒体"><span class="nav-number">6.</span> <span class="nav-text">5 博客多媒体</span></a></li></ol></div>
-            
-
-          </div>
-        </section>
-      <!--/noindex-->
       
 
       
