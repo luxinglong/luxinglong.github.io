@@ -94,7 +94,7 @@
 <meta property="og:image" content="http://on99gq8w5.bkt.clouddn.com/fa.png?imageMogr2/thumbnail/600x600">
 <meta property="og:image" content="http://on99gq8w5.bkt.clouddn.com/fa_c.png?imageMogr2/thumbnail/500x500">
 <meta property="og:image" content="http://on99gq8w5.bkt.clouddn.com/dqn_a.png?imageMogr2/thumbnail/500x500">
-<meta property="og:updated_time" content="2017-11-06T05:28:24.000Z">
+<meta property="og:updated_time" content="2017-11-06T05:40:54.000Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="【强化学习】值函数逼近">
 <meta name="twitter:image" content="http://on99gq8w5.bkt.clouddn.com/fa.png?imageMogr2/thumbnail/600x600">
@@ -345,7 +345,7 @@
              <i class="fa fa-calendar-o"></i>
            </span>
            <span class="post-meta-item-text">字数统计:</span>
-           <span class="post-count">1,012(字)</span> 
+           <span class="post-count">1,111(字)</span> 
          </span>
          
          <span id="busuanzi_container_page_pv">
@@ -401,6 +401,15 @@
 <p><strong>DQN</strong><br>两个要点：一是经验回放，Experience Replay;二是fixed Q-targets<br>算法的伪代码：</p>
 <img src="http://on99gq8w5.bkt.clouddn.com/dqn_a.png?imageMogr2/thumbnail/500x500" class="[dqn_a]">
 <p>最小二乘法：<br>$$<br>\mathcal{L}(w_i)=\mathbb{E}_{s,a,r,s^{\prime}\sim \mathcal{D}_i}[(r+\gamma\max\limits_{a^{\prime}}Q(s^{\prime},a^{\prime};w^-_i)-Q(s,a;w_i))^2]<br>$$</p>
+<p>算法的要点有：</p>
+<ul>
+<li>根据$\epsilon$-greedy策略选择动作$a_t$</li>
+<li>将状态转换$\langle s_t,a_t,r_{t+1},s_{t+1}\rangle$存放在经验集$\mathcal{D}$中</li>
+<li>从经验集$\mathcal{D}$随机采样得到一个子集$\langle s,a,r,s^{\prime}\rangle$</li>
+<li>根据未更新的固定参数$w^-$来计算Q-learning targets</li>
+<li>最优化Q-network和Q-learning targets之间的平方误差</li>
+<li>使用SGD</li>
+</ul>
 <h1 id="参考文献"><a href="#参考文献" class="headerlink" title="参考文献"></a>参考文献</h1><p>[1] 周志华,《机器学习》,清华大学出版社,2016<br>[2] David Silver, reinforcement learning lecture 6<br>[3] Mnih V, Kavukcuoglu K, Silver D, et al. Human-level control through deep reinforcement learning[J]. Nature, 2015, 518(7540): 529-533.</p>
 
       
