@@ -4,6 +4,28 @@
 
     
   <url>
+    <loc>luxinglong.github.io/2017/11/06/%E3%80%90%E5%BC%BA%E5%8C%96%E5%AD%A6%E4%B9%A0%E3%80%91%E6%A8%A1%E5%9E%8B%E4%BC%B0%E8%AE%A1/</loc>
+    <lastmod>2017-11-08T13:09:44.000Z</lastmod>
+    <data>
+        <display>
+        <title>【强化学习】模型估计</title>
+        <pubTime>2017-11-06T07:49:47.000Z</pubTime>
+        
+        <tag>RL</tag>
+         
+        <tag>robotics</tag>
+         
+         
+           
+             
+              <breadCrumb title="【强化学习】" url="luxinglong.github.io/categories/%E3%80%90%E5%BC%BA%E5%8C%96%E5%AD%A6%E4%B9%A0%E3%80%91/"/>
+          
+        </display>
+    </data>
+    </url>
+
+    
+  <url>
     <loc>luxinglong.github.io/2017/11/05/%E3%80%90%E5%BC%BA%E5%8C%96%E5%AD%A6%E4%B9%A0%E3%80%91Actor-Critic/</loc>
     <lastmod>2017-11-08T09:31:17.000Z</lastmod>
     <data>
@@ -98,28 +120,6 @@
         <display>
         <title>【强化学习】策略梯度-Policy Gradient</title>
         <pubTime>2017-11-02T05:00:04.000Z</pubTime>
-        
-        <tag>RL</tag>
-         
-        <tag>robotics</tag>
-         
-         
-           
-             
-              <breadCrumb title="【强化学习】" url="luxinglong.github.io/categories/%E3%80%90%E5%BC%BA%E5%8C%96%E5%AD%A6%E4%B9%A0%E3%80%91/"/>
-          
-        </display>
-    </data>
-    </url>
-
-    
-  <url>
-    <loc>luxinglong.github.io/2017/11/06/%E3%80%90%E5%BC%BA%E5%8C%96%E5%AD%A6%E4%B9%A0%E3%80%91%E6%A8%A1%E5%9E%8B%E4%BC%B0%E8%AE%A1/</loc>
-    <lastmod>2017-11-08T02:53:35.000Z</lastmod>
-    <data>
-        <display>
-        <title>【强化学习】模型估计</title>
-        <pubTime>2017-11-06T07:49:47.000Z</pubTime>
         
         <tag>RL</tag>
          

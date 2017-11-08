@@ -87,16 +87,16 @@
 
 
 
-<meta name="description" content="Make Robot Feel The World">
 <meta property="og:type" content="article">
 <meta property="og:title" content="【强化学习】模型估计">
 <meta property="og:url" content="luxinglong.github.io/2017/11/06/【强化学习】模型估计/index.html">
 <meta property="og:site_name" content="LB's Home">
-<meta property="og:description" content="Make Robot Feel The World">
-<meta property="og:updated_time" content="2017-11-08T02:53:35.000Z">
+<meta property="og:image" content="http://on99gq8w5.bkt.clouddn.com/MBRL.png?imageMogr2/thumbnail/500x500">
+<meta property="og:image" content="http://on99gq8w5.bkt.clouddn.com/Dyna.png?imageMogr2/thumbnail/500x500">
+<meta property="og:updated_time" content="2017-11-08T13:09:44.000Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="【强化学习】模型估计">
-<meta name="twitter:description" content="Make Robot Feel The World">
+<meta name="twitter:image" content="http://on99gq8w5.bkt.clouddn.com/MBRL.png?imageMogr2/thumbnail/500x500">
 
 
 
@@ -344,7 +344,7 @@
              <i class="fa fa-calendar-o"></i>
            </span>
            <span class="post-meta-item-text">字数统计:</span>
-           <span class="post-count">0(字)</span> 
+           <span class="post-count">313(字)</span> 
          </span>
          
          <span id="busuanzi_container_page_pv">
@@ -374,7 +374,19 @@
       
 
       
-        
+        <img src="http://on99gq8w5.bkt.clouddn.com/MBRL.png?imageMogr2/thumbnail/500x500" class="[MBRL]">
+<a id="more"></a>
+<h1 id="0-引言"><a href="#0-引言" class="headerlink" title="0 引言"></a>0 引言</h1><p>如果不能对环境建立模型，包括状态转移和奖励函数，那么从很多经历中学习出一个模型，也是一件极好的事情。也就是做模型估计。</p>
+<p>基于模型学习的优点：</p>
+<ul>
+<li>监督学习</li>
+<li>可以推理模型的不确定性<br>当然，也有缺点：</li>
+<li>模型误差+值函数误差 -&gt; 双重误差</li>
+</ul>
+<p>模型究竟是一个什么鬼呢？<br>模型就是一个使用参数$\eta$描述的$MDP\langle \mathcal{S},\mathcal{A},\mathcal{P},\mathcal{R} \rangle$,假设状态空间和动作空间已知。那么一个模型就是状态转移和奖励函数。即$\mathcal{M}=\langle \mathcal{P}_{\eta},\mathcal{R}_{\eta} \rangle$.<br>$$<br>S_{t+1}\sim \mathcal{P}_{\eta}(S_{t+1}|S_t,A_t) \<br>R_{t+1}\sim \mathcal{R}_{\eta}(R_{t+1}|S_t,A_t)<br>$$<br>通常假设状态转移和奖励函数条件独立，即<br>$$<br>\mathbb{P}[S_{t+1},R_{t+1}|S_t,A_t]=\mathbb{P}[S_{t+1}|S_t,A_t]\mathbb{P}[R_{t+1}|S_t,A_t]<br>$$</p>
+<p>经典的算法有Dyna-Q和iLOG</p>
+<h1 id="1-模型估计"><a href="#1-模型估计" class="headerlink" title="1 模型估计"></a>1 模型估计</h1><h1 id="2-经典算法"><a href="#2-经典算法" class="headerlink" title="2 经典算法"></a>2 经典算法</h1><h2 id="2-1-Dyna-Q"><a href="#2-1-Dyna-Q" class="headerlink" title="2.1 Dyna-Q"></a>2.1 Dyna-Q</h2><p>Dyna-Q算法的伪代码如下：<br><img src="http://on99gq8w5.bkt.clouddn.com/Dyna.png?imageMogr2/thumbnail/500x500" class="[Dyna]"></p>
+<h2 id="2-2-iLOG"><a href="#2-2-iLOG" class="headerlink" title="2.2 iLOG"></a>2.2 iLOG</h2><h1 id="3-基于模型的搜索"><a href="#3-基于模型的搜索" class="headerlink" title="3 基于模型的搜索"></a>3 基于模型的搜索</h1><h2 id="3-1-蒙特卡罗搜索"><a href="#3-1-蒙特卡罗搜索" class="headerlink" title="3.1 蒙特卡罗搜索"></a>3.1 蒙特卡罗搜索</h2><h2 id="3-2-TD搜索"><a href="#3-2-TD搜索" class="headerlink" title="3.2 TD搜索"></a>3.2 TD搜索</h2><h1 id="4-后续发展"><a href="#4-后续发展" class="headerlink" title="4 后续发展"></a>4 后续发展</h1><h1 id="参考文献"><a href="#参考文献" class="headerlink" title="参考文献"></a>参考文献</h1>
       
     </div>
 
@@ -477,8 +489,17 @@
       
 
       
+        <ul class="sidebar-nav motion-element">
+          <li class="sidebar-nav-toc sidebar-nav-active" data-target="post-toc-wrap" >
+            文章目录
+          </li>
+          <li class="sidebar-nav-overview" data-target="site-overview">
+            站点概览
+          </li>
+        </ul>
+      
 
-      <section class="site-overview sidebar-panel sidebar-panel-active">
+      <section class="site-overview sidebar-panel">
         <div class="site-author motion-element" itemprop="author" itemscope itemtype="http://schema.org/Person">
           <img class="site-author-image" itemprop="image"
                src="/images/avatar.jpg"
@@ -586,6 +607,22 @@
 
       </section>
 
+      
+      <!--noindex-->
+        <section class="post-toc-wrap motion-element sidebar-panel sidebar-panel-active">
+          <div class="post-toc">
+
+            
+              
+            
+
+            
+              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-1"><a class="nav-link" href="#0-引言"><span class="nav-number">1.</span> <span class="nav-text">0 引言</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#1-模型估计"><span class="nav-number">2.</span> <span class="nav-text">1 模型估计</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#2-经典算法"><span class="nav-number">3.</span> <span class="nav-text">2 经典算法</span></a><ol class="nav-child"><li class="nav-item nav-level-2"><a class="nav-link" href="#2-1-Dyna-Q"><span class="nav-number">3.1.</span> <span class="nav-text">2.1 Dyna-Q</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#2-2-iLOG"><span class="nav-number">3.2.</span> <span class="nav-text">2.2 iLOG</span></a></li></ol></li><li class="nav-item nav-level-1"><a class="nav-link" href="#3-基于模型的搜索"><span class="nav-number">4.</span> <span class="nav-text">3 基于模型的搜索</span></a><ol class="nav-child"><li class="nav-item nav-level-2"><a class="nav-link" href="#3-1-蒙特卡罗搜索"><span class="nav-number">4.1.</span> <span class="nav-text">3.1 蒙特卡罗搜索</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#3-2-TD搜索"><span class="nav-number">4.2.</span> <span class="nav-text">3.2 TD搜索</span></a></li></ol></li><li class="nav-item nav-level-1"><a class="nav-link" href="#4-后续发展"><span class="nav-number">5.</span> <span class="nav-text">4 后续发展</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#参考文献"><span class="nav-number">6.</span> <span class="nav-text">参考文献</span></a></li></ol></div>
+            
+
+          </div>
+        </section>
+      <!--/noindex-->
       
 
       
