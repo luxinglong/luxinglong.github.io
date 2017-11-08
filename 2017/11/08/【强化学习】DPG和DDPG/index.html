@@ -93,7 +93,7 @@
 <meta property="og:site_name" content="LB's Home">
 <meta property="og:image" content="http://on99gq8w5.bkt.clouddn.com/google-david-silver.png.jpeg?imageMogr2/thumbnail/500x500">
 <meta property="og:image" content="http://on99gq8w5.bkt.clouddn.com/DDPG.png?imageMogr2/thumbnail/500x500">
-<meta property="og:updated_time" content="2017-11-08T07:33:24.000Z">
+<meta property="og:updated_time" content="2017-11-08T07:44:55.000Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="【强化学习】DPG和DDPG">
 <meta name="twitter:image" content="http://on99gq8w5.bkt.clouddn.com/google-david-silver.png.jpeg?imageMogr2/thumbnail/500x500">
@@ -344,7 +344,7 @@
              <i class="fa fa-calendar-o"></i>
            </span>
            <span class="post-meta-item-text">字数统计:</span>
-           <span class="post-count">197(字)</span> 
+           <span class="post-count">386(字)</span> 
          </span>
          
          <span id="busuanzi_container_page_pv">
@@ -379,13 +379,14 @@
 <h1 id="0-引言"><a href="#0-引言" class="headerlink" title="0 引言"></a>0 引言</h1><p>为了解决连续动作空间的问题，也是绞尽了脑汁。D. Silver在2014和2016年分别提出了DPG和DDPG。就是开头的大神。</p>
 <p>首先要区分两个概念：确定性策略和随机性策略。</p>
 <ul>
-<li>确定性策略：$\pi_{\theta}(a|s)=\mathbb{P}[a|s;\theta]$</li>
-<li>随机性策略：$a=\eta_{\theta}(s)$</li>
+<li>随机性策略：$\pi_{\theta}(a|s)=\mathbb{P}[a|s;\theta]$<br>其含义是，在状态$s$时，动作符合参数为$\theta$的概率分布。比如说高斯策略:<br>$$<br>\pi_{\theta}(a|s)=\frac{1}{\sqrt{2\pi}\sigma}exp(-\frac{(a-f_{\theta}(s))}{2\sigma^2})<br>$$<br>在状态$s$时，使用该策略获取动作，多次采样可以看到动作服从均值为$f_{\theta}(s)$，方差为$\sigma^2$的正太分布。也就是说，当使用随机策略时，虽然每次处于相同的状态，但是采取的动作也不一样。</li>
+<li>确定性策略：$a=\eta_{\theta}(s)$<br>其含义是，对于相同的状态，确定性地执行同一个动作。</li>
 </ul>
+<p>确定策略有哪些优点呢？<br><strong>需要的采样数据少，算法效率高</strong></p>
 <h1 id="1-DPG"><a href="#1-DPG" class="headerlink" title="1 DPG"></a>1 DPG</h1><p>为什么要提出DPG？<br>是什么？<br>效果怎么样？<br>评价一下：好的地方坏的地方</p>
 <h1 id="2-DDPG"><a href="#2-DDPG" class="headerlink" title="2 DDPG"></a>2 DDPG</h1><p>为什么要提出DPG？<br>是什么？<br>效果怎么样？<br>评价一下：好的地方坏的地方</p>
 <p>算法的伪代码如下：<br><img src="http://on99gq8w5.bkt.clouddn.com/DDPG.png?imageMogr2/thumbnail/500x500" class="[DDPG]"></p>
-<h1 id="参考文献"><a href="#参考文献" class="headerlink" title="参考文献"></a>参考文献</h1><p>[1] Deterministic Policy Gradients. D. Silver, G. Lever, N. Heess, T. Degris, D. Wierstra, M. Riedmiller. ICML 2014.<br>[2] Continuous Control with Deep Reinforcement Learning. T. Lillicrap, J. Hunt, A. Pritzel, N. Heess, T. Erez, Y. Tassa, D. Silver, D. Wierstra. ICLR 2016.</p>
+<h1 id="参考文献"><a href="#参考文献" class="headerlink" title="参考文献"></a>参考文献</h1><p>[1] Deterministic Policy Gradients. D. Silver, G. Lever, N. Heess, T. Degris, D. Wierstra, M. Riedmiller. ICML 2014.<br>[2] Continuous Control with Deep Reinforcement Learning. T. Lillicrap, J. Hunt, A. Pritzel, N. Heess, T. Erez, Y. Tassa, D. Silver, D. Wierstra. ICLR 2016.<br>[3] 天津包子馅儿 强化学习知识大讲堂 知乎专栏</p>
 
       
     </div>
