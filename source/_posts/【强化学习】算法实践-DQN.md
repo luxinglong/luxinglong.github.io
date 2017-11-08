@@ -580,7 +580,10 @@ class ApproxQAgent(Agent):
 从经历中学习：
 ```Python
 def _learn_from_memory(self, gamma, batch_size, learning_rate, epochs):
+    
+    # 随机获取记忆里的batch_size个Transmition，从基类Agent继承来的方法
     trans_pieces = self.sample(batch_size)
+
     states_0 = np.vstack([x.s0 for x in trans_pieces])
     actions_0 = np.array([x.a0 for x in trans_pieces])
     reward_1 = np.array([x.reward for x in trans_pieces])
@@ -621,7 +624,8 @@ def learning(self, gamma=0.99,
     while num_episode < max_episodes:
         epsilon = self._decayed_epsilon(
             cur_episode = num_episode,
-            max_episode = 1,
+            min_epsilon = min_epsilon,
+            max_epsilon = 1,
             target_episode = target_episode
         )
         self.state = self.env.reset()
@@ -660,7 +664,7 @@ def _decayed_epsilon(self,cur_episode,
     '''
     slope = (min_epsilon - max_epsilon) / (target_episode)
     intercept = max_epsilon
-    return max(max_epsilon, slope * cur_episode + intercept)
+    return max(min_epsilon, slope * cur_episode + intercept)
 
 def _curPolicy(self, s, epsilon = None):
     '''依据更新策略的价值函数网络产生一个行为
