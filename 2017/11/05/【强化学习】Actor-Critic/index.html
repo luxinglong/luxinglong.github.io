@@ -93,8 +93,9 @@
 <meta property="og:site_name" content="LB's Home">
 <meta property="og:image" content="http://on99gq8w5.bkt.clouddn.com/AC1.png?imageMogr2/thumbnail/600x600">
 <meta property="og:image" content="http://on99gq8w5.bkt.clouddn.com/actor-critic.jpg?imageMogr2/thumbnail/400x400">
+<meta property="og:image" content="http://on99gq8w5.bkt.clouddn.com/PGs.png?imageMogr2/thumbnail/500x500">
 <meta property="og:image" content="http://on99gq8w5.bkt.clouddn.com/qac.png?imageMogr2/thumbnail/500x500">
-<meta property="og:updated_time" content="2017-11-08T09:04:02.000Z">
+<meta property="og:updated_time" content="2017-11-08T09:12:34.000Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="【强化学习】演员-评论家算法 Actor-Critic">
 <meta name="twitter:image" content="http://on99gq8w5.bkt.clouddn.com/AC1.png?imageMogr2/thumbnail/600x600">
@@ -345,7 +346,7 @@
              <i class="fa fa-calendar-o"></i>
            </span>
            <span class="post-meta-item-text">字数统计:</span>
-           <span class="post-count">1,633(字)</span> 
+           <span class="post-count">1,649(字)</span> 
          </span>
          
          <span id="busuanzi_container_page_pv">
@@ -394,6 +395,7 @@
 <li>参数$w$由最小化均方误差$\epsilon^2(w)=\mathbb{E}_{s\sim\rho^{\pi},a\sim\pi_{\theta}}[(Q^w(s,a)-Q^{\pi_{\theta}}(s,a))^2]$获得。</li>
 </ol>
 <p>那么Actor部分的梯度误差便成了：<br>$$<br>\Delta_{\theta}J(\theta)=\mathbb{E}_{\pi_{\theta}}[\nabla_{\theta}log\pi_{\theta}(s,a)Q^w(s,a)]<br>$$</p>
+<p>根据第二部分，可以将AC算法总结如下：<br><img src="http://on99gq8w5.bkt.clouddn.com/PGs.png?imageMogr2/thumbnail/500x500" class="[PGs]"></p>
 <h1 id="2-QAC"><a href="#2-QAC" class="headerlink" title="2 QAC"></a>2 QAC</h1><p>伪代码为：</p>
 <img src="http://on99gq8w5.bkt.clouddn.com/qac.png?imageMogr2/thumbnail/500x500" class="[qac]">
 <p><strong>advantage function</strong><br>对于一个策略$\pi_{\theta}$来说，advantage function定义为<br>$$<br>A^{\pi_{\theta}}(s,a)=Q^{\pi_{\theta}}(s,a)-V^{\pi_{\theta}}(s)<br>$$<br>则策略梯度可以表示成：<br>$$<br>\nabla_{\theta}J(\theta)=\mathbb{E}_{\pi_{\theta}}[\nabla_{\theta}log\pi_{\theta}(s,a)A^{\pi_{\theta}}(s,a)]<br>$$</p>
