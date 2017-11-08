@@ -92,8 +92,9 @@
 <meta property="og:url" content="luxinglong.github.io/2017/11/05/【强化学习】Actor-Critic/index.html">
 <meta property="og:site_name" content="LB's Home">
 <meta property="og:image" content="http://on99gq8w5.bkt.clouddn.com/AC1.png?imageMogr2/thumbnail/600x600">
+<meta property="og:image" content="http://on99gq8w5.bkt.clouddn.com/actor-critic.jpg?imageMogr2/thumbnail/400x400">
 <meta property="og:image" content="http://on99gq8w5.bkt.clouddn.com/qac.png?imageMogr2/thumbnail/500x500">
-<meta property="og:updated_time" content="2017-11-08T03:25:13.000Z">
+<meta property="og:updated_time" content="2017-11-08T08:11:45.000Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="【强化学习】演员-评论家算法 Actor-Critic">
 <meta name="twitter:image" content="http://on99gq8w5.bkt.clouddn.com/AC1.png?imageMogr2/thumbnail/600x600">
@@ -344,7 +345,7 @@
              <i class="fa fa-calendar-o"></i>
            </span>
            <span class="post-meta-item-text">字数统计:</span>
-           <span class="post-count">257(字)</span> 
+           <span class="post-count">402(字)</span> 
          </span>
          
          <span id="busuanzi_container_page_pv">
@@ -382,7 +383,9 @@
 <li>相对于Q-learning来说，收敛性更好</li>
 <li>相对于PG来说，可以单步更新参数，而不用回合更新，提高了效率。</li>
 </ul>
-<h1 id="1-QAC"><a href="#1-QAC" class="headerlink" title="1 QAC"></a>1 QAC</h1><p>伪代码为：</p>
+<h1 id="1-AC"><a href="#1-AC" class="headerlink" title="1 AC"></a>1 AC</h1><p>首先，介绍什么是演员评论家算法。引用一张网上经典的图：<br><img src="http://on99gq8w5.bkt.clouddn.com/actor-critic.jpg?imageMogr2/thumbnail/400x400" class="[actor-critic]"></p>
+<p>AC算法来自策略梯度。<br>策略梯度公式：<br>$$<br>\Delta_{\theta}J(\theta)=\mathbb{E}_{\pi_{\theta}}[\nabla_{\theta}log\pi_{\theta}(s,a)Q^{\pi_{\theta}}(s,a)]<br>$$<br>第一部分$\nabla_{\theta}log\pi_{\theta}(s,a)$决定参数调整的方向，第二部分$Q^{\pi_{\theta}}(s,a)$决定调整的幅度。AC算法的思想就是把第二部分独立出来，使用另外一个网络来表示。也就是评论家部分。保留第一部分为演员部分。</p>
+<h1 id="2-QAC"><a href="#2-QAC" class="headerlink" title="2 QAC"></a>2 QAC</h1><p>伪代码为：</p>
 <img src="http://on99gq8w5.bkt.clouddn.com/qac.png?imageMogr2/thumbnail/500x500" class="[qac]">
 <p><strong>advantage function</strong><br>对于一个策略$\pi_{\theta}$来说，advantage function定义为<br>$$<br>A^{\pi_{\theta}}(s,a)=Q^{\pi_{\theta}}(s,a)-V^{\pi_{\theta}}(s)<br>$$<br>则策略梯度可以表示成：<br>$$<br>\nabla_{\theta}J(\theta)=\mathbb{E}_{\pi_{\theta}}[\nabla_{\theta}log\pi_{\theta}(s,a)A^{\pi_{\theta}}(s,a)]<br>$$</p>
 <p>使用advantage function的好处在于：</p>
@@ -623,7 +626,7 @@
             
 
             
-              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-1"><a class="nav-link" href="#0-引言"><span class="nav-number">1.</span> <span class="nav-text">0 引言</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#1-QAC"><span class="nav-number">2.</span> <span class="nav-text">1 QAC</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#参考文献"><span class="nav-number">3.</span> <span class="nav-text">参考文献</span></a></li></ol></div>
+              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-1"><a class="nav-link" href="#0-引言"><span class="nav-number">1.</span> <span class="nav-text">0 引言</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#1-AC"><span class="nav-number">2.</span> <span class="nav-text">1 AC</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#2-QAC"><span class="nav-number">3.</span> <span class="nav-text">2 QAC</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#参考文献"><span class="nav-number">4.</span> <span class="nav-text">参考文献</span></a></li></ol></div>
             
 
           </div>
