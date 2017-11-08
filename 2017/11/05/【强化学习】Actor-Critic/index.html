@@ -94,7 +94,7 @@
 <meta property="og:image" content="http://on99gq8w5.bkt.clouddn.com/AC1.png?imageMogr2/thumbnail/600x600">
 <meta property="og:image" content="http://on99gq8w5.bkt.clouddn.com/actor-critic.jpg?imageMogr2/thumbnail/400x400">
 <meta property="og:image" content="http://on99gq8w5.bkt.clouddn.com/qac.png?imageMogr2/thumbnail/500x500">
-<meta property="og:updated_time" content="2017-11-08T08:11:45.000Z">
+<meta property="og:updated_time" content="2017-11-08T08:32:47.000Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="【强化学习】演员-评论家算法 Actor-Critic">
 <meta name="twitter:image" content="http://on99gq8w5.bkt.clouddn.com/AC1.png?imageMogr2/thumbnail/600x600">
@@ -345,7 +345,7 @@
              <i class="fa fa-calendar-o"></i>
            </span>
            <span class="post-meta-item-text">字数统计:</span>
-           <span class="post-count">402(字)</span> 
+           <span class="post-count">605(字)</span> 
          </span>
          
          <span id="busuanzi_container_page_pv">
@@ -383,8 +383,16 @@
 <li>相对于Q-learning来说，收敛性更好</li>
 <li>相对于PG来说，可以单步更新参数，而不用回合更新，提高了效率。</li>
 </ul>
-<h1 id="1-AC"><a href="#1-AC" class="headerlink" title="1 AC"></a>1 AC</h1><p>首先，介绍什么是演员评论家算法。引用一张网上经典的图：<br><img src="http://on99gq8w5.bkt.clouddn.com/actor-critic.jpg?imageMogr2/thumbnail/400x400" class="[actor-critic]"></p>
+<h1 id="1-AC"><a href="#1-AC" class="headerlink" title="1 AC"></a>1 AC</h1><p>首先，介绍什么是演员评论家算法。</p>
 <p>AC算法来自策略梯度。<br>策略梯度公式：<br>$$<br>\Delta_{\theta}J(\theta)=\mathbb{E}_{\pi_{\theta}}[\nabla_{\theta}log\pi_{\theta}(s,a)Q^{\pi_{\theta}}(s,a)]<br>$$<br>第一部分$\nabla_{\theta}log\pi_{\theta}(s,a)$决定参数调整的方向，第二部分$Q^{\pi_{\theta}}(s,a)$决定调整的幅度。AC算法的思想就是把第二部分独立出来，使用另外一个网络来表示。也就是评论家部分。保留第一部分为演员部分。</p>
+<p>然后，介绍两个部分如何更新自己的参数。引用一张网上经典的图：<br><img src="http://on99gq8w5.bkt.clouddn.com/actor-critic.jpg?imageMogr2/thumbnail/400x400" class="[actor-critic]"></p>
+<p>Actor部分，使用策略梯度更新参数，不同的是，策略梯度的第二部分换成一个带有参数的$Q^w(s,a)$。<br>Critic部分，使用策略评估的方式更新参数，如TD。$Q^w(s,a) \approx Q^{\pi_{\theta}}(s,a)$</p>
+<p>问题：引入Critic部分，会不会引入偏差？理论证明只要满足下面两个条件就不会引入偏差。</p>
+<ol>
+<li>$Q^w(s,a)=\nabla_{\theta}log\pi_{\theta}(s,a)^Tw$</li>
+<li>参数$w$由最小化均方误差$\epsilon^2(w)=\mathbb{E}_{s\sim\rho^{\pi},a\sim\pi_{\theta}}[(Q^w(s,a)-Q^{\pi_{\theta}}(s,a))^2]$获得。</li>
+</ol>
+<p>那么Actor部分的梯度误差便成了：<br>$$<br>\Delta_{\theta}J(\theta)=\mathbb{E}_{\pi_{\theta}}[\nabla_{\theta}log\pi_{\theta}(s,a)Q^w(s,a)]<br>$$</p>
 <h1 id="2-QAC"><a href="#2-QAC" class="headerlink" title="2 QAC"></a>2 QAC</h1><p>伪代码为：</p>
 <img src="http://on99gq8w5.bkt.clouddn.com/qac.png?imageMogr2/thumbnail/500x500" class="[qac]">
 <p><strong>advantage function</strong><br>对于一个策略$\pi_{\theta}$来说，advantage function定义为<br>$$<br>A^{\pi_{\theta}}(s,a)=Q^{\pi_{\theta}}(s,a)-V^{\pi_{\theta}}(s)<br>$$<br>则策略梯度可以表示成：<br>$$<br>\nabla_{\theta}J(\theta)=\mathbb{E}_{\pi_{\theta}}[\nabla_{\theta}log\pi_{\theta}(s,a)A^{\pi_{\theta}}(s,a)]<br>$$</p>
