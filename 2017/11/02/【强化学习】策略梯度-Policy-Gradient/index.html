@@ -94,7 +94,7 @@
 <meta property="og:image" content="http://on99gq8w5.bkt.clouddn.com/pg.png?imageMogr2/thumbnail/600x600">
 <meta property="og:image" content="http://on99gq8w5.bkt.clouddn.com/pg_t.png?imageMogr2/thumbnail/500x500">
 <meta property="og:image" content="http://on99gq8w5.bkt.clouddn.com/mcpg.png?imageMogr2/thumbnail/400x400">
-<meta property="og:updated_time" content="2017-11-07T14:48:59.000Z">
+<meta property="og:updated_time" content="2017-11-08T05:08:01.000Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="【强化学习】策略梯度-Policy Gradient">
 <meta name="twitter:image" content="http://on99gq8w5.bkt.clouddn.com/pg.png?imageMogr2/thumbnail/600x600">
@@ -345,7 +345,7 @@
              <i class="fa fa-calendar-o"></i>
            </span>
            <span class="post-meta-item-text">字数统计:</span>
-           <span class="post-count">1,057(字)</span> 
+           <span class="post-count">1,308(字)</span> 
          </span>
          
          <span id="busuanzi_container_page_pv">
@@ -396,6 +396,14 @@
 <p>通过有限差分的方式来计算策略梯度：<br>$$<br>\frac{\partial J(\theta)}{\partial \theta_k} \approx \frac{J(\theta+\epsilon u_k)-J(\theta)}{\epsilon}<br>$$<br>其中，$u_k$是一个单位向量。第$k$个元素为1，其他元素为0</p>
 <p>得分函数Score Function<br>$$<br>\nabla_{\theta}\pi_{\theta}(s,a)=\pi_{\theta}(s,a)\frac{\nabla_{\theta}\pi_{\theta}(s,a)}{\pi_{\theta}(s,a)}=\pi_{\theta}(s,a)\nabla_{\theta}log\pi_{\theta}(s,a)<br>$$<br>其中，$\nabla_{\theta}log\pi_{\theta}(s,a)$为得分函数。<br>Softmax策略<br>对于离散的动作空间，可以用Softmax策略来逼近真实的策略，它的输出为采取各个动作的概率。即<br>$$<br>\pi_{\theta}(s,a)\propto e^\phi(s,a)^T\theta<br>$$<br>这样，得分函数为：<br>$$<br>\nabla_{\theta}log\pi_{\theta}(s,a)=\phi(s,a)-\mathbb{E}_{\pi_{\theta}}[\phi(s,\cdot)]<br>$$<br>Gaussian策略<br>当动作空间是连续的时候，采用高斯策略更为合理，输出采取各个动作的分布。即<br>$$<br>a \sim \mathcal{N}(\eta(s),\sigma^2)<br>$$<br>这样，得分函数为：<br>$$<br>\nabla_{\theta}log\pi_{\theta}(s,a)=\frac{(a-\eta(s))\phi(s)}{\sigma^2}<br>$$</p>
 <p><strong>策略梯度定理</strong><br><img src="http://on99gq8w5.bkt.clouddn.com/pg_t.png?imageMogr2/thumbnail/500x500" class="[pg_t]"><br>定理有了，怎么理解呢？<br>我们知道，有了策略网络就要进行误差的反向传递，以便进行参数的更新。可是对于PG来讲，只有一段发生过的经历，并不能计算误差。那怎么来更新参数呢？这时候奖励就出场了，在那段经历中，每个动作执行之后，都会出现一个即时奖励。那么就可以根据奖励的情况来更新参数。奖励大的，参数更新就使这个动作更大概率出现，而奖励小的，则会减小出现的概率。</p>
+<p>策略梯度公式：<br>$$<br>\Delta_{\theta}J(\theta)=\mathbb{E}_{\pi_{\theta}}[\nabla_{\theta}log\pi_{\theta}(s,a)Q^{\pi_{\theta}}(s,a)]<br>$$<br>将求期望的部分可以分成两个子式：</p>
+<ul>
+<li><p>第一部分$\nabla_{\theta}log\pi_{\theta}(s,a)$,这是一个方向向量，代表了$log\pi_{\theta}(s,a)$对于参数$\theta$变化最快的方向，参数在这个方向上更新可以增大或者减小$log\pi_{\theta}(s,a)$，也就是提高或者减小$(s,a)$的概率。</p>
+</li>
+<li><p>第二部分$Q^{\pi_{\theta}}(s,a)$,状态价值函数，这是一个标量，在策略梯度中扮演着在$\nabla_{\theta}log\pi_{\theta}(s,a)$方向上变化幅度的角色。如果$Q^{\pi_{\theta}}(s,a)$比较大，$log\pi_{\theta}(s,a)$的参数在这个方向上变化的幅度也比较大，那么$(s,a)$的概率也会比较大。</p>
+</li>
+</ul>
+<p>所以，对于梯度策略最直观的理解就是增大高回报动作-状态的概率，减小低回报动作-状态的概率。</p>
 <p><strong>基于MC的策略梯度</strong><br>伪代码为：<br><img src="http://on99gq8w5.bkt.clouddn.com/mcpg.png?imageMogr2/thumbnail/400x400" class="[mcpg]"><br>怎么理解这段代码呢？<br>首先，随机初始化策略网络的参数。<br>然后，要准备好一段经历，以备训练。<br>接着，对经历中的每一步，根据返回的状态价值，进行参数更新。</p>
 <p>有两个疑问，一是经历从哪里来？二是状态价值$v_t$怎么计算？</p>
 <p>经历的来源：就是利用初始化的策略网络$\pi_{\theta}(s)$，根据初始状态$s_0$，产生初始动作$a_0$，然后执行动作$a_0$，产生新的状态$s_1$和即时奖励$r_1$，最后将$\langle s_0, a_0, r_1, s_1 \rangle$保存到“记忆”中。如此反复直到遇到终结状态为止，此时便产生了一段经历Episode.</p>
