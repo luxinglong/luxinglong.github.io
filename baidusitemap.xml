@@ -4,16 +4,18 @@
 
     
   <url>
-    <loc>luxinglong.github.io/2017/11/08/%E3%80%90%E5%BC%BA%E5%8C%96%E5%AD%A6%E4%B9%A0%E3%80%91CADRL%E4%BB%BF%E7%9C%9F%E7%8E%AF%E5%A2%83%E6%90%AD%E5%BB%BA/</loc>
-    <lastmod>2017-11-08T15:35:14.000Z</lastmod>
+    <loc>luxinglong.github.io/2017/11/06/%E3%80%90%E5%BC%BA%E5%8C%96%E5%AD%A6%E4%B9%A0%E3%80%91%E6%A8%A1%E5%9E%8B%E4%BC%B0%E8%AE%A1/</loc>
+    <lastmod>2017-11-11T08:27:47.000Z</lastmod>
     <data>
         <display>
-        <title>【强化学习】CADRL仿真环境搭建</title>
-        <pubTime>2017-11-08T14:08:11.000Z</pubTime>
+        <title>【强化学习】模型估计</title>
+        <pubTime>2017-11-06T07:49:47.000Z</pubTime>
         
         <tag>RL</tag>
          
         <tag>robotics</tag>
+         
+        <tag>David Silver</tag>
          
          
            
@@ -26,12 +28,12 @@
 
     
   <url>
-    <loc>luxinglong.github.io/2017/11/06/%E3%80%90%E5%BC%BA%E5%8C%96%E5%AD%A6%E4%B9%A0%E3%80%91%E6%A8%A1%E5%9E%8B%E4%BC%B0%E8%AE%A1/</loc>
-    <lastmod>2017-11-08T13:09:44.000Z</lastmod>
+    <loc>luxinglong.github.io/2017/11/08/%E3%80%90%E5%BC%BA%E5%8C%96%E5%AD%A6%E4%B9%A0%E3%80%91CADRL%E4%BB%BF%E7%9C%9F%E7%8E%AF%E5%A2%83%E6%90%AD%E5%BB%BA/</loc>
+    <lastmod>2017-11-09T03:28:32.000Z</lastmod>
     <data>
         <display>
-        <title>【强化学习】模型估计</title>
-        <pubTime>2017-11-06T07:49:47.000Z</pubTime>
+        <title>【强化学习】CADRL仿真环境搭建</title>
+        <pubTime>2017-11-08T14:08:11.000Z</pubTime>
         
         <tag>RL</tag>
          
