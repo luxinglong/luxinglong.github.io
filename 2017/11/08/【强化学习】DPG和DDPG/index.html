@@ -92,8 +92,8 @@
 <meta property="og:url" content="luxinglong.github.io/2017/11/08/【强化学习】DPG和DDPG/index.html">
 <meta property="og:site_name" content="LB's Home">
 <meta property="og:image" content="http://on99gq8w5.bkt.clouddn.com/google-david-silver.png.jpeg?imageMogr2/thumbnail/500x500">
-<meta property="og:image" content="http://on99gq8w5.bkt.clouddn.com/DDPG.png?imageMogr2/thumbnail/500x500">
-<meta property="og:updated_time" content="2017-11-12T14:32:57.000Z">
+<meta property="og:image" content="http://on99gq8w5.bkt.clouddn.com/DDPG.png?imageMogr2/thumbnail/600x600">
+<meta property="og:updated_time" content="2017-11-12T14:35:36.000Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="【强化学习】DPG和DDPG">
 <meta name="twitter:image" content="http://on99gq8w5.bkt.clouddn.com/google-david-silver.png.jpeg?imageMogr2/thumbnail/500x500">
@@ -395,7 +395,7 @@
 <p>三是batch normalization</p>
 <p>四是增加探索的成分，获取全局最优解。<br>$$<br>\mu^{\prime}(s_t)=\mu(s_t\mid \theta^{\mu}_t)+\mathcal{N}<br>$$</p>
 <h2 id="是什么？-1"><a href="#是什么？-1" class="headerlink" title="是什么？"></a>是什么？</h2><p>算法的伪代码如下：</p>
-<img src="http://on99gq8w5.bkt.clouddn.com/DDPG.png?imageMogr2/thumbnail/500x500" class="[DDPG]">
+<img src="http://on99gq8w5.bkt.clouddn.com/DDPG.png?imageMogr2/thumbnail/600x600" class="[DDPG]">
 <p>critic: $Q(s,a\mid\theta^{Q})$<br>$$<br>L=\frac{1}{N}\sum_i(y_i-Q(s_i,a_i\mid\theta^Q))^2<br>$$<br>其中，$y_i=r_i+\gamma Q^{\prime}(s_{i+1},\mu^{\prime}(s_{i+1}\mid\theta^{\mu^{\prime}})\mid \theta^{Q^{\prime}})$<br>actor: $\mu(s\mid\theta^{\mu})$<br>$$<br>\nabla_{\theta^{\mu}}J\approx\frac{1}{N}\sum_i\nabla_aQ(s,a\mid\theta^Q)\mid_{s=s_i,a=\mu(s_i)}\nabla_{\theta^{\mu}}\mu(s\mid\theta^{\mu})\mid_{s_i}<br>$$<br>actor: $\mu^{\prime}(s\mid\theta^{\mu^{\prime}})$<br>critic: $Q^{\prime}(s,a\mid\theta^{Q^{\prime}})$</p>
 <p>两种更新策略：</p>
 <ol>
