@@ -91,11 +91,11 @@
 <meta property="og:title" content="【强化学习】CADRL仿真环境搭建">
 <meta property="og:url" content="luxinglong.github.io/2017/11/08/【强化学习】CADRL仿真环境搭建/index.html">
 <meta property="og:site_name" content="LB's Home">
-<meta property="og:image" content="http://on99gq8w5.bkt.clouddn.com/CADRL.png?imageMogr2/thumbnail/600x600">
-<meta property="og:updated_time" content="2017-11-12T16:05:12.000Z">
+<meta property="og:image" content="http://on99gq8w5.bkt.clouddn.com/CADRL.png?imageMogr2/thumbnail/500x500">
+<meta property="og:updated_time" content="2017-11-12T16:15:59.000Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="【强化学习】CADRL仿真环境搭建">
-<meta name="twitter:image" content="http://on99gq8w5.bkt.clouddn.com/CADRL.png?imageMogr2/thumbnail/600x600">
+<meta name="twitter:image" content="http://on99gq8w5.bkt.clouddn.com/CADRL.png?imageMogr2/thumbnail/500x500">
 
 
 
@@ -343,7 +343,7 @@
              <i class="fa fa-calendar-o"></i>
            </span>
            <span class="post-meta-item-text">字数统计:</span>
-           <span class="post-count">60(字)</span> 
+           <span class="post-count">169(字)</span> 
          </span>
          
          <span id="busuanzi_container_page_pv">
@@ -373,10 +373,11 @@
       
 
       
-        <img src="http://on99gq8w5.bkt.clouddn.com/CADRL.png?imageMogr2/thumbnail/600x600" class="[CADRL]">
+        <img src="http://on99gq8w5.bkt.clouddn.com/CADRL.png?imageMogr2/thumbnail/500x500" class="[CADRL]">
 <a id="more"></a>
 <h1 id="0-引言"><a href="#0-引言" class="headerlink" title="0 引言"></a>0 引言</h1><p>本文目标就是设计CADRLEnv类，CADRLEnv环境应该可以扩展，从一个Agent扩展到多个Agent，所以应该建立一个Agent类。</p>
-<h1 id="1-物理引擎"><a href="#1-物理引擎" class="headerlink" title="1 物理引擎"></a>1 物理引擎</h1><h1 id="2-图像引擎"><a href="#2-图像引擎" class="headerlink" title="2 图像引擎"></a>2 图像引擎</h1><h1 id="3-辅助函数"><a href="#3-辅助函数" class="headerlink" title="3 辅助函数"></a>3 辅助函数</h1><h1 id="参考文献"><a href="#参考文献" class="headerlink" title="参考文献"></a>参考文献</h1>
+<h1 id="1-物理引擎"><a href="#1-物理引擎" class="headerlink" title="1 物理引擎"></a>1 物理引擎</h1><p>所谓物理引擎就是客观环境的状态转换方程和奖励函数，这里的状态指的是环境的状态，对于部分可观的系统来说，环境的状态和agent的观测不同。<br>在CADRL的环境中，包括$n$个agent的状态。即<br>$$<br>s^i_t=[s_t^{o^i},s_t^{h^i}]=[p_x^i,p_y^i,v_x^i,v_y^i,r^i,p_{gx}^i,p_{gy}^i,v_{pref}^i,\theta^i], i=1,2,\cdots n<br>$$</p>
+<h1 id="2-图像引擎"><a href="#2-图像引擎" class="headerlink" title="2 图像引擎"></a>2 图像引擎</h1><h1 id="3-辅助函数"><a href="#3-辅助函数" class="headerlink" title="3 辅助函数"></a>3 辅助函数</h1><h1 id="参考文献"><a href="#参考文献" class="headerlink" title="参考文献"></a>参考文献</h1>
       
     </div>
 
