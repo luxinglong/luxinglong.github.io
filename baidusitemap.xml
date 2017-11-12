@@ -4,6 +4,28 @@
 
     
   <url>
+    <loc>luxinglong.github.io/2017/11/08/%E3%80%90%E5%BC%BA%E5%8C%96%E5%AD%A6%E4%B9%A0%E3%80%91DPG%E5%92%8CDDPG/</loc>
+    <lastmod>2017-11-12T12:24:20.000Z</lastmod>
+    <data>
+        <display>
+        <title>【强化学习】DPG和DDPG</title>
+        <pubTime>2017-11-08T06:48:58.000Z</pubTime>
+        
+        <tag>RL</tag>
+         
+        <tag>robotics</tag>
+         
+         
+           
+             
+              <breadCrumb title="【强化学习】" url="luxinglong.github.io/categories/%E3%80%90%E5%BC%BA%E5%8C%96%E5%AD%A6%E4%B9%A0%E3%80%91/"/>
+          
+        </display>
+    </data>
+    </url>
+
+    
+  <url>
     <loc>luxinglong.github.io/2017/11/11/%E3%80%90%E5%BC%BA%E5%8C%96%E5%AD%A6%E4%B9%A0%E3%80%91%E5%88%A9%E7%94%A8-%E6%8E%A2%E7%B4%A2/</loc>
     <lastmod>2017-11-12T11:41:00.000Z</lastmod>
     <data>
@@ -124,28 +146,6 @@
         <display>
         <title>【强化学习】算法实践-策略梯度PG</title>
         <pubTime>2017-11-05T13:49:57.000Z</pubTime>
-        
-        <tag>RL</tag>
-         
-        <tag>robotics</tag>
-         
-         
-           
-             
-              <breadCrumb title="【强化学习】" url="luxinglong.github.io/categories/%E3%80%90%E5%BC%BA%E5%8C%96%E5%AD%A6%E4%B9%A0%E3%80%91/"/>
-          
-        </display>
-    </data>
-    </url>
-
-    
-  <url>
-    <loc>luxinglong.github.io/2017/11/08/%E3%80%90%E5%BC%BA%E5%8C%96%E5%AD%A6%E4%B9%A0%E3%80%91DPG%E5%92%8CDDPG/</loc>
-    <lastmod>2017-11-08T07:44:55.000Z</lastmod>
-    <data>
-        <display>
-        <title>【强化学习】DPG和DDPG</title>
-        <pubTime>2017-11-08T06:48:58.000Z</pubTime>
         
         <tag>RL</tag>
          

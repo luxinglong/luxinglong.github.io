@@ -93,7 +93,7 @@
 <meta property="og:site_name" content="LB's Home">
 <meta property="og:image" content="http://on99gq8w5.bkt.clouddn.com/google-david-silver.png.jpeg?imageMogr2/thumbnail/500x500">
 <meta property="og:image" content="http://on99gq8w5.bkt.clouddn.com/DDPG.png?imageMogr2/thumbnail/500x500">
-<meta property="og:updated_time" content="2017-11-08T07:44:55.000Z">
+<meta property="og:updated_time" content="2017-11-12T12:24:20.000Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="【强化学习】DPG和DDPG">
 <meta name="twitter:image" content="http://on99gq8w5.bkt.clouddn.com/google-david-silver.png.jpeg?imageMogr2/thumbnail/500x500">
@@ -344,7 +344,7 @@
              <i class="fa fa-calendar-o"></i>
            </span>
            <span class="post-meta-item-text">字数统计:</span>
-           <span class="post-count">386(字)</span> 
+           <span class="post-count">478(字)</span> 
          </span>
          
          <span id="busuanzi_container_page_pv">
@@ -383,10 +383,13 @@
 <li>确定性策略：$a=\eta_{\theta}(s)$<br>其含义是，对于相同的状态，确定性地执行同一个动作。</li>
 </ul>
 <p>确定策略有哪些优点呢？<br><strong>需要的采样数据少，算法效率高</strong></p>
-<h1 id="1-DPG"><a href="#1-DPG" class="headerlink" title="1 DPG"></a>1 DPG</h1><p>为什么要提出DPG？<br>是什么？<br>效果怎么样？<br>评价一下：好的地方坏的地方</p>
-<h1 id="2-DDPG"><a href="#2-DDPG" class="headerlink" title="2 DDPG"></a>2 DDPG</h1><p>为什么要提出DPG？<br>是什么？<br>效果怎么样？<br>评价一下：好的地方坏的地方</p>
+<h1 id="1-DPG"><a href="#1-DPG" class="headerlink" title="1 DPG"></a>1 DPG</h1><h2 id="为什么要提出DPG？"><a href="#为什么要提出DPG？" class="headerlink" title="为什么要提出DPG？"></a>为什么要提出DPG？</h2><p>在解决连续动作空间的问题上，确定性策略的求解通过动作值函数的梯度来实现，形式比较简单。相对随机性策略，估计起来也更加方便。</p>
+<h2 id="是什么？"><a href="#是什么？" class="headerlink" title="是什么？"></a>是什么？</h2><p>确定性策略：$\ete_{\theta}:\mathcal{S}\to \mathcal{A}$,其中，$\theta$是策略函数的参数。目标就是确定$\theta$。</p>
+<h2 id="效果怎么样？"><a href="#效果怎么样？" class="headerlink" title="效果怎么样？"></a>效果怎么样？</h2><p>评价一下：好的地方坏的地方</p>
+<h1 id="2-DDPG"><a href="#2-DDPG" class="headerlink" title="2 DDPG"></a>2 DDPG</h1><p>为什么要提出DPG？</p>
+<p>是什么？<br>效果怎么样？<br>评价一下：好的地方坏的地方</p>
 <p>算法的伪代码如下：<br><img src="http://on99gq8w5.bkt.clouddn.com/DDPG.png?imageMogr2/thumbnail/500x500" class="[DDPG]"></p>
-<h1 id="参考文献"><a href="#参考文献" class="headerlink" title="参考文献"></a>参考文献</h1><p>[1] Deterministic Policy Gradients. D. Silver, G. Lever, N. Heess, T. Degris, D. Wierstra, M. Riedmiller. ICML 2014.<br>[2] Continuous Control with Deep Reinforcement Learning. T. Lillicrap, J. Hunt, A. Pritzel, N. Heess, T. Erez, Y. Tassa, D. Silver, D. Wierstra. ICLR 2016.<br>[3] 天津包子馅儿 强化学习知识大讲堂 知乎专栏</p>
+<h1 id="3-DDPG代码实现"><a href="#3-DDPG代码实现" class="headerlink" title="3 DDPG代码实现"></a>3 DDPG代码实现</h1><h1 id="参考文献"><a href="#参考文献" class="headerlink" title="参考文献"></a>参考文献</h1><p>[1] Deterministic Policy Gradients. D. Silver, G. Lever, N. Heess, T. Degris, D. Wierstra, M. Riedmiller. ICML 2014.<br>[2] Continuous Control with Deep Reinforcement Learning. T. Lillicrap, J. Hunt, A. Pritzel, N. Heess, T. Erez, Y. Tassa, D. Silver, D. Wierstra. ICLR 2016.<br>[3] 天津包子馅儿 强化学习知识大讲堂 知乎专栏</p>
 
       
     </div>
@@ -618,7 +621,7 @@
             
 
             
-              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-1"><a class="nav-link" href="#0-引言"><span class="nav-number">1.</span> <span class="nav-text">0 引言</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#1-DPG"><span class="nav-number">2.</span> <span class="nav-text">1 DPG</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#2-DDPG"><span class="nav-number">3.</span> <span class="nav-text">2 DDPG</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#参考文献"><span class="nav-number">4.</span> <span class="nav-text">参考文献</span></a></li></ol></div>
+              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-1"><a class="nav-link" href="#0-引言"><span class="nav-number">1.</span> <span class="nav-text">0 引言</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#1-DPG"><span class="nav-number">2.</span> <span class="nav-text">1 DPG</span></a><ol class="nav-child"><li class="nav-item nav-level-2"><a class="nav-link" href="#为什么要提出DPG？"><span class="nav-number">2.1.</span> <span class="nav-text">为什么要提出DPG？</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#是什么？"><span class="nav-number">2.2.</span> <span class="nav-text">是什么？</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#效果怎么样？"><span class="nav-number">2.3.</span> <span class="nav-text">效果怎么样？</span></a></li></ol></li><li class="nav-item nav-level-1"><a class="nav-link" href="#2-DDPG"><span class="nav-number">3.</span> <span class="nav-text">2 DDPG</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#3-DDPG代码实现"><span class="nav-number">4.</span> <span class="nav-text">3 DDPG代码实现</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#参考文献"><span class="nav-number">5.</span> <span class="nav-text">参考文献</span></a></li></ol></div>
             
 
           </div>
