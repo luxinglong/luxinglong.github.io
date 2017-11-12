@@ -93,7 +93,7 @@
 <meta property="og:site_name" content="LB's Home">
 <meta property="og:image" content="http://on99gq8w5.bkt.clouddn.com/google-david-silver.png.jpeg?imageMogr2/thumbnail/500x500">
 <meta property="og:image" content="http://on99gq8w5.bkt.clouddn.com/DDPG.png?imageMogr2/thumbnail/500x500">
-<meta property="og:updated_time" content="2017-11-12T13:02:16.000Z">
+<meta property="og:updated_time" content="2017-11-12T13:30:19.000Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="【强化学习】DPG和DDPG">
 <meta name="twitter:image" content="http://on99gq8w5.bkt.clouddn.com/google-david-silver.png.jpeg?imageMogr2/thumbnail/500x500">
@@ -344,7 +344,7 @@
              <i class="fa fa-calendar-o"></i>
            </span>
            <span class="post-meta-item-text">字数统计:</span>
-           <span class="post-count">852(字)</span> 
+           <span class="post-count">1,040(字)</span> 
          </span>
          
          <span id="busuanzi_container_page_pv">
@@ -388,6 +388,7 @@
 <p>目标函数：<br>$$<br>J(\mu_{\theta})=\int_{\mathcal{S}}\rho^{\mu}(s)r(s,\mu_{\theta}(s))ds=\mathbb{E}_{s\sim \rho^{\mu}}[r(s,\mu_{\theta}(s))]<br>$$</p>
 <p>其中，<strong>状态转移的概率分布</strong>可以表示为$p(s\to s^{\prime},t,\pi)$，即根据策略$\pi$从状态$s$经过$t$时间转移到状态$s^{\prime}$的概率分布。有了状态转移的概率分布，就可以定义<strong>折扣的状态分布</strong><br>$$<br>\rho^{\pi}(s^{\prime}):=\int_{\mathcal{S}}\sum_{t=1}^{\infty}\gamma^{t-1}p_1(s)p(s\to s^{\prime},t,\pi)ds<br>$$<br>$p_1(s)$为初始的状态分布。</p>
 <p>确定性策略梯度：<br>$$<br>\nabla_{\theta}J(\mu_{\theta})=\int_{\mathcal{S}}\rho^{\mu}(s)\nabla_{\theta}\mu_{\theta}(s)\nabla_{a}Q^{\mu}(s,a)\mid_{a=\mu_{\theta}(s)}ds<br>$$<br>$$<br>=\mathbb{E}_{s\sim \rho^{\mu}}[\nabla_{\theta}\mu_{\theta}(s)\nabla_{a}Q^{\mu}(s,a)\mid_{a=\mu_{\theta}(s)}]<br>$$<br>为什么要对Q函数求偏导数呢？因为对于连续动作空间问题，使用贪婪法，每一步都需要求解概率最大的动作，相当于寻找Q函数的全局最大值，比较困难。于是，一个自然的想法就是将策略函数每次都沿着Q函数的梯度更新参数，而不是求解Q函数的全局最大值。于是，<br>$$<br>\theta^{k+1}=\theta^k+\alpha\mathbb{E}_{s\sim\rho^{\mu^k}}[\nabla_{\theta}Q^{\mu^k}(s,\mu_{\theta}(s))]<br>$$<br>根据链式法则，可以将上式改写成，<br>$$<br>\theta^{k+1}=\theta^k+\alpha\mathbb{E}_{s\sim\rho^{\mu^k}}[\nabla_{\theta}\mu_{\theta}(s)\nabla_{a}Q^{\mu^k}(s,a)\mid_{a=\mu_{\theta}(s)}]<br>$$</p>
+<p><strong>同策略实现</strong><br>使用同一个策略产生训练数据，并提升这个策略，会导致“探索”不够充分，最终得到一个此优解。但是，为了展示算法的完整性，还是介绍一下。同样实现的过程用到了AC的思想，actor使用确定性策略梯度更新参数，critic使用Sarsa更新动作-状态值函数。同样的，状态值函数使用函数逼近的方式获得：$Q^w(s,a)$<br>TD-error: $\delta_t=r_t+\gamma Q^w(s_{t+1},a_{t+1})-Q^w(s_t,a_t)$<br>critic参数更新: $w_{t+1}=w_t+\alpha_w\delta_t\nabla_wQ^w(s_t,a_t)$<br>actor参数更新: $\theta_{t+1}=\theta_t+\alpha_{\theta}\nabla_{\theta}\mu_{theta}(s_t)\nabla_{a}Q^w(s_t,a_t)\mid_{a=\mu_{theta}(s)}$<br><strong>异策略实现</strong></p>
 <h2 id="效果怎么样？"><a href="#效果怎么样？" class="headerlink" title="效果怎么样？"></a>效果怎么样？</h2><p>评价一下：好的地方坏的地方</p>
 <h1 id="2-DDPG"><a href="#2-DDPG" class="headerlink" title="2 DDPG"></a>2 DDPG</h1><p>为什么要提出DPG？</p>
 <p>是什么？<br>效果怎么样？<br>评价一下：好的地方坏的地方</p>
