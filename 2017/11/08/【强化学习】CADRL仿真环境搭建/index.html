@@ -92,7 +92,7 @@
 <meta property="og:url" content="luxinglong.github.io/2017/11/08/【强化学习】CADRL仿真环境搭建/index.html">
 <meta property="og:site_name" content="LB's Home">
 <meta property="og:image" content="http://on99gq8w5.bkt.clouddn.com/CADRL.png?imageMogr2/thumbnail/500x500">
-<meta property="og:updated_time" content="2017-11-12T17:02:28.000Z">
+<meta property="og:updated_time" content="2017-11-12T17:04:49.000Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="【强化学习】CADRL仿真环境搭建">
 <meta name="twitter:image" content="http://on99gq8w5.bkt.clouddn.com/CADRL.png?imageMogr2/thumbnail/500x500">
@@ -343,7 +343,7 @@
              <i class="fa fa-calendar-o"></i>
            </span>
            <span class="post-meta-item-text">字数统计:</span>
-           <span class="post-count">367(字)</span> 
+           <span class="post-count">370(字)</span> 
          </span>
          
          <span id="busuanzi_container_page_pv">
@@ -380,7 +380,7 @@
 <h2 id="动作空间和观测空间"><a href="#动作空间和观测空间" class="headerlink" title="动作空间和观测空间"></a>动作空间和观测空间</h2><p>动作空间：<br>$$<br>a(s)=[v_s,\phi], v_s&lt;v_{pref}, \mid \phi - \theta \mid&lt;\pi/6  \\<br>\mid \theta_{t+1} - \theta_t \mid&lt;\Delta t\cdot v_{pref}<br>$$</p>
 <p>观测空间，agent只能观测到自己的$s_t$和其他agents的$s_t^{o^i}$部分。</p>
 <h2 id="建立状态转移方程"><a href="#建立状态转移方程" class="headerlink" title="建立状态转移方程"></a>建立状态转移方程</h2><p>$$<br>s^i_{t+1} \gets T*s^i_t<br>$$<br>位置：$p_{t+1}=p_t+\Delta t v_t$<br>速度：$v_{t+1} = a(s_t)$<br>参考速度：$\theta_{t+1} = \theta_t$<br>半径、参考速度、目的地不变。</p>
-<h2 id="建立奖励函数"><a href="#建立奖励函数" class="headerlink" title="建立奖励函数"></a>建立奖励函数</h2><p>$$<br>[<br>R(s^{jn},a)=<br>\begin{cases}<br>-0.25&amp; \text{if} d_{min} &lt; 0 \\<br>-0.1-d_{min}/2&amp; \text{else if} d_{min}&lt;0.2 \\<br>1 \text{else if} p=p_g \\<br>0&amp; \text{o.w.}<br>\end{cases}<br>]<br>$$</p>
+<h2 id="建立奖励函数"><a href="#建立奖励函数" class="headerlink" title="建立奖励函数"></a>建立奖励函数</h2><p>$$<br>[<br>R(s^{jn},a)=<br>\begin{cases}<br>-0.25&amp; \text{if} \qquad d_{min} &lt; 0 \\<br>-0.1-d_{min}/2&amp; \text{else if} \qquad d_{min}&lt;0.2 \\<br>1 \text{else if} \qquad p=p_g \\<br>0&amp; \text{o.w.}<br>\end{cases}<br>]<br>$$</p>
 <p>编写重要的_reset()函数和_step()函数。<br><figure class="highlight python"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div></pre></td><td class="code"><pre><div class="line"><span class="function"><span class="keyword">def</span> <span class="title">_reset</span><span class="params">(self)</span>:</span></div><div class="line">    <span class="keyword">pass</span></div><div class="line"></div><div class="line"><span class="function"><span class="keyword">def</span> <span class="title">_step</span><span class="params">(self, action)</span>:</span></div><div class="line">    <span class="keyword">pass</span></div></pre></td></tr></table></figure></p>
 <h1 id="2-图像引擎"><a href="#2-图像引擎" class="headerlink" title="2 图像引擎"></a>2 图像引擎</h1><p>需要画出的内容：</p>
 <p>编写重要的_render()函数。<br><figure class="highlight python"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div></pre></td><td class="code"><pre><div class="line"><span class="function"><span class="keyword">def</span> <span class="title">_render</span><span class="params">()</span>:</span></div><div class="line">    <span class="keyword">pass</span></div></pre></td></tr></table></figure></p>
