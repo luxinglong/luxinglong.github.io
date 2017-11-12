@@ -93,7 +93,7 @@
 <meta property="og:site_name" content="LB's Home">
 <meta property="og:image" content="http://on99gq8w5.bkt.clouddn.com/google-david-silver.png.jpeg?imageMogr2/thumbnail/500x500">
 <meta property="og:image" content="http://on99gq8w5.bkt.clouddn.com/DDPG.png?imageMogr2/thumbnail/500x500">
-<meta property="og:updated_time" content="2017-11-12T12:24:20.000Z">
+<meta property="og:updated_time" content="2017-11-12T12:29:21.000Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="【强化学习】DPG和DDPG">
 <meta name="twitter:image" content="http://on99gq8w5.bkt.clouddn.com/google-david-silver.png.jpeg?imageMogr2/thumbnail/500x500">
@@ -344,7 +344,7 @@
              <i class="fa fa-calendar-o"></i>
            </span>
            <span class="post-meta-item-text">字数统计:</span>
-           <span class="post-count">478(字)</span> 
+           <span class="post-count">509(字)</span> 
          </span>
          
          <span id="busuanzi_container_page_pv">
@@ -384,7 +384,8 @@
 </ul>
 <p>确定策略有哪些优点呢？<br><strong>需要的采样数据少，算法效率高</strong></p>
 <h1 id="1-DPG"><a href="#1-DPG" class="headerlink" title="1 DPG"></a>1 DPG</h1><h2 id="为什么要提出DPG？"><a href="#为什么要提出DPG？" class="headerlink" title="为什么要提出DPG？"></a>为什么要提出DPG？</h2><p>在解决连续动作空间的问题上，确定性策略的求解通过动作值函数的梯度来实现，形式比较简单。相对随机性策略，估计起来也更加方便。</p>
-<h2 id="是什么？"><a href="#是什么？" class="headerlink" title="是什么？"></a>是什么？</h2><p>确定性策略：$\ete_{\theta}:\mathcal{S}\to \mathcal{A}$,其中，$\theta$是策略函数的参数。目标就是确定$\theta$。</p>
+<h2 id="是什么？"><a href="#是什么？" class="headerlink" title="是什么？"></a>是什么？</h2><p>确定性策略：$\eta_{\theta}:\mathcal{S}\to \mathcal{A}$,其中，$\theta$是策略函数的参数。目标就是确定$\theta$。</p>
+<p>目标函数：<br>$$<br>J(\eta_{\theta})=\int_{\mathcal{S}}\rho^{\eta}(s)r(s,\eta_{\theta}(s))ds=\mathbb{E}_{s\sim \rho^{\eta}}[r(s,\eta_{\theta}(s))]<br>$$</p>
 <h2 id="效果怎么样？"><a href="#效果怎么样？" class="headerlink" title="效果怎么样？"></a>效果怎么样？</h2><p>评价一下：好的地方坏的地方</p>
 <h1 id="2-DDPG"><a href="#2-DDPG" class="headerlink" title="2 DDPG"></a>2 DDPG</h1><p>为什么要提出DPG？</p>
 <p>是什么？<br>效果怎么样？<br>评价一下：好的地方坏的地方</p>
