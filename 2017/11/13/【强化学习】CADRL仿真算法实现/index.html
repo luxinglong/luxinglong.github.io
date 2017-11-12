@@ -71,7 +71,7 @@
 <link href="/css/main.css?v=5.1.0" rel="stylesheet" type="text/css" />
 
 
-  <meta name="keywords" content="Hexo, NexT" />
+  <meta name="keywords" content="RL,robotics,local planning," />
 
 
 
@@ -87,15 +87,17 @@
 
 
 
-<meta name="description" content="Make Robot Feel The World">
-<meta property="og:type" content="website">
-<meta property="og:title" content="LB's Home">
-<meta property="og:url" content="luxinglong.github.io/categories/【工程项目】/index.html">
+<meta property="og:type" content="article">
+<meta property="og:title" content="【强化学习】CADRL仿真算法实现">
+<meta property="og:url" content="luxinglong.github.io/2017/11/13/【强化学习】CADRL仿真算法实现/index.html">
 <meta property="og:site_name" content="LB's Home">
-<meta property="og:description" content="Make Robot Feel The World">
+<meta property="og:image" content="http://on99gq8w5.bkt.clouddn.com/CADRL.png?imageMogr2/thumbnail/500x500">
+<meta property="og:image" content="http://on99gq8w5.bkt.clouddn.com/predict_cadrl.png?imageMogr2/thumbnail/500x500">
+<meta property="og:image" content="http://on99gq8w5.bkt.clouddn.com/train_cadrl.png?imageMogr2/thumbnail/500x500">
+<meta property="og:updated_time" content="2017-11-12T17:26:20.000Z">
 <meta name="twitter:card" content="summary">
-<meta name="twitter:title" content="LB's Home">
-<meta name="twitter:description" content="Make Robot Feel The World">
+<meta name="twitter:title" content="【强化学习】CADRL仿真算法实现">
+<meta name="twitter:image" content="http://on99gq8w5.bkt.clouddn.com/CADRL.png?imageMogr2/thumbnail/500x500">
 
 
 
@@ -123,13 +125,13 @@
 
 
 
-  <link rel="canonical" href="luxinglong.github.io/categories/【工程项目】/"/>
+  <link rel="canonical" href="luxinglong.github.io/2017/11/13/【强化学习】CADRL仿真算法实现/"/>
 
 
 
 
 
-  <title> 分类: 【工程项目】 | LB's Home </title><!-- hexo-inject:begin --><!-- hexo-inject:end -->
+  <title> 【强化学习】CADRL仿真算法实现 | LB's Home </title><!-- hexo-inject:begin --><!-- hexo-inject:end -->
 </head>
 
 <body itemscope itemtype="http://schema.org/WebPage" lang="zh-Hans">
@@ -154,7 +156,7 @@
     
   
 
-  <!-- hexo-inject:begin --><!-- hexo-inject:end --><div class="container one-collumn sidebar-position-left  ">
+  <!-- hexo-inject:begin --><!-- hexo-inject:end --><div class="container one-collumn sidebar-position-left page-post-detail ">
     <div class="headband"></div>
 
     <header id="header" class="header" itemscope itemtype="http://schema.org/WPHeader">
@@ -258,47 +260,198 @@
           <div id="content" class="content">
             
 
-  <section id="posts" class="posts-collapse">
-    <div class="collection-title">
-      <h2 >
-        【工程项目】
-        <small>分类</small>
-      </h2>
-    </div>
-
+  <div id="posts" class="posts-expand">
     
-      
-
-  <article class="post post-type-normal" itemscope itemtype="http://schema.org/Article">
-    <header class="post-header">
-
-      <h1 class="post-title">
-        
-            <a class="post-title-link" href="/2017/04/10/【工程项目】C++&OpenCV读取MNIST数据集/" itemprop="url">
-              
-                <span itemprop="name">【工程项目】C++&OpenCV读取MNIST数据集</span>
-              
-            </a>
-        
-      </h1>
-
-      <div class="post-meta">
-        <time class="post-time" itemprop="dateCreated"
-              datetime="2017-04-10T17:13:58+08:00"
-              content="2017-04-10" >
-          04-10
-        </time>
-      </div>
-
-    </header>
-  </article>
-
-
-    
-  </section>
 
   
 
+  
+  
+  
+
+  <article class="post post-type-normal " itemscope itemtype="http://schema.org/Article">
+    <link itemprop="mainEntityOfPage" href="luxinglong.github.io/2017/11/13/【强化学习】CADRL仿真算法实现/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="name" content="LB">
+      <meta itemprop="description" content="">
+      <meta itemprop="image" content="/images/avatar.jpg">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="LB's Home">
+    </span>
+
+    
+      <header class="post-header">
+
+        
+        
+          <h1 class="post-title" itemprop="name headline">
+            
+            
+              
+                【强化学习】CADRL仿真算法实现
+              
+            
+          </h1>
+        
+
+        <div class="post-meta">
+          <span class="post-time">
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-calendar-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">发表于</span>
+              
+              <time title="创建于" itemprop="dateCreated datePublished" datetime="2017-11-13T01:19:12+08:00">
+                2017-11-13
+              </time>
+            
+
+            
+
+            
+          </span>
+
+          
+            <span class="post-category" >
+            
+              <span class="post-meta-divider">|</span>
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-folder-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">分类于</span>
+              
+              
+                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
+                  <a href="/categories/【强化学习】/" itemprop="url" rel="index">
+                    <span itemprop="name">【强化学习】</span>
+                  </a>
+                </span>
+
+                
+                
+              
+            </span>
+          
+<span class="post-time">
+	   &nbsp; | &nbsp;
+           <span class="post-meta-item-icon">
+             <i class="fa fa-calendar-o"></i>
+           </span>
+           <span class="post-meta-item-text">字数统计:</span>
+           <span class="post-count">82(字)</span> 
+         </span>
+         
+         <span id="busuanzi_container_page_pv">
+          &nbsp; | &nbsp; 热度&nbsp; <span id="busuanzi_value_page_pv"></span>°C
+          </span>
+          
+            
+          
+
+          
+          
+
+          
+
+          
+
+          
+
+        </div>
+      </header>
+    
+
+
+    <div class="post-body" itemprop="articleBody">
+
+      
+      
+
+      
+        <img src="http://on99gq8w5.bkt.clouddn.com/CADRL.png?imageMogr2/thumbnail/500x500" class="[CADRL]">
+<a id="more"></a>
+<h1 id="0-引言"><a href="#0-引言" class="headerlink" title="0 引言"></a>0 引言</h1><h1 id="1-训练数据准备"><a href="#1-训练数据准备" class="headerlink" title="1 训练数据准备"></a>1 训练数据准备</h1><p>预训练，为了获得更好的网络初始参数。</p>
+<h1 id="2-CADRL生成轨迹"><a href="#2-CADRL生成轨迹" class="headerlink" title="2 CADRL生成轨迹"></a>2 CADRL生成轨迹</h1><p>算法伪代码：<br><img src="http://on99gq8w5.bkt.clouddn.com/predict_cadrl.png?imageMogr2/thumbnail/500x500" class="[predict_cadrl]"></p>
+<h1 id="3-CADRL训练"><a href="#3-CADRL训练" class="headerlink" title="3 CADRL训练"></a>3 CADRL训练</h1><p>算法伪代码：<br><img src="http://on99gq8w5.bkt.clouddn.com/train_cadrl.png?imageMogr2/thumbnail/500x500" class="[train_cadrl]"></p>
+<h1 id="4-实验结果"><a href="#4-实验结果" class="headerlink" title="4 实验结果"></a>4 实验结果</h1><h1 id="参考文献"><a href="#参考文献" class="headerlink" title="参考文献"></a>参考文献</h1><p>[1] Chen, Yu Fan, et al. “Decentralized non-communicating multiagent collision avoidance with deep reinforcement learning.” Robotics and Automation (ICRA), 2017 IEEE International Conference on. IEEE, 2017.</p>
+
+      
+    </div>
+
+    <div>
+      
+        
+
+      
+    </div>
+
+    <div>
+      
+        
+
+      
+    </div>
+
+    <div>
+      
+        
+
+      
+    </div>
+
+    <footer class="post-footer">
+      
+        <div class="post-tags">
+          
+            <a href="/tags/RL/" rel="tag"># RL</a>
+          
+            <a href="/tags/robotics/" rel="tag"># robotics</a>
+          
+            <a href="/tags/local-planning/" rel="tag"># local planning</a>
+          
+        </div>
+      
+
+      
+        
+      
+
+      
+        <div class="post-nav">
+          <div class="post-nav-next post-nav-item">
+            
+              <a href="/2017/11/11/【强化学习】利用-探索/" rel="next" title="【强化学习】利用-探索">
+                <i class="fa fa-chevron-left"></i> 【强化学习】利用-探索
+              </a>
+            
+          </div>
+
+          <span class="post-nav-divider"></span>
+
+          <div class="post-nav-prev post-nav-item">
+            
+          </div>
+        </div>
+      
+
+      
+      
+    </footer>
+  </article>
+
+
+
+    <div class="post-spread">
+      
+    </div>
+  </div>
 
           
           </div>
@@ -306,6 +459,10 @@
 
 
           
+  <div class="comments" id="comments">
+    
+  </div>
+
 
         </div>
         
@@ -325,8 +482,17 @@
       
 
       
+        <ul class="sidebar-nav motion-element">
+          <li class="sidebar-nav-toc sidebar-nav-active" data-target="post-toc-wrap" >
+            文章目录
+          </li>
+          <li class="sidebar-nav-overview" data-target="site-overview">
+            站点概览
+          </li>
+        </ul>
+      
 
-      <section class="site-overview sidebar-panel sidebar-panel-active">
+      <section class="site-overview sidebar-panel">
         <div class="site-author motion-element" itemprop="author" itemscope itemtype="http://schema.org/Person">
           <img class="site-author-image" itemprop="image"
                src="/images/avatar.jpg"
@@ -434,6 +600,22 @@
 
       </section>
 
+      
+      <!--noindex-->
+        <section class="post-toc-wrap motion-element sidebar-panel sidebar-panel-active">
+          <div class="post-toc">
+
+            
+              
+            
+
+            
+              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-1"><a class="nav-link" href="#0-引言"><span class="nav-number">1.</span> <span class="nav-text">0 引言</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#1-训练数据准备"><span class="nav-number">2.</span> <span class="nav-text">1 训练数据准备</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#2-CADRL生成轨迹"><span class="nav-number">3.</span> <span class="nav-text">2 CADRL生成轨迹</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#3-CADRL训练"><span class="nav-number">4.</span> <span class="nav-text">3 CADRL训练</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#4-实验结果"><span class="nav-number">5.</span> <span class="nav-text">4 实验结果</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#参考文献"><span class="nav-number">6.</span> <span class="nav-text">参考文献</span></a></li></ol></div>
+            
+
+          </div>
+        </section>
+      <!--/noindex-->
       
 
       
@@ -550,6 +732,10 @@
 
 
   
+  <script type="text/javascript" src="/js/src/scrollspy.js?v=5.1.0"></script>
+<script type="text/javascript" src="/js/src/post-details.js?v=5.1.0"></script>
+
+
 
   
 
