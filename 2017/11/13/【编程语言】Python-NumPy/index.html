@@ -106,7 +106,7 @@
 具有读写磁盘的数学工具和操作内存映射文件的工具
 具有线性代数、随机数生成、傅立叶变换等功能">
 <meta property="og:image" content="http://on99gq8w5.bkt.clouddn.com/NumPy.png?imageMogr2/thumbnail/800x800">
-<meta property="og:updated_time" content="2017-11-13T12:54:40.302Z">
+<meta property="og:updated_time" content="2017-11-13T14:03:06.912Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="【编程语言】Python-NumPy">
 <meta name="twitter:description" content="0 引言NumPy是Numerical Python的简称，它深深吸引着使用者的原因有下面几点：
@@ -364,7 +364,7 @@
              <i class="fa fa-calendar-o"></i>
            </span>
            <span class="post-meta-item-text">字数统计:</span>
-           <span class="post-count">224(字)</span> 
+           <span class="post-count">289(字)</span> 
          </span>
          
          <span id="busuanzi_container_page_pv">
@@ -405,7 +405,8 @@
 </ul>
 <p>没有系统学习过NumPy，对NumPy的整体架构不熟悉，所以每次用到的时候都要去翻书，感觉很不方便。所以记下这篇博客，希望可以达到同样的事情只做一遍的效果。</p>
 <h1 id="1-NumPy组织架构"><a href="#1-NumPy组织架构" class="headerlink" title="1 NumPy组织架构"></a>1 NumPy组织架构</h1><img src="http://on99gq8w5.bkt.clouddn.com/NumPy.png?imageMogr2/thumbnail/800x800" class="[NumPy]">
-<h1 id="2-NumPy使用时注意点"><a href="#2-NumPy使用时注意点" class="headerlink" title="2 NumPy使用时注意点"></a>2 NumPy使用时注意点</h1><h1 id="参考文献"><a href="#参考文献" class="headerlink" title="参考文献"></a>参考文献</h1><p>[1] 利用Python进行数据分析</p>
+<h1 id="2-NumPy使用时注意点"><a href="#2-NumPy使用时注意点" class="headerlink" title="2 NumPy使用时注意点"></a>2 NumPy使用时注意点</h1><h2 id="1-访问数组中的行和列"><a href="#1-访问数组中的行和列" class="headerlink" title="1 访问数组中的行和列"></a>1 访问数组中的行和列</h2><figure class="highlight python"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div></pre></td><td class="code"><pre><div class="line">array = np.arange(<span class="number">12</span>).reshape((<span class="number">3</span>,<span class="number">4</span>))</div><div class="line"></div><div class="line"><span class="keyword">for</span> row <span class="keyword">in</span> array:       <span class="comment"># 访问每一行</span></div><div class="line">    <span class="keyword">print</span> row</div><div class="line"></div><div class="line"><span class="keyword">for</span> column <span class="keyword">in</span> array.T:  <span class="comment"># 访问每一列</span></div><div class="line">    <span class="keyword">print</span> column</div><div class="line"></div><div class="line"><span class="keyword">for</span> item <span class="keyword">in</span> array.flat: <span class="comment"># 访问每一个元素，flat是一个迭代器</span></div><div class="line">    <span class="keyword">print</span> item</div></pre></td></tr></table></figure>
+<h2 id="2-C-C-接口"><a href="#2-C-C-接口" class="headerlink" title="2 C/C++接口"></a>2 C/C++接口</h2><h1 id="参考文献"><a href="#参考文献" class="headerlink" title="参考文献"></a>参考文献</h1><p>[1] 利用Python进行数据分析</p>
 
       
     </div>
@@ -633,7 +634,7 @@
             
 
             
-              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-1"><a class="nav-link" href="#0-引言"><span class="nav-number">1.</span> <span class="nav-text">0 引言</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#1-NumPy组织架构"><span class="nav-number">2.</span> <span class="nav-text">1 NumPy组织架构</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#2-NumPy使用时注意点"><span class="nav-number">3.</span> <span class="nav-text">2 NumPy使用时注意点</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#参考文献"><span class="nav-number">4.</span> <span class="nav-text">参考文献</span></a></li></ol></div>
+              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-1"><a class="nav-link" href="#0-引言"><span class="nav-number">1.</span> <span class="nav-text">0 引言</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#1-NumPy组织架构"><span class="nav-number">2.</span> <span class="nav-text">1 NumPy组织架构</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#2-NumPy使用时注意点"><span class="nav-number">3.</span> <span class="nav-text">2 NumPy使用时注意点</span></a><ol class="nav-child"><li class="nav-item nav-level-2"><a class="nav-link" href="#1-访问数组中的行和列"><span class="nav-number">3.1.</span> <span class="nav-text">1 访问数组中的行和列</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#2-C-C-接口"><span class="nav-number">3.2.</span> <span class="nav-text">2 C/C++接口</span></a></li></ol></li><li class="nav-item nav-level-1"><a class="nav-link" href="#参考文献"><span class="nav-number">4.</span> <span class="nav-text">参考文献</span></a></li></ol></div>
             
 
           </div>
