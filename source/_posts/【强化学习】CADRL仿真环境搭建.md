@@ -65,7 +65,14 @@ agents:圆圈表示，本体agent为红色，其他为非红色
 time: text表示
 velocity: 箭头表示
 trojectory: 线段表示
-goal: 实心圆表示，与对应的agent同色
+goal: 正五角星，重点在给定五角星的外接圆(圆心和半径)，如何求解10个顶点的坐标？
+{% img [star] http://on99gq8w5.bkt.clouddn.com/star.jpg?imageMogr2/thumbnail/400x400 %}
+假设外接圆半径为$r=10$，圆心为$(0,0)$，则
+$A(0,10),B(-10cos(18^o),10sin(18^o))$
+$E(10cos(18^o),10sin(18^o)), H(10sin(18^o)tan(36^o),10sin(18^o))$
+$I(-10sin(18^o)tan(36^o),10sin(18^o)),F(0,-\sqrt{x_H^2+y_H^2})$
+$C(-10sin(36^o), -10cos(36^o)), D(10sin(36^o), -10cos(36^o))$
+$G(\mid y_F \mid cos(18^o),-\mid y_F \mid sin(18^o)),J(-\mid y_F \mid cos(18^o),-\mid y_F \mid sin(18^o))$
 
 编写重要的_render()函数。
 ```Python
@@ -77,3 +84,4 @@ def _render():
 
 # 参考文献
 [1] Chen, Yu Fan, et al. "Decentralized non-communicating multiagent collision avoidance with deep reinforcement learning." Robotics and Automation (ICRA), 2017 IEEE International Conference on. IEEE, 2017.
+[2] https://zhidao.baidu.com/question/2073567152212492428.html
