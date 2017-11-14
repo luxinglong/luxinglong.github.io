@@ -4,16 +4,18 @@
 
     
   <url>
-    <loc>luxinglong.github.io/2017/11/14/%E3%80%90%E5%BC%BA%E5%8C%96%E5%AD%A6%E4%B9%A0%E3%80%91OpenAI-gym-rendering%E6%A8%A1%E5%9D%97%E8%A7%A3%E6%9E%90/</loc>
-    <lastmod>2017-11-14T07:45:46.480Z</lastmod>
+    <loc>luxinglong.github.io/2017/11/08/%E3%80%90%E5%BC%BA%E5%8C%96%E5%AD%A6%E4%B9%A0%E3%80%91CADRL%E4%BB%BF%E7%9C%9F%E7%8E%AF%E5%A2%83%E6%90%AD%E5%BB%BA/</loc>
+    <lastmod>2017-11-14T08:27:02.625Z</lastmod>
     <data>
         <display>
-        <title>【强化学习】OpenAI gym-rendering模块解析</title>
-        <pubTime>2017-11-14T02:12:59.000Z</pubTime>
+        <title>【强化学习】CADRL仿真环境搭建</title>
+        <pubTime>2017-11-08T14:08:11.000Z</pubTime>
         
-        <tag>OpenAI gym</tag>
+        <tag>RL</tag>
          
-        <tag>Python</tag>
+        <tag>robotics</tag>
+         
+        <tag>local planning</tag>
          
          
            
@@ -26,18 +28,16 @@
 
     
   <url>
-    <loc>luxinglong.github.io/2017/11/08/%E3%80%90%E5%BC%BA%E5%8C%96%E5%AD%A6%E4%B9%A0%E3%80%91CADRL%E4%BB%BF%E7%9C%9F%E7%8E%AF%E5%A2%83%E6%90%AD%E5%BB%BA/</loc>
-    <lastmod>2017-11-14T07:45:31.000Z</lastmod>
+    <loc>luxinglong.github.io/2017/11/14/%E3%80%90%E5%BC%BA%E5%8C%96%E5%AD%A6%E4%B9%A0%E3%80%91OpenAI-gym-rendering%E6%A8%A1%E5%9D%97%E8%A7%A3%E6%9E%90/</loc>
+    <lastmod>2017-11-14T07:45:46.480Z</lastmod>
     <data>
         <display>
-        <title>【强化学习】CADRL仿真环境搭建</title>
-        <pubTime>2017-11-08T14:08:11.000Z</pubTime>
+        <title>【强化学习】OpenAI gym-rendering模块解析</title>
+        <pubTime>2017-11-14T02:12:59.000Z</pubTime>
         
-        <tag>RL</tag>
+        <tag>OpenAI gym</tag>
          
-        <tag>robotics</tag>
-         
-        <tag>local planning</tag>
+        <tag>Python</tag>
          
          
            
