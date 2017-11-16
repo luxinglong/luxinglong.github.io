@@ -4,6 +4,30 @@
 
     
   <url>
+    <loc>luxinglong.github.io/2017/11/08/%E3%80%90%E5%BC%BA%E5%8C%96%E5%AD%A6%E4%B9%A0%E3%80%91DPG%E5%92%8CDDPG/</loc>
+    <lastmod>2017-11-16T13:10:43.624Z</lastmod>
+    <data>
+        <display>
+        <title>【强化学习】DPG和DDPG</title>
+        <pubTime>2017-11-08T06:48:58.000Z</pubTime>
+        
+        <tag>RL</tag>
+         
+        <tag>robotics</tag>
+         
+        <tag>David Silver</tag>
+         
+         
+           
+             
+              <breadCrumb title="【强化学习】" url="luxinglong.github.io/categories/%E3%80%90%E5%BC%BA%E5%8C%96%E5%AD%A6%E4%B9%A0%E3%80%91/"/>
+          
+        </display>
+    </data>
+    </url>
+
+    
+  <url>
     <loc>luxinglong.github.io/2017/11/13/%E3%80%90%E5%BC%BA%E5%8C%96%E5%AD%A6%E4%B9%A0%E3%80%91CADRL%E4%BB%BF%E7%9C%9F%E7%AE%97%E6%B3%95%E5%AE%9E%E7%8E%B0/</loc>
     <lastmod>2017-11-16T12:59:13.755Z</lastmod>
     <data>
@@ -106,30 +130,6 @@
         <tag>RL</tag>
          
         <tag>robotics</tag>
-         
-         
-           
-             
-              <breadCrumb title="【强化学习】" url="luxinglong.github.io/categories/%E3%80%90%E5%BC%BA%E5%8C%96%E5%AD%A6%E4%B9%A0%E3%80%91/"/>
-          
-        </display>
-    </data>
-    </url>
-
-    
-  <url>
-    <loc>luxinglong.github.io/2017/11/08/%E3%80%90%E5%BC%BA%E5%8C%96%E5%AD%A6%E4%B9%A0%E3%80%91DPG%E5%92%8CDDPG/</loc>
-    <lastmod>2017-11-12T15:06:14.000Z</lastmod>
-    <data>
-        <display>
-        <title>【强化学习】DPG和DDPG</title>
-        <pubTime>2017-11-08T06:48:58.000Z</pubTime>
-        
-        <tag>RL</tag>
-         
-        <tag>robotics</tag>
-         
-        <tag>David Silver</tag>
          
          
            
