@@ -94,7 +94,7 @@
 <meta property="og:image" content="http://on99gq8w5.bkt.clouddn.com/CADRL.png?imageMogr2/thumbnail/500x500">
 <meta property="og:image" content="http://on99gq8w5.bkt.clouddn.com/predict_cadrl.png?imageMogr2/thumbnail/400x400">
 <meta property="og:image" content="http://on99gq8w5.bkt.clouddn.com/train_cadrl.png?imageMogr2/thumbnail/400x400">
-<meta property="og:updated_time" content="2017-11-16T12:51:48.213Z">
+<meta property="og:updated_time" content="2017-11-16T12:59:13.755Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="【强化学习】CADRL仿真算法实现">
 <meta name="twitter:image" content="http://on99gq8w5.bkt.clouddn.com/CADRL.png?imageMogr2/thumbnail/500x500">
@@ -345,7 +345,7 @@
              <i class="fa fa-calendar-o"></i>
            </span>
            <span class="post-meta-item-text">字数统计:</span>
-           <span class="post-count">219(字)</span> 
+           <span class="post-count">318(字)</span> 
          </span>
          
          <span id="busuanzi_container_page_pv">
@@ -378,6 +378,11 @@
         <img src="http://on99gq8w5.bkt.clouddn.com/CADRL.png?imageMogr2/thumbnail/500x500" class="[CADRL]">
 <a id="more"></a>
 <h1 id="0-引言"><a href="#0-引言" class="headerlink" title="0 引言"></a>0 引言</h1><p>CADRL用神经网络来估计CA问题的状态值函数，然后将连续的动作空间离散化成35个动作，由此可以采用的策略就是选择取得最大化即时奖励与下一个状态的价值和的动作。即<br>$$<br>a_t = arg\max\limits_{a_t\in A}[R(s_t^{jn}, a_t)+\bar{\gamma}V(\hat{s}_{t+1}, \hat{\tilde{s}}_{t+1}^o)] \\<br>\bar{\gamma}=\gamma^{\Delta t\cdot v_{pref}} \\<br>\hat{\tilde{s}}_{t+1}^o \gets propagate(\tilde{s}_t^o, \Delta t\cdot \hat{\tilde{v}}_t) \\<br>\hat{s}_{t+1} \gets propagate(s_t, \Delta t\cdot a_t)<br>$$</p>
+<p>文章解释，之所以不估计动作-状态值函数$Q(s^{jn},a)$，而是选择估计状态值函数$V(s^{jn})$，是因为两点：</p>
+<ol>
+<li>CA问题的动作空间是连续的，没有办法直接估计$Q(s^{jn},a)$；</li>
+<li>动作空间依赖于agent的状态，比如说航向角影响方向、优先选择的速度值影响大小。</li>
+</ol>
 <h1 id="1-训练数据准备"><a href="#1-训练数据准备" class="headerlink" title="1 训练数据准备"></a>1 训练数据准备</h1><p>预训练，为了获得更好的网络初始参数。</p>
 <h1 id="2-CADRL生成轨迹"><a href="#2-CADRL生成轨迹" class="headerlink" title="2 CADRL生成轨迹"></a>2 CADRL生成轨迹</h1><p>算法伪代码：<br><img src="http://on99gq8w5.bkt.clouddn.com/predict_cadrl.png?imageMogr2/thumbnail/400x400" class="[predict_cadrl]"></p>
 <h1 id="3-CADRL训练"><a href="#3-CADRL训练" class="headerlink" title="3 CADRL训练"></a>3 CADRL训练</h1><p>算法伪代码：<br><img src="http://on99gq8w5.bkt.clouddn.com/train_cadrl.png?imageMogr2/thumbnail/400x400" class="[train_cadrl]"></p>
