@@ -100,7 +100,7 @@
 <meta property="og:image" content="http://on99gq8w5.bkt.clouddn.com/orca-static.png?imageMogr2/thumbnail/600x600">
 <meta property="og:image" content="http://on99gq8w5.bkt.clouddn.com/ORCA-params.png?imageMogr2/thumbnail/600x600">
 <meta property="og:image" content="http://on99gq8w5.bkt.clouddn.com/orca-sch.png?imageMogr2/thumbnail/600x600">
-<meta property="og:updated_time" content="2017-11-22T13:48:22.012Z">
+<meta property="og:updated_time" content="2017-11-22T14:01:19.536Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="【机器人学】多体避障算法-ORCA">
 <meta name="twitter:image" content="http://on99gq8w5.bkt.clouddn.com/ORCA.png?imageMogr2/thumbnail/600x600">
@@ -351,7 +351,7 @@
              <i class="fa fa-calendar-o"></i>
            </span>
            <span class="post-meta-item-text">字数统计:</span>
-           <span class="post-count">2,343(字)</span> 
+           <span class="post-count">2,365(字)</span> 
          </span>
          
          <span id="busuanzi_container_page_pv">
@@ -413,7 +413,7 @@
 <li>$v_A^{opt}=v_A$，将所有机器人的速度设置为机器人的当前速度。<br>这种选择是上面两种情况的折中，在“稀疏”环境中倾向于选择最优选择速度，在“稠密”环境中倾向于选择零。而且当前速度可以被其他机器人观测。但是，这样选择也会出现无解的情况，如上图(b)所示，这时候可以利用三维线性规划方法求解“最安全的速度”。</li>
 </ul>
 <p><strong>无解情况的应对</strong><br>对于将机器人当前的速度当作所有机器人的最优速度，可能存在无解的情况，如上图(b)所示。<br>$$<br>v_A^{new}=arg \min \limits_{v\in D(0, v_A^{max})} \max \limits_{B\neq A}d_{A\vert B}(v)<br>$$</p>
-<p><strong>对于静止障碍物的处理</strong><br><img src="http://on99gq8w5.bkt.clouddn.com/orca-static.png?imageMogr2/thumbnail/600x600" class="[ORCA]"></p>
+<p><strong>对于静止障碍物的处理</strong><br><img src="http://on99gq8w5.bkt.clouddn.com/orca-static.png?imageMogr2/thumbnail/600x600" class="[ORCA]"><br>静止<br>$$<br>VO^{\tau}_{A\vert O}=\{v\vert \exists t\in [0,\tau]::tv\in O\oplus - D(p_A, r_A)\}<br>$$</p>
 <h1 id="4-算法的实现和调参数"><a href="#4-算法的实现和调参数" class="headerlink" title="4 算法的实现和调参数"></a>4 算法的实现和调参数</h1><p>调参是机器人工程师的“噩梦”，因为寻找最优的一组参数往往是漫长和乏味的，最重要的是最优参数会随着环境的变化而变化。如何设计一种适应性比较好的算法是科研工作者的追求。</p>
 <img src="http://on99gq8w5.bkt.clouddn.com/ORCA-params.png?imageMogr2/thumbnail/600x600" class="[ORCA]">
 <h1 id="5-实施"><a href="#5-实施" class="headerlink" title="5 实施"></a>5 实施</h1><p>全局路径规划和局部路径规划的结合<br><img src="http://on99gq8w5.bkt.clouddn.com/orca-sch.png?imageMogr2/thumbnail/600x600" class="[ORCA]"></p>
