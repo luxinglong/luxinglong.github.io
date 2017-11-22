@@ -94,7 +94,7 @@
 <meta property="og:image" content="http://on99gq8w5.bkt.clouddn.com/ORCA.png?imageMogr2/thumbnail/600x600">
 <meta property="og:image" content="http://on99gq8w5.bkt.clouddn.com/VO.png?imageMogr2/thumbnail/600x600">
 <meta property="og:image" content="http://on99gq8w5.bkt.clouddn.com/ORCA-params.png?imageMogr2/thumbnail/600x600">
-<meta property="og:updated_time" content="2017-11-22T07:49:43.563Z">
+<meta property="og:updated_time" content="2017-11-22T08:47:37.116Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="【机器人学】多体避障算法-ORCA">
 <meta name="twitter:image" content="http://on99gq8w5.bkt.clouddn.com/ORCA.png?imageMogr2/thumbnail/600x600">
@@ -345,7 +345,7 @@
              <i class="fa fa-calendar-o"></i>
            </span>
            <span class="post-meta-item-text">字数统计:</span>
-           <span class="post-count">769(字)</span> 
+           <span class="post-count">963(字)</span> 
          </span>
          
          <span id="busuanzi_container_page_pv">
@@ -385,13 +385,14 @@
 <p>本文介绍的ORCA算法是做的比较好的分布式多体避障算法。</p>
 <h1 id="1-基本概念介绍"><a href="#1-基本概念介绍" class="headerlink" title="1 基本概念介绍"></a>1 基本概念介绍</h1><p><strong>Velocity Obstacles(VO)</strong><br>这个概念为自主移动机器人避免与一个已知状态(位置、速度、形态)机器人相撞所需要采取的动作(速度)，提供了充分必要条件。</p>
 <img src="http://on99gq8w5.bkt.clouddn.com/VO.png?imageMogr2/thumbnail/600x600" class="[VO]">
-<p>如上图所示，</p>
-<p>Reciprocal Velocity Obstacles(RVO)</p>
-<p>Optimal Reciprocal Collision Avoidance(ORCA)</p>
+<p>如上图(a)所示，有两个机器人A和B，那么VO被定为$VO^{\tau}_{A\mid B}$，这是一个<strong>相对速度</strong>的集合，如果A机器人采用这个集合中的相对速度，那么就会在$\tau$时间内与B机器人相撞。正式的定义如下：<br>首先定义圆盘：<br>$$<br>D(p,r)={q\vert \Vert q-p \Vert &lt; r}<br>$$<br>那么：<br>$$<br>VO^{\tau}_{A\vert B}={v \vert \exists t \in [0, t] :: tv \in D(p_B-P_A, r_A+r_B)}<br>$$<br>$VO^{\tau}_{A\mid B}$展示在图(b)中，其中$VO^{\tau}_{B\mid A}$关于原点对称。</p>
+<p><strong>Reciprocal Velocity Obstacles(RVO)</strong></p>
+<p><strong>Optimal Reciprocal Collision Avoidance(ORCA)</strong></p>
+<p>为什么叫相互避障呢？因为现在所处的环境不再是只有静止障碍物，还包含了可以自主避障的其他机器人。其他机器人会根据你的动作</p>
 <h1 id="2-问题建模"><a href="#2-问题建模" class="headerlink" title="2 问题建模"></a>2 问题建模</h1><h1 id="3-算法求解模型"><a href="#3-算法求解模型" class="headerlink" title="3 算法求解模型"></a>3 算法求解模型</h1><h1 id="4-算法的实现和调参数"><a href="#4-算法的实现和调参数" class="headerlink" title="4 算法的实现和调参数"></a>4 算法的实现和调参数</h1><p>调参是机器人工程师的“噩梦”，因为寻找最优的一组参数往往是漫长和乏味的，最重要的是最优参数会随着环境的变化而变化。如何设计一种适应性比较好的算法是科研工作者的追求。</p>
 <img src="http://on99gq8w5.bkt.clouddn.com/ORCA-params.png?imageMogr2/thumbnail/600x600" class="[ORCA-params]">
 <h1 id="5-实施"><a href="#5-实施" class="headerlink" title="5 实施"></a>5 实施</h1><p>全局路径规划和局部路径规划的结合</p>
-<h1 id="参考文献"><a href="#参考文献" class="headerlink" title="参考文献"></a>参考文献</h1><p>[1]    J. van den Berg, S. J. Guy, M. C. Lin, and D. Manocha, “Reciprocal n-Body Collision Avoidance.,” ISRR, vol. 70, no. 1, pp. 3–19, 2009.<br>[2]    Y. F. Chen, M. Liu, M. Everett, and J. P. How, “Decentralized non-communicating multiagent collision avoidance with deep reinforcement learning.,” ICRA, pp. 285–292, 2017.<br>[3]    P. Long, W. Liu, and J. Pan, “Deep-Learned Collision Avoidance Policy for Distributed Multiagent Navigation.,” IEEE Robotics and Automation Letters, vol. 2, no. 2, pp. 656–663, 2017.</p>
+<h1 id="参考文献"><a href="#参考文献" class="headerlink" title="参考文献"></a>参考文献</h1><p>[1]    J. van den Berg, S. J. Guy, M. C. Lin, and D. Manocha, “Reciprocal n-Body Collision Avoidance.,” ISRR, vol. 70, no. 1, pp. 3–19, 2009.<br>[2]    Y. F. Chen, M. Liu, M. Everett, and J. P. How, “Decentralized non-communicating multiagent collision avoidance with deep reinforcement learning.,” ICRA, pp. 285–292, 2017.<br>[3]    P. Long, W. Liu, and J. Pan, “Deep-Learned Collision Avoidance Policy for Distributed Multiagent Navigation.,” IEEE Robotics and Automation Letters, vol. 2, no. 2, pp. 656–663, 2017.<br>[4] </p>
 
       
     </div>
