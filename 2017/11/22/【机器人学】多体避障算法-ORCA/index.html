@@ -96,9 +96,11 @@
 <meta property="og:image" content="http://on99gq8w5.bkt.clouddn.com/ORCA.png?imageMogr2/thumbnail/600x600">
 <meta property="og:image" content="http://on99gq8w5.bkt.clouddn.com/orca_criterion.png?imageMogr2/thumbnail/600x600">
 <meta property="og:image" content="http://on99gq8w5.bkt.clouddn.com/orca-multi.png?imageMogr2/thumbnail/600x600">
+<meta property="og:image" content="http://on99gq8w5.bkt.clouddn.com/orca-empty.png?imageMogr2/thumbnail/600x600">
+<meta property="og:image" content="http://on99gq8w5.bkt.clouddn.com/orca-static.png?imageMogr2/thumbnail/600x600">
 <meta property="og:image" content="http://on99gq8w5.bkt.clouddn.com/ORCA-params.png?imageMogr2/thumbnail/600x600">
 <meta property="og:image" content="http://on99gq8w5.bkt.clouddn.com/orca-sch.png?imageMogr2/thumbnail/600x600">
-<meta property="og:updated_time" content="2017-11-22T12:34:18.209Z">
+<meta property="og:updated_time" content="2017-11-22T12:43:16.879Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="【机器人学】多体避障算法-ORCA">
 <meta name="twitter:image" content="http://on99gq8w5.bkt.clouddn.com/ORCA.png?imageMogr2/thumbnail/600x600">
@@ -349,7 +351,7 @@
              <i class="fa fa-calendar-o"></i>
            </span>
            <span class="post-meta-item-text">字数统计:</span>
-           <span class="post-count">1,807(字)</span> 
+           <span class="post-count">1,885(字)</span> 
          </span>
          
          <span id="busuanzi_container_page_pv">
@@ -403,7 +405,10 @@
 <p>那么机器人A通过里程计获得自身的位置、速度、半径，并通过传感器观测获得机器人B的位置、速度、半径，就可以得到$ORCA^{\tau}_{A \vert B}$。B机器人同理。</p>
 <h1 id="3-ORCA算法求解多体避障模型"><a href="#3-ORCA算法求解多体避障模型" class="headerlink" title="3 ORCA算法求解多体避障模型"></a>3 ORCA算法求解多体避障模型</h1><p>前面建立了ORCA的避障原则，那么怎么应用于多体避障呢？<br><img src="http://on99gq8w5.bkt.clouddn.com/orca-multi.png?imageMogr2/thumbnail/600x600" class="[ORCA]"><br>当有多个机器人时，机器人A的可取速度集合表示为$ORCA^{\tau}_A$，其中包含自身的最大速度约束和分别与其他机器人的相对速度约束的交集。<br>$$<br>ORCA^{\tau}_A=D(0, v^{max}_A)\cap \bigcap \limits_{B\neq A}ORCA^{\tau}_{A\vert B}<br>$$<br>那么接下来，机器人A就可以从$ORCA^{\tau}_A$中选择最靠近优先选择速度$v_A^{pref}$的新速度$v_A^{new}$。<br>$$<br>v_A^{new}=arg \min \limits_{v\in ORCA^{\tau}_A}\Vert v - v_A^{pref} \Vert<br>$$<br>有了$v_A^{new}$，机器人就可以进行一步的位置更新。<br>$$<br>p_A^{new}=p_A+v_A^{new}\Delta t<br>$$<br>其中，$\Delta t$是感知-执行循环的时间间隔。</p>
 <p>上面最关键的步骤就是根据$ORCA^{\tau}_A$求解$v_A^{new}$。这个问题可以看作有约束的线性规划问题，因为约束组成的集合是一个凸集，有唯一解。通过有效的解法，可以达到$O(n)$的算法复杂度。</p>
-<p><strong>对于静止障碍物的处理</strong></p>
+<p>一种提高算法效率的办法就是只考虑那些距离A很近的机器人，比如上图中的E机器人，可以不用考虑。文章中使用$kD-tree$来有效地选择添加哪些约束。</p>
+<p><strong>最优速度$v_A^{opt}$的选择</strong></p>
+<p><strong>无解情况的应对</strong><br><img src="http://on99gq8w5.bkt.clouddn.com/orca-empty.png?imageMogr2/thumbnail/600x600" class="[ORCA]"></p>
+<p><strong>对于静止障碍物的处理</strong><br><img src="http://on99gq8w5.bkt.clouddn.com/orca-static.png?imageMogr2/thumbnail/600x600" class="[ORCA]"></p>
 <h1 id="4-算法的实现和调参数"><a href="#4-算法的实现和调参数" class="headerlink" title="4 算法的实现和调参数"></a>4 算法的实现和调参数</h1><p>调参是机器人工程师的“噩梦”，因为寻找最优的一组参数往往是漫长和乏味的，最重要的是最优参数会随着环境的变化而变化。如何设计一种适应性比较好的算法是科研工作者的追求。</p>
 <img src="http://on99gq8w5.bkt.clouddn.com/ORCA-params.png?imageMogr2/thumbnail/600x600" class="[ORCA]">
 <h1 id="5-实施"><a href="#5-实施" class="headerlink" title="5 实施"></a>5 实施</h1><p>全局路径规划和局部路径规划的结合<br><img src="http://on99gq8w5.bkt.clouddn.com/orca-sch.png?imageMogr2/thumbnail/600x600" class="[ORCA]"></p>
