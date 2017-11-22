@@ -94,8 +94,9 @@
 <meta property="og:image" content="http://on99gq8w5.bkt.clouddn.com/ORCA.png?imageMogr2/thumbnail/600x600">
 <meta property="og:image" content="http://on99gq8w5.bkt.clouddn.com/VO.png?imageMogr2/thumbnail/600x600">
 <meta property="og:image" content="http://on99gq8w5.bkt.clouddn.com/ORCA.png?imageMogr2/thumbnail/600x600">
+<meta property="og:image" content="http://on99gq8w5.bkt.clouddn.com/orca_criterion.png?imageMogr2/thumbnail/600x600">
 <meta property="og:image" content="http://on99gq8w5.bkt.clouddn.com/ORCA-params.png?imageMogr2/thumbnail/600x600">
-<meta property="og:updated_time" content="2017-11-22T11:49:31.969Z">
+<meta property="og:updated_time" content="2017-11-22T12:05:23.562Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="【机器人学】多体避障算法-ORCA">
 <meta name="twitter:image" content="http://on99gq8w5.bkt.clouddn.com/ORCA.png?imageMogr2/thumbnail/600x600">
@@ -346,7 +347,7 @@
              <i class="fa fa-calendar-o"></i>
            </span>
            <span class="post-meta-item-text">字数统计:</span>
-           <span class="post-count">1,397(字)</span> 
+           <span class="post-count">1,471(字)</span> 
          </span>
          
          <span id="busuanzi_container_page_pv">
@@ -395,7 +396,8 @@
 <p><strong>Optimal Reciprocal Collision Avoidance(ORCA)</strong><br>ORCA和RCA相比，多了一个最优，就是说，满足$V_A = CA^{\tau}_{A\vert B}(V_B)$，且$V_B = CA^{\tau}_{B\vert A}(V_A)$的条件的$v_A$和$v_B$有很多，但是怎么一个最好的呢？这就是本文的核心模型。</p>
 <p>为什么叫相互避障呢？因为现在所处的环境不再是只有静止障碍物，还包含了可以自主避障的其他机器人。其他机器人会根据你的动作</p>
 <h1 id="2-问题建模"><a href="#2-问题建模" class="headerlink" title="2 问题建模"></a>2 问题建模</h1><img src="http://on99gq8w5.bkt.clouddn.com/ORCA.png?imageMogr2/thumbnail/600x600" class="[ORCA]">
-<p>如上图所示，ORCA可以定义为：<br>$$<br>ORCA^{\tau}_{A \vert B}=\{v \vert (v-(v_A^{opt}+\frac{1}{2}u))\cdot n \leq 0\}<br>$$<br>其中，$u$表示$v_A^{opt}-v_B^{opt}$到距离$VO^{\tau}_{A\vert B}$边界最近点的向量。定义如下：<br>$$<br>u=(arg \min \limits_{v\in \partial VO^{\tau}_{A\vert B}} \Vert v - (v_A^{opt}-v_B^{opt}) \Vert)-(v_A^{opt}-v_B^{opt})<br>$$</p>
+<p>如上图所示，ORCA可以定义为：<br>$$<br>ORCA^{\tau}_{A \vert B}=\{v \vert (v-(v_A^{opt}+\frac{1}{2}u))\cdot n \leq 0\}<br>$$<br>其中，$u$表示$v_A^{opt}-v_B^{opt}$到距离$VO^{\tau}_{A\vert B}$边界最近点的向量。定义如下：<br>$$<br>u=(arg \min \limits_{v\in \partial VO^{\tau}_{A\vert B}} \Vert v - (v_A^{opt}-v_B^{opt}) \Vert)-(v_A^{opt}-v_B^{opt})<br>$$<br>实质上，$u$就是为了避免A、B机器人相撞，相对速度所需要做出的最小改变。ORCA采用了“责任分担”的机制，就是A、B机器人各自改变$\frac{1}{2}u$.<br>$n$表示$(v_A^{opt}-v_B^{opt})+u$的外法线。</p>
+<p>ORCA标准：RCA且maximal<br><img src="http://on99gq8w5.bkt.clouddn.com/orca_criterion.png?imageMogr2/thumbnail/600x600" class="[ORCA]"></p>
 <h1 id="3-算法求解模型"><a href="#3-算法求解模型" class="headerlink" title="3 算法求解模型"></a>3 算法求解模型</h1><p>利用ORCA模型进行多体避障。<br>首先</p>
 <h1 id="4-算法的实现和调参数"><a href="#4-算法的实现和调参数" class="headerlink" title="4 算法的实现和调参数"></a>4 算法的实现和调参数</h1><p>调参是机器人工程师的“噩梦”，因为寻找最优的一组参数往往是漫长和乏味的，最重要的是最优参数会随着环境的变化而变化。如何设计一种适应性比较好的算法是科研工作者的追求。</p>
 <img src="http://on99gq8w5.bkt.clouddn.com/ORCA-params.png?imageMogr2/thumbnail/600x600" class="[ORCA-params]">
