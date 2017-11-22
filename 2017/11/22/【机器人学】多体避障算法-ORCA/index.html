@@ -92,8 +92,9 @@
 <meta property="og:url" content="luxinglong.github.io/2017/11/22/【机器人学】多体避障算法-ORCA/index.html">
 <meta property="og:site_name" content="LB's Home">
 <meta property="og:image" content="http://on99gq8w5.bkt.clouddn.com/ORCA.png?imageMogr2/thumbnail/600x600">
+<meta property="og:image" content="http://on99gq8w5.bkt.clouddn.com/VO.png?imageMogr2/thumbnail/600x600">
 <meta property="og:image" content="http://on99gq8w5.bkt.clouddn.com/ORCA-params.png?imageMogr2/thumbnail/600x600">
-<meta property="og:updated_time" content="2017-11-22T06:44:17.113Z">
+<meta property="og:updated_time" content="2017-11-22T07:49:43.563Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="【机器人学】多体避障算法-ORCA">
 <meta name="twitter:image" content="http://on99gq8w5.bkt.clouddn.com/ORCA.png?imageMogr2/thumbnail/600x600">
@@ -344,7 +345,7 @@
              <i class="fa fa-calendar-o"></i>
            </span>
            <span class="post-meta-item-text">字数统计:</span>
-           <span class="post-count">520(字)</span> 
+           <span class="post-count">769(字)</span> 
          </span>
          
          <span id="busuanzi_container_page_pv">
@@ -379,12 +380,19 @@
 <h1 id="0-引言"><a href="#0-引言" class="headerlink" title="0 引言"></a>0 引言</h1><p>多体避障是机器人学中的一个基础问题。它可以应用在很多领域，比如多体协同控制、群体仿真、无人仓储机器人、AI游戏、机器人在行人环境中自主导航等。多体避障问题也可以描述为<strong>自主导航机器人在一个包含静止和移动障碍物的环境中，规划一条高效、无碰撞、自然的道路。</strong>难点在于需要检测和跟踪移动障碍物，并预测交互后移动障碍物的运动。</p>
 <p>主流的研究方法可以分为两大类，集中式和分布式。</p>
 <p>集中式的方法依赖于一个可靠的通信网络和中央控制器，每个机器人通过通信网络发布自己的状态并接受行动指令，而中央控制器负责求解一个有约束的最优化问题。这种方法的缺陷在于过于依赖通信，一旦通信出现故障或者延迟比较大，就可能发生碰撞，甚至在行人环境中无法建立通信网络；另外，这种方法难以扩展规模，因为算法的复杂度与机器人的数量呈现高次方相关，计算量太大以至于无法计算或者计算做不到实时。</p>
-<p>而分布式的方法可以有效克服上述集中式方法所带来的问题，因此备受青睐。分布式方法</p>
-<p>评价指标是</p>
+<p>而分布式的方法可以有效克服上述集中式方法所带来的问题，因此备受青睐。分布式方法可以分为两大类，基于反应的和基于轨迹的。基于反应的方法</p>
+<p>评价指标是表现和性能。表现包括效果和效率，效果为各种实验场景下能否完成避障，效率为避障的路径是否最优。性能就是计算的实时性。</p>
 <p>本文介绍的ORCA算法是做的比较好的分布式多体避障算法。</p>
-<h1 id="1-基本概念介绍"><a href="#1-基本概念介绍" class="headerlink" title="1 基本概念介绍"></a>1 基本概念介绍</h1><h1 id="2-问题建模"><a href="#2-问题建模" class="headerlink" title="2 问题建模"></a>2 问题建模</h1><h1 id="3-算法求解模型"><a href="#3-算法求解模型" class="headerlink" title="3 算法求解模型"></a>3 算法求解模型</h1><h1 id="4-算法的实现和调参数"><a href="#4-算法的实现和调参数" class="headerlink" title="4 算法的实现和调参数"></a>4 算法的实现和调参数</h1><p>调参是机器人工程师的“噩梦”，因为寻找最优的一组参数往往是漫长和乏味的，最重要的是最优参数会随着环境的变化而变化。如何设计一种适应性比较好的算法是科研工作者的追求。</p>
+<h1 id="1-基本概念介绍"><a href="#1-基本概念介绍" class="headerlink" title="1 基本概念介绍"></a>1 基本概念介绍</h1><p><strong>Velocity Obstacles(VO)</strong><br>这个概念为自主移动机器人避免与一个已知状态(位置、速度、形态)机器人相撞所需要采取的动作(速度)，提供了充分必要条件。</p>
+<img src="http://on99gq8w5.bkt.clouddn.com/VO.png?imageMogr2/thumbnail/600x600" class="[VO]">
+<p>如上图所示，</p>
+<p>Reciprocal Velocity Obstacles(RVO)</p>
+<p>Optimal Reciprocal Collision Avoidance(ORCA)</p>
+<h1 id="2-问题建模"><a href="#2-问题建模" class="headerlink" title="2 问题建模"></a>2 问题建模</h1><h1 id="3-算法求解模型"><a href="#3-算法求解模型" class="headerlink" title="3 算法求解模型"></a>3 算法求解模型</h1><h1 id="4-算法的实现和调参数"><a href="#4-算法的实现和调参数" class="headerlink" title="4 算法的实现和调参数"></a>4 算法的实现和调参数</h1><p>调参是机器人工程师的“噩梦”，因为寻找最优的一组参数往往是漫长和乏味的，最重要的是最优参数会随着环境的变化而变化。如何设计一种适应性比较好的算法是科研工作者的追求。</p>
 <img src="http://on99gq8w5.bkt.clouddn.com/ORCA-params.png?imageMogr2/thumbnail/600x600" class="[ORCA-params]">
-<h1 id="参考文献"><a href="#参考文献" class="headerlink" title="参考文献"></a>参考文献</h1>
+<h1 id="5-实施"><a href="#5-实施" class="headerlink" title="5 实施"></a>5 实施</h1><p>全局路径规划和局部路径规划的结合</p>
+<h1 id="参考文献"><a href="#参考文献" class="headerlink" title="参考文献"></a>参考文献</h1><p>[1]    J. van den Berg, S. J. Guy, M. C. Lin, and D. Manocha, “Reciprocal n-Body Collision Avoidance.,” ISRR, vol. 70, no. 1, pp. 3–19, 2009.<br>[2]    Y. F. Chen, M. Liu, M. Everett, and J. P. How, “Decentralized non-communicating multiagent collision avoidance with deep reinforcement learning.,” ICRA, pp. 285–292, 2017.<br>[3]    P. Long, W. Liu, and J. Pan, “Deep-Learned Collision Avoidance Policy for Distributed Multiagent Navigation.,” IEEE Robotics and Automation Letters, vol. 2, no. 2, pp. 656–663, 2017.</p>
+
       
     </div>
 
@@ -617,7 +625,7 @@
             
 
             
-              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-1"><a class="nav-link" href="#0-引言"><span class="nav-number">1.</span> <span class="nav-text">0 引言</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#1-基本概念介绍"><span class="nav-number">2.</span> <span class="nav-text">1 基本概念介绍</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#2-问题建模"><span class="nav-number">3.</span> <span class="nav-text">2 问题建模</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#3-算法求解模型"><span class="nav-number">4.</span> <span class="nav-text">3 算法求解模型</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#4-算法的实现和调参数"><span class="nav-number">5.</span> <span class="nav-text">4 算法的实现和调参数</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#参考文献"><span class="nav-number">6.</span> <span class="nav-text">参考文献</span></a></li></ol></div>
+              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-1"><a class="nav-link" href="#0-引言"><span class="nav-number">1.</span> <span class="nav-text">0 引言</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#1-基本概念介绍"><span class="nav-number">2.</span> <span class="nav-text">1 基本概念介绍</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#2-问题建模"><span class="nav-number">3.</span> <span class="nav-text">2 问题建模</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#3-算法求解模型"><span class="nav-number">4.</span> <span class="nav-text">3 算法求解模型</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#4-算法的实现和调参数"><span class="nav-number">5.</span> <span class="nav-text">4 算法的实现和调参数</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#5-实施"><span class="nav-number">6.</span> <span class="nav-text">5 实施</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#参考文献"><span class="nav-number">7.</span> <span class="nav-text">参考文献</span></a></li></ol></div>
             
 
           </div>

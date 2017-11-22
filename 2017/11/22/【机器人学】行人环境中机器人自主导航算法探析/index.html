@@ -92,7 +92,7 @@
 <meta property="og:url" content="luxinglong.github.io/2017/11/22/【机器人学】行人环境中机器人自主导航算法探析/index.html">
 <meta property="og:site_name" content="LB's Home">
 <meta property="og:image" content="http://on99gq8w5.bkt.clouddn.com/socially-aware.png?imageMogr2/thumbnail/600x600">
-<meta property="og:updated_time" content="2017-11-22T06:54:35.088Z">
+<meta property="og:updated_time" content="2017-11-22T07:36:30.219Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="【机器人学】行人环境中机器人自主导航算法探析">
 <meta name="twitter:image" content="http://on99gq8w5.bkt.clouddn.com/socially-aware.png?imageMogr2/thumbnail/600x600">
@@ -343,7 +343,7 @@
              <i class="fa fa-calendar-o"></i>
            </span>
            <span class="post-meta-item-text">字数统计:</span>
-           <span class="post-count">126(字)</span> 
+           <span class="post-count">252(字)</span> 
          </span>
          
          <span id="busuanzi_container_page_pv">
@@ -376,7 +376,10 @@
         <img src="http://on99gq8w5.bkt.clouddn.com/socially-aware.png?imageMogr2/thumbnail/600x600" class="[socially-aware]">
 <a id="more"></a>
 <h1 id="0-引言"><a href="#0-引言" class="headerlink" title="0 引言"></a>0 引言</h1><p>试想一下，一个机器人按照人类的“交通规范”在人群中自如穿梭，为为人类提供导引、送餐、送快递等服务，与人类和谐相处。这样的画面太美。为了实现这样的功能，需要解决的核心问题是，机器人如何在行人环境中高效、安全、自然地进行避障，或者说局部路径规划。</p>
-<h1 id="1-行人检测与跟踪"><a href="#1-行人检测与跟踪" class="headerlink" title="1 行人检测与跟踪"></a>1 行人检测与跟踪</h1><h1 id="2-导航算法"><a href="#2-导航算法" class="headerlink" title="2 导航算法"></a>2 导航算法</h1><h1 id="参考文献"><a href="#参考文献" class="headerlink" title="参考文献"></a>参考文献</h1>
+<h1 id="1-行人检测与跟踪"><a href="#1-行人检测与跟踪" class="headerlink" title="1 行人检测与跟踪"></a>1 行人检测与跟踪</h1><p>为了进行行人环境下的自主避障，需要获得对行人的位置、速度和形态信息。这些信息</p>
+<h1 id="2-导航算法中引入行人避障"><a href="#2-导航算法中引入行人避障" class="headerlink" title="2 导航算法中引入行人避障"></a>2 导航算法中引入行人避障</h1><p>行人避障不同于机器人与机器人的避障，因为无法建立通信网络，集中式的避障算法不能使用，另外行人的避障机制无法建模。那怎么办呢？</p>
+<h1 id="参考文献"><a href="#参考文献" class="headerlink" title="参考文献"></a>参考文献</h1><p>[1]    Y. F. Chen, M. Liu, M. Everett, and J. P. How, “Decentralized non-communicating multiagent collision avoidance with deep reinforcement learning.,” ICRA, pp. 285–292, 2017.</p>
+
       
     </div>
 
@@ -605,7 +608,7 @@
             
 
             
-              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-1"><a class="nav-link" href="#0-引言"><span class="nav-number">1.</span> <span class="nav-text">0 引言</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#1-行人检测与跟踪"><span class="nav-number">2.</span> <span class="nav-text">1 行人检测与跟踪</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#2-导航算法"><span class="nav-number">3.</span> <span class="nav-text">2 导航算法</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#参考文献"><span class="nav-number">4.</span> <span class="nav-text">参考文献</span></a></li></ol></div>
+              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-1"><a class="nav-link" href="#0-引言"><span class="nav-number">1.</span> <span class="nav-text">0 引言</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#1-行人检测与跟踪"><span class="nav-number">2.</span> <span class="nav-text">1 行人检测与跟踪</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#2-导航算法中引入行人避障"><span class="nav-number">3.</span> <span class="nav-text">2 导航算法中引入行人避障</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#参考文献"><span class="nav-number">4.</span> <span class="nav-text">参考文献</span></a></li></ol></div>
             
 
           </div>
