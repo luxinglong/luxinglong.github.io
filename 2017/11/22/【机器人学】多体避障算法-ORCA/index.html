@@ -100,7 +100,7 @@
 <meta property="og:image" content="http://on99gq8w5.bkt.clouddn.com/orca-static.png?imageMogr2/thumbnail/600x600">
 <meta property="og:image" content="http://on99gq8w5.bkt.clouddn.com/ORCA-params.png?imageMogr2/thumbnail/600x600">
 <meta property="og:image" content="http://on99gq8w5.bkt.clouddn.com/orca-sch.png?imageMogr2/thumbnail/600x600">
-<meta property="og:updated_time" content="2017-11-22T14:01:19.536Z">
+<meta property="og:updated_time" content="2017-11-22T14:25:33.937Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="【机器人学】多体避障算法-ORCA">
 <meta name="twitter:image" content="http://on99gq8w5.bkt.clouddn.com/ORCA.png?imageMogr2/thumbnail/600x600">
@@ -351,7 +351,7 @@
              <i class="fa fa-calendar-o"></i>
            </span>
            <span class="post-meta-item-text">字数统计:</span>
-           <span class="post-count">2,365(字)</span> 
+           <span class="post-count">2,534(字)</span> 
          </span>
          
          <span id="busuanzi_container_page_pv">
@@ -412,12 +412,13 @@
 <li>$v_A^{opt}=v_A^{pref}$，将所有机器人的速度设置为优先选择速度。<br>优先选择速度是机器人的内部状态，对于其他机器人来说不可观。为了方便讨论，我们假设机器人可以推测其他机器人的优先选择速度。这样选择在“稀疏”环境中，没有问题。当优先选择速度的大小增加时，线性规划可能失效。</li>
 <li>$v_A^{opt}=v_A$，将所有机器人的速度设置为机器人的当前速度。<br>这种选择是上面两种情况的折中，在“稀疏”环境中倾向于选择最优选择速度，在“稠密”环境中倾向于选择零。而且当前速度可以被其他机器人观测。但是，这样选择也会出现无解的情况，如上图(b)所示，这时候可以利用三维线性规划方法求解“最安全的速度”。</li>
 </ul>
-<p><strong>无解情况的应对</strong><br>对于将机器人当前的速度当作所有机器人的最优速度，可能存在无解的情况，如上图(b)所示。<br>$$<br>v_A^{new}=arg \min \limits_{v\in D(0, v_A^{max})} \max \limits_{B\neq A}d_{A\vert B}(v)<br>$$</p>
-<p><strong>对于静止障碍物的处理</strong><br><img src="http://on99gq8w5.bkt.clouddn.com/orca-static.png?imageMogr2/thumbnail/600x600" class="[ORCA]"><br>静止<br>$$<br>VO^{\tau}_{A\vert O}=\{v\vert \exists t\in [0,\tau]::tv\in O\oplus - D(p_A, r_A)\}<br>$$</p>
+<p><strong>无解情况的应对</strong><br>对于将机器人当前的速度当作所有机器人的最优速度，可能存在无解的情况，如上图(b)所示。这时候我们选择使用三维线性规划求解最安全的速度。<br>首先，定义$d_{A\vert B}(v)$表示$v$到$ORCA^{\tau}_{A\vert B}$边缘带符号的距离。如果$v\in ORCA^{\tau}_{A\vert B}$，那么$d_{A\vert B}(v)$就是负的。<br>$$<br>v_A^{new}=arg \min \limits_{v\in D(0, v_A^{max})} \max \limits_{B\neq A}d_{A\vert B}(v)<br>$$<br>求解的公式可以这样理解，<br>三维线性规划的算法复杂度仍然为$O(n)$.<br><strong>对于静止障碍物的处理</strong><br><img src="http://on99gq8w5.bkt.clouddn.com/orca-static.png?imageMogr2/thumbnail/600x600" class="[ORCA]"><br>静止障碍物可以表示为线段的集合，因为，静止障碍物没有速度，所以机器人要承担所有的“避障责任”。对于静止障碍物，VO可以定义为：<br>$$<br>VO^{\tau}_{A\vert O}=\{v\vert \exists t\in [0,\tau]::tv\in O\oplus - D(p_A, r_A)\}<br>$$</p>
+<p>对于静止障碍物，机器人的最优速度设置为零。</p>
 <h1 id="4-算法的实现和调参数"><a href="#4-算法的实现和调参数" class="headerlink" title="4 算法的实现和调参数"></a>4 算法的实现和调参数</h1><p>调参是机器人工程师的“噩梦”，因为寻找最优的一组参数往往是漫长和乏味的，最重要的是最优参数会随着环境的变化而变化。如何设计一种适应性比较好的算法是科研工作者的追求。</p>
 <img src="http://on99gq8w5.bkt.clouddn.com/ORCA-params.png?imageMogr2/thumbnail/600x600" class="[ORCA]">
+<p>代码：</p>
 <h1 id="5-实施"><a href="#5-实施" class="headerlink" title="5 实施"></a>5 实施</h1><p>全局路径规划和局部路径规划的结合<br><img src="http://on99gq8w5.bkt.clouddn.com/orca-sch.png?imageMogr2/thumbnail/600x600" class="[ORCA]"></p>
-<h1 id="6-结果"><a href="#6-结果" class="headerlink" title="6 结果"></a>6 结果</h1><h1 id="参考文献"><a href="#参考文献" class="headerlink" title="参考文献"></a>参考文献</h1><p>[1]    J. van den Berg, S. J. Guy, M. C. Lin, and D. Manocha, “Reciprocal n-Body Collision Avoidance.,” ISRR, vol. 70, no. 1, pp. 3–19, 2009.<br>[2]    Y. F. Chen, M. Liu, M. Everett, and J. P. How, “Decentralized non-communicating multiagent collision avoidance with deep reinforcement learning.,” ICRA, pp. 285–292, 2017.<br>[3]    P. Long, W. Liu, and J. Pan, “Deep-Learned Collision Avoidance Policy for Distributed Multiagent Navigation.,” IEEE Robotics and Automation Letters, vol. 2, no. 2, pp. 656–663, 2017.<br>[4] <a href="http://gamma.cs.unc.edu/RVO2/" target="_blank" rel="external">http://gamma.cs.unc.edu/RVO2/</a></p>
+<h1 id="参考文献"><a href="#参考文献" class="headerlink" title="参考文献"></a>参考文献</h1><p>[1]    J. van den Berg, S. J. Guy, M. C. Lin, and D. Manocha, “Reciprocal n-Body Collision Avoidance.,” ISRR, vol. 70, no. 1, pp. 3–19, 2009.<br>[2]    Y. F. Chen, M. Liu, M. Everett, and J. P. How, “Decentralized non-communicating multiagent collision avoidance with deep reinforcement learning.,” ICRA, pp. 285–292, 2017.<br>[3]    P. Long, W. Liu, and J. Pan, “Deep-Learned Collision Avoidance Policy for Distributed Multiagent Navigation.,” IEEE Robotics and Automation Letters, vol. 2, no. 2, pp. 656–663, 2017.<br>[4] <a href="http://gamma.cs.unc.edu/RVO2/" target="_blank" rel="external">http://gamma.cs.unc.edu/RVO2/</a></p>
 
       
     </div>
@@ -651,7 +652,7 @@
             
 
             
-              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-1"><a class="nav-link" href="#0-引言"><span class="nav-number">1.</span> <span class="nav-text">0 引言</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#1-基本概念介绍"><span class="nav-number">2.</span> <span class="nav-text">1 基本概念介绍</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#2-ORCA定义"><span class="nav-number">3.</span> <span class="nav-text">2 ORCA定义</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#3-ORCA算法求解多体避障模型"><span class="nav-number">4.</span> <span class="nav-text">3 ORCA算法求解多体避障模型</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#4-算法的实现和调参数"><span class="nav-number">5.</span> <span class="nav-text">4 算法的实现和调参数</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#5-实施"><span class="nav-number">6.</span> <span class="nav-text">5 实施</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#6-结果"><span class="nav-number">7.</span> <span class="nav-text">6 结果</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#参考文献"><span class="nav-number">8.</span> <span class="nav-text">参考文献</span></a></li></ol></div>
+              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-1"><a class="nav-link" href="#0-引言"><span class="nav-number">1.</span> <span class="nav-text">0 引言</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#1-基本概念介绍"><span class="nav-number">2.</span> <span class="nav-text">1 基本概念介绍</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#2-ORCA定义"><span class="nav-number">3.</span> <span class="nav-text">2 ORCA定义</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#3-ORCA算法求解多体避障模型"><span class="nav-number">4.</span> <span class="nav-text">3 ORCA算法求解多体避障模型</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#4-算法的实现和调参数"><span class="nav-number">5.</span> <span class="nav-text">4 算法的实现和调参数</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#5-实施"><span class="nav-number">6.</span> <span class="nav-text">5 实施</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#参考文献"><span class="nav-number">7.</span> <span class="nav-text">参考文献</span></a></li></ol></div>
             
 
           </div>
