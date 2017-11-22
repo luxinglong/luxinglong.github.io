@@ -4,8 +4,30 @@
 
     
   <url>
+    <loc>luxinglong.github.io/2017/11/22/%E3%80%90%E6%9C%BA%E5%99%A8%E4%BA%BA%E5%AD%A6%E3%80%91%E5%A4%9A%E4%BD%93%E9%81%BF%E9%9A%9C%E7%AE%97%E6%B3%95-ORCA/</loc>
+    <lastmod>2017-11-22T06:15:49.465Z</lastmod>
+    <data>
+        <display>
+        <title>【机器人学】多体避障算法-ORCA</title>
+        <pubTime>2017-11-22T05:53:23.000Z</pubTime>
+        
+        <tag>robotics</tag>
+         
+        <tag>path planning</tag>
+         
+         
+           
+             
+              <breadCrumb title="【机器人学】" url="luxinglong.github.io/categories/%E3%80%90%E6%9C%BA%E5%99%A8%E4%BA%BA%E5%AD%A6%E3%80%91/"/>
+          
+        </display>
+    </data>
+    </url>
+
+    
+  <url>
     <loc>luxinglong.github.io/2017/11/08/%E3%80%90%E5%BC%BA%E5%8C%96%E5%AD%A6%E4%B9%A0%E3%80%91DPG%E5%92%8CDDPG/</loc>
-    <lastmod>2017-11-16T13:42:23.964Z</lastmod>
+    <lastmod>2017-11-22T05:53:55.229Z</lastmod>
     <data>
         <display>
         <title>【强化学习】DPG和DDPG</title>
@@ -21,6 +43,26 @@
            
              
               <breadCrumb title="【强化学习】" url="luxinglong.github.io/categories/%E3%80%90%E5%BC%BA%E5%8C%96%E5%AD%A6%E4%B9%A0%E3%80%91/"/>
+          
+        </display>
+    </data>
+    </url>
+
+    
+  <url>
+    <loc>luxinglong.github.io/2017/11/20/%E3%80%90%E5%BA%94%E7%94%A8%E7%A8%8B%E5%BA%8F%E3%80%91MFC%E5%9F%BA%E7%A1%80%E7%9F%A5%E8%AF%86/</loc>
+    <lastmod>2017-11-22T05:51:46.632Z</lastmod>
+    <data>
+        <display>
+        <title>【应用程序】MFC基础知识</title>
+        <pubTime>2017-11-20T06:56:27.000Z</pubTime>
+        
+        <tag>MFC</tag>
+         
+         
+           
+             
+              <breadCrumb title="【应用程序】" url="luxinglong.github.io/categories/%E3%80%90%E5%BA%94%E7%94%A8%E7%A8%8B%E5%BA%8F%E3%80%91/"/>
           
         </display>
     </data>
