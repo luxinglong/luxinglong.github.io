@@ -93,8 +93,9 @@
 <meta property="og:site_name" content="LB's Home">
 <meta property="og:image" content="http://on99gq8w5.bkt.clouddn.com/ORCA.png?imageMogr2/thumbnail/600x600">
 <meta property="og:image" content="http://on99gq8w5.bkt.clouddn.com/VO.png?imageMogr2/thumbnail/600x600">
+<meta property="og:image" content="http://on99gq8w5.bkt.clouddn.com/ORCA.png?imageMogr2/thumbnail/600x600">
 <meta property="og:image" content="http://on99gq8w5.bkt.clouddn.com/ORCA-params.png?imageMogr2/thumbnail/600x600">
-<meta property="og:updated_time" content="2017-11-22T09:07:03.701Z">
+<meta property="og:updated_time" content="2017-11-22T11:26:20.670Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="【机器人学】多体避障算法-ORCA">
 <meta name="twitter:image" content="http://on99gq8w5.bkt.clouddn.com/ORCA.png?imageMogr2/thumbnail/600x600">
@@ -345,7 +346,7 @@
              <i class="fa fa-calendar-o"></i>
            </span>
            <span class="post-meta-item-text">字数统计:</span>
-           <span class="post-count">1,170(字)</span> 
+           <span class="post-count">1,340(字)</span> 
          </span>
          
          <span id="busuanzi_container_page_pv">
@@ -389,11 +390,14 @@
 <p>假设两个机器人当前的速度是$v_A$和$v_B$，如果满足$v_A-v_B \in VO^{\tau}_{A\mid B}$，那么两个机器人就会在时间$\tau$内相撞。</p>
 <p>闵可夫斯基和：$X\oplus Y=\{x+y \vert x \in X, y \in Y\}$</p>
 <p>如图(c)所示，对于任意一个集合$V_B$，如果满足$v_B \in V_B$，且$v_A \notin VO^{\tau}_{A\mid B} \oplus V_B$，那么A、B机器人至少在时间$\tau$内不会相撞。这就引出了避障速度集合：<br>$$<br>CA^{\tau}_{A\vert B}(V_B)=\{v \vert v \notin VO^{\tau}_{A\mid B} \oplus V_B\}<br>$$</p>
-<p>Reciprocally Collision Avoiding(RCA)定义为：$V_A \subseteq CA^{\tau}_{A\vert B}(V_B)$，且$V_B \subseteq CA^{\tau}_{B\vert A}(V_A)$<br>如果满足，$V_A = CA^{\tau}_{A\vert B}(V_B)$，且$V_B = CA^{\tau}_{B\vert A}(V_A)$，那么称之为相互最大(reciprocally maximal)</p>
-<p><strong>Reciprocal Velocity Obstacles(RVO)</strong></p>
-<p><strong>Optimal Reciprocal Collision Avoidance(ORCA)</strong></p>
+<p><strong>Reciprocally Collision Avoiding(RCA)</strong>定义为：$V_A \subseteq CA^{\tau}_{A\vert B}(V_B)$，且$V_B \subseteq CA^{\tau}_{B\vert A}(V_A)$<br>如果满足，$V_A = CA^{\tau}_{A\vert B}(V_B)$，且$V_B = CA^{\tau}_{B\vert A}(V_A)$，那么称之为相互最大(reciprocally maximal)</p>
+<p><strong>Reciprocal Velocity Obstacles(RVO)</strong><br>RVO是为了解决机器人和机器人之间避障的问题，而对VO进行的扩展。假设两个机器人都采取避障速度集合中的速度，那么不一定可以在所有情况下完成避障。</p>
+<p><strong>Optimal Reciprocal Collision Avoidance(ORCA)</strong><br>ORCA和RCA相比，多了一个最优，就是说，满足$V_A = CA^{\tau}_{A\vert B}(V_B)$，且$V_B = CA^{\tau}_{B\vert A}(V_A)$的条件的$v_A$和$v_B$有很多，但是怎么一个最好的呢？这就是本文的核心模型。</p>
 <p>为什么叫相互避障呢？因为现在所处的环境不再是只有静止障碍物，还包含了可以自主避障的其他机器人。其他机器人会根据你的动作</p>
-<h1 id="2-问题建模"><a href="#2-问题建模" class="headerlink" title="2 问题建模"></a>2 问题建模</h1><h1 id="3-算法求解模型"><a href="#3-算法求解模型" class="headerlink" title="3 算法求解模型"></a>3 算法求解模型</h1><h1 id="4-算法的实现和调参数"><a href="#4-算法的实现和调参数" class="headerlink" title="4 算法的实现和调参数"></a>4 算法的实现和调参数</h1><p>调参是机器人工程师的“噩梦”，因为寻找最优的一组参数往往是漫长和乏味的，最重要的是最优参数会随着环境的变化而变化。如何设计一种适应性比较好的算法是科研工作者的追求。</p>
+<h1 id="2-问题建模"><a href="#2-问题建模" class="headerlink" title="2 问题建模"></a>2 问题建模</h1><img src="http://on99gq8w5.bkt.clouddn.com/ORCA.png?imageMogr2/thumbnail/600x600" class="[ORCA]">
+<p>如上图所示，ORCA可以定义为：<br>$$<br>ORCA^{\tau}_{A \vert B}=\{v \vert (v-(v_A^{opt}+\frac{1}{2}u))\cdot n \leq 0\}<br>$$</p>
+<h1 id="3-算法求解模型"><a href="#3-算法求解模型" class="headerlink" title="3 算法求解模型"></a>3 算法求解模型</h1><p>利用ORCA模型进行多体避障。<br>首先</p>
+<h1 id="4-算法的实现和调参数"><a href="#4-算法的实现和调参数" class="headerlink" title="4 算法的实现和调参数"></a>4 算法的实现和调参数</h1><p>调参是机器人工程师的“噩梦”，因为寻找最优的一组参数往往是漫长和乏味的，最重要的是最优参数会随着环境的变化而变化。如何设计一种适应性比较好的算法是科研工作者的追求。</p>
 <img src="http://on99gq8w5.bkt.clouddn.com/ORCA-params.png?imageMogr2/thumbnail/600x600" class="[ORCA-params]">
 <h1 id="5-实施"><a href="#5-实施" class="headerlink" title="5 实施"></a>5 实施</h1><p>全局路径规划和局部路径规划的结合</p>
 <h1 id="参考文献"><a href="#参考文献" class="headerlink" title="参考文献"></a>参考文献</h1><p>[1]    J. van den Berg, S. J. Guy, M. C. Lin, and D. Manocha, “Reciprocal n-Body Collision Avoidance.,” ISRR, vol. 70, no. 1, pp. 3–19, 2009.<br>[2]    Y. F. Chen, M. Liu, M. Everett, and J. P. How, “Decentralized non-communicating multiagent collision avoidance with deep reinforcement learning.,” ICRA, pp. 285–292, 2017.<br>[3]    P. Long, W. Liu, and J. Pan, “Deep-Learned Collision Avoidance Policy for Distributed Multiagent Navigation.,” IEEE Robotics and Automation Letters, vol. 2, no. 2, pp. 656–663, 2017.<br>[4] <a href="http://gamma.cs.unc.edu/RVO2/" target="_blank" rel="external">http://gamma.cs.unc.edu/RVO2/</a></p>
