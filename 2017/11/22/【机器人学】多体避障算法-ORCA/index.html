@@ -94,7 +94,7 @@
 <meta property="og:image" content="http://on99gq8w5.bkt.clouddn.com/ORCA.png?imageMogr2/thumbnail/600x600">
 <meta property="og:image" content="http://on99gq8w5.bkt.clouddn.com/VO.png?imageMogr2/thumbnail/600x600">
 <meta property="og:image" content="http://on99gq8w5.bkt.clouddn.com/ORCA-params.png?imageMogr2/thumbnail/600x600">
-<meta property="og:updated_time" content="2017-11-22T08:55:37.425Z">
+<meta property="og:updated_time" content="2017-11-22T09:07:03.701Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="【机器人学】多体避障算法-ORCA">
 <meta name="twitter:image" content="http://on99gq8w5.bkt.clouddn.com/ORCA.png?imageMogr2/thumbnail/600x600">
@@ -345,7 +345,7 @@
              <i class="fa fa-calendar-o"></i>
            </span>
            <span class="post-meta-item-text">字数统计:</span>
-           <span class="post-count">1,032(字)</span> 
+           <span class="post-count">1,170(字)</span> 
          </span>
          
          <span id="busuanzi_container_page_pv">
@@ -388,6 +388,8 @@
 <p>如上图(a)所示，有两个机器人A和B，那么VO被定为$VO^{\tau}_{A\mid B}$，这是一个<strong>相对速度</strong>的集合，如果A机器人采用这个集合中的相对速度，那么就会在$\tau$时间内与B机器人相撞。正式的定义如下：<br>首先定义圆盘：<br>$$<br>D(p,r)=\{q\vert \Vert q-p \Vert &lt; r\}<br>$$<br>那么：<br>$$<br>VO^{\tau}_{A\vert B}=\{v \vert \exists t \in [0, t] :: tv \in D(p_B-p_A, r_A+r_B)\}<br>$$<br>$VO^{\tau}_{A\mid B}$展示在图(b)中，其中$VO^{\tau}_{B\mid A}$关于原点对称。</p>
 <p>假设两个机器人当前的速度是$v_A$和$v_B$，如果满足$v_A-v_B \in VO^{\tau}_{A\mid B}$，那么两个机器人就会在时间$\tau$内相撞。</p>
 <p>闵可夫斯基和：$X\oplus Y=\{x+y \vert x \in X, y \in Y\}$</p>
+<p>如图(c)所示，对于任意一个集合$V_B$，如果满足$v_B \in V_B$，且$v_A \notin VO^{\tau}_{A\mid B} \oplus V_B$，那么A、B机器人至少在时间$\tau$内不会相撞。这就引出了避障速度集合：<br>$$<br>CA^{\tau}_{A\vert B}(V_B)=\{v \vert v \notin VO^{\tau}_{A\mid B} \oplus V_B\}<br>$$</p>
+<p>Reciprocally Collision Avoiding(RCA)定义为：$V_A \subseteq CA^{\tau}_{A\vert B}(V_B)$，且$V_B \subseteq CA^{\tau}_{B\vert A}(V_A)$<br>如果满足，$V_A = CA^{\tau}_{A\vert B}(V_B)$，且$V_B = CA^{\tau}_{B\vert A}(V_A)$，那么称之为相互最大(reciprocally maximal)</p>
 <p><strong>Reciprocal Velocity Obstacles(RVO)</strong></p>
 <p><strong>Optimal Reciprocal Collision Avoidance(ORCA)</strong></p>
 <p>为什么叫相互避障呢？因为现在所处的环境不再是只有静止障碍物，还包含了可以自主避障的其他机器人。其他机器人会根据你的动作</p>
