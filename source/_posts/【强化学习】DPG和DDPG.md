@@ -156,21 +156,8 @@ critic: $Q^{\prime}(s,a\mid\theta^{Q^{\prime}})$
 2. 每次更新一点点，如伪代码所示，通常$\tau$是一个很小的数。
 
 ## DDPG代码实现$^{[4]}$
+Actor的DNN类：
 ```Python
-import tensorflow as tf
-import numpy as np
-import gym
-from gym import wrappers
-import tflearn
-import argparse
-import pprint as pp
-
-from replay_buffer import ReplayBuffer
-
-# ===========================
-#   Actor and Critic DNNs
-# ===========================
-
 class ActorNetwork(object):
     """
     Input to the network is the state, output is the action
@@ -181,111 +168,123 @@ class ActorNetwork(object):
 
     def __init__(self, sess, state_dim, action_dim, action_bound, learning_rate, tau, batch_size):
         self.sess = sess
-        self.s_dim = state_dim
-        self.a_dim = action_dim
-        self.action_bound = action_bound
-        self.learning_rate = learning_rate
-        self.tau = tau
-        self.batch_size = batch_size
+        self.s_dim = state_dim               # 状态空间的维数
+        self.a_dim = action_dim              # 动作空间的维数 😁 我这里正好是两维的动作空间
+        self.action_bound = action_bound     # 动作的边界
+        self.learning_rate = learning_rate   # 学习率
+        self.tau = tau                       # Target网络参数的更新参数
+        self.batch_size = batch_size         # 训练样本子集的大小
 
-        # Actor Network
+        # 创建 Actor Network
         self.inputs, self.out, self.scaled_out = self.create_actor_network()
 
-        self.network_params = tf.trainable_variables()
+        self.network_params = tf.trainable_variables()  # 获取Actor Network的网络参数
+        # Returns all variables created with trainable=True .
+        # A list of Variable objects .
 
-        # Target Network
+        # 创建 Target Network
         self.target_inputs, self.target_out, self.target_scaled_out = self.create_actor_network()
 
-        self.target_network_params = tf.trainable_variables()[
+        self.target_network_params = tf.trainable_variables()[  # 获取Target Network的参数
             len(self.network_params):]
 
         # Op for periodically updating target network with online network
         # weights
+        # 更新 Target Network 的参数
         self.update_target_network_params = \
             [self.target_network_params[i].assign(tf.multiply(self.network_params[i], self.tau) +
                                                   tf.multiply(self.target_network_params[i], 1. - self.tau))
                 for i in range(len(self.target_network_params))]
 
         # This gradient will be provided by the critic network
+        # 动作值函数的梯度需要由Critic网络提供
         self.action_gradient = tf.placeholder(tf.float32, [None, self.a_dim])
 
         # Combine the gradients here
+        # 计算更新Actor Network参数的梯度
         self.unnormalized_actor_gradients = tf.gradients(
             self.scaled_out, self.network_params, -self.action_gradient)
         self.actor_gradients = list(map(lambda x: tf.div(x, self.batch_size), self.unnormalized_actor_gradients))
 
         # Optimization Op
+        # Actor Network的优化器
         self.optimize = tf.train.AdamOptimizer(self.learning_rate).\
             apply_gradients(zip(self.actor_gradients, self.network_params))
 
         self.num_trainable_vars = len(
             self.network_params) + len(self.target_network_params)
 
+    # 创建Actor网络结构
     def create_actor_network(self):
-        inputs = tflearn.input_data(shape=[None, self.s_dim])
-        net = tflearn.fully_connected(inputs, 400)
-        net = tflearn.layers.normalization.batch_normalization(net)
-        net = tflearn.activations.relu(net)
-        net = tflearn.fully_connected(net, 300)
-        net = tflearn.layers.normalization.batch_normalization(net)
-        net = tflearn.activations.relu(net)
+        inputs = tflearn.input_data(shape=[None, self.s_dim])           # 输入层 
+        net = tflearn.fully_connected(inputs, 400)                      # 全连接层
+        net = tflearn.layers.normalization.batch_normalization(net)     # BN层
+        net = tflearn.activations.relu(net)                             # relu激活函数
+        net = tflearn.fully_connected(net, 300)                         # 全连接层
+        net = tflearn.layers.normalization.batch_normalization(net)     # BN层 
+        net = tflearn.activations.relu(net)                             # relu激活函数
         # Final layer weights are init to Uniform[-3e-3, 3e-3]
         w_init = tflearn.initializations.uniform(minval=-0.003, maxval=0.003)
-        out = tflearn.fully_connected(
+        out = tflearn.fully_connected(                                  # 输出层，激活函数为tanh
             net, self.a_dim, activation='tanh', weights_init=w_init)
         # Scale output to -action_bound to action_bound
-        scaled_out = tf.multiply(out, self.action_bound)
+        scaled_out = tf.multiply(out, self.action_bound)                # 规范化
         return inputs, out, scaled_out
 
-    def train(self, inputs, a_gradient):
+    def train(self, inputs, a_gradient):      # 训练Actor Network
         self.sess.run(self.optimize, feed_dict={
             self.inputs: inputs,
             self.action_gradient: a_gradient
         })
 
-    def predict(self, inputs):
+    def predict(self, inputs):                # Actor Network预测
         return self.sess.run(self.scaled_out, feed_dict={
             self.inputs: inputs
         })
 
-    def predict_target(self, inputs):
+    def predict_target(self, inputs):         # Target Network预测
         return self.sess.run(self.target_scaled_out, feed_dict={
             self.target_inputs: inputs
         })
 
-    def update_target_network(self):
+    def update_target_network(self):          # 更新Target Network的参数
         self.sess.run(self.update_target_network_params)
 
     def get_num_trainable_vars(self):
         return self.num_trainable_vars
 
-
+```
+Critic的DNN类：
+```Python
 class CriticNetwork(object):
     """
-    Input to the network is the state and action, output is Q(s,a).
+    Input to the network is the state and action, output is Q(s,a). 
     The action must be obtained from the output of the Actor network.
     """
 
     def __init__(self, sess, state_dim, action_dim, learning_rate, tau, gamma, num_actor_vars):
         self.sess = sess
-        self.s_dim = state_dim
-        self.a_dim = action_dim
-        self.learning_rate = learning_rate
-        self.tau = tau
-        self.gamma = gamma
+        self.s_dim = state_dim               # 状态空间的维数 
+        self.a_dim = action_dim              # 动作空间的维数
+        self.learning_rate = learning_rate   # 学习率
+        self.tau = tau                       # Target网络参数的更新参数
+        self.gamma = gamma                   # 折扣因子
 
         # Create the critic network
+        # 创建Crtic Network
         self.inputs, self.action, self.out = self.create_critic_network()
 
         self.network_params = tf.trainable_variables()[num_actor_vars:]
 
         # Target Network
+        # 创建Target Network
         self.target_inputs, self.target_action, self.target_out = self.create_critic_network()
 
         self.target_network_params = tf.trainable_variables()[(len(self.network_params) + num_actor_vars):]
 
         # Op for periodically updating target network with online network
         # weights with regularization
+        # 更新 Target Network 的参数
         self.update_target_network_params = \
             [self.target_network_params[i].assign(tf.multiply(self.network_params[i], self.tau) \
             + tf.multiply(self.target_network_params[i], 1. - self.tau))
@@ -307,16 +306,16 @@ class CriticNetwork(object):
         self.action_grads = tf.gradients(self.out, self.action)
 
     def create_critic_network(self):
-        inputs = tflearn.input_data(shape=[None, self.s_dim])
-        action = tflearn.input_data(shape=[None, self.a_dim])
-        net = tflearn.fully_connected(inputs, 400)
-        net = tflearn.layers.normalization.batch_normalization(net)
-        net = tflearn.activations.relu(net)
+        inputs = tflearn.input_data(shape=[None, self.s_dim])         # 状态输入层
+        action = tflearn.input_data(shape=[None, self.a_dim])         # 动作输入层
+        net = tflearn.fully_connected(inputs, 400)                    # 状态输入+隐含层(400)
+        net = tflearn.layers.normalization.batch_normalization(net)   # BN
+        net = tflearn.activations.relu(net)                           # relu
 
         # Add the action tensor in the 2nd hidden layer
         # Use two temp layers to get the corresponding weights and biases
-        t1 = tflearn.fully_connected(net, 300)
-        t2 = tflearn.fully_connected(action, 300)
+        t1 = tflearn.fully_connected(net, 300)                        # 状态输入+隐含层(400)+隐含层(300)
+        t2 = tflearn.fully_connected(action, 300)                     # 动作输入+隐含层(300)
 
         net = tflearn.activation(
             tf.matmul(net, t1.W) + tf.matmul(action, t2.W) + t2.b, activation='relu')
@@ -324,7 +323,7 @@ class CriticNetwork(object):
         # linear layer connected to 1 output representing Q(s,a)
         # Weights are init to Uniform[-3e-3, 3e-3]
         w_init = tflearn.initializations.uniform(minval=-0.003, maxval=0.003)
-        out = tflearn.fully_connected(net, 1, weights_init=w_init)
+        out = tflearn.fully_connected(net, 1, weights_init=w_init)    # 输出层 
         return inputs, action, out
 
     def train(self, inputs, action, predicted_q_value):
@@ -355,8 +354,13 @@ class CriticNetwork(object):
     def update_target_network(self):
         self.sess.run(self.update_target_network_params)
 
+```
+```Python
 # Taken from https://github.com/openai/baselines/blob/master/baselines/ddpg/noise.py, which is
 # based on http://math.stackexchange.com/questions/1287634/implementing-ornstein-uhlenbeck-in-matlab
+
+# 动作噪声
+
 class OrnsteinUhlenbeckActionNoise:
     def __init__(self, mu, sigma=0.3, theta=.15, dt=1e-2, x0=None):
         self.theta = theta
@@ -486,12 +490,12 @@ def main(args):
 
     with tf.Session() as sess:
 
-        env = gym.make(args['env'])
-        np.random.seed(int(args['random_seed']))
-        tf.set_random_seed(int(args['random_seed']))
-        env.seed(int(args['random_seed']))
+        env = gym.make(args['env'])                     # 打开环境
+        np.random.seed(int(args['random_seed']))        # 随机数种子
+        tf.set_random_seed(int(args['random_seed']))    # 设置随机数种子
+        env.seed(int(args['random_seed']))              # 为环境设置随机数种子
 
-        state_dim = env.observation_space.shape[0]
+        state_dim = env.observation_space.shape[0]      # 获得状态的
         action_dim = env.action_space.shape[0]
         action_bound = env.action_space.high
         # Ensure action bound is symmetric
