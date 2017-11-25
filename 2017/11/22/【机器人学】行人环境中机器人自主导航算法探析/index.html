@@ -92,7 +92,7 @@
 <meta property="og:url" content="luxinglong.github.io/2017/11/22/【机器人学】行人环境中机器人自主导航算法探析/index.html">
 <meta property="og:site_name" content="LB's Home">
 <meta property="og:image" content="http://on99gq8w5.bkt.clouddn.com/socially-aware.png?imageMogr2/thumbnail/600x600">
-<meta property="og:updated_time" content="2017-11-24T08:25:58.578Z">
+<meta property="og:updated_time" content="2017-11-25T15:25:58.918Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="【机器人学】行人环境中机器人自主导航算法探析">
 <meta name="twitter:image" content="http://on99gq8w5.bkt.clouddn.com/socially-aware.png?imageMogr2/thumbnail/600x600">
@@ -343,7 +343,7 @@
              <i class="fa fa-calendar-o"></i>
            </span>
            <span class="post-meta-item-text">字数统计:</span>
-           <span class="post-count">256(字)</span> 
+           <span class="post-count">869(字)</span> 
          </span>
          
          <span id="busuanzi_container_page_pv">
@@ -376,6 +376,10 @@
         <img src="http://on99gq8w5.bkt.clouddn.com/socially-aware.png?imageMogr2/thumbnail/600x600" class="[socially-aware]">
 <a id="more"></a>
 <h1 id="0-引言"><a href="#0-引言" class="headerlink" title="0 引言"></a>0 引言</h1><p>试想一下，一个机器人按照人类的“交通规范”在人群中自如穿梭，为为人类提供导引、送餐、送快递、智能轮椅等服务，与人类和谐相处。这样的画面太美。为了实现这样的功能，需要解决的核心问题是，机器人如何在行人环境中高效、安全、自然地进行避障，或者说局部路径规划。</p>
+<p>对于这个问题，通常的研究方法是将行人当作具有一般动力学模型的动态障碍物，然后附加一些规则避免相撞，如DW、ORCA等。但是这些方法因为不考虑行人的行为，所以时常会产生一些不安全或者不自然的行动，特别是当机器人的移动速度接近行人时。为了解决这个问题，人们提出了更加复杂的模型，预测行人的运动，然后结合传统的路径规划，产生一条不会发生碰撞的路径。但是，将导航问题分解为预测和规划两个部分可能会导致“机器人冻死问题”，因为预测的路径占据了很大部分的移动空间，而找不到一条可以走的路径。解决这个问题的关键就是考虑人机合作，考虑机器人运动对附近行人的影响。</p>
+<p>当前，合作式和遵守社会规则的导航算法可以大致分为基于模型的和基于学习的。基于模型的算法通常是多体避障问题的扩展，将行人当作其他机器人，并增加一些社会交互的模型。比如说社会力模型。基于模型的方法通常计算量不大，因为模型考虑直观的几何关系。但是，目前还不知道行人在导航的时候是否遵循同样的规则。特别地，基于模型的方法要达到好的效果需要经过漫长的调参过程，而且不同环境下的最优参数也不一样。另外，基于模型的方法也可能导致碰撞发生。</p>
+<p>基于学习的方法，通常可以产生更加接近行人的路径，但是计算量往往偏大，而且泛化能力不足。</p>
+<p>当前的方法，都在试图对行人如何遵循社会规则的机理进行建模。但由于人类行为的随机性，还无法对这种行为进行定量分析。相反，人类可以很直观地评价一种行为是否可以接受。特别地，在导航方面，行人往往喜欢捷径(节省时间)和遵循一些右行或者左行的规则。而这些规则可以很好地整合到强化学习的框架中。</p>
 <h1 id="1-行人检测与跟踪"><a href="#1-行人检测与跟踪" class="headerlink" title="1 行人检测与跟踪"></a>1 行人检测与跟踪</h1><p>为了进行行人环境下的自主避障，需要获得对行人的位置、速度和形态信息。这些信息</p>
 <h1 id="2-导航算法中引入行人避障"><a href="#2-导航算法中引入行人避障" class="headerlink" title="2 导航算法中引入行人避障"></a>2 导航算法中引入行人避障</h1><p>行人避障不同于机器人与机器人的避障，因为无法建立通信网络，集中式的避障算法不能使用，另外行人的避障机制无法建模。那怎么办呢？</p>
 <h1 id="参考文献"><a href="#参考文献" class="headerlink" title="参考文献"></a>参考文献</h1><p>[1]    Y. F. Chen, M. Liu, M. Everett, and J. P. How, “Decentralized non-communicating multiagent collision avoidance with deep reinforcement learning.,” ICRA, pp. 285–292, 2017.</p>
