@@ -94,7 +94,7 @@
 <meta property="og:image" content="http://on99gq8w5.bkt.clouddn.com/CADRL.png?imageMogr2/thumbnail/500x500">
 <meta property="og:image" content="http://on99gq8w5.bkt.clouddn.com/predict_cadrl.png?imageMogr2/thumbnail/400x400">
 <meta property="og:image" content="http://on99gq8w5.bkt.clouddn.com/train_cadrl.png?imageMogr2/thumbnail/400x400">
-<meta property="og:updated_time" content="2017-11-16T12:59:13.755Z">
+<meta property="og:updated_time" content="2017-11-26T08:20:36.943Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="【强化学习】CADRL仿真算法实现">
 <meta name="twitter:image" content="http://on99gq8w5.bkt.clouddn.com/CADRL.png?imageMogr2/thumbnail/500x500">
@@ -345,7 +345,7 @@
              <i class="fa fa-calendar-o"></i>
            </span>
            <span class="post-meta-item-text">字数统计:</span>
-           <span class="post-count">318(字)</span> 
+           <span class="post-count">431(字)</span> 
          </span>
          
          <span id="busuanzi_container_page_pv">
@@ -383,9 +383,11 @@
 <li>CA问题的动作空间是连续的，没有办法直接估计$Q(s^{jn},a)$；</li>
 <li>动作空间依赖于agent的状态，比如说航向角影响方向、优先选择的速度值影响大小。</li>
 </ol>
-<h1 id="1-训练数据准备"><a href="#1-训练数据准备" class="headerlink" title="1 训练数据准备"></a>1 训练数据准备</h1><p>预训练，为了获得更好的网络初始参数。</p>
+<h1 id="1-训练数据准备"><a href="#1-训练数据准备" class="headerlink" title="1 训练数据准备"></a>1 训练数据准备</h1><p>预训练，为了获得更好的网络初始参数。<br>网络结构：</p>
+<p>ORCA根据初始化的位置，产生两条轨迹。多次执行这个程序，可以得到多条轨迹。把这些轨迹拆开，处理成一个“状态-价值”对的集合。<br>$$<br>\{s^{jn},y\}^N_{k=1} \\<br>其中，y=\gamma^{t_g\cdot v_{pref}}  \\<br>t_g表示到达目标的时间<br>$$</p>
+<p>难点：怎么生成训练数据？怎么确定初始化位置？怎么</p>
 <h1 id="2-CADRL生成轨迹"><a href="#2-CADRL生成轨迹" class="headerlink" title="2 CADRL生成轨迹"></a>2 CADRL生成轨迹</h1><p>算法伪代码：<br><img src="http://on99gq8w5.bkt.clouddn.com/predict_cadrl.png?imageMogr2/thumbnail/400x400" class="[predict_cadrl]"></p>
-<h1 id="3-CADRL训练"><a href="#3-CADRL训练" class="headerlink" title="3 CADRL训练"></a>3 CADRL训练</h1><p>算法伪代码：<br><img src="http://on99gq8w5.bkt.clouddn.com/train_cadrl.png?imageMogr2/thumbnail/400x400" class="[train_cadrl]"></p>
+<h1 id="3-CADRL训练"><a href="#3-CADRL训练" class="headerlink" title="3 CADRL训练"></a>3 CADRL训练</h1><p>算法伪代码：<br><img src="http://on99gq8w5.bkt.clouddn.com/train_cadrl.png?imageMogr2/thumbnail/400x400" class="[train_cadrl]"><br>首先是监督学习的初始化过程。</p>
 <h1 id="4-实验结果"><a href="#4-实验结果" class="headerlink" title="4 实验结果"></a>4 实验结果</h1><h1 id="参考文献"><a href="#参考文献" class="headerlink" title="参考文献"></a>参考文献</h1><p>[1] Chen, Yu Fan, et al. “Decentralized non-communicating multiagent collision avoidance with deep reinforcement learning.” Robotics and Automation (ICRA), 2017 IEEE International Conference on. IEEE, 2017.</p>
 
       

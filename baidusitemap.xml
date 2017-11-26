@@ -4,6 +4,30 @@
 
     
   <url>
+    <loc>luxinglong.github.io/2017/11/13/%E3%80%90%E5%BC%BA%E5%8C%96%E5%AD%A6%E4%B9%A0%E3%80%91CADRL%E4%BB%BF%E7%9C%9F%E7%AE%97%E6%B3%95%E5%AE%9E%E7%8E%B0/</loc>
+    <lastmod>2017-11-26T08:20:36.943Z</lastmod>
+    <data>
+        <display>
+        <title>【强化学习】CADRL仿真算法实现</title>
+        <pubTime>2017-11-12T17:19:12.000Z</pubTime>
+        
+        <tag>RL</tag>
+         
+        <tag>robotics</tag>
+         
+        <tag>local planning</tag>
+         
+         
+           
+             
+              <breadCrumb title="【强化学习】" url="luxinglong.github.io/categories/%E3%80%90%E5%BC%BA%E5%8C%96%E5%AD%A6%E4%B9%A0%E3%80%91/"/>
+          
+        </display>
+    </data>
+    </url>
+
+    
+  <url>
     <loc>luxinglong.github.io/2017/11/26/%E3%80%90%E6%9C%BA%E5%99%A8%E5%AD%A6%E4%B9%A0%E3%80%91Tensorflow%E7%BD%91%E7%BB%9C%E5%8F%82%E6%95%B0%E5%92%8C%E7%BD%91%E7%BB%9C%E6%A8%A1%E5%9E%8B%E7%9A%84%E4%BF%9D%E5%AD%98%E4%B8%8E%E8%AF%BB%E5%8F%96/</loc>
     <lastmod>2017-11-26T07:04:07.040Z</lastmod>
     <data>
@@ -109,30 +133,6 @@
            
              
               <breadCrumb title="【应用程序】" url="luxinglong.github.io/categories/%E3%80%90%E5%BA%94%E7%94%A8%E7%A8%8B%E5%BA%8F%E3%80%91/"/>
-          
-        </display>
-    </data>
-    </url>
-
-    
-  <url>
-    <loc>luxinglong.github.io/2017/11/13/%E3%80%90%E5%BC%BA%E5%8C%96%E5%AD%A6%E4%B9%A0%E3%80%91CADRL%E4%BB%BF%E7%9C%9F%E7%AE%97%E6%B3%95%E5%AE%9E%E7%8E%B0/</loc>
-    <lastmod>2017-11-16T12:59:13.755Z</lastmod>
-    <data>
-        <display>
-        <title>【强化学习】CADRL仿真算法实现</title>
-        <pubTime>2017-11-12T17:19:12.000Z</pubTime>
-        
-        <tag>RL</tag>
-         
-        <tag>robotics</tag>
-         
-        <tag>local planning</tag>
-         
-         
-           
-             
-              <breadCrumb title="【强化学习】" url="luxinglong.github.io/categories/%E3%80%90%E5%BC%BA%E5%8C%96%E5%AD%A6%E4%B9%A0%E3%80%91/"/>
           
         </display>
     </data>
