@@ -95,7 +95,7 @@
 <meta property="og:image" content="http://on99gq8w5.bkt.clouddn.com/DVN.png?imageMogr2/thumbnail/300x300">
 <meta property="og:image" content="http://on99gq8w5.bkt.clouddn.com/predict_cadrl.png?imageMogr2/thumbnail/400x400">
 <meta property="og:image" content="http://on99gq8w5.bkt.clouddn.com/train_cadrl.png?imageMogr2/thumbnail/400x400">
-<meta property="og:updated_time" content="2017-11-26T11:55:08.321Z">
+<meta property="og:updated_time" content="2017-11-27T08:56:54.744Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="【强化学习】CADRL仿真算法实现">
 <meta name="twitter:image" content="http://on99gq8w5.bkt.clouddn.com/CADRL.png?imageMogr2/thumbnail/500x500">
@@ -346,7 +346,7 @@
              <i class="fa fa-calendar-o"></i>
            </span>
            <span class="post-meta-item-text">字数统计:</span>
-           <span class="post-count">574(字)</span> 
+           <span class="post-count">636(字)</span> 
          </span>
          
          <span id="busuanzi_container_page_pv">
@@ -388,7 +388,13 @@
 <p>ORCA根据初始化的位置，产生两条轨迹。多次执行这个程序，可以得到多条轨迹。把这些轨迹拆开，处理成一个“状态-价值”对的集合。<br>$$<br>\{s^{jn},y\}^N_{k=1}<br>$$<br>其中，$y=\gamma^{t_g\cdot v_{pref}}$,$t_g$表示到达目标的时间。因为$\gamma$小于1，而$t_g\cdot v_{pref}$可以表示从当前位置到达目标的路程，路程越大，价值就会越小。</p>
 <p>损失函数：<br>$$<br>loss=arg\min\limits_{w}\sum_{k=1}^N(y_k-V(s^{jn}_k;w))^2<br>$$</p>
 <p>难点：怎么生成训练数据？怎么确定初始化位置？怎么计算$t_g$？<br>ORCA生成的轨迹格式为：$\{t_0, p_0, \cdots, t_T, p_T\}$<br>那么$t_g=t_T - t_i$, $v_{pref}=0.5$</p>
-<p>要生成的数据格式是怎么样的呢？<br>序号  $d_g$  $v_{pref}$  $v_x^{\prime}$  $v_y^{\prime}$  $r$  $\theta^{\prime}$  $\tilde{v}_x^{\prime}$  $\tilde{v}_y^{\prime}$  $\tilde{p}_x^{\prime}$  $\tilde{p}_x^{\prime}$  $\tilde{r}$  $r+\tilde{r}$  $cos(\theta^{\prime})$ $sin(\theta^{\prime})$ $d_a$ $y=\gamma^{t_g\cdot v_{pref}}$</p>
+<p>要生成的数据格式是怎么样的呢？<br>$time$  $d_g$  $v_{pref}$  $v_x^{\prime}$  $v_y^{\prime}$  $r$  $\theta^{\prime}$  $\tilde{v}_x^{\prime}$  $\tilde{v}_y^{\prime}$  $\tilde{p}_x^{\prime}$  $\tilde{p}_x^{\prime}$  $\tilde{r}$  $r+\tilde{r}$  $cos(\theta^{\prime})$ $sin(\theta^{\prime})$ $d_a$ $y=\gamma^{t_g\cdot v_{pref}}$</p>
+<p>机器人初始位置和目标位置的确定，需要满足以下几个条件：</p>
+<ol>
+<li>包含尽可能多的情况，包括正常会车、超车、交叉等情况；</li>
+<li>确定局部路径规划区域的大小；</li>
+<li></li>
+</ol>
 <h1 id="2-CADRL生成轨迹"><a href="#2-CADRL生成轨迹" class="headerlink" title="2 CADRL生成轨迹"></a>2 CADRL生成轨迹</h1><p>算法伪代码：<br><img src="http://on99gq8w5.bkt.clouddn.com/predict_cadrl.png?imageMogr2/thumbnail/400x400" class="[predict_cadrl]"></p>
 <h1 id="3-CADRL训练"><a href="#3-CADRL训练" class="headerlink" title="3 CADRL训练"></a>3 CADRL训练</h1><p>算法伪代码：<br><img src="http://on99gq8w5.bkt.clouddn.com/train_cadrl.png?imageMogr2/thumbnail/400x400" class="[train_cadrl]"><br>首先是监督学习的初始化过程。</p>
 <h1 id="4-实验结果"><a href="#4-实验结果" class="headerlink" title="4 实验结果"></a>4 实验结果</h1><h1 id="参考文献"><a href="#参考文献" class="headerlink" title="参考文献"></a>参考文献</h1><p>[1] Chen, Yu Fan, et al. “Decentralized non-communicating multiagent collision avoidance with deep reinforcement learning.” Robotics and Automation (ICRA), 2017 IEEE International Conference on. IEEE, 2017.</p>

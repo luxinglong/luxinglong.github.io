@@ -4,8 +4,56 @@
 
     
   <url>
+    <loc>luxinglong.github.io/2017/11/22/%E3%80%90%E6%9C%BA%E5%99%A8%E4%BA%BA%E5%AD%A6%E3%80%91%E5%A4%9A%E4%BD%93%E9%81%BF%E9%9A%9C%E7%AE%97%E6%B3%95-ORCA/</loc>
+    <lastmod>2017-11-28T07:01:56.719Z</lastmod>
+    <data>
+        <display>
+        <title>【机器人学】多体避障算法-ORCA</title>
+        <pubTime>2017-11-22T05:53:23.000Z</pubTime>
+        
+        <tag>robotics</tag>
+         
+        <tag>path planning</tag>
+         
+        <tag>collision avoidance</tag>
+         
+         
+           
+             
+              <breadCrumb title="【机器人学】" url="luxinglong.github.io/categories/%E3%80%90%E6%9C%BA%E5%99%A8%E4%BA%BA%E5%AD%A6%E3%80%91/"/>
+          
+        </display>
+    </data>
+    </url>
+
+    
+  <url>
+    <loc>luxinglong.github.io/2017/11/08/%E3%80%90%E5%BC%BA%E5%8C%96%E5%AD%A6%E4%B9%A0%E3%80%91CADRL%E4%BB%BF%E7%9C%9F%E7%8E%AF%E5%A2%83%E6%90%AD%E5%BB%BA/</loc>
+    <lastmod>2017-11-28T07:01:02.948Z</lastmod>
+    <data>
+        <display>
+        <title>【强化学习】CADRL仿真环境搭建</title>
+        <pubTime>2017-11-08T14:08:11.000Z</pubTime>
+        
+        <tag>RL</tag>
+         
+        <tag>robotics</tag>
+         
+        <tag>local planning</tag>
+         
+         
+           
+             
+              <breadCrumb title="【强化学习】" url="luxinglong.github.io/categories/%E3%80%90%E5%BC%BA%E5%8C%96%E5%AD%A6%E4%B9%A0%E3%80%91/"/>
+          
+        </display>
+    </data>
+    </url>
+
+    
+  <url>
     <loc>luxinglong.github.io/2017/11/13/%E3%80%90%E5%BC%BA%E5%8C%96%E5%AD%A6%E4%B9%A0%E3%80%91CADRL%E4%BB%BF%E7%9C%9F%E7%AE%97%E6%B3%95%E5%AE%9E%E7%8E%B0/</loc>
-    <lastmod>2017-11-26T11:55:08.321Z</lastmod>
+    <lastmod>2017-11-27T08:56:54.744Z</lastmod>
     <data>
         <display>
         <title>【强化学习】CADRL仿真算法实现</title>
@@ -72,30 +120,6 @@
 
     
   <url>
-    <loc>luxinglong.github.io/2017/11/22/%E3%80%90%E6%9C%BA%E5%99%A8%E4%BA%BA%E5%AD%A6%E3%80%91%E5%A4%9A%E4%BD%93%E9%81%BF%E9%9A%9C%E7%AE%97%E6%B3%95-ORCA/</loc>
-    <lastmod>2017-11-24T09:00:29.755Z</lastmod>
-    <data>
-        <display>
-        <title>【机器人学】多体避障算法-ORCA</title>
-        <pubTime>2017-11-22T05:53:23.000Z</pubTime>
-        
-        <tag>robotics</tag>
-         
-        <tag>path planning</tag>
-         
-        <tag>collision avoidance</tag>
-         
-         
-           
-             
-              <breadCrumb title="【机器人学】" url="luxinglong.github.io/categories/%E3%80%90%E6%9C%BA%E5%99%A8%E4%BA%BA%E5%AD%A6%E3%80%91/"/>
-          
-        </display>
-    </data>
-    </url>
-
-    
-  <url>
     <loc>luxinglong.github.io/2017/11/08/%E3%80%90%E5%BC%BA%E5%8C%96%E5%AD%A6%E4%B9%A0%E3%80%91DPG%E5%92%8CDDPG/</loc>
     <lastmod>2017-11-22T05:53:55.229Z</lastmod>
     <data>
@@ -133,30 +157,6 @@
            
              
               <breadCrumb title="【应用程序】" url="luxinglong.github.io/categories/%E3%80%90%E5%BA%94%E7%94%A8%E7%A8%8B%E5%BA%8F%E3%80%91/"/>
-          
-        </display>
-    </data>
-    </url>
-
-    
-  <url>
-    <loc>luxinglong.github.io/2017/11/08/%E3%80%90%E5%BC%BA%E5%8C%96%E5%AD%A6%E4%B9%A0%E3%80%91CADRL%E4%BB%BF%E7%9C%9F%E7%8E%AF%E5%A2%83%E6%90%AD%E5%BB%BA/</loc>
-    <lastmod>2017-11-16T11:57:30.118Z</lastmod>
-    <data>
-        <display>
-        <title>【强化学习】CADRL仿真环境搭建</title>
-        <pubTime>2017-11-08T14:08:11.000Z</pubTime>
-        
-        <tag>RL</tag>
-         
-        <tag>robotics</tag>
-         
-        <tag>local planning</tag>
-         
-         
-           
-             
-              <breadCrumb title="【强化学习】" url="luxinglong.github.io/categories/%E3%80%90%E5%BC%BA%E5%8C%96%E5%AD%A6%E4%B9%A0%E3%80%91/"/>
           
         </display>
     </data>
