@@ -95,7 +95,7 @@
 <meta property="og:image" content="http://on99gq8w5.bkt.clouddn.com/DVN.png?imageMogr2/thumbnail/300x300">
 <meta property="og:image" content="http://on99gq8w5.bkt.clouddn.com/predict_cadrl.png?imageMogr2/thumbnail/400x400">
 <meta property="og:image" content="http://on99gq8w5.bkt.clouddn.com/train_cadrl.png?imageMogr2/thumbnail/400x400">
-<meta property="og:updated_time" content="2017-11-27T08:56:54.744Z">
+<meta property="og:updated_time" content="2017-11-28T14:22:48.009Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="【强化学习】CADRL仿真算法实现">
 <meta name="twitter:image" content="http://on99gq8w5.bkt.clouddn.com/CADRL.png?imageMogr2/thumbnail/500x500">
@@ -346,7 +346,7 @@
              <i class="fa fa-calendar-o"></i>
            </span>
            <span class="post-meta-item-text">字数统计:</span>
-           <span class="post-count">636(字)</span> 
+           <span class="post-count">939(字)</span> 
          </span>
          
          <span id="busuanzi_container_page_pv">
@@ -393,10 +393,12 @@
 <ol>
 <li>包含尽可能多的情况，包括正常会车、超车、交叉等情况；</li>
 <li>确定局部路径规划区域的大小；</li>
-<li></li>
 </ol>
+<p>现在把生成数据的方式确定为四种情况，交叉、相会、超车、其他。<br>交叉：</p>
 <h1 id="2-CADRL生成轨迹"><a href="#2-CADRL生成轨迹" class="headerlink" title="2 CADRL生成轨迹"></a>2 CADRL生成轨迹</h1><p>算法伪代码：<br><img src="http://on99gq8w5.bkt.clouddn.com/predict_cadrl.png?imageMogr2/thumbnail/400x400" class="[predict_cadrl]"></p>
-<h1 id="3-CADRL训练"><a href="#3-CADRL训练" class="headerlink" title="3 CADRL训练"></a>3 CADRL训练</h1><p>算法伪代码：<br><img src="http://on99gq8w5.bkt.clouddn.com/train_cadrl.png?imageMogr2/thumbnail/400x400" class="[train_cadrl]"><br>首先是监督学习的初始化过程。</p>
+<h1 id="3-CADRL训练"><a href="#3-CADRL训练" class="headerlink" title="3 CADRL训练"></a>3 CADRL训练</h1><p>算法伪代码：<br><img src="http://on99gq8w5.bkt.clouddn.com/train_cadrl.png?imageMogr2/thumbnail/400x400" class="[train_cadrl]"><br>首先是监督学习的初始化过程。<br>忽略了最关键的一点，就是怎么制作特征？<br>在准备数据的过程中，我发现，另外一个机器人的位置是可以随意指定的，而且要把这个机器人的位置的横纵坐标作为特征，那么如果位置选的比较大，那么就会导致位置这个特征，对结果的影响比较大。另外一个问题，如何生成那么多情况的轨迹呢？</p>
+<p>一开始，不太理解这里，慢慢理解了。最优策略应该与坐标系无关，即与旋转和平移无关。那么怎么解决这个问题呢？引入一个以机器人为中心的坐标系，原点在机器人中心，x轴指向目标位置。注意：这个坐标系只在生成特征的时候使用。</p>
+<p>对神经网络的训练，有几个关键点，一是，训练数据不具有相关性，也就是说要把生成的数据打乱；二是，数据要进行归一化，以防止训练某些元素的比重过大。</p>
 <h1 id="4-实验结果"><a href="#4-实验结果" class="headerlink" title="4 实验结果"></a>4 实验结果</h1><h1 id="参考文献"><a href="#参考文献" class="headerlink" title="参考文献"></a>参考文献</h1><p>[1] Chen, Yu Fan, et al. “Decentralized non-communicating multiagent collision avoidance with deep reinforcement learning.” Robotics and Automation (ICRA), 2017 IEEE International Conference on. IEEE, 2017.</p>
 
       
@@ -528,7 +530,7 @@
           
             <div class="site-state-item site-state-posts">
               <a href="/">
-                <span class="site-state-item-count">49</span>
+                <span class="site-state-item-count">52</span>
                 <span class="site-state-item-name">日志</span>
               </a>
             </div>
@@ -550,7 +552,7 @@
             
             <div class="site-state-item site-state-tags">
               <a href="/tags/index.html">
-                <span class="site-state-item-count">34</span>
+                <span class="site-state-item-count">36</span>
                 <span class="site-state-item-name">标签</span>
               </a>
             </div>

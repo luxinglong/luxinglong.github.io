@@ -2,6 +2,41 @@
 <urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">
   
   <url>
+    <loc>luxinglong.github.io/2017/11/29/%E3%80%90%E7%BC%96%E7%A8%8B%E8%AF%AD%E8%A8%80%E3%80%91Python-Matplotlib/</loc>
+    
+    <lastmod>2017-11-29T14:30:15.000Z</lastmod>
+    
+  </url>
+  
+  <url>
+    <loc>luxinglong.github.io/2017/11/29/%E3%80%90%E7%BC%96%E7%A8%8B%E8%AF%AD%E8%A8%80%E3%80%91Python-Pandas/</loc>
+    
+    <lastmod>2017-11-29T14:21:18.461Z</lastmod>
+    
+  </url>
+  
+  <url>
+    <loc>luxinglong.github.io/2017/11/13/%E3%80%90%E7%BC%96%E7%A8%8B%E8%AF%AD%E8%A8%80%E3%80%91Python-NumPy/</loc>
+    
+    <lastmod>2017-11-29T14:21:15.613Z</lastmod>
+    
+  </url>
+  
+  <url>
+    <loc>luxinglong.github.io/2017/11/13/%E3%80%90%E5%BC%BA%E5%8C%96%E5%AD%A6%E4%B9%A0%E3%80%91CADRL%E4%BB%BF%E7%9C%9F%E7%AE%97%E6%B3%95%E5%AE%9E%E7%8E%B0/</loc>
+    
+    <lastmod>2017-11-28T14:22:48.009Z</lastmod>
+    
+  </url>
+  
+  <url>
+    <loc>luxinglong.github.io/2017/11/28/%E3%80%90%E7%BC%96%E7%A8%8B%E8%AF%AD%E8%A8%80%E3%80%91Python%E5%92%8CC-%E7%9A%84%E6%96%87%E4%BB%B6%E8%AF%BB%E5%86%99/</loc>
+    
+    <lastmod>2017-11-28T14:22:19.098Z</lastmod>
+    
+  </url>
+  
+  <url>
     <loc>luxinglong.github.io/2017/11/22/%E3%80%90%E6%9C%BA%E5%99%A8%E4%BA%BA%E5%AD%A6%E3%80%91%E5%A4%9A%E4%BD%93%E9%81%BF%E9%9A%9C%E7%AE%97%E6%B3%95-ORCA/</loc>
     
     <lastmod>2017-11-28T07:01:56.719Z</lastmod>
@@ -12,13 +47,6 @@
     <loc>luxinglong.github.io/2017/11/08/%E3%80%90%E5%BC%BA%E5%8C%96%E5%AD%A6%E4%B9%A0%E3%80%91CADRL%E4%BB%BF%E7%9C%9F%E7%8E%AF%E5%A2%83%E6%90%AD%E5%BB%BA/</loc>
     
     <lastmod>2017-11-28T07:01:02.948Z</lastmod>
-    
-  </url>
-  
-  <url>
-    <loc>luxinglong.github.io/2017/11/13/%E3%80%90%E5%BC%BA%E5%8C%96%E5%AD%A6%E4%B9%A0%E3%80%91CADRL%E4%BB%BF%E7%9C%9F%E7%AE%97%E6%B3%95%E5%AE%9E%E7%8E%B0/</loc>
-    
-    <lastmod>2017-11-27T08:56:54.744Z</lastmod>
     
   </url>
   
@@ -54,13 +82,6 @@
     <loc>luxinglong.github.io/2017/11/14/%E3%80%90%E5%BC%BA%E5%8C%96%E5%AD%A6%E4%B9%A0%E3%80%91OpenAI-gym-rendering%E6%A8%A1%E5%9D%97%E8%A7%A3%E6%9E%90/</loc>
     
     <lastmod>2017-11-14T12:27:38.000Z</lastmod>
-    
-  </url>
-  
-  <url>
-    <loc>luxinglong.github.io/2017/11/13/%E3%80%90%E7%BC%96%E7%A8%8B%E8%AF%AD%E8%A8%80%E3%80%91Python-NumPy/</loc>
-    
-    <lastmod>2017-11-13T15:12:51.018Z</lastmod>
     
   </url>
   
