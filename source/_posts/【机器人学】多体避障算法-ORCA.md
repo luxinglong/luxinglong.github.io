@@ -147,6 +147,9 @@ Kd-Tree类
 全局路径规划和局部路径规划的结合
 {% img [ORCA] http://on99gq8w5.bkt.clouddn.com/orca-sch.png?imageMogr2/thumbnail/600x600 %}
 
+# 6 OCRA仿真结果
+<video src='http://on99gq8w5.bkt.clouddn.com/orca_demo.mp4' type='video/mp4' controls='controls'  width='100%' height='100%'>
+</video>
 
 # 参考文献
 [1]	J. van den Berg, S. J. Guy, M. C. Lin, and D. Manocha, “Reciprocal n-Body Collision Avoidance.,” ISRR, vol. 70, no. 1, pp. 3–19, 2009.

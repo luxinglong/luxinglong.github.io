@@ -94,7 +94,9 @@ $G(\mid y_F \mid cos(18^o),-\mid y_F \mid sin(18^o)),\qquad J(-\mid y_F \mid cos
 def _render():
     pass
 ```
-# 3 辅助函数
+# 3 结果
+<video src='http://on99gq8w5.bkt.clouddn.com/orca_demo.mp4' type='video/mp4' controls='controls'  width='100%' height='100%'>
+</video>
 
 
 # 参考文献

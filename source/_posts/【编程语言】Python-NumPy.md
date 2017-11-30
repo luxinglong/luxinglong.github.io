@@ -41,3 +41,4 @@ for item in array.flat: # 访问每一个元素，flat是一个迭代器
 
 # 参考文献
 [1] 利用Python进行数据分析
+[2] Morvan NumPy & pandas lecture
