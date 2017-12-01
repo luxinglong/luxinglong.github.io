@@ -71,7 +71,7 @@
 <link href="/css/main.css?v=5.1.0" rel="stylesheet" type="text/css" />
 
 
-  <meta name="keywords" content="Python,scikit-learn," />
+  <meta name="keywords" content="Python,machine leaning,scikit-learn," />
 
 
 
@@ -87,17 +87,14 @@
 
 
 
-<meta name="description" content="0 引言1">
 <meta property="og:type" content="article">
 <meta property="og:title" content="【编程语言】Python之scikit-learn">
 <meta property="og:url" content="luxinglong.github.io/2017/12/01/【编程语言】Python之scikit-learn/index.html">
 <meta property="og:site_name" content="LB's Home">
-<meta property="og:description" content="0 引言1">
 <meta property="og:image" content="http://scikit-learn.org/stable/_static/ml_map.png?imageMogr2/thumbnail/600x600">
-<meta property="og:updated_time" content="2017-12-01T14:27:48.032Z">
+<meta property="og:updated_time" content="2017-12-01T15:28:28.426Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="【编程语言】Python之scikit-learn">
-<meta name="twitter:description" content="0 引言1">
 <meta name="twitter:image" content="http://scikit-learn.org/stable/_static/ml_map.png?imageMogr2/thumbnail/600x600">
 
 
@@ -346,7 +343,7 @@
              <i class="fa fa-calendar-o"></i>
            </span>
            <span class="post-meta-item-text">字数统计:</span>
-           <span class="post-count">4(字)</span> 
+           <span class="post-count">423(字)</span> 
          </span>
          
          <span id="busuanzi_container_page_pv">
@@ -377,7 +374,17 @@
 
       
         <img src="http://scikit-learn.org/stable/_static/ml_map.png?imageMogr2/thumbnail/600x600" class="[ml_map]">
-<h1 id="0-引言"><a href="#0-引言" class="headerlink" title="0 引言"></a>0 引言</h1><h1 id="1"><a href="#1" class="headerlink" title="1"></a>1</h1>
+<a id="more"></a>
+<h1 id="0-引言"><a href="#0-引言" class="headerlink" title="0 引言"></a>0 引言</h1><p>scikit-learn是Python的机器学习库，</p>
+<h1 id="1-使用scikit-learn的一般套路"><a href="#1-使用scikit-learn的一般套路" class="headerlink" title="1 使用scikit-learn的一般套路"></a>1 使用scikit-learn的一般套路</h1><h2 id="1-1-准备数据"><a href="#1-1-准备数据" class="headerlink" title="1.1 准备数据"></a>1.1 准备数据</h2><figure class="highlight python"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div></pre></td><td class="code"><pre><div class="line"><span class="keyword">from</span> sklearn <span class="keyword">import</span> datasets</div><div class="line"><span class="comment"># 加载模版数据</span></div><div class="line">data = datasets.load_boston()</div><div class="line">x = data.data</div><div class="line">y = data.target</div><div class="line"></div><div class="line"><span class="comment"># 自己创建数据</span></div><div class="line">x_, y_ = datasets.make_regression(n_samples=<span class="number">100</span>, n_features=<span class="number">1</span>, n_targets=<span class="number">1</span>, noise=<span class="number">10</span>)</div></pre></td></tr></table></figure>
+<h2 id="1-2-构造模型并训练、预测"><a href="#1-2-构造模型并训练、预测" class="headerlink" title="1.2 构造模型并训练、预测"></a>1.2 构造模型并训练、预测</h2><figure class="highlight python"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div></pre></td><td class="code"><pre><div class="line"><span class="keyword">from</span> sklearn.linear_model <span class="keyword">import</span> LinearRegression</div><div class="line"></div><div class="line"><span class="comment"># 构建模型</span></div><div class="line">model = LinearRegression()</div><div class="line">model.fit(x, y)        <span class="comment"># 训练</span></div><div class="line">model.predict(data_x)  <span class="comment"># 预测</span></div></pre></td></tr></table></figure>
+<h2 id="1-3-模型的其他属性和方法"><a href="#1-3-模型的其他属性和方法" class="headerlink" title="1.3 模型的其他属性和方法"></a>1.3 模型的其他属性和方法</h2><figure class="highlight python"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div></pre></td><td class="code"><pre><div class="line">model.coef_   <span class="comment"># 线性模型的斜率，属性前面的系数</span></div><div class="line">model.intercept_ <span class="comment"># 线性模型的截距，模型常数项</span></div><div class="line"></div><div class="line">model.get_params() <span class="comment"># 获得模型参数</span></div><div class="line"><span class="comment"># &#123;'copy_X': True, 'normalize': False, 'n_jobs': 1, 'fit_intercept': True&#125;</span></div><div class="line"></div><div class="line">model.score(x,y) <span class="comment"># 评估模型的好坏，R^2 coefficient of determination</span></div></pre></td></tr></table></figure>
+<h1 id="2-高级功能"><a href="#2-高级功能" class="headerlink" title="2 高级功能"></a>2 高级功能</h1><h2 id="2-1-数据标准化-Normalization"><a href="#2-1-数据标准化-Normalization" class="headerlink" title="2.1 数据标准化 Normalization"></a>2.1 数据标准化 Normalization</h2><figure class="highlight python"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div></pre></td><td class="code"><pre><div class="line"><span class="keyword">from</span> sklearn <span class="keyword">import</span> preprocessing <span class="comment">#标准化数据模块</span></div><div class="line"><span class="keyword">import</span> numpy <span class="keyword">as</span> np</div><div class="line"></div><div class="line"><span class="comment">#建立Array</span></div><div class="line">a = np.array([[<span class="number">10</span>, <span class="number">2.7</span>, <span class="number">3.6</span>],</div><div class="line">              [<span class="number">-100</span>, <span class="number">5</span>, <span class="number">-2</span>],</div><div class="line">              [<span class="number">120</span>, <span class="number">20</span>, <span class="number">40</span>]], dtype=np.float64)</div><div class="line"></div><div class="line"><span class="comment">#将normalized后的a打印出</span></div><div class="line">print(preprocessing.scale(a))</div><div class="line"><span class="comment"># [[ 0.         -0.85170713 -0.55138018]</span></div><div class="line"><span class="comment">#  [-1.22474487 -0.55187146 -0.852133  ]</span></div><div class="line"><span class="comment">#  [ 1.22474487  1.40357859  1.40351318]]</span></div></pre></td></tr></table></figure>
+<h2 id="2-2-评估神经网络-Evaluation"><a href="#2-2-评估神经网络-Evaluation" class="headerlink" title="2.2 评估神经网络 Evaluation"></a>2.2 评估神经网络 Evaluation</h2><h2 id="2-4-保存模型"><a href="#2-4-保存模型" class="headerlink" title="2.4 保存模型"></a>2.4 保存模型</h2><figure class="highlight python"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div></pre></td><td class="code"><pre><div class="line"><span class="keyword">from</span> sklearn <span class="keyword">import</span> svm</div><div class="line"><span class="keyword">from</span> sklearn <span class="keyword">import</span> datasets</div><div class="line"></div><div class="line">clf = svm.SVC()</div><div class="line">iris = datasets.load_iris()</div><div class="line">X, y = iris.data, iris.target</div><div class="line">clf.fit(X,y)</div></pre></td></tr></table></figure>
+<p><strong>pickle</strong><br><figure class="highlight python"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div></pre></td><td class="code"><pre><div class="line"><span class="keyword">import</span> pickle <span class="comment">#pickle模块</span></div><div class="line"></div><div class="line"><span class="comment">#保存Model(注:save文件夹要预先建立，否则会报错)</span></div><div class="line"><span class="keyword">with</span> open(<span class="string">'save/clf.pickle'</span>, <span class="string">'wb'</span>) <span class="keyword">as</span> f:</div><div class="line">    pickle.dump(clf, f)</div><div class="line"></div><div class="line"><span class="comment">#读取Model</span></div><div class="line"><span class="keyword">with</span> open(<span class="string">'save/clf.pickle'</span>, <span class="string">'rb'</span>) <span class="keyword">as</span> f:</div><div class="line">    clf2 = pickle.load(f)</div><div class="line">    <span class="comment">#测试读取后的Model</span></div><div class="line">    print(clf2.predict(X[<span class="number">0</span>:<span class="number">1</span>]))</div><div class="line"></div><div class="line"><span class="comment"># [0]</span></div></pre></td></tr></table></figure></p>
+<p><strong>joblib</strong><br><figure class="highlight python"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div></pre></td><td class="code"><pre><div class="line"><span class="keyword">from</span> sklearn.externals <span class="keyword">import</span> joblib <span class="comment">#jbolib模块</span></div><div class="line"></div><div class="line"><span class="comment">#保存Model(注:save文件夹要预先建立，否则会报错)</span></div><div class="line">joblib.dump(clf, <span class="string">'save/clf.pkl'</span>)</div><div class="line"></div><div class="line"><span class="comment">#读取Model</span></div><div class="line">clf3 = joblib.load(<span class="string">'save/clf.pkl'</span>)</div><div class="line"></div><div class="line"><span class="comment">#测试读取后的Model</span></div><div class="line">print(clf3.predict(X[<span class="number">0</span>:<span class="number">1</span>]))</div><div class="line"></div><div class="line"><span class="comment"># [0]</span></div></pre></td></tr></table></figure></p>
+<h1 id="参考文献"><a href="#参考文献" class="headerlink" title="参考文献"></a>参考文献</h1><p>[1] Morvan scikit-learn lecture<br>[2] <a href="http://scikit-learn.org/stable/index.html" target="_blank" rel="external">http://scikit-learn.org/stable/index.html</a></p>
+
       
     </div>
 
@@ -407,6 +414,8 @@
         <div class="post-tags">
           
             <a href="/tags/Python/" rel="tag"># Python</a>
+          
+            <a href="/tags/machine-leaning/" rel="tag"># machine leaning</a>
           
             <a href="/tags/scikit-learn/" rel="tag"># scikit-learn</a>
           
@@ -604,7 +613,7 @@
             
 
             
-              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-1"><a class="nav-link" href="#0-引言"><span class="nav-number">1.</span> <span class="nav-text">0 引言</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#1"><span class="nav-number">2.</span> <span class="nav-text">1</span></a></li></ol></div>
+              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-1"><a class="nav-link" href="#0-引言"><span class="nav-number">1.</span> <span class="nav-text">0 引言</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#1-使用scikit-learn的一般套路"><span class="nav-number">2.</span> <span class="nav-text">1 使用scikit-learn的一般套路</span></a><ol class="nav-child"><li class="nav-item nav-level-2"><a class="nav-link" href="#1-1-准备数据"><span class="nav-number">2.1.</span> <span class="nav-text">1.1 准备数据</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#1-2-构造模型并训练、预测"><span class="nav-number">2.2.</span> <span class="nav-text">1.2 构造模型并训练、预测</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#1-3-模型的其他属性和方法"><span class="nav-number">2.3.</span> <span class="nav-text">1.3 模型的其他属性和方法</span></a></li></ol></li><li class="nav-item nav-level-1"><a class="nav-link" href="#2-高级功能"><span class="nav-number">3.</span> <span class="nav-text">2 高级功能</span></a><ol class="nav-child"><li class="nav-item nav-level-2"><a class="nav-link" href="#2-1-数据标准化-Normalization"><span class="nav-number">3.1.</span> <span class="nav-text">2.1 数据标准化 Normalization</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#2-2-评估神经网络-Evaluation"><span class="nav-number">3.2.</span> <span class="nav-text">2.2 评估神经网络 Evaluation</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#2-4-保存模型"><span class="nav-number">3.3.</span> <span class="nav-text">2.4 保存模型</span></a></li></ol></li><li class="nav-item nav-level-1"><a class="nav-link" href="#参考文献"><span class="nav-number">4.</span> <span class="nav-text">参考文献</span></a></li></ol></div>
             
 
           </div>
