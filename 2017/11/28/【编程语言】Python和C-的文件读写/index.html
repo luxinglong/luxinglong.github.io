@@ -93,7 +93,7 @@
 <meta property="og:url" content="luxinglong.github.io/2017/11/28/【编程语言】Python和C-的文件读写/index.html">
 <meta property="og:site_name" content="LB's Home">
 <meta property="og:description" content="0 引言编程的时候经常需要生成数据或者读取数据，而最好的方式就是把他们保存在文件中，方便以后的查看。但是每次编写程序的时候，都需要翻书或者百度，不是很方便。于是，写一篇博客，“整理一下思路”，以便记忆。">
-<meta property="og:updated_time" content="2017-11-28T14:22:19.098Z">
+<meta property="og:updated_time" content="2017-12-01T07:46:29.696Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="【编程语言】Python和C++的文件读写">
 <meta name="twitter:description" content="0 引言编程的时候经常需要生成数据或者读取数据，而最好的方式就是把他们保存在文件中，方便以后的查看。但是每次编写程序的时候，都需要翻书或者百度，不是很方便。于是，写一篇博客，“整理一下思路”，以便记忆。">
@@ -344,7 +344,7 @@
              <i class="fa fa-calendar-o"></i>
            </span>
            <span class="post-meta-item-text">字数统计:</span>
-           <span class="post-count">143(字)</span> 
+           <span class="post-count">245(字)</span> 
          </span>
          
          <span id="busuanzi_container_page_pv">
@@ -375,9 +375,14 @@
 
       
         <h1 id="0-引言"><a href="#0-引言" class="headerlink" title="0 引言"></a>0 引言</h1><p>编程的时候经常需要生成数据或者读取数据，而最好的方式就是把他们保存在文件中，方便以后的查看。但是每次编写程序的时候，都需要翻书或者百度，不是很方便。于是，写一篇博客，“整理一下思路”，以便记忆。<br><a id="more"></a></p>
-<h1 id="1-Python文件读写"><a href="#1-Python文件读写" class="headerlink" title="1 Python文件读写"></a>1 Python文件读写</h1><p>首先，是要打开文件：<br><figure class="highlight python"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">open(name[, mode[, buffering]])</div></pre></td></tr></table></figure></p>
+<h1 id="1-Python文件读写"><a href="#1-Python文件读写" class="headerlink" title="1 Python文件读写"></a>1 Python文件读写</h1><h2 id="1-1-首先，是要打开文件："><a href="#1-1-首先，是要打开文件：" class="headerlink" title="1.1 首先，是要打开文件："></a>1.1 首先，是要打开文件：</h2><figure class="highlight python"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">open(name[, mode[, buffering]])</div></pre></td></tr></table></figure>
 <p>name是路径名，必须提供。mode是文件模式，可以配置。buffering是缓冲，可以配置。</p>
-<h1 id="2-C-文件读写"><a href="#2-C-文件读写" class="headerlink" title="2 C++文件读写"></a>2 C++文件读写</h1><h1 id="3-总结"><a href="#3-总结" class="headerlink" title="3 总结"></a>3 总结</h1>
+<h2 id="1-2-NumPy-IO"><a href="#1-2-NumPy-IO" class="headerlink" title="1.2 NumPy IO"></a>1.2 NumPy IO</h2><figure class="highlight python"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div></pre></td><td class="code"><pre><div class="line"></div><div class="line"></div></pre></td></tr></table></figure>
+<h2 id="1-3-Pandas-IO"><a href="#1-3-Pandas-IO" class="headerlink" title="1.3 Pandas IO"></a>1.3 Pandas IO</h2><figure class="highlight python"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">pd.read(filepath, delimiter=<span class="string">','</span> <span class="keyword">or</span> <span class="string">' '</span>)</div></pre></td></tr></table></figure>
+<p>也可以使用delim_whitespace=True来表示空格</p>
+<p>注：txt文件和csv文件的区别<br>CSV（Comma Separated Values）,逗号分隔型取值格式，是一种纯文本格式，用来存储数据，用逗号分隔字段。而txt格式的文件通常使用空格来分割数值。</p>
+<h1 id="2-C-文件读写"><a href="#2-C-文件读写" class="headerlink" title="2 C++文件读写"></a>2 C++文件读写</h1><h2 id="2-1-fstream"><a href="#2-1-fstream" class="headerlink" title="2.1 fstream"></a>2.1 fstream</h2><p>引入头文件<br><figure class="highlight c++"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line"><span class="meta">#<span class="meta-keyword">include</span> <span class="meta-string">&lt;fstream&gt;</span></span></div></pre></td></tr></table></figure></p>
+<h1 id="3-总结"><a href="#3-总结" class="headerlink" title="3 总结"></a>3 总结</h1>
       
     </div>
 
@@ -505,7 +510,7 @@
           
             <div class="site-state-item site-state-posts">
               <a href="/">
-                <span class="site-state-item-count">52</span>
+                <span class="site-state-item-count">54</span>
                 <span class="site-state-item-name">日志</span>
               </a>
             </div>
@@ -527,7 +532,7 @@
             
             <div class="site-state-item site-state-tags">
               <a href="/tags/index.html">
-                <span class="site-state-item-count">36</span>
+                <span class="site-state-item-count">39</span>
                 <span class="site-state-item-name">标签</span>
               </a>
             </div>
@@ -608,7 +613,7 @@
             
 
             
-              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-1"><a class="nav-link" href="#0-引言"><span class="nav-number">1.</span> <span class="nav-text">0 引言</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#1-Python文件读写"><span class="nav-number">2.</span> <span class="nav-text">1 Python文件读写</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#2-C-文件读写"><span class="nav-number">3.</span> <span class="nav-text">2 C++文件读写</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#3-总结"><span class="nav-number">4.</span> <span class="nav-text">3 总结</span></a></li></ol></div>
+              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-1"><a class="nav-link" href="#0-引言"><span class="nav-number">1.</span> <span class="nav-text">0 引言</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#1-Python文件读写"><span class="nav-number">2.</span> <span class="nav-text">1 Python文件读写</span></a><ol class="nav-child"><li class="nav-item nav-level-2"><a class="nav-link" href="#1-1-首先，是要打开文件："><span class="nav-number">2.1.</span> <span class="nav-text">1.1 首先，是要打开文件：</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#1-2-NumPy-IO"><span class="nav-number">2.2.</span> <span class="nav-text">1.2 NumPy IO</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#1-3-Pandas-IO"><span class="nav-number">2.3.</span> <span class="nav-text">1.3 Pandas IO</span></a></li></ol></li><li class="nav-item nav-level-1"><a class="nav-link" href="#2-C-文件读写"><span class="nav-number">3.</span> <span class="nav-text">2 C++文件读写</span></a><ol class="nav-child"><li class="nav-item nav-level-2"><a class="nav-link" href="#2-1-fstream"><span class="nav-number">3.1.</span> <span class="nav-text">2.1 fstream</span></a></li></ol></li><li class="nav-item nav-level-1"><a class="nav-link" href="#3-总结"><span class="nav-number">4.</span> <span class="nav-text">3 总结</span></a></li></ol></div>
             
 
           </div>
